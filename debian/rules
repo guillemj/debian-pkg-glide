@@ -42,14 +42,14 @@ debian/po/templates.pot: debian/libglide2.templates debian/libglide3.templates
 	@debconf-updatepo
 
 setup:
-	$(MAKE) -f $(SYS_BUILD) source.make
+	$(MAKE) -f $(SYS_BUILD) source_make
 
 make_patch:
 	$(MAKE) -f $(SYS_BUILD) make-diff
 
 $(SRC_DIR)/glide2x $(SRC_DIR)/glide3x: $(STAMP_DIR)/SRC_DIR_glide
 $(STAMP_DIR)/SRC_DIR_glide:
-	$(MAKE) -f $(SYS_BUILD) source.make
+	$(MAKE) -f $(SYS_BUILD) source_make
 	cd $(SRC_DIR)/glide2x; ln -s ../swlibs swlibs
 	cd $(SRC_DIR)/glide3x; ln -s ../swlibs swlibs
 	touch $(STAMP_DIR)/SRC_DIR_glide
@@ -111,7 +111,7 @@ sys-clean:
 
 clean:
 # No need to run clean
-	$(MAKE) -f $(SYS_BUILD) source.clean
+	$(MAKE) -f $(SYS_BUILD) source_clean
 	rm -f $(STAMP_DIR)
 	rm -rf $(PWD)/debian/tmp.h3 $(PWD)/debian/tmp.h5
 	dh_clean

@@ -1,3 +1,12 @@
+glide (2002.04.10-6) unstable; urgency=low
+
+  * Debconf template translations:
+    - Initial Danish translation by Claus Hindsgaul.
+  * debian/rules: Use new dbs build system function names.
+  * debian/control: Build-Depend on the dbs providing those new functions.
+
+ -- Guillem Jover <guillem@debian.org>  UNRELEASED
+
 glide (2002.04.10-5) unstable; urgency=low
 
   * debian/control:
@@ -9,7 +18,6 @@ glide (2002.04.10-5) unstable; urgency=low
     Thanks to Nathan Hand <Nathan.Hand@defence.gov.au>.
   * Debconf template translations:
     - Updated Catalan. Some verbal form fixes.
-    - Initial Danish translation by Claus Hindsgaul
 
  -- Guillem Jover <guillem@debian.org>  Fri,  5 Dec 2003 06:03:10 +0100
 
