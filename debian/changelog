@@ -1,6 +1,7 @@
 glide (2002.04.10-5) unstable; urgency=low
 
   * debian/control: Tighten libtool Build-Depends. (Closes: #215512)
+  * debian/patches/swlibs-004-ioctl: Adapt to the new libc's ioctl.h.
 
  -- Guillem Jover <guillem@debian.org>  Fri,  5 Dec 2003 06:03:10 +0100
 
