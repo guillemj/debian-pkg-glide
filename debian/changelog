@@ -2,6 +2,8 @@ glide (2002.04.10-8) UNRELEASED; urgency=low
 
   * Debconf template translations:
     - Fix some Catalan slang. Thanks to Jordi Mallach.
+  * Revert moving libglide3.so symlink to package libglide3-dev. Because
+    XFree86 requires libglide3.so to load the library. (Closes: #256940)
 
  -- Guillem Jover <guillem@debian.org>  Thu, 17 Jun 2004 15:21:48 +0200
 
