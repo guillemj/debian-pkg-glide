@@ -324,6 +324,7 @@ binary-glide3-bin-real: build
 	dh_builddeb
 
 .PHONY: unpack make-patch build sys-clean clean binary binary-arch binary-indep
+.PHONY: install.headers.glide2
 .PHONY: build.glide2 build.glide2.cvg build.glide2.h3
 .PHONY: build.glide3 build.glide3.h3 build.glide3.h5
 
