@@ -1,6 +1,17 @@
+glide (2002.04.10-2) unstable; urgency=low
+
+  * Fixed a call to the old perl debconf module from libglide3.config,
+    missed in the transition. (Closes: #197204, #197215)
+  * Cleaned the .config scripts.
+  * Debconf template translations:
+    - Added Catalan.
+    - Added Spanish.
+
+ -- Guillem Jover <guillem@debian.org>  Fri, 13 Jun 2003 02:35:34 +0200
+
 glide (2002.04.10-1) unstable; urgency=low
 
-  * New maintainer. (Closes: #189820)
+  * New Maintainer. (Closes: #189820)
   * New Upstream glide3x Source.
     - Disable FX_GLIDE_SWAPINTERVAL by default. (Closes: #118851)
   * Reverted packaging to non-native.
