@@ -1,15 +1,14 @@
 TODO
 ====
 
- - Merge with glide-alpha?. [working]
  - Exterminate all warnings.
  - Create an automake file for glide3 tests.
  - Build a package for glide3 tests.
- - Convert old build system to auto*.
+ - Convert glide2 and swlibs old build system to auto*.
  - Clean build environment.
  - Rename .s file to .S as they need to be preprocessed.
-   And change the build rules to use libtool only. [ done in upstream ]
+   And change the build rules to use libtool only. [done upstream]
  - Remove redundant files, such as the dri repeated versions.
- - Remove not used old files.
+ - Remove not used old files. [done upstream on glide3]
  - Do not depend on user variables.
 

@@ -119,11 +119,10 @@ clean:
 binary: binary-indep binary-arch
 
 ifeq ($(DEB_HOST_ARCH),i386)
-BINARY_INDEP_TARGETS := binary-libglide2-dev
 BINARY_ARCH_TARGETS := binary-libglide2 binary-glide2-bin
 endif
 
-binary-indep: build $(BINARY_INDEP_TARGETS) binary-libglide3-dev
+binary-indep: build binary-libglide2-dev binary-libglide3-dev
 # Add rules here to build the indep debs.
 
 binary-arch: build $(BINARY_ARCH_TARGETS) binary-libglide3

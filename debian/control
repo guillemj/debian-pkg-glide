@@ -10,7 +10,6 @@ Package: glide2-bin
 Section: graphics
 Architecture: i386
 Depends: ${shlibs:Depends}
-Conflicts: libglide2-vg, libglide2-v2, libglide2-v3, glide-v3
 Suggests: device3dfx-module, device3dfx-source
 Description: Graphics library for 3Dfx Voodoo based cards - support programs
  This is a support package which should be installed if you have a
@@ -22,7 +21,7 @@ Architecture: i386
 Depends: ${shlibs:Depends}, pciutils, debconf (>= 0.5)
 Recommends: glide2-bin
 Suggests: device3dfx-module, device3dfx-source
-Conflicts: libglide2, libglide2-vg, libglide2-v2, libglide2-v3, glide-v3
+Conflicts: libglide2
 Description: Graphics library for 3Dfx Voodoo based cards - shared libraries
  This package allows you to use the 3D functions of cards based on
  3dfx Interactive, Inc's Voodoo 2 chipsets. You should install it if
@@ -38,11 +37,10 @@ Description: Graphics library for 3Dfx Voodoo based cards - shared libraries
 
 Package: libglide2-dev
 Section: libdevel
-Architecture: i386
+Architecture: all
 Depends: libglide2
 Provides: libglide-dev
-Conflicts: llibglide-dev, glide2x-sdk, libglide2-vg, libglide2-v2,
- libglide2-v3, glide-v3
+Conflicts: llibglide-dev
 Description: Graphics library for 3Dfx Voodoo based cards - development files
  This package contains the necessary header files, example programs,
  and documentation necessary to develop software for cards based on
@@ -66,11 +64,11 @@ Description: Graphics library for 3Dfx Voodoo based cards - shared libraries
 
 Package: libglide3-dev
 Section: libdevel
-Architecture: i386 alpha
+Architecture: all
 Depends: libglide3
 Provides: libglide-dev, libglide3-alpha-dev
 Replaces: libglide2-dev, libglide3-alpha-dev
-Conflicts: glide2x-sdk, glide3x-sdk, libglide3-alpha-dev
+Conflicts: libglide3-alpha-dev
 Description: Graphics library for 3Dfx Voodoo based cards - development files
  This package contains the necessary header files, example programs,
  and documentation necessary to develop software for cards based on

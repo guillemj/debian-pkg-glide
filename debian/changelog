@@ -1,3 +1,14 @@
+glide (2002.04.10-4) unstable; urgency=low
+
+  * debian/control:
+    - Now -dev packages are correctly architecture all.
+    - Remove legacy Conflicts with old glide packages.
+  * debian/rules:
+    - Build unconditionally all indep packages, regardless of architecture.
+  * Updated TODO list.
+
+ -- Guillem Jover <guillem@debian.org>  Sun, 14 Sep 2003 18:49:37 +0200
+
 glide (2002.04.10-3) unstable; urgency=low
 
   * The Great Unification Release:
@@ -163,8 +174,8 @@ glide2 (2000.08.08) unstable; urgency=low
 
   * New packaging setup! Now as a debian native package.
   * Many of my patches are now in the glide2 CVS tree.
-  * Please not that sst1 /is/ broken at this time.
-  * Sepirate tarballs for swlibs and glide2, yes, there is a reason.
+  * Please note that sst1 /is/ broken at this time.
+  * Separate tarballs for swlibs and glide2, yes, there is a reason.
 
  -- Zephaniah E. Hull <warp@debian.org>  Sun,  8 Oct 2000 06:13:41 -0400
 
