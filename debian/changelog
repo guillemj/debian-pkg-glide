@@ -1,7 +1,11 @@
 glide (2002.04.10-6) unstable; urgency=low
 
   * Debconf template translations:
-    - Initial Danish translation by Claus Hindsgaul.
+    - Added Danish by Claus Hindsgaul.
+    - Added Dutch. (Closes: #253452)
+      Thanks to Luk Claes <luk.claes@ugent.be>.
+    - Added German. (Closes: #253178)
+      Thanks to Erik Schanze <schanzi_usenet@gmx.de>.
     - Use typographic quotes in Catalan and Spanish translations.
   * debian/control:
     - Place Build-Depends on one line only, otherwise some tools cannot cope.
