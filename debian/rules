@@ -59,7 +59,8 @@ make-patch:
 	$(dbs_build) make-diff
 
 $(SRC_DIR)/glide2x $(SRC_DIR)/glide3x: $(STAMP_DIR)/SRC_DIR_glide
-$(STAMP_DIR)/SRC_DIR_glide: unpack
+$(STAMP_DIR)/SRC_DIR_glide:
+	$(dbs_build) source.make
 	cd $(SRC_DIR)/glide2x; ln -s ../swlibs swlibs
 	cd $(SRC_DIR)/glide3x; ln -s ../swlibs swlibs
 	touch $(STAMP_DIR)/SRC_DIR_glide
@@ -79,7 +80,7 @@ $(STAMP_DIR)/build.glide2.cvg:
 
 build.glide2.h3: $(SRC_DIR)/glide2x $(STAMP_DIR)/build.glide2.h3
 $(STAMP_DIR)/build.glide2.h3:
-	$(glide3_build) FX_GLIDE_HW=h3 CNODEBUG="$(CFLAGS)"
+	$(glide2_build) FX_GLIDE_HW=h3 CNODEBUG="$(CFLAGS)"
 	touch $(STAMP_DIR)/build.glide2.h3
 
 build.glide3.h3: $(SRC_DIR)/glide3x $(STAMP_DIR)/build.glide3.h3
