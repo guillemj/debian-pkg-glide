@@ -6,6 +6,7 @@ glide (2002.04.10-7) unstable; urgency=low
   * Allow building binary independent packages on any arch.
   * Build-Conflict against automake1.4, as it lacks AM_PROG_AS.
   * Added the location of the Subversion repo used for the packages.
+  * Added -O2 to the fallback arch CFLAGS.
 
  -- Guillem Jover <guillem@debian.org>  Thu, 17 Jun 2004 05:16:09 +0200
 

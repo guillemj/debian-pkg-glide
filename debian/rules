@@ -42,7 +42,7 @@ ifeq ($(DEB_HOST_ARCH),i386)
   CFLAGS += -O6 -mcpu=i486 -fomit-frame-pointer -funroll-loops \
 	    -fexpensive-optimizations -ffast-math -DBIG_OPT
 else
-  CFLAGS += -fomit-frame-pointer -fexpensive-optimizations -ffast-math \
+  CFLAGS += -O2 -fomit-frame-pointer -fexpensive-optimizations -ffast-math \
 	    -DBIG_OPT
 endif
 endif
