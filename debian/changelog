@@ -9,10 +9,10 @@ glide (2002.04.10-6) unstable; urgency=low
     - Lower-case first short description letter.
   * Move libglide3.so symlink to package libglide3-dev. (Closes: #242063)
   * Added a BUGS file to keep track of things.
-  * debian/patches/glide3x-libtool-patch: Use libtoolize instead, to be in
-    sync and not break with libtool.sh and libtool.m4 mismatch.
-  * debian/patches/glide3x-build-fix: Quote sed expressions, and balance a
-    missing one.
+  * debian/patches:
+    - glide3x-libtool-patch: Use libtoolize instead, to be in sync and not
+      break with libtool.sh and libtool.m4 mismatch.
+    - glide3x-build-fix: Quote sed expressions, and balance a missing one.
   * debian/rules: Cleaned a bit. Marked targets as PHONY. Renamed setup target
     to unpack, and make_patch to make-patch.
   * debian/copyright: Cleaned and use properly "License:" instead of
