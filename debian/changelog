@@ -2,9 +2,7 @@ glide (2002.04.10-6) unstable; urgency=low
 
   * Debconf template translations:
     - Initial Danish translation by Claus Hindsgaul.
-  * debian/rules: Use new dbs build system function names.
   * debian/control:
-    - Build-Depend on the dbs providing those new functions.
     - Place Build-Depends on one line only, otherwise some tools cannot cope.
 
  -- Guillem Jover <guillem@debian.org>  UNRELEASED
