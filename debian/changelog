@@ -1,3 +1,10 @@
+glide (2002.04.10-8) unstable; urgency=low
+
+  * Debconf template translations:
+    - Fix some Catalan slang. Thanks to Jordi Mallach.
+
+ -- Guillem Jover <guillem@debian.org>  Thu, 17 Jun 2004 15:21:48 +0200
+
 glide (2002.04.10-7) unstable; urgency=low
 
   * Added amd64 support.
