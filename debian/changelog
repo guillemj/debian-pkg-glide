@@ -18,7 +18,7 @@ glide (2002.04.10-6) unstable; urgency=low
   * debian/copyright: Cleaned and use properly "License:" instead of
     "Copyright:".
 
- -- Guillem Jover <guillem@debian.org>  UNRELEASED
+ -- Guillem Jover <guillem@debian.org>  Wed,  7 Apr 2004 21:49:59 +0200
 
 glide (2002.04.10-5) unstable; urgency=low
 
