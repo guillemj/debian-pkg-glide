@@ -63,7 +63,7 @@ msgid ""
 msgstr ""
 "Si tiene alguna tarjeta basada en alguno de los chipsets listados, por favor "
 "envíe un informe de error a este paquete, incluyendo la salida de "
-"la orden 'lspci -vm' en el mismo informe."
+"la orden «lspci -vm» en el mismo informe."
 
 #. Description
 #: ../libglide2.templates:4 ../libglide3.templates:4
