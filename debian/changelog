@@ -7,12 +7,12 @@ glide (2002.04.10-9) unstable; urgency=low
   * Fix build failure with gcc 3.4. And as a side effect fix the build
     for amd64.
     - debian/patches/z04-gcc34-port. (Closes: #272474)
-      Thanks Kaare Hviid <ukh@id.cbs.dk>.
+      Thanks to Kaare Hviid <ukh@id.cbs.dk>.
   * Fix build failure with gcc 4.0.
     - debian/patches/z05-gcc4-fix. (Closes: #286845)
       Thanks to Andreas Jochens <aj@andaco.de>.
 
- -- Guillem Jover <guillem@debian.org>  Sat, 13 Nov 2004 22:17:45 +0100
+ -- Guillem Jover <guillem@debian.org>  Thu, 23 Dec 2004 23:34:58 +0100
 
 glide (2002.04.10-8) unstable; urgency=low
 
