@@ -2,4 +2,6 @@
 set -e
 
 rm -f /usr/lib/libglide3.so.3
+
 #DEBHELPER#
+

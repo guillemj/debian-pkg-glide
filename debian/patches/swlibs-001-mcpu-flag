@@ -1,0 +1,45 @@
+diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/include/make/3dfx.linux.mak build-tree/swlibs/include/make/3dfx.linux.mak
+--- build-tree.orig/swlibs/include/make/3dfx.linux.mak	2000-07-12 23:35:28.000000000 +0200
++++ build-tree/swlibs/include/make/3dfx.linux.mak	2003-05-18 15:38:09.000000000 +0200
+@@ -87,7 +87,7 @@
+ # assembly language in grDrawTriangle. Larger optimization removes
+ # an extra push in the calling sequence.
+ #
+-CNODEBUG       = -O6 -m486 -fomit-frame-pointer -funroll-loops \
++CNODEBUG       = -O6 -mcpu=i486 -fomit-frame-pointer -funroll-loops \
+ 	-fexpensive-optimizations -ffast-math -DBIG_OPT
+ 
+ CDEBUG	       = -g -O
+diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/include/make/3dfx.mak build-tree/swlibs/include/make/3dfx.mak
+--- build-tree.orig/swlibs/include/make/3dfx.mak	2000-10-03 20:25:35.000000000 +0200
++++ build-tree/swlibs/include/make/3dfx.mak	2003-05-18 15:37:51.000000000 +0200
+@@ -120,7 +120,7 @@
+ # assembly language in grDrawTriangle. Larger optimization removes
+ # an extra push in the calling sequence.
+ #
+-CNODEBUG       = -O6 -m486 -fomit-frame-pointer -funroll-loops \
++CNODEBUG       = -O6 -mcpu=i486 -fomit-frame-pointer -funroll-loops \
+ 	-fexpensive-optimizations -ffast-math -DBIG_OPT
+ 
+ CDEBUG	       = -g -O
+@@ -138,7 +138,7 @@
+ # assembly language in grDrawTriangle. Larger optimization removes
+ # an extra push in the calling sequence.
+ #
+-CNODEBUG       = -O6 -m486 -fomit-frame-pointer -funroll-loops \
++CNODEBUG       = -O6 -mcpu=i486 -fomit-frame-pointer -funroll-loops \
+ 	-fexpensive-optimizations -ffast-math -DBIG_OPT
+ 
+ CDEBUG	       = -g -O
+diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/include/make/makefile.autoconf.bottom build-tree/swlibs/include/make/makefile.autoconf.bottom
+--- build-tree.orig/swlibs/include/make/makefile.autoconf.bottom	2000-08-07 17:24:44.000000000 +0200
++++ build-tree/swlibs/include/make/makefile.autoconf.bottom	2003-05-18 15:38:31.000000000 +0200
+@@ -51,7 +51,7 @@
+ GLIDE_DEBUG_GCFLAGS = -g -O
+ GLIDE_DEBUG_GDEFS = -DGDBG_INFO_ON -DGLIDE_DEBUG
+ else
+-GLIDE_DEBUG_GCFLAGS = -O6 -m486
++GLIDE_DEBUG_GCFLAGS = -O6 -mcpu=i486
+ GLIDE_DEBUG_GDEFS = -fomit-frame-pointer -funroll-loops \
+ 	                -fexpensive-optimizations -ffast-math -DBIG_OPT
+ endif

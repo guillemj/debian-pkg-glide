@@ -1,0 +1,634 @@
+diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/fxcmd.h build-tree/glide3x/h3/glide3/src/fxcmd.h
+--- build-tree.orig/glide3x/h3/glide3/src/fxcmd.h	1999-11-24 22:44:55.000000000 +0100
++++ build-tree/glide3x/h3/glide3/src/fxcmd.h	2003-05-18 19:22:32.000000000 +0200
+@@ -1312,7 +1312,7 @@
+ #define REG_GROUP_SETF_CLAMP(__regBase, __regAddr, __val) \
+ do { \
+   const FxU32 fpClampVal = FP_FLOAT_CLAMP(__val); \
+-  REG_GROUP_ASSERT(__regAddr, fpClampVal, FXTRUE); \  
++  REG_GROUP_ASSERT(__regAddr, fpClampVal, FXTRUE); \
+   SET(((FxU32*)(__regBase))[offsetof(SstRegs, __regAddr) >> 2], fpClampVal); \
+   GR_INC_SIZE(sizeof(FxU32)); \
+ } while(0)
+diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/g3df.c build-tree/glide3x/h3/glide3/src/g3df.c
+--- build-tree.orig/glide3x/h3/glide3/src/g3df.c	1999-11-24 22:44:56.000000000 +0100
++++ build-tree/glide3x/h3/glide3/src/g3df.c	2003-05-18 19:26:23.000000000 +0200
+@@ -72,6 +72,7 @@
+ */
+ #include <stdio.h>
+ #include <string.h>
++#include <ctype.h>
+ #include <3dfx.h>
+ 
+ #define FX_DLL_DEFINITION
+diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/gsplash.c build-tree/glide3x/h3/glide3/src/gsplash.c
+--- build-tree.orig/glide3x/h3/glide3/src/gsplash.c	1999-11-24 22:44:57.000000000 +0100
++++ build-tree/glide3x/h3/glide3/src/gsplash.c	2003-05-18 19:23:38.000000000 +0200
+@@ -185,8 +185,7 @@
+ {
+ #define FN_NAME "grSplash"
+   GR_BEGIN_NOFIFOCHECK("grSplash", 85);
+-  GDBG_INFO_MORE(gc->myLevel,"(%f,%f,%f,%f,%d)\n",
+-                 x, y, w, h, frameNumber);
++  GDBG_INFO_MORE(gc->myLevel,"(%f,%f,%f,%f,%d)\n", x, y, w, h, frameNumber);
+ 
+ #if (GLIDE_PLATFORM & GLIDE_OS_WIN32)
+   {
+diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/cvg/glide/src/cpudetect.c build-tree/glide2x/cvg/glide/src/cpudetect.c
+--- build-tree.orig/glide2x/cvg/glide/src/cpudetect.c	1999-12-07 22:49:08.000000000 +0100
++++ build-tree/glide2x/cvg/glide/src/cpudetect.c	2003-05-18 19:08:02.000000000 +0200
+@@ -20,6 +20,7 @@
+ 
+ #include <sys/utsname.h>
+ #include <stdio.h>
++#include <string.h>
+ 
+ int _cpu_detect_asm() {
+   struct utsname name;
+diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/cvg/glide/src/fxglide.h build-tree/glide2x/cvg/glide/src/fxglide.h
+--- build-tree.orig/glide2x/cvg/glide/src/fxglide.h	1999-12-07 22:49:09.000000000 +0100
++++ build-tree/glide2x/cvg/glide/src/fxglide.h	2003-05-18 19:06:25.000000000 +0200
+@@ -2225,7 +2225,7 @@
+ #define REG_GROUP_SETF_CLAMP(__regBase, __regAddr, __val) \
+ do { \
+   const FxU32 fpClampVal = FP_FLOAT_CLAMP(__val); \
+-  REG_GROUP_ASSERT(__regAddr, fpClampVal, FXTRUE); \  
++  REG_GROUP_ASSERT(__regAddr, fpClampVal, FXTRUE); \
+   SET(((FxU32*)(__regBase))[offsetof(SstRegs, __regAddr) >> 2], fpClampVal); \
+   GR_INC_SIZE(sizeof(FxU32)); \
+ } while(0)
+diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/h3/glide/src/fxglide.h build-tree/glide2x/h3/glide/src/fxglide.h
+--- build-tree.orig/glide2x/h3/glide/src/fxglide.h	1999-12-07 22:49:26.000000000 +0100
++++ build-tree/glide2x/h3/glide/src/fxglide.h	2003-05-18 19:10:27.000000000 +0200
+@@ -2004,7 +2004,7 @@
+                                      __stwbrx( *((FxU32*)&temp), (void*)&(d), 0 ); \
+                                    }
+ #      define SET_LINEAR(d, s)     SET((d), (s))
+-#      define SET_LINEAR_16(d, s)  SET((d), ((((FxU32)(s)) >> 16UL) | \ 
++#      define SET_LINEAR_16(d, s)  SET((d), ((((FxU32)(s)) >> 16UL) | \
+                                            (((FxU32)(s)) << 16UL)))
+ #      define SET_LINEAR_8(d, s)   ((d) = (s))
+ #    else /* !defined(__MWERKS__) && POWERPC */
+@@ -3008,7 +3008,7 @@
+ #define REG_GROUP_SETF_CLAMP(__regBase, __regAddr, __val) \
+ do { \
+   const FxU32 fpClampVal = FP_FLOAT_CLAMP(__val); \
+-  REG_GROUP_ASSERT(__regAddr, fpClampVal, FXTRUE); \  
++  REG_GROUP_ASSERT(__regAddr, fpClampVal, FXTRUE); \
+   SET(((FxU32*)(__regBase))[offsetof(SstRegs, __regAddr) >> 2], fpClampVal); \
+   GR_INC_SIZE(sizeof(FxU32)); \
+ } while(0)
+diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/texus2/lib/ncc.c build-tree/swlibs/texus2/lib/ncc.c
+--- build-tree.orig/swlibs/texus2/lib/ncc.c	2000-08-03 02:27:17.000000000 +0200
++++ build-tree/swlibs/texus2/lib/ncc.c	2003-05-18 19:15:05.000000000 +0200
+@@ -26,10 +26,10 @@
+ #include "texusint.h"
+ 
+ static int 
+-dithmat[4][4] = {       0,  8,  2, 10, 
+-                           12,  4, 14,  6, 
+-                            3, 11,  1,  9, 
+-                           15,  7, 13,  5 };
++dithmat[4][4] = { {0,  8,  2, 10},
++                  {12, 4, 14,  6},
++                  {3, 11,  1,  9},
++                  {15, 7, 13,  5} };
+ 
+ static struct   {
+     int yhist[256], ihist[256], qhist[256];
+diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/texus2/lib/quantize.c build-tree/swlibs/texus2/lib/quantize.c
+--- build-tree.orig/swlibs/texus2/lib/quantize.c	2000-08-03 02:27:20.000000000 +0200
++++ build-tree/swlibs/texus2/lib/quantize.c	2003-05-18 19:14:25.000000000 +0200
+@@ -28,10 +28,10 @@
+ #include "texusint.h"
+ 
+ static int 
+-dithmat[4][4] = { 0,  8,  2, 10, 
+-                  12,  4, 14,  6, 
+-                  3, 11,  1,  9, 
+-                  15,  7, 13,  5 };
++dithmat[4][4] = { {0,  8,  2, 10},
++                  {12, 4, 14,  6},
++                  {3, 11,  1,  9},
++                  {15, 7, 13,  5} };
+ 
+ // for error diffusion.
+ static int      errR[MAX_TEXWIDTH], errG[MAX_TEXWIDTH], errB[MAX_TEXWIDTH];     
+diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/cvg/glide/oem/oeminit.h build-tree/glide2x/cvg/glide/oem/oeminit.h
+--- build-tree.orig/glide2x/cvg/glide/oem/oeminit.h	1999-12-07 22:49:07.000000000 +0100
++++ build-tree/glide2x/cvg/glide/oem/oeminit.h	2003-05-19 14:48:14.000000000 +0200
+@@ -89,5 +89,5 @@
+ FX_EXPORT FxU32 FX_CSTYLE fxoemRestoreVideo(OemInitInfo *oem);
+ FX_EXPORT FxU32 FX_CSTYLE fxoemControl(FxU32 mode);
+ 
+-#endif __OEMINIT_H__
++#endif /* __OEMINIT_H__ */
+ 
+diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/h3/minihwc/fxhwc.h build-tree/glide2x/h3/minihwc/fxhwc.h
+--- build-tree.orig/glide2x/h3/minihwc/fxhwc.h	2000-10-03 20:29:57.000000000 +0200
++++ build-tree/glide2x/h3/minihwc/fxhwc.h	2003-05-19 15:00:10.000000000 +0200
+@@ -41,8 +41,8 @@
+ **  I/O Macros
+ */
+ #warning Here!
+-#define HWC_IO_LOAD(regInfo, reg, val)
+-GDBG_INFO(120, "%s:  Storing 0x%x to IO Register %s\n", 
++#define HWC_IO_LOAD(regInfo, reg, val) \
++GDBG_INFO(120, "%s:  Storing 0x%x to IO Register %s\n", \
+ ((SstIORegs *) regInfo.ioMemBase)->
+ 
+ 
+diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/minihwc/fxhwc.h build-tree/glide3x/h3/minihwc/fxhwc.h
+--- build-tree.orig/glide3x/h3/minihwc/fxhwc.h	1999-11-24 22:45:03.000000000 +0100
++++ build-tree/glide3x/h3/minihwc/fxhwc.h	2003-05-19 14:59:10.000000000 +0200
+@@ -38,8 +38,8 @@
+ /*
+ **  I/O Macros
+ */
+-#define HWC_IO_LOAD(regInfo, reg, val)
+-GDBG_INFO(120, "%s:  Storing 0x%x to IO Register %s\n", 
++#define HWC_IO_LOAD(regInfo, reg, val) \
++GDBG_INFO(120, "%s:  Storing 0x%x to IO Register %s\n", \
+ ((SstIORegs *) regInfo.ioMemBase)->
+ 
+ 
+diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/fxcmd.h build-tree/glide3x/h5/glide3/src/fxcmd.h
+--- build-tree.orig/glide3x/h5/glide3/src/fxcmd.h	2000-12-14 04:12:49.000000000 +0100
++++ build-tree/glide3x/h5/glide3/src/fxcmd.h	2003-05-19 14:47:12.000000000 +0200
+@@ -1425,7 +1425,7 @@
+ #define REG_GROUP_SETF_CLAMP(__regBase, __regAddr, __val) \
+ do { \
+   const FxU32 fpClampVal = FP_FLOAT_CLAMP(__val); \
+-  REG_GROUP_ASSERT(__regAddr, fpClampVal, FXTRUE); \  
++  REG_GROUP_ASSERT(__regAddr, fpClampVal, FXTRUE); \
+   SET(((FxU32*)(__regBase))[offsetof(SstRegs, __regAddr) >> 2], fpClampVal); \
+   GR_INC_SIZE(sizeof(FxU32)); \
+ } while(0)
+diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/minihwc/fxhwc.h build-tree/glide3x/h5/minihwc/fxhwc.h
+--- build-tree.orig/glide3x/h5/minihwc/fxhwc.h	2000-12-14 04:12:52.000000000 +0100
++++ build-tree/glide3x/h5/minihwc/fxhwc.h	2003-05-19 14:59:30.000000000 +0200
+@@ -38,8 +38,8 @@
+ /*
+ **  I/O Macros
+ */
+-#define HWC_IO_LOAD(regInfo, reg, val)
+-GDBG_INFO(120, "%s:  Storing 0x%x to IO Register %s\n", 
++#define HWC_IO_LOAD(regInfo, reg, val) \
++GDBG_INFO(120, "%s:  Storing 0x%x to IO Register %s\n", \
+ ((SstIORegs *) regInfo.ioMemBase)->
+ 
+ 
+diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/gsst.c.dri build-tree/glide3x/h3/glide3/src/gsst.c.dri
+--- build-tree.orig/glide3x/h3/glide3/src/gsst.c.dri	1999-11-24 22:45:01.000000000 +0100
++++ build-tree/glide3x/h3/glide3/src/gsst.c.dri	2003-05-31 19:48:14.000000000 +0200
+@@ -542,30 +542,30 @@
+ 
+ ResEntry
+ _resTable[] = {
+-  GR_RESOLUTION_320x200, 320, 200, /* 0x0 */
+-  GR_RESOLUTION_320x240, 320,  240, /*   0x1 */
+-  GR_RESOLUTION_400x256, 400,  256, /*   0x2 */
+-  GR_RESOLUTION_512x384, 512,  384, /*   0x3 */
+-  GR_RESOLUTION_640x200, 640,  200, /*   0x4 */
+-  GR_RESOLUTION_640x350, 640,  350, /*   0x5 */
+-  GR_RESOLUTION_640x400, 640,  400, /*   0x6 */
+-  GR_RESOLUTION_640x480, 640,  480, /*   0x7 */
+-  GR_RESOLUTION_800x600, 800,  600, /*   0x8 */
+-  GR_RESOLUTION_960x720, 960,  720, /*   0x9 */
+-  GR_RESOLUTION_856x480, 856,  480, /*   0xa */
+-  GR_RESOLUTION_512x256, 512,  256, /*   0xb */
+-  GR_RESOLUTION_1024x768, 1024,  768, /*  0xC */
+-  GR_RESOLUTION_1280x1024, 1280,  1024, /* 0xD */
+-  GR_RESOLUTION_1600x1200, 1600,  1200, /* 0xE */
+-  GR_RESOLUTION_400x300, 400,  300, /*   0xF */
+-  GR_RESOLUTION_1152x864, 1152,  864, /*  0x10 */
+-  GR_RESOLUTION_1280x960, 1280,  960, /*  0x11 */
+-  GR_RESOLUTION_1600x1024, 1600,  1024, /* 0x12 */
+-  GR_RESOLUTION_1792x1344, 1792,  1344, /* 0x13 */
+-  GR_RESOLUTION_1856x1392, 1856,  1392, /* 0x14 */
+-  GR_RESOLUTION_1920x1440, 1920,  1440, /* 0x15 */
+-  GR_RESOLUTION_2048x1536, 2048,  1536, /* 0x16 */
+-  GR_RESOLUTION_2048x2048, 2048,  2048 /* 0x17 */
++  {GR_RESOLUTION_320x200, 320, 200}, /* 0x0 */
++  {GR_RESOLUTION_320x240, 320,  240}, /*   0x1 */
++  {GR_RESOLUTION_400x256, 400,  256}, /*   0x2 */
++  {GR_RESOLUTION_512x384, 512,  384}, /*   0x3 */
++  {GR_RESOLUTION_640x200, 640,  200}, /*   0x4 */
++  {GR_RESOLUTION_640x350, 640,  350}, /*   0x5 */
++  {GR_RESOLUTION_640x400, 640,  400}, /*   0x6 */
++  {GR_RESOLUTION_640x480, 640,  480}, /*   0x7 */
++  {GR_RESOLUTION_800x600, 800,  600}, /*   0x8 */
++  {GR_RESOLUTION_960x720, 960,  720}, /*   0x9 */
++  {GR_RESOLUTION_856x480, 856,  480}, /*   0xa */
++  {GR_RESOLUTION_512x256, 512,  256}, /*   0xb */
++  {GR_RESOLUTION_1024x768, 1024,  768}, /*  0xC */
++  {GR_RESOLUTION_1280x1024, 1280,  1024}, /* 0xD */
++  {GR_RESOLUTION_1600x1200, 1600,  1200}, /* 0xE */
++  {GR_RESOLUTION_400x300, 400,  300}, /*   0xF */
++  {GR_RESOLUTION_1152x864, 1152,  864}, /*  0x10 */
++  {GR_RESOLUTION_1280x960, 1280,  960}, /*  0x11 */
++  {GR_RESOLUTION_1600x1024, 1600,  1024}, /* 0x12 */
++  {GR_RESOLUTION_1792x1344, 1792,  1344}, /* 0x13 */
++  {GR_RESOLUTION_1856x1392, 1856,  1392}, /* 0x14 */
++  {GR_RESOLUTION_1920x1440, 1920,  1440}, /* 0x15 */
++  {GR_RESOLUTION_2048x1536, 2048,  1536}, /* 0x16 */
++  {GR_RESOLUTION_2048x2048, 2048,  2048} /* 0x17 */
+ };
+ 
+ /* ---------------------------------------------
+@@ -1190,7 +1190,7 @@
+     gc->tBuffer.bufBPP = 0xffffffff; /* Don't matter to me */
+ 
+     GDBG_INFO(1, "autoBump: 0x%x\n", _GlideRoot.environment.autoBump);
+-    if (gc->cmdTransportInfo.autoBump = _GlideRoot.environment.autoBump) {
++    if ((gc->cmdTransportInfo.autoBump = _GlideRoot.environment.autoBump)) {
+       if (!hwcInitFifo( bInfo, gc->cmdTransportInfo.autoBump)) {
+         hwcRestoreVideo(bInfo);
+         GrErrorCallback(hwcGetErrorString(), FXFALSE);
+diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/h3/glide/src/xdraw2.S build-tree/glide2x/h3/glide/src/xdraw2.S
+--- build-tree.orig/glide2x/h3/glide/src/xdraw2.S	1999-12-07 22:49:30.000000000 +0100
++++ build-tree/glide2x/h3/glide/src/xdraw2.S	2003-06-11 07:36:37.000000000 +0200
+@@ -125,10 +125,12 @@
+ #define GLIDE_GENERIC_SETUP 0
+ #include "xdraw2.inc.S"
+ #undef cull
+-#define GLIDE_GENERIC_SETUP 0
+-#define GLIDE_PACK_ALPHA 0
+-#define GLIDE_PACK_RGB 0
+-#define GLIDE_CULLING 0
++#undef GLIDE_GENERIC_SETUP
++#undef GLIDE_PACK_ALPHA
++#undef GLIDE_PACK_RGB
++#undef GLIDE_CULLING
++
++#undef LOCAL
+ 
+ END_PROC_TYPE(cull):
+ .size PROC_TYPE(cull),END_PROC_TYPE(cull)-PROC_TYPE(cull)
+@@ -147,10 +149,12 @@
+ #define GLIDE_PACK_ALPHA 0
+ #define GLIDE_GENERIC_SETUP 0
+ #include "xdraw2.inc.S"
+-#define GLIDE_GENERIC_SETUP 0
+-#define GLIDE_PACK_ALPHA 0
+-#define GLIDE_PACK_RGB 0
+-#define GLIDE_CULLING 0
++#undef GLIDE_GENERIC_SETUP
++#undef GLIDE_PACK_ALPHA
++#undef GLIDE_PACK_RGB
++#undef GLIDE_CULLING
++
++#undef LOCAL
+ 
+ END_PROC_TYPE(cull_rgb):
+ .size PROC_TYPE(cull_rgb),END_PROC_TYPE(cull_rgb)-PROC_TYPE(cull_rgb)
+@@ -168,10 +172,10 @@
+ #define GLIDE_PACK_ALPHA 1
+ #define GLIDE_GENERIC_SETUP 0
+ #include "xdraw2.inc.S"
+-#define GLIDE_GENERIC_SETUP 0
+-#define GLIDE_PACK_ALPHA 0
+-#define GLIDE_PACK_RGB 0
+-#define GLIDE_CULLING 0
++#undef GLIDE_GENERIC_SETUP
++#undef GLIDE_PACK_ALPHA
++#undef GLIDE_PACK_RGB
++#undef GLIDE_CULLING
+ 
+ END_PROC_TYPE(cull_argb):
+ .size PROC_TYPE(cull_argb),END_PROC_TYPE(cull_argb)-PROC_TYPE(cull_argb)
+@@ -190,10 +194,12 @@
+ #define GLIDE_PACK_ALPHA 0
+ #define GLIDE_GENERIC_SETUP 0
+ #include "xdraw2.inc.S"
+-#define GLIDE_GENERIC_SETUP 0
+-#define GLIDE_PACK_ALPHA 0
+-#define GLIDE_PACK_RGB 0
+-#define GLIDE_CULLING 0
++#undef GLIDE_GENERIC_SETUP
++#undef GLIDE_PACK_ALPHA
++#undef GLIDE_PACK_RGB
++#undef GLIDE_CULLING
++
++#undef LOCAL
+ 
+ END_PROC_TYPE(Default):
+ .size PROC_TYPE(Default),END_PROC_TYPE(Default)-PROC_TYPE(Default)
+@@ -212,10 +218,12 @@
+ #define GLIDE_PACK_ALPHA 0
+ #define GLIDE_GENERIC_SETUP 0
+ #include "xdraw2.inc.S"
+-#define GLIDE_GENERIC_SETUP 0
+-#define GLIDE_PACK_ALPHA 0
+-#define GLIDE_PACK_RGB 0
+-#define GLIDE_CULLING 0
++#undef GLIDE_GENERIC_SETUP
++#undef GLIDE_PACK_ALPHA
++#undef GLIDE_PACK_RGB
++#undef GLIDE_CULLING
++
++#undef LOCAL
+ 
+ END_PROC_TYPE(rgb):
+ .size PROC_TYPE(rgb),END_PROC_TYPE(rgb)-PROC_TYPE(rgb)
+@@ -233,10 +241,12 @@
+ #define GLIDE_PACK_ALPHA 1
+ #define GLIDE_GENERIC_SETUP 0
+ #include "xdraw2.inc.S"
+-#define GLIDE_GENERIC_SETUP 0
+-#define GLIDE_PACK_ALPHA 0
+-#define GLIDE_PACK_RGB 0
+-#define GLIDE_CULLING 0
++#undef GLIDE_GENERIC_SETUP
++#undef GLIDE_PACK_ALPHA
++#undef GLIDE_PACK_RGB
++#undef GLIDE_CULLING
++
++#undef LOCAL
+ 
+ END_PROC_TYPE(argb):
+ .size PROC_TYPE(argb),END_PROC_TYPE(argb)-PROC_TYPE(argb)
+diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/xdraw2.S build-tree/glide3x/h3/glide3/src/xdraw2.S
+--- build-tree.orig/glide3x/h3/glide3/src/xdraw2.S	2000-02-15 23:35:59.000000000 +0100
++++ build-tree/glide3x/h3/glide3/src/xdraw2.S	2003-05-31 19:58:51.000000000 +0200
+@@ -172,12 +172,14 @@
+ #define GLIDE_PACK_ALPHA 0
+ #define GLIDE_GENERIC_SETUP 0
+ #include "xdraw2.inc.S"
+-#define GLIDE_GENERIC_SETUP 0
+-#define GLIDE_PACK_ALPHA 0
+-#define GLIDE_PACK_RGB 0
+-#define GLIDE_CULLING 0
+-#define GLIDE_CLIP_COORDS 0
+-#define GLIDE_VALIDATE_STATE 0
++#undef GLIDE_GENERIC_SETUP
++#undef GLIDE_PACK_ALPHA
++#undef GLIDE_PACK_RGB
++#undef GLIDE_CULLING
++#undef GLIDE_CLIP_COORDS
++#undef GLIDE_VALIDATE_STATE
++
++#undef LOCAL
+ 
+ END_PROC_TYPE(clip_nocull_invalid):
+ .size PROC_TYPE(clip_nocull_invalid),END_PROC_TYPE(clip_nocull_invalid)-PROC_TYPE(clip_nocull_invalid)
+@@ -196,12 +198,14 @@
+ #define GLIDE_PACK_ALPHA 0
+ #define GLIDE_GENERIC_SETUP 0
+ #include "xdraw2.inc.S"
+-#define GLIDE_GENERIC_SETUP 0
+-#define GLIDE_PACK_ALPHA 0
+-#define GLIDE_PACK_RGB 0
+-#define GLIDE_CULLING 0
+-#define GLIDE_CLIP_COORDS 0
+-#define GLIDE_VALIDATE_STATE 0
++#undef GLIDE_GENERIC_SETUP
++#undef GLIDE_PACK_ALPHA
++#undef GLIDE_PACK_RGB
++#undef GLIDE_CULLING
++#undef GLIDE_CLIP_COORDS
++#undef GLIDE_VALIDATE_STATE
++
++#undef LOCAL
+ 
+ END_PROC_TYPE(clip_cull_invalid):
+ .size PROC_TYPE(clip_cull_invalid),END_PROC_TYPE(clip_cull_invalid)-PROC_TYPE(clip_cull_invalid)
+@@ -220,12 +224,14 @@
+ #define GLIDE_PACK_ALPHA 0
+ #define GLIDE_GENERIC_SETUP 0
+ #include "xdraw2.inc.S"
+-#define GLIDE_GENERIC_SETUP 0
+-#define GLIDE_PACK_ALPHA 0
+-#define GLIDE_PACK_RGB 0
+-#define GLIDE_CULLING 0
+-#define GLIDE_CLIP_COORDS 0
+-#define GLIDE_VALIDATE_STATE 0
++#undef GLIDE_GENERIC_SETUP
++#undef GLIDE_PACK_ALPHA
++#undef GLIDE_PACK_RGB
++#undef GLIDE_CULLING
++#undef GLIDE_CLIP_COORDS
++#undef GLIDE_VALIDATE_STATE
++
++#undef LOCAL
+ 
+ END_PROC_TYPE(clip_cull_valid):
+ .size PROC_TYPE(clip_cull_valid),END_PROC_TYPE(clip_cull_valid)-PROC_TYPE(clip_cull_valid)
+@@ -244,12 +250,14 @@
+ #define GLIDE_PACK_ALPHA 0
+ #define GLIDE_GENERIC_SETUP 0
+ #include "xdraw2.inc.S"
+-#define GLIDE_GENERIC_SETUP 0
+-#define GLIDE_PACK_ALPHA 0
+-#define GLIDE_PACK_RGB 0
+-#define GLIDE_CULLING 0
+-#define GLIDE_CLIP_COORDS 0
+-#define GLIDE_VALIDATE_STATE 0
++#undef GLIDE_GENERIC_SETUP
++#undef GLIDE_PACK_ALPHA
++#undef GLIDE_PACK_RGB
++#undef GLIDE_CULLING
++#undef GLIDE_CLIP_COORDS
++#undef GLIDE_VALIDATE_STATE
++
++#undef LOCAL
+ 
+ END_PROC_TYPE(clip_nocull_valid):
+ .size PROC_TYPE(clip_nocull_valid),END_PROC_TYPE(clip_nocull_valid)-PROC_TYPE(clip_nocull_valid)
+@@ -268,12 +276,14 @@
+ #define GLIDE_PACK_ALPHA 0
+ #define GLIDE_GENERIC_SETUP 0
+ #include "xdraw2.inc.S"
+-#define GLIDE_GENERIC_SETUP 0
+-#define GLIDE_PACK_ALPHA 0
+-#define GLIDE_PACK_RGB 0
+-#define GLIDE_CULLING 0
+-#define GLIDE_CLIP_COORDS 0
+-#define GLIDE_VALIDATE_STATE 0
++#undef GLIDE_GENERIC_SETUP
++#undef GLIDE_PACK_ALPHA
++#undef GLIDE_PACK_RGB
++#undef GLIDE_CULLING
++#undef GLIDE_CLIP_COORDS
++#undef GLIDE_VALIDATE_STATE
++
++#undef LOCAL
+ 
+ END_PROC_TYPE(win_nocull_invalid):
+ .size PROC_TYPE(win_nocull_invalid),END_PROC_TYPE(win_nocull_invalid)-PROC_TYPE(win_nocull_invalid)
+@@ -293,12 +303,14 @@
+ #define GLIDE_PACK_ALPHA 0
+ #define GLIDE_GENERIC_SETUP 0
+ #include "xdraw2.inc.S"
+-#define GLIDE_GENERIC_SETUP 0
+-#define GLIDE_PACK_ALPHA 0
+-#define GLIDE_PACK_RGB 0
+-#define GLIDE_CULLING 0
+-#define GLIDE_CLIP_COORDS 0
+-#define GLIDE_VALIDATE_STATE 0
++#undef GLIDE_GENERIC_SETUP
++#undef GLIDE_PACK_ALPHA
++#undef GLIDE_PACK_RGB
++#undef GLIDE_CULLING
++#undef GLIDE_CLIP_COORDS
++#undef GLIDE_VALIDATE_STATE
++
++#undef LOCAL
+ 
+ END_PROC_TYPE(win_cull_invalid):
+ .size PROC_TYPE(win_cull_invalid),END_PROC_TYPE(win_cull_invalid)-PROC_TYPE(win_cull_invalid)
+@@ -317,12 +329,14 @@
+ #define GLIDE_PACK_ALPHA 0
+ #define GLIDE_GENERIC_SETUP 0
+ #include "xdraw2.inc.S"
+-#define GLIDE_GENERIC_SETUP 0
+-#define GLIDE_PACK_ALPHA 0
+-#define GLIDE_PACK_RGB 0
+-#define GLIDE_CULLING 0
+-#define GLIDE_CLIP_COORDS 0
+-#define GLIDE_VALIDATE_STATE 0
++#undef GLIDE_GENERIC_SETUP
++#undef GLIDE_PACK_ALPHA
++#undef GLIDE_PACK_RGB
++#undef GLIDE_CULLING
++#undef GLIDE_CLIP_COORDS
++#undef GLIDE_VALIDATE_STATE
++
++#undef LOCAL
+ 
+ END_PROC_TYPE(win_cull_valid):
+ .size PROC_TYPE(win_cull_valid),END_PROC_TYPE(win_cull_valid)-PROC_TYPE(win_cull_valid)
+@@ -341,12 +355,14 @@
+ #define GLIDE_PACK_ALPHA 0
+ #define GLIDE_GENERIC_SETUP 0
+ #include "xdraw2.inc.S"
+-#define GLIDE_GENERIC_SETUP 0
+-#define GLIDE_PACK_ALPHA 0
+-#define GLIDE_PACK_RGB 0
+-#define GLIDE_CULLING 0
+-#define GLIDE_CLIP_COORDS 0
+-#define GLIDE_VALIDATE_STATE 0
++#undef GLIDE_GENERIC_SETUP
++#undef GLIDE_PACK_ALPHA
++#undef GLIDE_PACK_RGB
++#undef GLIDE_CULLING
++#undef GLIDE_CLIP_COORDS
++#undef GLIDE_VALIDATE_STATE
++
++#undef LOCAL
+ 
+ END_PROC_TYPE(win_nocull_valid):
+ .size PROC_TYPE(win_nocull_valid),END_PROC_TYPE(win_nocull_valid)-PROC_TYPE(win_nocull_valid)
+diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/xdraw3.S build-tree/glide3x/h3/glide3/src/xdraw3.S
+--- build-tree.orig/glide3x/h3/glide3/src/xdraw3.S	2000-10-20 21:07:00.000000000 +0200
++++ build-tree/glide3x/h3/glide3/src/xdraw3.S	2003-05-31 20:27:28.000000000 +0200
+@@ -2462,6 +2462,7 @@
+ 
+ #define gc esi	/*  points to graphics context */
+ #define fifo ecx	/*  points to next entry in fifo */
++#undef vertexPtr
+ #define vertexPtr edx	/*  pointer to vertex or vertex array */
+ 
+ .align 32
+@@ -2910,6 +2911,7 @@
+ 
+ #define gc esi	/*  points to graphics context */
+ #define fifo ecx	/*  points to next entry in fifo */
++#undef vertexPtr
+ #define vertexPtr edi	/*  Current vertex pointer */
+ 
+ /*  NB:  All of the base triangle procs expect to have the gc */
+diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/g3df.c build-tree/glide3x/h5/glide3/src/g3df.c
+--- build-tree.orig/glide3x/h5/glide3/src/g3df.c	2000-11-16 00:32:53.000000000 +0100
++++ build-tree/glide3x/h5/glide3/src/g3df.c	2003-05-31 20:35:36.000000000 +0200
+@@ -101,6 +101,9 @@
+ */
+ #include <stdio.h>
+ #include <string.h>
++#ifdef __GNUC__
++#include <ctype.h>
++#endif
+ #include <3dfx.h>
+ 
+ #define FX_DLL_DEFINITION
+diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/gsst.c build-tree/glide3x/h5/glide3/src/gsst.c
+--- build-tree.orig/glide3x/h5/glide3/src/gsst.c	2000-11-17 22:31:05.000000000 +0100
++++ build-tree/glide3x/h5/glide3/src/gsst.c	2003-05-31 20:40:59.000000000 +0200
+@@ -849,30 +849,30 @@
+ 
+ ResEntry
+ _resTable[] = {
+-  GR_RESOLUTION_320x200, 320, 200, /* 0x0 */
+-  GR_RESOLUTION_320x240, 320,  240, /*   0x1 */
+-  GR_RESOLUTION_400x256, 400,  256, /*   0x2 */
+-  GR_RESOLUTION_512x384, 512,  384, /*   0x3 */
+-  GR_RESOLUTION_640x200, 640,  200, /*   0x4 */
+-  GR_RESOLUTION_640x350, 640,  350, /*   0x5 */
+-  GR_RESOLUTION_640x400, 640,  400, /*   0x6 */
+-  GR_RESOLUTION_640x480, 640,  480, /*   0x7 */
+-  GR_RESOLUTION_800x600, 800,  600, /*   0x8 */
+-  GR_RESOLUTION_960x720, 960,  720, /*   0x9 */
+-  GR_RESOLUTION_856x480, 856,  480, /*   0xa */
+-  GR_RESOLUTION_512x256, 512,  256, /*   0xb */
+-  GR_RESOLUTION_1024x768, 1024,  768, /*  0xC */
+-  GR_RESOLUTION_1280x1024, 1280,  1024, /* 0xD */
+-  GR_RESOLUTION_1600x1200, 1600,  1200, /* 0xE */
+-  GR_RESOLUTION_400x300, 400,  300, /*   0xF */
+-  GR_RESOLUTION_1152x864, 1152,  864, /*  0x10 */
+-  GR_RESOLUTION_1280x960, 1280,  960, /*  0x11 */
+-  GR_RESOLUTION_1600x1024, 1600,  1024, /* 0x12 */
+-  GR_RESOLUTION_1792x1344, 1792,  1344, /* 0x13 */
+-  GR_RESOLUTION_1856x1392, 1856,  1392, /* 0x14 */
+-  GR_RESOLUTION_1920x1440, 1920,  1440, /* 0x15 */
+-  GR_RESOLUTION_2048x1536, 2048,  1536, /* 0x16 */
+-  GR_RESOLUTION_2048x2048, 2048,  2048  /* 0x17 */
++  {GR_RESOLUTION_320x200, 320, 200}, /* 0x0 */
++  {GR_RESOLUTION_320x240, 320,  240}, /*   0x1 */
++  {GR_RESOLUTION_400x256, 400,  256}, /*   0x2 */
++  {GR_RESOLUTION_512x384, 512,  384}, /*   0x3 */
++  {GR_RESOLUTION_640x200, 640,  200}, /*   0x4 */
++  {GR_RESOLUTION_640x350, 640,  350}, /*   0x5 */
++  {GR_RESOLUTION_640x400, 640,  400}, /*   0x6 */
++  {GR_RESOLUTION_640x480, 640,  480}, /*   0x7 */
++  {GR_RESOLUTION_800x600, 800,  600}, /*   0x8 */
++  {GR_RESOLUTION_960x720, 960,  720}, /*   0x9 */
++  {GR_RESOLUTION_856x480, 856,  480}, /*   0xa */
++  {GR_RESOLUTION_512x256, 512,  256}, /*   0xb */
++  {GR_RESOLUTION_1024x768, 1024,  768}, /*  0xC */
++  {GR_RESOLUTION_1280x1024, 1280,  1024}, /* 0xD */
++  {GR_RESOLUTION_1600x1200, 1600,  1200}, /* 0xE */
++  {GR_RESOLUTION_400x300, 400,  300}, /*   0xF */
++  {GR_RESOLUTION_1152x864, 1152,  864}, /*  0x10 */
++  {GR_RESOLUTION_1280x960, 1280,  960}, /*  0x11 */
++  {GR_RESOLUTION_1600x1024, 1600,  1024}, /* 0x12 */
++  {GR_RESOLUTION_1792x1344, 1792,  1344}, /* 0x13 */
++  {GR_RESOLUTION_1856x1392, 1856,  1392}, /* 0x14 */
++  {GR_RESOLUTION_1920x1440, 1920,  1440}, /* 0x15 */
++  {GR_RESOLUTION_2048x1536, 2048,  1536}, /* 0x16 */
++  {GR_RESOLUTION_2048x2048, 2048,  2048}  /* 0x17 */
+ };
+ 
+ /* ---------------------------------------------
+diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/xdraw3.s build-tree/glide3x/h5/glide3/src/xdraw3.s
+--- build-tree.orig/glide3x/h5/glide3/src/xdraw3.s	2000-10-20 21:07:00.000000000 +0200
++++ build-tree/glide3x/h5/glide3/src/xdraw3.s	2003-05-31 20:46:21.000000000 +0200
+@@ -2925,6 +2925,7 @@
+ 
+ #define gc esi	/*  points to graphics context */
+ #define fifo ecx	/*  points to next entry in fifo */
++#undef vertexPtr
+ #define vertexPtr edi	/*  Current vertex pointer */
+ 
+ /*  NB:  All of the base triangle procs expect to have the gc */
+diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/texus2/lib/nccnnet.c build-tree/swlibs/texus2/lib/nccnnet.c
+--- build-tree.orig/swlibs/texus2/lib/nccnnet.c	2000-08-03 02:27:18.000000000 +0200
++++ build-tree/swlibs/texus2/lib/nccnnet.c	2003-05-31 20:29:50.000000000 +0200
+@@ -409,7 +409,7 @@
+     txMapPal256toYAB((FxU32 *)yabTable, (FxU8 *)map, ncolors, (FxU32 *)pxMip->pal);
+     if( txVerbose )
+       {
+-        printf("eMax=(%3d%3d%3d)...eAvg=(%3d%3d%3d)\n", 
++        printf("eMax=(%3ld%3ld%3ld)...eAvg=(%3ld%3ld%3ld)\n",
+                errG, errR, errB, 
+                totG/ncolors, totR/ncolors, totB/ncolors
+                );

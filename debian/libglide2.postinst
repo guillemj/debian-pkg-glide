@@ -4,8 +4,6 @@ set -e
 . /usr/share/debconf/confmodule
 
 if [ "$1" = "configure" ] ; then
-  /usr/lib/glide2/libglide2.conf
-
   db_get 'libglide2/driver'
   target='/usr/lib/libglide.so.2'
   if [ "$RET" = "sst1" ]; then
@@ -30,6 +28,7 @@ if [ "$1" = "configure" ] ; then
   } fi
 
   ln -s $drv_lib $target
-  ldconfig
 fi
+
 #DEBHELPER#
+

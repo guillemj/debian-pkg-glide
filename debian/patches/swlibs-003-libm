@@ -1,0 +1,11 @@
+diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/texus2/lib/makefile.autoconf.am build-tree/swlibs/texus2/lib/makefile.autoconf.am
+--- build-tree.orig/swlibs/texus2/lib/makefile.autoconf.am	2003-06-12 06:21:24.000000000 +0200
++++ build-tree/swlibs/texus2/lib/makefile.autoconf.am	2003-06-12 06:20:59.000000000 +0200
+@@ -33,6 +33,7 @@
+ noinst_LTLIBRARIES  = libtexus.la
+ noinst_HEADERS      = texusint.h
+ include_HEADERS     = texus.h
++libtexus_la_LIBADD  = -lm
+ libtexus_la_SOURCES = texuslib.c clamp.c read.c \
+                       resample.c mipmap.c quantize.c ncc.c nccnnet.c \
+                       pal256.c pal6666.c dequant.c view.c util.c \

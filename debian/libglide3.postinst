@@ -4,8 +4,6 @@ set -e
 . /usr/share/debconf/confmodule
 
 if [ "$1" = "configure" ] ; then
-  /usr/lib/glide3/libglide3.conf
-
   db_get 'libglide3/driver'
   target='/usr/lib/libglide3.so.3'
   if [ "$RET" = "h3" ]; then
@@ -28,6 +26,7 @@ if [ "$1" = "configure" ] ; then
   } fi
 
   ln -s $drv_lib $target
-  ldconfig
 fi
+
 #DEBHELPER#
+

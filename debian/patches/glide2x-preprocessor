@@ -1,0 +1,39 @@
+diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/h3/glide/src/fxglide.h build-tree/glide2x/h3/glide/src/fxglide.h
+--- build-tree.orig/glide2x/h3/glide/src/fxglide.h	2003-05-27 21:53:14.000000000 +0200
++++ build-tree/glide2x/h3/glide/src/fxglide.h	2003-05-27 21:30:11.000000000 +0200
+@@ -3356,16 +3356,16 @@
+ //#define GLIDE3_DEBUG 1
+ #endif
+ #ifdef GLIDE3_DEBUG
+-#define TEX_INFO(ptr,field)                         ptr##field
++#define TEX_INFO(ptr,field)                         ptr.field
+ #define G3_LOD_TRANSLATE(lod)                       (lod)
+ #define G3_ASPECT_TRANSLATE(aspect)                 (aspect)
+ #else
+-#define TEX_INFO(ptr,field)                         ptr##field##Log2
++#define TEX_INFO(ptr,field)                         ptr.field ## Log2
+ #define G3_LOD_TRANSLATE(lod)                       (0x8-lod)
+ #define G3_ASPECT_TRANSLATE(aspect)                 (0x3-(aspect))
+ #endif /* GLIDE3_DEBUG */
+ #else
+-#define TEX_INFO(ptr,field)                         ptr##field
++#define TEX_INFO(ptr,field)                         ptr.field
+ #define G3_LOD_TRANSLATE(lod)                       (lod)
+ #define G3_ASPECT_TRANSLATE(aspect)                 (aspect)
+ #endif
+diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/h3/glide/src/gsplash.c build-tree/glide2x/h3/glide/src/gsplash.c
+--- build-tree.orig/glide2x/h3/glide/src/gsplash.c	1999-12-07 22:49:28.000000000 +0100
++++ build-tree/glide2x/h3/glide/src/gsplash.c	2003-05-27 21:30:38.000000000 +0200
+@@ -242,9 +242,9 @@
+ downloadTexture(Texture *texture, Gu3dfInfo *info) 
+ {
+   texture->info.data        = info->data;
+-  TEX_INFO(texture->info.,smallLod)    = info->header.small_lod;
+-  TEX_INFO(texture->info.,largeLod)    = info->header.large_lod;
+-  TEX_INFO(texture->info.,aspectRatio) = info->header.aspect_ratio;
++  TEX_INFO(texture->info,smallLod)    = info->header.small_lod;
++  TEX_INFO(texture->info,largeLod)    = info->header.large_lod;
++  TEX_INFO(texture->info,aspectRatio) = info->header.aspect_ratio;
+   texture->info.format      = info->header.format;
+ 
+   texture->addr = nextFreeBase;

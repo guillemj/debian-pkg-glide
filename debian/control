@@ -1,33 +1,34 @@
 Source: glide
 Section: libs
 Priority: optional
-Build-depends: debhelper (>> 2.0.0), csh, xlibs-dev, automake, libtool
-Maintainer: Zephaniah E. Hull <warp@debian.org>
-Standards-Version: 3.0.1
+Build-Depends: debhelper (>= 4.1.16), xlibs-dev, autoconf, automake1.7, libtool
+Maintainer: Guillem Jover <guillem@debian.org>
+Standards-Version: 3.5.10
 
 Package: glide2-bin
 Architecture: i386
 Section: graphics
-Depends: ${shlibs:Depends}, libglide2, debconf
+Depends: ${shlibs:Depends}
 Conflicts: libglide2-vg, libglide2-v2, libglide2-v3, glide-v3
-Suggests: device3dfx-source, device3dfx-module
-Description: Binaries for glide2.
+Suggests: device3dfx-module, device3dfx-source
+Description: Graphics library for 3Dfx Voodoo based cards - support programs
  This is a support package which should be installed if you have a
  card based on 3dfx Interactive, Inc's Voodoo chipsets.
 
 Package: libglide2
 Section: libs
 Architecture: i386
-Depends: ${shlibs:Depends}, pciutils, debconf (>= 0.3.74)
+Depends: ${shlibs:Depends}, pciutils, debconf (>= 0.5)
 Conflicts: libglide2, libglide2-vg, libglide2-v2, libglide2-v3, glide-v3
-Recommends: glide2-bin, device3dfx-source
-Suggests: device3dfx-module
-Description: Graphics library for 3Dfx Voodoo based cards
+Recommends: glide2-bin
+Suggests: device3dfx-module, device3dfx-source
+Description: Graphics library for 3Dfx Voodoo based cards - shared libraries
  This package allows you to use the 3D functions of cards based on
- 3dfx Interactive, Inc's Voodoo 2, Voodoo Banshee, and Voodoo 3 
- chipsets.  You should install it if you have such a card.
+ 3dfx Interactive, Inc's Voodoo 2 chipsets. You should install it if
+ you have such a card.
  .
- Note, this is NOT the package you want for a Voodoo 4, or Voodoo 5.
+ Note, this is NOT the package you want for Voodoo Banshee, Voodoo 3,
+ Voodoo 4, or Voodoo 5.
  .
  Also note that for the moment the original Voodoo Graphics chipset
  is no longer supported.
@@ -37,32 +38,24 @@ Description: Graphics library for 3Dfx Voodoo based cards
 Package: libglide2-dev
 Provides: libglide-dev
 Conflicts: llibglide-dev, glide2x-sdk, libglide2-vg, libglide2-v2, libglide2-v3, glide-v3
-Section: devel
+Section: libdevel
 Architecture: i386
-Depends: libglide2, debconf
-Description: development files for libglide2
+Depends: libglide2
+Description: Graphics library for 3Dfx Voodoo based cards - development files
  This package contains the necessary header files, example programs,
  and documentation necessary to develop software for cards based on
  3dfx Interactive, Inc's Voodoo chipsets.
 
-Package: glide2-base
-Section: graphics
-Architecture: i386
-Depends: libglide2, glide2-bin, debconf
-Conflicts: libglide2-vg, libglide2-v2, libglide2-v3, glide-v3
-Description: Legacy package that you should remove.
- This package exists only to provide smooth upgrades.  Please remove it.
-
 Package: libglide3
 Section: libs
 Architecture: i386
-Depends: ${shlibs:Depends}, pciutils, debconf (>= 0.3.74)
+Depends: ${shlibs:Depends}, pciutils, debconf (>= 0.5)
 Conflicts: libglide3
-Recommends: device3dfx-source
-Suggests: device3dfx-module
-Description: Graphics library for 3Dfx Voodoo based cards
+Suggests: device3dfx-module, device3dfx-source
+Description: Graphics library for 3Dfx Voodoo based cards - shared libraries
  This package allows you to use the 3D functions of cards based on
- 3dfx Interactive, Inc's Voodoo 3, Voodoo 4, and Voodoo 5, chipsets.
+ 3dfx Interactive, Inc's Voodoo Banshee, Voodoo 3, Voodoo 4, and
+ Voodoo 5, chipsets.
  You should install it if you have such a card.
  .
  NOTE: You'll need the /dev/3dfx kernel driver to use this library.
@@ -71,10 +64,11 @@ Package: libglide3-dev
 Provides: libglide-dev
 Conflicts: glide2x-sdk, glide3x-sdk
 Replaces: libglide2-dev
-Section: devel
+Section: libdevel
 Architecture: i386
 Depends: libglide3
-Description: development files for libglide3
+Description: Graphics library for 3Dfx Voodoo based cards - development files
  This package contains the necessary header files, example programs,
  and documentation necessary to develop software for cards based on
  3dfx Interactive, Inc's Voodoo chipsets.
+

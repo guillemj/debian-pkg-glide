@@ -1,6 +1,6 @@
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/cmd/pass/pass.c glide2/sst1/cmd/pass/pass.c
 --- build-tree.orig/glide2x/sst1/cmd/pass/pass.c	Tue Dec  7 16:48:51 1999
---- build-tree/glide2x/sst1/cmd/pass/pass.c	Wed Jul 26 19:44:48 2000
++++ build-tree/glide2x/sst1/cmd/pass/pass.c	Wed Jul 26 19:44:48 2000
 @@ -28,7 +28,7 @@
  /* This should be exported, but isn't yet */
  #define SST1INIT_MAX_BOARDS 16
@@ -12,7 +12,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/cmd/pass/pass.c glide2/ss
    int num_sst;
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/src/ddgump.c glide2/sst1/glide/src/ddgump.c
 --- build-tree.orig/glide2x/sst1/glide/src/ddgump.c	Tue Dec  7 16:48:51 1999
---- build-tree/glide2x/sst1/glide/src/ddgump.c	Sun Jul 16 15:54:56 2000
++++ build-tree/glide2x/sst1/glide/src/ddgump.c	Sun Jul 16 15:54:56 2000
 @@ -250,8 +250,8 @@
  
        FxU32 alphamode, alphamode_orig;
@@ -37,7 +37,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/src/ddgump.c glide2
        fbzcolorpath = fbzcolorpath_orig = gc->state.fbi_config.fbzColorPath;
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/src/ditex.c glide2/sst1/glide/src/ditex.c
 --- build-tree.orig/glide2x/sst1/glide/src/ditex.c	Tue Dec  7 16:48:51 1999
---- build-tree/glide2x/sst1/glide/src/ditex.c	Sun Jul 16 15:54:04 2000
++++ build-tree/glide2x/sst1/glide/src/ditex.c	Sun Jul 16 15:54:04 2000
 @@ -131,81 +131,81 @@
  const int _grMipMapHostWH[GR_ASPECT_1x8+1][GR_LOD_1+1][2] =
  {
@@ -185,7 +185,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/src/ditex.c glide2/
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/src/fxinline.h glide2/sst1/glide/src/fxinline.h
 --- build-tree.orig/glide2x/sst1/glide/src/fxinline.h	Tue Dec  7 16:48:52 1999
---- build-tree/glide2x/sst1/glide/src/fxinline.h	Wed Jul 26 21:37:08 2000
++++ build-tree/glide2x/sst1/glide/src/fxinline.h	Wed Jul 26 21:37:08 2000
 @@ -1,23 +1,3 @@
 -/*
 - * THIS SOFTWARE IS SUBJECT TO COPYRIGHT PROTECTION AND IS OFFERED ONLY
@@ -212,7 +212,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/src/fxinline.h glid
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/src/g3df.c glide2/sst1/glide/src/g3df.c
 --- build-tree.orig/glide2x/sst1/glide/src/g3df.c	Tue Dec  7 16:48:52 1999
---- build-tree/glide2x/sst1/glide/src/g3df.c	Sun Jul 16 15:50:59 2000
++++ build-tree/glide2x/sst1/glide/src/g3df.c	Sun Jul 16 15:50:59 2000
 @@ -141,7 +141,7 @@
    ** grab statistics out of the header
    */
@@ -224,7 +224,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/src/g3df.c glide2/s
           &aspect_width, &aspect_height ) == 0 )
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/src/gaa.c glide2/sst1/glide/src/gaa.c
 --- build-tree.orig/glide2x/sst1/glide/src/gaa.c	Tue Dec  7 16:48:52 1999
---- build-tree/glide2x/sst1/glide/src/gaa.c	Sun Jul 16 15:55:40 2000
++++ build-tree/glide2x/sst1/glide/src/gaa.c	Sun Jul 16 15:55:40 2000
 @@ -169,7 +169,6 @@
  static void grSetVertexParameter(const GrVertex *v1)
  {
@@ -235,7 +235,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/src/gaa.c glide2/ss
    float *fp, dp;
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/src/gglide.c glide2/sst1/glide/src/gglide.c
 --- build-tree.orig/glide2x/sst1/glide/src/gglide.c	Tue Dec  7 16:48:52 1999
---- build-tree/glide2x/sst1/glide/src/gglide.c	Sun Jul 16 15:56:29 2000
++++ build-tree/glide2x/sst1/glide/src/gglide.c	Sun Jul 16 15:56:29 2000
 @@ -346,8 +346,9 @@
      fbzColorPath |= SST_ENTEXTUREMAP;
    
@@ -260,7 +260,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/src/gglide.c glide2
    GR_SET( hw->fbzColorPath, fbzColorPath );
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/src/gsst.c glide2/sst1/glide/src/gsst.c
 --- build-tree.orig/glide2x/sst1/glide/src/gsst.c	Tue Dec  7 16:48:53 1999
---- build-tree/glide2x/sst1/glide/src/gsst.c	Sun Jul 16 15:59:36 2000
++++ build-tree/glide2x/sst1/glide/src/gsst.c	Sun Jul 16 15:59:36 2000
 @@ -1077,81 +1077,14 @@
  {
  #define FN_NAME "grSstControl"  
@@ -348,7 +348,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/src/gsst.c glide2/s
  #if (GLIDE_PLATFORM & GLIDE_OS_WIN32)
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/src/makefile.linux glide2/sst1/glide/src/makefile.linux
 --- build-tree.orig/glide2x/sst1/glide/src/makefile.linux	Fri Jan 28 14:25:44 2000
---- build-tree/glide2x/sst1/glide/src/makefile.linux	Wed Jul 26 21:36:27 2000
++++ build-tree/glide2x/sst1/glide/src/makefile.linux	Wed Jul 26 21:36:27 2000
 @@ -30,27 +30,10 @@
  DSPOPTS         =       -DGLIDE_HARDWARE 
  
@@ -441,7 +441,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/src/makefile.linux 
  gsplash.o : gsplash.c splshdat.c fxinline.h
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/src/makefile.unix glide2/sst1/glide/src/makefile.unix
 --- build-tree.orig/glide2x/sst1/glide/src/makefile.unix	Tue Dec  7 16:48:53 1999
---- build-tree/glide2x/sst1/glide/src/makefile.unix	Wed Jul 26 15:16:33 2000
++++ build-tree/glide2x/sst1/glide/src/makefile.unix	Wed Jul 26 15:16:33 2000
 @@ -29,28 +29,10 @@
  # Display Options (Hardware)
  DSPOPTS         =       -DGLIDE_HARDWARE 
@@ -525,7 +525,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/src/makefile.unix g
  gsplash.o : gsplash.c splshdat.c fxinline.h
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/src/splshdat.c glide2/sst1/glide/src/splshdat.c
 --- build-tree.orig/glide2x/sst1/glide/src/splshdat.c	Tue Dec  7 16:48:54 1999
---- build-tree/glide2x/sst1/glide/src/splshdat.c	Sun Jul 16 15:49:57 2000
++++ build-tree/glide2x/sst1/glide/src/splshdat.c	Sun Jul 16 15:49:57 2000
 @@ -97,106 +97,106 @@
  };
  
@@ -4045,7 +4045,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/src/splshdat.c glid
   0.000000, 1.004900, 0.000000, 0.000000,
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/display.c glide2/sst1/glide/tests/display.c
 --- build-tree.orig/glide2x/sst1/glide/tests/display.c	Tue Dec  7 16:49:00 1999
---- build-tree/glide2x/sst1/glide/tests/display.c	Wed Jul 26 15:21:29 2000
++++ build-tree/glide2x/sst1/glide/tests/display.c	Wed Jul 26 15:21:29 2000
 @@ -43,11 +43,6 @@
  static const char purpose[] = "display a 16 bit frame buffer (565 format) dump out";
  static const char usage[]   = "-n <frames> -r <res> -s srcimage -t testimage";
@@ -4135,7 +4135,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/display.c gli
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/h3dtst01.c glide2/sst1/glide/tests/h3dtst01.c
 --- build-tree.orig/glide2x/sst1/glide/tests/h3dtst01.c	Tue Dec  7 16:49:05 1999
---- build-tree/glide2x/sst1/glide/tests/h3dtst01.c	Wed Jul 26 19:42:33 2000
++++ build-tree/glide2x/sst1/glide/tests/h3dtst01.c	Wed Jul 26 19:42:33 2000
 @@ -90,10 +90,9 @@
    grDrawLine(&p2,&p3);  
  }
@@ -4158,7 +4158,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/h3dtst01.c gl
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/h3dtst02.c glide2/sst1/glide/tests/h3dtst02.c
 --- build-tree.orig/glide2x/sst1/glide/tests/h3dtst02.c	Tue Dec  7 16:49:05 1999
---- build-tree/glide2x/sst1/glide/tests/h3dtst02.c	Wed Jul 26 19:43:31 2000
++++ build-tree/glide2x/sst1/glide/tests/h3dtst02.c	Wed Jul 26 19:43:31 2000
 @@ -40,7 +40,7 @@
  
  typedef enum { NORMAL, ANTIALIASED } Mode;
@@ -4195,7 +4195,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/h3dtst02.c gl
  static unsigned long randx = 1;
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/plib.c glide2/sst1/glide/tests/plib.c
 --- build-tree.orig/glide2x/sst1/glide/tests/plib.c	Tue Dec  7 16:49:02 1999
---- build-tree/glide2x/sst1/glide/tests/plib.c	Wed Jul 26 19:40:13 2000
++++ build-tree/glide2x/sst1/glide/tests/plib.c	Wed Jul 26 19:40:13 2000
 @@ -44,6 +44,19 @@
  static FxBool bMultiRevOrder;
  static FxBool bMultiOffsetFix;
@@ -4218,7 +4218,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/plib.c glide2
  /*-------------------------------------------------------------------
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/plib.h glide2/sst1/glide/tests/plib.h
 --- build-tree.orig/glide2x/sst1/glide/tests/plib.h	Tue Dec  7 16:49:02 1999
---- build-tree/glide2x/sst1/glide/tests/plib.h	Wed Jul 26 19:40:06 2000
++++ build-tree/glide2x/sst1/glide/tests/plib.h	Wed Jul 26 19:40:06 2000
 @@ -99,20 +99,6 @@
  void plPushLod( hTexId_t hCurrTexture, mipMapEnd_t mipMapEnd );
  void plCreateTlTexture( TlTexture *disTlTexture, FxU16 daColors[] );
@@ -4242,7 +4242,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/plib.h glide2
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/qatest00.c glide2/sst1/glide/tests/qatest00.c
 --- build-tree.orig/glide2x/sst1/glide/tests/qatest00.c	Tue Dec  7 16:49:03 1999
---- build-tree/glide2x/sst1/glide/tests/qatest00.c	Wed Jul 26 19:37:48 2000
++++ build-tree/glide2x/sst1/glide/tests/qatest00.c	Wed Jul 26 19:37:48 2000
 @@ -61,7 +61,7 @@
  static FxI32   g_nLodPrtlFstRow;
  static FxI32   g_nLodPrtlLstRow;
@@ -4332,7 +4332,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/qatest00.c gl
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/qatest01.c glide2/sst1/glide/tests/qatest01.c
 --- build-tree.orig/glide2x/sst1/glide/tests/qatest01.c	Tue Dec  7 16:49:03 1999
---- build-tree/glide2x/sst1/glide/tests/qatest01.c	Wed Jul 26 19:41:26 2000
++++ build-tree/glide2x/sst1/glide/tests/qatest01.c	Wed Jul 26 19:41:26 2000
 @@ -51,8 +51,7 @@
  static const char usage[]   = "-n <frames> -r <res> -d <filename>";
  
@@ -4368,7 +4368,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/qatest01.c gl
  }
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test00.c glide2/sst1/glide/tests/test00.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test00.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test00.c	Wed Jul 26 17:28:51 2000
++++ build-tree/glide2x/sst1/glide/tests/test00.c	Wed Jul 26 17:28:51 2000
 @@ -38,7 +38,7 @@
  static const char purpose[] = "Clear screen to blue";
  static const char usage[]   = "-n <frames> -r <res> -d <filename>";
@@ -4404,7 +4404,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test00.c glid
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test01.c glide2/sst1/glide/tests/test01.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test01.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test01.c	Wed Jul 26 17:29:48 2000
++++ build-tree/glide2x/sst1/glide/tests/test01.c	Wed Jul 26 17:29:48 2000
 @@ -35,7 +35,7 @@
  static const char purpose[] = "draws a diagonal line of points from top-left to bottom-right";
  static const char usage[]   = "-n <frames> -r <res> -d <filename>";
@@ -4441,7 +4441,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test01.c glid
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test02.c glide2/sst1/glide/tests/test02.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test02.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test02.c	Wed Jul 26 17:30:17 2000
++++ build-tree/glide2x/sst1/glide/tests/test02.c	Wed Jul 26 17:30:17 2000
 @@ -35,7 +35,7 @@
  static const char purpose[] = "draws a parabolic envelope of lines";
  static const char usage[]   = "-n <frames> -r <res> -d <filename>";
@@ -4478,7 +4478,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test02.c glid
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test03.c glide2/sst1/glide/tests/test03.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test03.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test03.c	Wed Jul 26 17:30:37 2000
++++ build-tree/glide2x/sst1/glide/tests/test03.c	Wed Jul 26 17:30:37 2000
 @@ -35,7 +35,7 @@
  static const char purpose[] = "draws gouraud shaded lines";
  static const char usage[]   = "-n <frames> -r <res> -d <filename>";
@@ -4515,7 +4515,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test03.c glid
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test04.c glide2/sst1/glide/tests/test04.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test04.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test04.c	Wed Jul 26 17:30:59 2000
++++ build-tree/glide2x/sst1/glide/tests/test04.c	Wed Jul 26 17:30:59 2000
 @@ -35,7 +35,7 @@
  static const char purpose[] = "draws gouraud shaded triangle";
  static const char usage[]   = "-n <frames> -r <res> -d <filename>";
@@ -4552,7 +4552,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test04.c glid
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test05.c glide2/sst1/glide/tests/test05.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test05.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test05.c	Wed Jul 26 17:34:20 2000
++++ build-tree/glide2x/sst1/glide/tests/test05.c	Wed Jul 26 17:34:20 2000
 @@ -35,7 +35,7 @@
  static const char purpose[] = "renders two interpenetrating triangles with z-buffering";
  static const char usage[]   = "-n <frames> -r <res> -d <filename>";
@@ -4589,7 +4589,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test05.c glid
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test06.c glide2/sst1/glide/tests/test06.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test06.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test06.c	Wed Jul 26 17:35:48 2000
++++ build-tree/glide2x/sst1/glide/tests/test06.c	Wed Jul 26 17:35:48 2000
 @@ -35,7 +35,7 @@
  static const char purpose[] = "renders two interpenetrating triangles with w-buffering";
  static const char usage[]   = "-n <frames> -r <res> -d <filename>";
@@ -4626,7 +4626,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test06.c glid
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test07.c glide2/sst1/glide/tests/test07.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test07.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test07.c	Wed Jul 26 18:32:38 2000
++++ build-tree/glide2x/sst1/glide/tests/test07.c	Wed Jul 26 18:32:38 2000
 @@ -35,7 +35,7 @@
  static const char purpose[] = "alpha blending test";
  static const char usage[]   = "-n <frames> -r <res> -d <filename>";
@@ -4663,7 +4663,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test07.c glid
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test08.c glide2/sst1/glide/tests/test08.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test08.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test08.c	Wed Jul 26 18:46:56 2000
++++ build-tree/glide2x/sst1/glide/tests/test08.c	Wed Jul 26 18:46:56 2000
 @@ -35,7 +35,7 @@
  static const char purpose[] = "fogging";
  static const char usage[]   = "-n <frames> -r <res> -d <filename>";
@@ -4700,7 +4700,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test08.c glid
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test09.c glide2/sst1/glide/tests/test09.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test09.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test09.c	Wed Jul 26 18:49:51 2000
++++ build-tree/glide2x/sst1/glide/tests/test09.c	Wed Jul 26 18:49:51 2000
 @@ -36,7 +36,7 @@
                                " triangle but chromakey one out";
  static const char usage[]   = "-n <frames> -r <res> -d <filename>";
@@ -4746,7 +4746,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test09.c glid
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test10.c glide2/sst1/glide/tests/test10.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test10.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test10.c	Wed Jul 26 18:50:16 2000
++++ build-tree/glide2x/sst1/glide/tests/test10.c	Wed Jul 26 18:50:16 2000
 @@ -37,7 +37,7 @@
                                ", blue negative";
  static const char usage[]   = "-n <frames> -r <res> -d <filename>";
@@ -4792,7 +4792,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test10.c glid
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test11.c glide2/sst1/glide/tests/test11.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test11.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test11.c	Wed Jul 26 18:48:44 2000
++++ build-tree/glide2x/sst1/glide/tests/test11.c	Wed Jul 26 18:48:44 2000
 @@ -38,7 +38,7 @@
  static int rRandom(int s, int e);
  static unsigned int iRandom (unsigned int maxr);
@@ -4838,7 +4838,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test11.c glid
  static unsigned long randx = 1;
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test12.c glide2/sst1/glide/tests/test12.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test12.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test12.c	Wed Jul 26 19:01:08 2000
++++ build-tree/glide2x/sst1/glide/tests/test12.c	Wed Jul 26 19:01:08 2000
 @@ -70,7 +70,7 @@
    "PIXELPIPE ENABLED "
  };
@@ -4884,7 +4884,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test12.c glid
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test13.c glide2/sst1/glide/tests/test13.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test13.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test13.c	Wed Jul 26 19:01:41 2000
++++ build-tree/glide2x/sst1/glide/tests/test13.c	Wed Jul 26 19:01:41 2000
 @@ -36,7 +36,7 @@
  static const char purpose[] = "iterated alpha test - blue triangle fades towards one vertex\n";
  static const char usage[]   = "-n <frames> -r <res> -d <filename>";
@@ -4919,7 +4919,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test13.c glid
  }
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test14.c glide2/sst1/glide/tests/test14.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test14.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test14.c	Wed Jul 26 19:02:05 2000
++++ build-tree/glide2x/sst1/glide/tests/test14.c	Wed Jul 26 19:02:05 2000
 @@ -36,7 +36,7 @@
                                 "over time with two interpenetrating triangles";
  static const char usage[]   = "-n <frames> -r <res>";
@@ -4954,7 +4954,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test14.c glid
  }
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test15.c glide2/sst1/glide/tests/test15.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test15.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test15.c	Wed Jul 26 19:02:11 2000
++++ build-tree/glide2x/sst1/glide/tests/test15.c	Wed Jul 26 19:02:11 2000
 @@ -35,7 +35,7 @@
  static const char purpose[] = "clip rectangle testing - clip rectangle travels around screen";
  static const char usage[]   = "-n <frames> -r <res>";
@@ -4989,7 +4989,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test15.c glid
  }
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test16.c glide2/sst1/glide/tests/test16.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test16.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test16.c	Wed Jul 26 19:02:14 2000
++++ build-tree/glide2x/sst1/glide/tests/test16.c	Wed Jul 26 19:02:14 2000
 @@ -36,7 +36,7 @@
  static const char purpose[] = "test grShamelessPlug and grSplash";
  static const char usage[]   = "-n <frames> -r <res> -d <filename>";
@@ -5024,7 +5024,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test16.c glid
  }
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test17.c glide2/sst1/glide/tests/test17.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test17.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test17.c	Wed Jul 26 19:03:16 2000
++++ build-tree/glide2x/sst1/glide/tests/test17.c	Wed Jul 26 19:03:16 2000
 @@ -45,7 +45,7 @@
      "(ITRGB * TEXTURE)+WHITE SPECULAR"
  };
@@ -5068,7 +5068,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test17.c glid
  }
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test18.c glide2/sst1/glide/tests/test18.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test18.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test18.c	Wed Jul 26 19:03:19 2000
++++ build-tree/glide2x/sst1/glide/tests/test18.c	Wed Jul 26 19:03:19 2000
 @@ -36,7 +36,7 @@
  static const char purpose[] = "alpha texture test";
  static const char usage[]   = "-n <frames> -r <res> -d <filename>";
@@ -5103,7 +5103,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test18.c glid
  }
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test19.c glide2/sst1/glide/tests/test19.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test19.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test19.c	Wed Jul 26 19:05:00 2000
++++ build-tree/glide2x/sst1/glide/tests/test19.c	Wed Jul 26 19:05:00 2000
 @@ -63,7 +63,7 @@
                          void *table );
  static GrTexTable_t texTableType( GrTextureFormat_t format );
@@ -5149,7 +5149,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test19.c glid
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test20.c glide2/sst1/glide/tests/test20.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test20.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test20.c	Wed Jul 26 19:03:23 2000
++++ build-tree/glide2x/sst1/glide/tests/test20.c	Wed Jul 26 19:03:23 2000
 @@ -38,7 +38,7 @@
  typedef enum { DISABLE, NEAREST, TRILINEAR } MipMapMode;
  
@@ -5186,7 +5186,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test20.c glid
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test21.c glide2/sst1/glide/tests/test21.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test21.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test21.c	Wed Jul 26 19:03:24 2000
++++ build-tree/glide2x/sst1/glide/tests/test21.c	Wed Jul 26 19:03:24 2000
 @@ -37,7 +37,7 @@
  
  typedef enum { LIGHTMAP, SPECULAR, DETAIL } Mode;
@@ -5223,7 +5223,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test21.c glid
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test22.c glide2/sst1/glide/tests/test22.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test22.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test22.c	Wed Jul 26 19:03:26 2000
++++ build-tree/glide2x/sst1/glide/tests/test22.c	Wed Jul 26 19:03:26 2000
 @@ -35,7 +35,7 @@
  static const char purpose[] = "fog with multi-pass texturing";
  static const char usage[]   = "-n <frames> -r <res>";
@@ -5260,7 +5260,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test22.c glid
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test23.c glide2/sst1/glide/tests/test23.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test23.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test23.c	Wed Jul 26 19:03:28 2000
++++ build-tree/glide2x/sst1/glide/tests/test23.c	Wed Jul 26 19:03:28 2000
 @@ -40,7 +40,7 @@
  
  typedef enum { NORMAL, ANTIALIASED } Mode;
@@ -5297,7 +5297,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test23.c glid
  static unsigned long randx = 1;
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test24.c glide2/sst1/glide/tests/test24.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test24.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test24.c	Wed Jul 26 19:03:30 2000
++++ build-tree/glide2x/sst1/glide/tests/test24.c	Wed Jul 26 19:03:30 2000
 @@ -40,7 +40,7 @@
  
  typedef enum { NORMAL, ANTIALIASED } Mode;
@@ -5334,7 +5334,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test24.c glid
  static unsigned long randx = 1;
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test25.c glide2/sst1/glide/tests/test25.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test25.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test25.c	Wed Jul 26 19:09:11 2000
++++ build-tree/glide2x/sst1/glide/tests/test25.c	Wed Jul 26 19:09:11 2000
 @@ -164,7 +164,7 @@
  #define NFRAMES 20
  #define NVERTS 3
@@ -5395,7 +5395,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test25.c glid
  }
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test26.c glide2/sst1/glide/tests/test26.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test26.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test26.c	Wed Jul 26 19:10:15 2000
++++ build-tree/glide2x/sst1/glide/tests/test26.c	Wed Jul 26 19:10:15 2000
 @@ -35,11 +35,6 @@
  static const char purpose[] = "tests grLfbWriteRegion, and grLfbReadRegion";
  static const char usage[]   = "-b <# color buffers> -d <# aux buffers> -n <frames> -r <res>";
@@ -5453,7 +5453,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test26.c glid
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test27.c glide2/sst1/glide/tests/test27.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test27.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test27.c	Wed Jul 26 19:10:46 2000
++++ build-tree/glide2x/sst1/glide/tests/test27.c	Wed Jul 26 19:10:46 2000
 @@ -42,7 +42,7 @@
  
  #define SNAP_BIAS ((float)(3<<18))
@@ -5490,7 +5490,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test27.c glid
  static unsigned long randx = 1;
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test28.c glide2/sst1/glide/tests/test28.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test28.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test28.c	Wed Jul 26 19:10:48 2000
++++ build-tree/glide2x/sst1/glide/tests/test28.c	Wed Jul 26 19:10:48 2000
 @@ -90,7 +90,7 @@
  static const char purpose[] = "planar polygon test";
  static const char usage[]   = "-n <frames> -r <res>";
@@ -5525,7 +5525,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test28.c glid
  }
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test29.c glide2/sst1/glide/tests/test29.c
 --- build-tree.orig/glide2x/sst1/glide/tests/test29.c	Tue Dec  7 16:49:04 1999
---- build-tree/glide2x/sst1/glide/tests/test29.c	Wed Jul 26 19:10:49 2000
++++ build-tree/glide2x/sst1/glide/tests/test29.c	Wed Jul 26 19:10:49 2000
 @@ -35,7 +35,7 @@
  static const char purpose[] = "oow diff hint";
  static const char usage[]   = "-n <frames> -r <res>";
@@ -5562,7 +5562,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/test29.c glid
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/tlib.c glide2/sst1/glide/tests/tlib.c
 --- build-tree.orig/glide2x/sst1/glide/tests/tlib.c	Tue Dec  7 16:49:05 1999
---- build-tree/glide2x/sst1/glide/tests/tlib.c	Wed Jul 26 15:29:04 2000
++++ build-tree/glide2x/sst1/glide/tests/tlib.c	Wed Jul 26 15:29:04 2000
 @@ -338,7 +338,6 @@
  
  static int fontInitialized;
@@ -5693,7 +5693,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/tlib.c glide2
  #else
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/tlib.h glide2/sst1/glide/tests/tlib.h
 --- build-tree.orig/glide2x/sst1/glide/tests/tlib.h	Tue Dec  7 16:49:05 1999
---- build-tree/glide2x/sst1/glide/tests/tlib.h	Wed Jul 26 17:26:20 2000
++++ build-tree/glide2x/sst1/glide/tests/tlib.h	Wed Jul 26 17:26:20 2000
 @@ -32,10 +32,7 @@
   * so that it is a harmless wrapper rather than ((void)0) as in <assert.h>
   */
@@ -5708,7 +5708,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/glide/tests/tlib.h glide2
  int tlGetOpt( int argc, char *argv[], const char *tags, char *match, char **remArgs[] );
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/fxinit.h glide2/sst1/init/fxinit.h
 --- build-tree.orig/glide2x/sst1/init/fxinit.h	Tue Dec  7 16:49:05 1999
---- build-tree/glide2x/sst1/init/fxinit.h	Sat Jul 15 15:40:39 2000
++++ build-tree/glide2x/sst1/init/fxinit.h	Sat Jul 15 15:40:39 2000
 @@ -116,7 +116,6 @@
  extern InitContext *context;
  
@@ -5719,7 +5719,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/fxinit.h glide2/sst1
  #ifdef __cplusplus
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/h3drvr.c glide2/sst1/init/h3drvr.c
 --- build-tree.orig/glide2x/sst1/init/h3drvr.c	Tue Dec  7 16:49:05 1999
---- build-tree/glide2x/sst1/init/h3drvr.c	Sat Jul 15 15:35:19 2000
++++ build-tree/glide2x/sst1/init/h3drvr.c	Sat Jul 15 15:35:19 2000
 @@ -23,6 +23,7 @@
  **
  */
@@ -5750,7 +5750,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/h3drvr.c glide2/sst1
      context->idle             = idle;
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init.c glide2/sst1/init/init.c
 --- build-tree.orig/glide2x/sst1/init/init.c	Tue Dec  7 16:49:06 1999
---- build-tree/glide2x/sst1/init/init.c	Sat Jul 15 15:41:48 2000
++++ build-tree/glide2x/sst1/init/init.c	Sat Jul 15 15:41:48 2000
 @@ -43,7 +43,6 @@
  
  #endif
@@ -5842,7 +5842,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init.c glide2/sst1/i
  #  error "initNumBoardsInSystem: unknown device!!!"
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init.h glide2/sst1/init/init.h
 --- build-tree.orig/glide2x/sst1/init/init.h	Tue Dec  7 16:49:06 1999
---- build-tree/glide2x/sst1/init/init.h	Sat Jul 15 15:48:27 2000
++++ build-tree/glide2x/sst1/init/init.h	Sat Jul 15 15:48:27 2000
 @@ -58,8 +58,6 @@
       modifying the init API.
   */
@@ -5960,7 +5960,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init.h glide2/sst1/i
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/atvga.h glide2/sst1/init/init96/atvga.h
 --- build-tree.orig/glide2x/sst1/init/init96/atvga.h	Tue Dec  7 16:49:06 1999
---- build-tree/glide2x/sst1/init/init96/atvga.h	Wed Dec 31 19:00:00 1969
++++ build-tree/glide2x/sst1/init/init96/atvga.h	Wed Dec 31 19:00:00 1969
 @@ -1,86 +0,0 @@
 -/* 
 - * THIS SOFTWARE IS SUBJECT TO COPYRIGHT PROTECTION AND IS OFFERED ONLY
@@ -6050,7 +6050,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/atvga.h glide
 -
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/dxdrvr.c glide2/sst1/init/init96/dxdrvr.c
 --- build-tree.orig/glide2x/sst1/init/init96/dxdrvr.c	Tue Dec  7 16:49:06 1999
---- build-tree/glide2x/sst1/init/init96/dxdrvr.c	Wed Dec 31 19:00:00 1969
++++ build-tree/glide2x/sst1/init/init96/dxdrvr.c	Wed Dec 31 19:00:00 1969
 @@ -1,1009 +0,0 @@
 -/*
 -** THIS SOFTWARE IS SUBJECT TO COPYRIGHT PROTECTION AND IS OFFERED ONLY
@@ -7063,7 +7063,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/dxdrvr.c glid
 -
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/fxinit96.h glide2/sst1/init/init96/fxinit96.h
 --- build-tree.orig/glide2x/sst1/init/init96/fxinit96.h	Tue Dec  7 16:49:06 1999
---- build-tree/glide2x/sst1/init/init96/fxinit96.h	Wed Dec 31 19:00:00 1969
++++ build-tree/glide2x/sst1/init/init96/fxinit96.h	Wed Dec 31 19:00:00 1969
 @@ -1,136 +0,0 @@
 -/*
 -** THIS SOFTWARE IS SUBJECT TO COPYRIGHT PROTECTION AND IS OFFERED ONLY
@@ -7203,7 +7203,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/fxinit96.h gl
 -#endif
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/init96.c glide2/sst1/init/init96/init96.c
 --- build-tree.orig/glide2x/sst1/init/init96/init96.c	Tue Dec  7 16:49:06 1999
---- build-tree/glide2x/sst1/init/init96/init96.c	Wed Dec 31 19:00:00 1969
++++ build-tree/glide2x/sst1/init/init96/init96.c	Wed Dec 31 19:00:00 1969
 @@ -1,2241 +0,0 @@
 -/*
 - ** THIS SOFTWARE IS SUBJECT TO COPYRIGHT PROTECTION AND IS OFFERED ONLY
@@ -9448,7 +9448,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/init96.c glid
 -} /* init96GetFBVram */
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/init96.h glide2/sst1/init/init96/init96.h
 --- build-tree.orig/glide2x/sst1/init/init96/init96.h	Tue Dec  7 16:49:06 1999
---- build-tree/glide2x/sst1/init/init96/init96.h	Wed Dec 31 19:00:00 1969
++++ build-tree/glide2x/sst1/init/init96/init96.h	Wed Dec 31 19:00:00 1969
 @@ -1,69 +0,0 @@
 -/*
 -** THIS SOFTWARE IS SUBJECT TO COPYRIGHT PROTECTION AND IS OFFERED ONLY
@@ -9521,7 +9521,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/init96.h glid
 -#endif /* __INIT96_H__ */
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/initat3d.h glide2/sst1/init/init96/initat3d.h
 --- build-tree.orig/glide2x/sst1/init/init96/initat3d.h	Tue Dec  7 16:49:06 1999
---- build-tree/glide2x/sst1/init/init96/initat3d.h	Wed Dec 31 19:00:00 1969
++++ build-tree/glide2x/sst1/init/init96/initat3d.h	Wed Dec 31 19:00:00 1969
 @@ -1,51 +0,0 @@
 -/*
 -** THIS SOFTWARE IS SUBJECT TO COPYRIGHT PROTECTION AND IS OFFERED ONLY
@@ -9576,7 +9576,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/initat3d.h gl
 -
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/initmcrx.c glide2/sst1/init/init96/initmcrx.c
 --- build-tree.orig/glide2x/sst1/init/init96/initmcrx.c	Tue Dec  7 16:49:06 1999
---- build-tree/glide2x/sst1/init/init96/initmcrx.c	Wed Dec 31 19:00:00 1969
++++ build-tree/glide2x/sst1/init/init96/initmcrx.c	Wed Dec 31 19:00:00 1969
 @@ -1,612 +0,0 @@
 -/*
 -** THIS SOFTWARE IS SUBJECT TO COPYRIGHT PROTECTION AND IS OFFERED ONLY
@@ -10192,7 +10192,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/initmcrx.c gl
 -
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/initmcrx.h glide2/sst1/init/init96/initmcrx.h
 --- build-tree.orig/glide2x/sst1/init/init96/initmcrx.h	Tue Dec  7 16:49:06 1999
---- build-tree/glide2x/sst1/init/init96/initmcrx.h	Wed Dec 31 19:00:00 1969
++++ build-tree/glide2x/sst1/init/init96/initmcrx.h	Wed Dec 31 19:00:00 1969
 @@ -1,52 +0,0 @@
 -/*
 -** THIS SOFTWARE IS SUBJECT TO COPYRIGHT PROTECTION AND IS OFFERED ONLY
@@ -10248,7 +10248,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/initmcrx.h gl
 -
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/initvga.h glide2/sst1/init/init96/initvga.h
 --- build-tree.orig/glide2x/sst1/init/init96/initvga.h	Tue Dec  7 16:49:06 1999
---- build-tree/glide2x/sst1/init/init96/initvga.h	Wed Dec 31 19:00:00 1969
++++ build-tree/glide2x/sst1/init/init96/initvga.h	Wed Dec 31 19:00:00 1969
 @@ -1,121 +0,0 @@
 -/*
 -** THIS SOFTWARE IS SUBJECT TO COPYRIGHT PROTECTION AND IS OFFERED ONLY
@@ -10373,7 +10373,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/initvga.h gli
 -#endif /* _INITPIO_H_ */
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/lindrvr.c glide2/sst1/init/init96/lindrvr.c
 --- build-tree.orig/glide2x/sst1/init/init96/lindrvr.c	Tue Dec  7 16:49:06 1999
---- build-tree/glide2x/sst1/init/init96/lindrvr.c	Wed Dec 31 19:00:00 1969
++++ build-tree/glide2x/sst1/init/init96/lindrvr.c	Wed Dec 31 19:00:00 1969
 @@ -1,575 +0,0 @@
 -/*
 -** THIS SOFTWARE IS SUBJECT TO COPYRIGHT PROTECTION AND IS OFFERED ONLY
@@ -10952,7 +10952,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/lindrvr.c gli
 -
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/makefile.linux glide2/sst1/init/init96/makefile.linux
 --- build-tree.orig/glide2x/sst1/init/init96/makefile.linux	Thu Dec 16 14:02:37 1999
---- build-tree/glide2x/sst1/init/init96/makefile.linux	Wed Dec 31 19:00:00 1969
++++ build-tree/glide2x/sst1/init/init96/makefile.linux	Wed Dec 31 19:00:00 1969
 @@ -1,56 +0,0 @@
 -#
 -# THIS SOFTWARE IS SUBJECT TO COPYRIGHT PROTECTION AND IS OFFERED ONLY
@@ -11012,7 +11012,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/makefile.linu
 -
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/makefile.unix glide2/sst1/init/init96/makefile.unix
 --- build-tree.orig/glide2x/sst1/init/init96/makefile.unix	Tue Dec  7 16:49:06 1999
---- build-tree/glide2x/sst1/init/init96/makefile.unix	Wed Dec 31 19:00:00 1969
++++ build-tree/glide2x/sst1/init/init96/makefile.unix	Wed Dec 31 19:00:00 1969
 @@ -1,56 +0,0 @@
 -#
 -# THIS SOFTWARE IS SUBJECT TO COPYRIGHT PROTECTION AND IS OFFERED ONLY
@@ -11072,7 +11072,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/makefile.unix
 -
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/readme.txt glide2/sst1/init/init96/readme.txt
 --- build-tree.orig/glide2x/sst1/init/init96/readme.txt	Tue Dec  7 16:49:06 1999
---- build-tree/glide2x/sst1/init/init96/readme.txt	Wed Dec 31 19:00:00 1969
++++ build-tree/glide2x/sst1/init/init96/readme.txt	Wed Dec 31 19:00:00 1969
 @@ -1,37 +0,0 @@
 -Different Build Environments For VG96:
 -
@@ -11113,7 +11113,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/init96/readme.txt gl
 -
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/initvg/dac.c glide2/sst1/init/initvg/dac.c
 --- build-tree.orig/glide2x/sst1/init/initvg/dac.c	Tue Dec  7 16:49:06 1999
---- build-tree/glide2x/sst1/init/initvg/dac.c	Wed Jul 26 21:20:48 2000
++++ build-tree/glide2x/sst1/init/initvg/dac.c	Wed Jul 26 21:20:48 2000
 @@ -24,7 +24,9 @@
  ** Initialization code for initializing supported SST-1 DACs
  **
@@ -11145,7 +11145,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/initvg/dac.c glide2/
 +#endif
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/initvg/gamma.c glide2/sst1/init/initvg/gamma.c
 --- build-tree.orig/glide2x/sst1/init/initvg/gamma.c	Tue Dec  7 16:49:06 1999
---- build-tree/glide2x/sst1/init/initvg/gamma.c	Wed Jul 26 21:18:15 2000
++++ build-tree/glide2x/sst1/init/initvg/gamma.c	Wed Jul 26 21:18:15 2000
 @@ -24,7 +24,9 @@
  ** Initialization code for loading SST-1 gamma tables
  **
@@ -11183,7 +11183,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/initvg/gamma.c glide
 +#endif
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/initvg/gdebug.c glide2/sst1/init/initvg/gdebug.c
 --- build-tree.orig/glide2x/sst1/init/initvg/gdebug.c	Tue Dec  7 16:49:06 1999
---- build-tree/glide2x/sst1/init/initvg/gdebug.c	Wed Jul 26 21:21:34 2000
++++ build-tree/glide2x/sst1/init/initvg/gdebug.c	Wed Jul 26 21:21:34 2000
 @@ -261,4 +261,6 @@
          if (outf) gdbg_msgfile = outf;
          return outf != NULL;
@@ -11193,7 +11193,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/initvg/gdebug.c glid
  }
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/initvg/info.c glide2/sst1/init/initvg/info.c
 --- build-tree.orig/glide2x/sst1/init/initvg/info.c	Tue Dec  7 16:49:06 1999
---- build-tree/glide2x/sst1/init/initvg/info.c	Wed Jul 26 20:56:34 2000
++++ build-tree/glide2x/sst1/init/initvg/info.c	Wed Jul 26 20:56:34 2000
 @@ -25,7 +25,9 @@
  ** configuration information.
  **
@@ -11255,7 +11255,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/initvg/info.c glide2
 +#endif
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/initvg/makefile.linux glide2/sst1/init/initvg/makefile.linux
 --- build-tree.orig/glide2x/sst1/init/initvg/makefile.linux	Thu Dec 16 14:02:37 1999
---- build-tree/glide2x/sst1/init/initvg/makefile.linux	Wed Jul 26 20:06:29 2000
++++ build-tree/glide2x/sst1/init/initvg/makefile.linux	Wed Jul 26 20:06:29 2000
 @@ -23,13 +23,9 @@
  
  # local defines, options, includes
@@ -11280,7 +11280,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/initvg/makefile.linu
  endif
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/initvg/parse.c glide2/sst1/init/initvg/parse.c
 --- build-tree.orig/glide2x/sst1/init/initvg/parse.c	Tue Dec  7 16:49:07 1999
---- build-tree/glide2x/sst1/init/initvg/parse.c	Wed Jul 26 21:14:28 2000
++++ build-tree/glide2x/sst1/init/initvg/parse.c	Wed Jul 26 21:14:28 2000
 @@ -24,7 +24,9 @@
  ** Parsing code for grabbing information from "voodoo.ini" initialization file
  **
@@ -11619,7 +11619,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/initvg/parse.c glide
 +#endif
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/initvg/print.c glide2/sst1/init/initvg/print.c
 --- build-tree.orig/glide2x/sst1/init/initvg/print.c	Tue Dec  7 16:49:07 1999
---- build-tree/glide2x/sst1/init/initvg/print.c	Wed Jul 26 20:49:29 2000
++++ build-tree/glide2x/sst1/init/initvg/print.c	Wed Jul 26 20:49:29 2000
 @@ -23,7 +23,9 @@
  **
  ** Print functions for SST-1 Initialization routines
@@ -11639,7 +11639,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/initvg/print.c glide
 +#endif
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/initvg/sli.c glide2/sst1/init/initvg/sli.c
 --- build-tree.orig/glide2x/sst1/init/initvg/sli.c	Tue Dec  7 16:49:07 1999
---- build-tree/glide2x/sst1/init/initvg/sli.c	Wed Jul 26 21:19:10 2000
++++ build-tree/glide2x/sst1/init/initvg/sli.c	Wed Jul 26 21:19:10 2000
 @@ -24,7 +24,9 @@
  ** Initialization code for initializing scanline interleaving
  **
@@ -11698,7 +11698,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/initvg/sli.c glide2/
 +#endif
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/initvg/sst1init.c glide2/sst1/init/initvg/sst1init.c
 --- build-tree.orig/glide2x/sst1/init/initvg/sst1init.c	Wed Dec 22 16:02:35 1999
---- build-tree/glide2x/sst1/init/initvg/sst1init.c	Wed Jul 26 20:56:01 2000
++++ build-tree/glide2x/sst1/init/initvg/sst1init.c	Wed Jul 26 20:56:01 2000
 @@ -122,7 +122,9 @@
  **
  */
@@ -11817,7 +11817,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/initvg/sst1init.c gl
 +#endif
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/initvg/sst1init.h glide2/sst1/init/initvg/sst1init.h
 --- build-tree.orig/glide2x/sst1/init/initvg/sst1init.h	Wed Dec 22 16:02:35 1999
---- build-tree/glide2x/sst1/init/initvg/sst1init.h	Wed Jul 26 20:51:04 2000
++++ build-tree/glide2x/sst1/init/initvg/sst1init.h	Wed Jul 26 20:51:04 2000
 @@ -91,7 +91,9 @@
  
  #else /* DIRECTX */
@@ -11842,7 +11842,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/initvg/sst1init.h gl
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/initvg/util.c glide2/sst1/init/initvg/util.c
 --- build-tree.orig/glide2x/sst1/init/initvg/util.c	Tue Dec  7 16:49:07 1999
---- build-tree/glide2x/sst1/init/initvg/util.c	Wed Jul 26 21:18:45 2000
++++ build-tree/glide2x/sst1/init/initvg/util.c	Wed Jul 26 21:18:45 2000
 @@ -24,7 +24,9 @@
  ** Utility routines for SST-1 Initialization code
  **
@@ -11862,7 +11862,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/initvg/util.c glide2
 +#endif
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/initvg/video.c glide2/sst1/init/initvg/video.c
 --- build-tree.orig/glide2x/sst1/init/initvg/video.c	Tue Dec  7 16:49:07 1999
---- build-tree/glide2x/sst1/init/initvg/video.c	Wed Jul 26 21:20:00 2000
++++ build-tree/glide2x/sst1/init/initvg/video.c	Wed Jul 26 21:20:00 2000
 @@ -24,7 +24,9 @@
  ** Initialization code for initializing SST-1 video unit
  **
@@ -12010,7 +12010,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/initvg/video.c glide
 +#endif
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/makefile.linux glide2/sst1/init/makefile.linux
 --- build-tree.orig/glide2x/sst1/init/makefile.linux	Thu Dec 16 14:02:37 1999
---- build-tree/glide2x/sst1/init/makefile.linux	Sat Jul 15 15:40:19 2000
++++ build-tree/glide2x/sst1/init/makefile.linux	Sat Jul 15 15:40:19 2000
 @@ -19,7 +19,7 @@
  #
  
@@ -12047,7 +12047,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/makefile.linux glide
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/makefile.unix glide2/sst1/init/makefile.unix
 --- build-tree.orig/glide2x/sst1/init/makefile.unix	Tue Dec  7 16:49:06 1999
---- build-tree/glide2x/sst1/init/makefile.unix	Sat Jul 15 15:40:36 2000
++++ build-tree/glide2x/sst1/init/makefile.unix	Sat Jul 15 15:40:36 2000
 @@ -19,7 +19,7 @@
  #
  
@@ -12084,7 +12084,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/makefile.unix glide2
  
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/vg96drvr.c glide2/sst1/init/vg96drvr.c
 --- build-tree.orig/glide2x/sst1/init/vg96drvr.c	Tue Dec  7 16:49:06 1999
---- build-tree/glide2x/sst1/init/vg96drvr.c	Wed Dec 31 19:00:00 1969
++++ build-tree/glide2x/sst1/init/vg96drvr.c	Wed Dec 31 19:00:00 1969
 @@ -1,192 +0,0 @@
 -/*
 -** THIS SOFTWARE IS SUBJECT TO COPYRIGHT PROTECTION AND IS OFFERED ONLY
@@ -12280,7 +12280,7 @@ diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/vg96drvr.c glide2/ss
 -
 diff -ruN -x Makefile.in -x configure glide2.orig/sst1/init/vgdrvr.c glide2/sst1/init/vgdrvr.c
 --- build-tree.orig/glide2x/sst1/init/vgdrvr.c	Tue Dec  7 16:49:06 1999
---- build-tree/glide2x/sst1/init/vgdrvr.c	Sat Jul 15 15:33:22 2000
++++ build-tree/glide2x/sst1/init/vgdrvr.c	Sat Jul 15 15:33:22 2000
 @@ -23,6 +23,7 @@
  **
  */

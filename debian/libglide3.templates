@@ -1,44 +1,43 @@
 Template: libglide3/no_card
 Type: boolean
 Default: false
-Description: No 3Dfx card supported by glide3 found! Manually select driver?
+_Description: No 3Dfx card supported by glide3 found! Manually select driver?
  ERROR: No 3Dfx card supported by glide3 found!
  .
- This package is for cards based on the following 3Dfx chipsets: 
- Voodoo Banshee, Voodoo 3, Voodoo 4, and Voodoo 5.
+ This package is for cards based on the following 3Dfx chipsets: Voodoo
+ Banshee, Voodoo 3, Voodoo 4, and Voodoo 5.
  .
- If you do not have a card based on one of the listed chipsets, and you
- are not compiling programs against glide, you should not have this
- package installed.
+ If you do not have a card based on one of the listed chipsets, and you are
+ not compiling programs against glide, you should not have this package
+ installed.
  .
  If you do have a card based on one of the listed chipsets please file a
- bug on this package, including the output from the command 'lspci -vm'
- in the bug report.
+ bug on this package, including the output from the command 'lspci -vm' in
+ the bug report.
  .
- Would you like to manually select the driver to use for now?
- (If not, a default sane for compiling against will be selected.)
+ Would you like to manually select the driver to use for now? (If not, a
+ default sane for compiling against will be selected.)
 
 Template: libglide3/driver
 Type: select
 Choices: h3, h5
 Default: ${default}
-Description: Please select driver.
+_Description: Please select driver.
  Please select the driver you would like to use.
  .
- h3   - Voodoo Banshee and Voodoo 3.
- h5   - Voodoo 4 and Voodoo 5.
+  h3   - Voodoo Banshee and Voodoo 3.
+  h5   - Voodoo 4 and Voodoo 5.
 
 Template: libglide3/card
 Type: select
 Choices: ${choices}
-Description: Please select card.
+_Description: Please select card.
  We have detected more then one video card based on the following 3Dfx
- chipsets:
- Voodoo 2, Voodoo Banshee, Voodoo 3, Voodoo 4, and Voodoo 5.
+ chipsets: Voodoo 2, Voodoo Banshee, Voodoo 3, Voodoo 4, and Voodoo 5.
  .
  Please select the card you would like to use for 3D acceleration.
 
 Template: libglide3/error
 Type: note
-Description: ${e1}
+_Description: ${e1}
  ${e2}
