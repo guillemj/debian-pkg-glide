@@ -11,7 +11,7 @@ glide (2002.04.10-6) unstable; urgency=low
   * Added a BUGS file to keep track of things.
   * debian/patches:
     - glide3x-libtool-patch: Use libtoolize instead, to be in sync and not
-      break with libtool.sh and libtool.m4 mismatch.
+      break with libtool.sh and libtool.m4 mismatch. (Closes: #254135)
     - glide3x-build-fix: Quote sed expressions, and balance a missing one.
   * debian/rules: Cleaned a bit. Marked targets as PHONY. Renamed setup target
     to unpack, and make_patch to make-patch.
