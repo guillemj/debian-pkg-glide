@@ -3,17 +3,19 @@ Mon,  7 Aug 2000 23:25:26 -0400.
 
 Currently maintained by Guillem Jover <guillem@debian.org>.
 
-It was downloaded from the glide CVS tree at sourceforge
+It was downloaded from the glide CVS branch glide-devel-branch at
+sourceforge:
+
 	<http://sourceforge.net/cvs/?group_id=369>
 
 Upstream Author:
 
 	3dfx Interactive, Inc
 
+License:
+
 All Debian specific code is licensed under the LGPL except where
 otherwise stated.
-
-Copyright:
 
     This package is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -34,9 +36,8 @@ Public License can be found in `/usr/share/common-licenses/LGPL'.
 
 
 All remaining code is under the license below, except where otherwise
-specified.
+specified:
 
-License:
 
 3DFX GLIDE Source Code General Public License
 

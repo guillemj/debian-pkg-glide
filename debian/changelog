@@ -9,6 +9,8 @@ glide (2002.04.10-6) unstable; urgency=low
   * Move libglide3.so symlink to package libglide3-dev. (Closes: #242063)
   * Added a BUGS file to keep track of things.
   * debian/patches/glide3x-libtool-patch: Updated to latest libtool 1.5.4.
+  * debian/copyright: Cleaned and use properly "License:" instead of
+    "Copyright:".
 
  -- Guillem Jover <guillem@debian.org>  UNRELEASED
 
