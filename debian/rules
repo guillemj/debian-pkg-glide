@@ -1,0 +1,283 @@
+#!/usr/bin/make -f
+export DH_COMPAT = 2
+#export DH_VERBOSE = 1
+export FX_GLIDE_PIC = 1
+this = make -f debian/rules
+
+include debian/scripts/vars
+SRC_DIR=$(SOURCE_DIR)
+
+$(SRC_DIR)/glide2x: $(STAMP_DIR)/SCR_DIR_glide2x
+$(STAMP_DIR)/SCR_DIR_glide2x:
+	$(MAKE) -f debian/sys-build.mk source.make
+	cd $(SRC_DIR)/glide2x; ln -s ../swlibs swlibs
+	cd $(SRC_DIR)/glide3x; ln -s ../swlibs swlibs
+	touch $(STAMP_DIR)/SCR_DIR_glide2x
+
+$(SRC_DIR)/glide3x: $(STAMP_DIR)/SCR_DIR_glide3x
+$(STAMP_DIR)/SCR_DIR_glide3x:
+	cd $(SRC_DIR)/glide3x; ln -s ../swlibs swlibs
+	touch $(STAMP_DIR)/SCR_DIR_glide3x
+
+build: build.glide2 build.glide3
+build.glide2: build.glide2.cvg build.glide2.h3
+build.glide3: build.glide3.h3 build.glide3.h5
+
+build.glide2.cvg: $(SRC_DIR)/glide2x $(STAMP_DIR)/build.glide2.cvg
+$(STAMP_DIR)/build.glide2.cvg:
+	$(MAKE) -C $(SRC_DIR)/glide2x -f makefile.linux FX_GLIDE_HW=cvg
+	touch $(STAMP_DIR)/build.glide2.cvg
+
+build.glide2.h3: $(SRC_DIR)/glide2x $(STAMP_DIR)/build.glide2.h3
+$(STAMP_DIR)/build.glide2.h3:
+	$(MAKE) -C $(SRC_DIR)/glide2x -f makefile.linux FX_GLIDE_HW=h3
+	touch $(STAMP_DIR)/build.glide2.h3
+
+
+
+build.glide3.h3: $(SRC_DIR)/glide3x $(STAMP_DIR)/build.glide3.h3
+$(STAMP_DIR)/build.glide3.h3:
+	(cd $(SRC_DIR)/glide3x; mkdir $(PWD)/debian/tmp.h3;\
+	    ./chores.3dfx --generate "--configure=--enable-fx-glide-hw=h3 --prefix=$(PWD)/debian/tmp.h3/" --build=build.h3;		\
+	    (cd build.h3; ./build.3dfx install;);	\
+	)
+	touch $(STAMP_DIR)/build.glide3.h3
+
+build.glide3.h5: $(SRC_DIR)/glide3x $(STAMP_DIR)/build.glide3.h5
+$(STAMP_DIR)/build.glide3.h5:
+	(cd $(SRC_DIR)/glide3x; mkdir $(PWD)/debian/tmp.h5;\
+	    ./chores.3dfx --generate "--configure=--enable-fx-glide-hw=h5 --prefix=$(PWD)/debian/tmp.h5/" --build=build.h5;		\
+	    (cd build.h5; ./build.3dfx install;);	\
+	)
+	touch $(STAMP_DIR)/build.glide3.h5
+
+sys-clean:
+	cd $(SRC_DIR)/glide3x; ./chores.3dfx --clean
+	rm -rf $(SRC_DIR)/glide3x/build.h3 $(PWD)/debian/tmp.h3
+	rm -rf $(SRC_DIR)/glide3x/build.h5 $(PWD)/debian/tmp.h5
+	rm -f $(STAMP_DIR)/build.glide2.* $(STAMP_DIR)/build.glide3.*
+	$(MAKE) -C $(SRC_DIR)/glide2x -f makefile.linux FX_GLIDE_HW=cvg clobber
+	$(MAKE) -C $(SRC_DIR)/glide2x -f makefile.linux FX_GLIDE_HW=h3 clobber
+
+clean:
+# No need to run clean
+	$(MAKE) -f debian/sys-build.mk source.clean
+	rm -f $(STAMP_DIR)
+	rm -rf $(PWD)/debian/tmp.h3 $(PWD)/debian/tmp.h5
+	dh_clean
+
+binary-indep: build binary-libglide2-dev binary-glide2-base binary-libglide3-dev
+# Add rules here to build the indep debs.
+
+binary-arch: build binary-libglide2 binary-glide2-bin binary-libglide3
+# Add rules here to build the arch debs.
+
+binary: binary-indep binary-arch
+
+binary-libglide2:
+	DH_OPTIONS="-plibglide2" $(this) binary-libglide2-real
+
+binary-libglide2-real: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+
+	dh_installdirs
+
+	install -m 755 $(SRC_DIR)/glide2x/cvg/lib/libglide.so.2.53 \
+		    $(PWD)/debian/libglide2/usr/lib/glide2/libglide_cvg.so.2.53
+	install -m 755 $(SRC_DIR)/glide2x/h3/lib/libglide.so.2.60 \
+		    $(PWD)/debian/libglide2/usr/lib/glide2/libglide_h3.so.2.60
+	install -m 755 $(SRC_DIR)/glide2x/swlibs/lib/libtexus.so.1.1 \
+		    $(PWD)/debian/libglide2/usr/lib/
+	install -m 755 $(PWD)/debian/libglide2.conf \
+		    $(PWD)/debian/libglide2/usr/lib/glide2/
+	dh_strip
+
+	dh_installdocs
+	dh_installchangelogs
+	dh_installdebconf
+	dh_link
+	dh_installdeb
+
+	dh_compress
+	dh_fixperms
+#	dh_makeshlibs
+	dh_shlibdeps
+	dh_gencontrol
+	dh_builddeb
+
+binary-libglide2-dev:
+	DH_OPTIONS="-plibglide2-dev" $(this) binary-libglide2-dev-real
+
+binary-libglide2-dev-real: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+
+	dh_installdirs
+
+	install -m 644 $(SRC_DIR)/glide2x/h3/include/glide.h \
+			$(PWD)/debian/libglide2-dev/usr/include/glide/
+	install -m 644 $(SRC_DIR)/glide2x/h3/include/glidesys.h \
+			$(PWD)/debian/libglide2-dev/usr/include/glide/
+	install -m 644 $(SRC_DIR)/glide2x/h3/include/glideutl.h \
+			$(PWD)/debian/libglide2-dev/usr/include/glide/
+	install -m 644 $(SRC_DIR)/glide2x/h3/include/sst1vid.h \
+			$(PWD)/debian/libglide2-dev/usr/include/glide/
+	install -m 644 $(SRC_DIR)/glide2x/h3/include/gump.h \
+			$(PWD)/debian/libglide2-dev/usr/include/glide/
+
+	install -m 644 $(SRC_DIR)/glide2x/swlibs/include/3dfx.h \
+			$(PWD)/debian/libglide2-dev/usr/include/glide/
+	install -m 644 $(SRC_DIR)/glide2x/swlibs/include/linutil.h \
+			$(PWD)/debian/libglide2-dev/usr/include/glide/
+	install -m 644 $(SRC_DIR)/glide2x/swlibs/include/texus.h \
+			$(PWD)/debian/libglide2-dev/usr/include/glide/
+
+	dh_strip
+
+	dh_installdocs
+	dh_installchangelogs
+	dh_link
+	dh_installdeb
+
+	dh_compress
+	dh_fixperms
+	dh_shlibdeps
+	dh_gencontrol
+	dh_builddeb
+
+binary-glide2-bin:
+	DH_OPTIONS="-pglide2-bin" $(this) binary-glide2-bin-real
+
+binary-glide2-bin-real: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+
+	dh_installdirs
+
+	install -m 755 $(SRC_DIR)/glide2x/h3/glide/tests/test[0-9][0-9] \
+			$(PWD)/debian/glide2-bin/usr/lib/glide2/bin/
+	install -m 755 $(SRC_DIR)/glide2x/cvg/bin/pass \
+			$(PWD)/debian/glide2-bin/usr/bin/
+	dh_strip
+
+	dh_undocumented pass.8
+	dh_installdocs
+	dh_installchangelogs
+	dh_link
+	dh_installdeb
+
+	dh_compress
+	dh_fixperms
+	dh_shlibdeps
+	dh_gencontrol
+	dh_builddeb
+
+binary-glide2-base:
+	DH_OPTIONS="-pglide2-base" $(this) binary-glide2-base-real
+
+binary-glide2-base-real: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+	dh_installdirs
+	dh_strip
+	dh_installdocs
+	dh_installchangelogs
+	dh_link
+	dh_installdeb
+	dh_compress
+	dh_fixperms
+	dh_shlibdeps
+	dh_gencontrol
+	dh_builddeb
+
+
+binary-libglide3:
+	DH_OPTIONS="-plibglide3" $(this) binary-libglide3-real
+
+binary-libglide3-real: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+
+	dh_installdirs
+
+	install -m 755 $(PWD)/debian/tmp.h3/lib/libglide3.so.3.10.0	\
+		$(PWD)/debian/libglide3/usr/lib/glide3/libglide3_h3.so.3.10.0
+	install -m 755 $(PWD)/debian/tmp.h5/lib/libglide3.so.3.10.0	\
+		$(PWD)/debian/libglide3/usr/lib/glide3/libglide3_h5.so.3.10.0
+	install -m 755 $(PWD)/debian/libglide3.conf			\
+		$(PWD)/debian/libglide3/usr/lib/glide3/
+
+	dh_strip
+
+	dh_installdocs
+	dh_installchangelogs
+	dh_link
+	dh_installdebconf
+	dh_installdeb
+
+	dh_compress
+	dh_fixperms
+#       dh_makeshlibs
+	dh_shlibdeps
+	dh_gencontrol
+	dh_builddeb
+
+binary-libglide3-dev:
+	DH_OPTIONS="-plibglide3-dev" $(this) binary-libglide3-dev-real
+
+binary-libglide3-dev-real: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+
+	dh_installdirs
+
+	install -m 644 $(PWD)/debian/tmp.h5/include/glide3/* \
+			$(PWD)/debian/libglide3-dev/usr/include/glide3/
+
+	dh_strip
+
+	dh_installdocs
+	dh_installchangelogs
+	dh_link
+	dh_installdeb
+
+	dh_compress
+	dh_fixperms
+	dh_shlibdeps
+	dh_gencontrol
+	dh_builddeb
+
+binary-glide3-bin:
+	DH_OPTIONS="-pglide3-bin" $(this) binary-glide3-bin-real
+
+binary-glide3-bin-real: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+
+	dh_installdirs
+
+	install -m 755 $(SRC_DIR)/glide3x/h3/glide/tests/test[0-9][0-9] \
+			$(PWD)/debian/glide3-bin/usr/lib/glide3/bin/
+	dh_strip
+
+	dh_undocumented pass.8
+	dh_installdocs
+	dh_installchangelogs
+	dh_link
+	dh_installdeb
+
+	dh_compress
+	dh_fixperms
+	dh_shlibdeps
+	dh_gencontrol
+	dh_builddeb
+
+.PHONY: $(SRC_DIR)/glide2x

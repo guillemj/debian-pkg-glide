@@ -1,0 +1,16 @@
+diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/newpci/pcilib/fxpci.c build-tree/swlibs/newpci/pcilib/fxpci.c
+--- build-tree.orig/swlibs/newpci/pcilib/fxpci.c	Tue Oct  3 14:37:59 2000
++++ build-tree/swlibs/newpci/pcilib/fxpci.c	Mon Nov 27 03:07:48 2000
+@@ -610,9 +610,10 @@
+ 
+ #ifdef __linux__
+   if (hasDev3DfxLinux()) {
+-    return pciUpdateRegisterLinux(reg.regAddress, *data, reg.sizeInBytes,
+-				  device_bus_func_number);
++    pciUpdateRegisterLinux(reg.regAddress, *data, reg.sizeInBytes,
++			   device_bus_func_number);
+     
++    return FXTRUE;
+   }
+ #endif
+   _pciUpdateRegister( reg.regAddress, *data, reg.sizeInBytes,
