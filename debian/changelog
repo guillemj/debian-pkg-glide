@@ -1,3 +1,12 @@
+glide (2002.04.10-9) unstable; urgency=low
+
+  * Fix build failure when using libglide3.so and it points to
+    libglide3_h5.so.
+    - debian/patches/glide3x-build-with-voodoo5. (Closes: #270442)
+      Thanks to Hans de Goede <j.w.r.degoede@hhs.nl>.
+
+ -- Guillem Jover <guillem@debian.org>  Sat, 13 Nov 2004 22:17:45 +0100
+
 glide (2002.04.10-8) unstable; urgency=low
 
   * Debconf template translations:
