@@ -10,6 +10,17 @@ diff -Naur build-tree.orig/glide3x/configure.in build-tree/glide3x/configure.in
                     FX_GLIDE_BUILD_ARCHITECTURE=${enableval}
                     ;;
                 *)
+@@ -185,6 +185,10 @@
+ if test "$FX_GLIDE_BUILD_ARCHITECTURE" = "ia64"; then
+ FX_GLIDE_CTRISETUP=true
+ fi
++if test "$FX_GLIDE_BUILD_ARCHITECTURE" = "x86_64"; then
++FX_GLIDE_CTRISETUP=true
++FX_GLIDE_C_CPU_DETECT=true
++fi
+ # Next, we read some configuration options
+ # statically.  This is to avoid creating a bunch of
+ # not-terribly-useful --enable options.
 diff -Naur build-tree.orig/glide3x/cvg/init/sst1init.h build-tree/glide3x/cvg/init/sst1init.h
 --- build-tree.orig/glide3x/cvg/init/sst1init.h	2000-11-16 20:26:02.000000000 +0100
 +++ build-tree/glide3x/cvg/init/sst1init.h	2004-06-16 08:35:54.000000000 +0200
