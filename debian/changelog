@@ -3,6 +3,7 @@ glide (2002.04.10-7) UNRELEASED; urgency=low
   * Added amd64 support.
     - debian/patches/z03-amd64-port. (Closes: #248156)
   * Enabled amd64 and ia64 on debian/control.
+  * Allow building binary independent packages on any arch.
 
  -- Guillem Jover <guillem@debian.org>  Wed, 16 Jun 2004 08:40:19 +0200
 

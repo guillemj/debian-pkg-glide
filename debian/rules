@@ -67,6 +67,8 @@ $(STAMP_DIR)/SRC_DIR_glide:
 
 ifeq ($(DEB_HOST_ARCH),i386)
 BUILD_GLIDE2 := build.glide2
+else
+BUILD_GLIDE2 := install.headers.glide2
 endif
 
 build: $(BUILD_GLIDE2) build.glide3 debian/po/templates.pot
@@ -82,6 +84,12 @@ build.glide2.h3: $(SRC_DIR)/glide2x $(STAMP_DIR)/build.glide2.h3
 $(STAMP_DIR)/build.glide2.h3:
 	$(glide2_build) FX_GLIDE_HW=h3 CNODEBUG="$(CFLAGS)"
 	touch $(STAMP_DIR)/build.glide2.h3
+
+install.headers.glide2: $(SRC_DIR)/glide2x $(STAMP_DIR)/install.headers.glide2
+$(STAMP_DIR)/install.headers.glide2:
+	$(glide2_build) FX_GLIDE_HW=cvg CNODEBUG="$(CFLAGS)" incs
+	$(glide2_build) FX_GLIDE_HW=h3 CNODEBUG="$(CFLAGS)" incs
+	touch $(STAMP_DIR)/install.headers.glide2
 
 build.glide3.h3: $(SRC_DIR)/glide3x $(STAMP_DIR)/build.glide3.h3
 $(STAMP_DIR)/build.glide3.h3:
