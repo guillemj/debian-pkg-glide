@@ -51,7 +51,7 @@ Section: libs
 Architecture: i386 alpha ia64 amd64
 Depends: ${shlibs:Depends}, pciutils, debconf (>= 0.5)
 Provides: libglide3-alpha
-Replaces: libglide3-alpha
+Replaces: libglide3-alpha, libglide3-dev
 Conflicts: libglide3, libglide3-alpha
 Description: graphics library for 3Dfx Voodoo based cards - shared libraries
  This package allows you to use the 3D functions of cards based on
