@@ -28,7 +28,7 @@ msgstr ""
 msgid "No 3Dfx card supported by glide2 found! Manually select driver?"
 msgstr ""
 "No s'ha trobat cap tarja 3Dfx suportada per glide2! "
-"Desitja seleccionar el dispositiu manualment?"
+"Desitgeu seleccionar el dispositiu manualment?"
 
 #. Description
 #: ../libglide2.templates:4
@@ -51,8 +51,8 @@ msgid ""
 "not compiling programs against glide, you should not have this package "
 "installed."
 msgstr ""
-"Si no té cap tarja basada en algun dels chipsets llistats, i no està "
-"compilant programes contra glide, no hauria de tenir instal·lat aquest "
+"Si no teniu cap tarja basada en algun dels chipsets llistats, i no esteu "
+"compilant programes contra glide, no haurieu de tenir instal·lat aquest "
 "paquet."
 
 #. Description
@@ -62,8 +62,8 @@ msgid ""
 "on this package, including the output from the command 'lspci -vm' in the "
 "bug report."
 msgstr ""
-"Si té alguna tarja basada en algun dels chipsets llistats, si us plau "
-"enviï un informe d'error a aquest paquet, incloent la sortida de "
+"Si teniu alguna tarja basada en algun dels chipsets llistats, si us plau "
+"envieu un informe d'error a aquest paquet, incloent la sortida de "
 "l'ordre 'lspci -vm' al mateix informe."
 
 #. Description
@@ -72,18 +72,18 @@ msgid ""
 "Would you like to manually select the driver to use for now? (If not, a "
 "default sane for compiling against will be selected.)"
 msgstr ""
-"Desitja seleccionar manualment el dispositiu a fer servir per ara? "
+"Desitjeu seleccionar manualment el dispositiu a fer servir per ara? "
 "(Si no, es seleccionarà un valor predeterminat correcte per compilar)."
 
 #. Description
 #: ../libglide2.templates:25 ../libglide3.templates:25
 msgid "Please select driver."
-msgstr "Si us plau, seleccioni un dispositiu."
+msgstr "Si us plau, seleccioneu un dispositiu."
 
 #. Description
 #: ../libglide2.templates:25 ../libglide3.templates:25
 msgid "Please select the driver you would like to use."
-msgstr "Si us plau seleccioni el dispositiu que vol fer servir."
+msgstr "Si us plau seleccioneu el dispositiu que voleu fer servir."
 
 #. Description
 #: ../libglide2.templates:25
@@ -97,7 +97,7 @@ msgstr ""
 #. Description
 #: ../libglide2.templates:34 ../libglide3.templates:34
 msgid "Please select card."
-msgstr "Si us plau seleccioni una tarja."
+msgstr "Si us plau seleccioneu una tarja."
 
 #. Description
 #: ../libglide2.templates:34
@@ -111,7 +111,7 @@ msgstr ""
 #. Description
 #: ../libglide2.templates:34 ../libglide3.templates:34
 msgid "Please select the card you would like to use for 3D acceleration."
-msgstr "Si us plau seleccioni la tarja desitjada per a l'acceleració 3D."
+msgstr "Si us plau seleccioneu la tarja desitjada per a l'acceleració 3D."
 
 #. Description
 #: ../libglide2.templates:42 ../libglide3.templates:42
@@ -126,7 +126,7 @@ msgstr "${e2}"
 #. Description
 #: ../libglide3.templates:4
 msgid "No 3Dfx card supported by glide3 found! Manually select driver?"
-msgstr "No s'ha trobat cap tarja 3Dfx suportada per glide3! Desitja "
+msgstr "No s'ha trobat cap tarja 3Dfx suportada per glide3! Desitgeu "
 "seleccionar el dispositiu manualment?"
 
 #. Description
