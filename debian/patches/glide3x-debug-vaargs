@@ -1,3 +1,5 @@
+Status: applied
+
 diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/cvg/incsrc/gdebug.h build-tree/glide3x/cvg/incsrc/gdebug.h
 --- build-tree.orig/glide3x/cvg/incsrc/gdebug.h	1999-12-07 22:42:43.000000000 +0100
 +++ build-tree/glide3x/cvg/incsrc/gdebug.h	2003-05-27 23:20:59.000000000 +0200

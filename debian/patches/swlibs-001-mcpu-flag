@@ -1,3 +1,5 @@
+Status: applied
+
 diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/include/make/3dfx.linux.mak build-tree/swlibs/include/make/3dfx.linux.mak
 --- build-tree.orig/swlibs/include/make/3dfx.linux.mak	2000-07-12 23:35:28.000000000 +0200
 +++ build-tree/swlibs/include/make/3dfx.linux.mak	2003-05-18 15:38:09.000000000 +0200

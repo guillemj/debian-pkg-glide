@@ -1,3 +1,5 @@
+Status: applied
+
 diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/texus2/lib/makefile.autoconf.am build-tree/swlibs/texus2/lib/makefile.autoconf.am
 --- build-tree.orig/swlibs/texus2/lib/makefile.autoconf.am	2003-06-12 06:21:24.000000000 +0200
 +++ build-tree/swlibs/texus2/lib/makefile.autoconf.am	2003-06-12 06:20:59.000000000 +0200

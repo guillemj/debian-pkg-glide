@@ -1,3 +1,5 @@
+Status: applied
+
 diff -ruN -x Makefile.in -x configure glide2.orig/swlibs/bin/makefile.linux glide2/swlibs/bin/makefile.linux
 --- build-tree.orig/swlibs/bin/makefile.linux	Wed Jul 12 21:18:05 2000
 +++ build-tree/swlibs/bin/makefile.linux	Sat Jul 29 15:55:06 2000

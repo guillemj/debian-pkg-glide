@@ -22,7 +22,7 @@ CLEAN_TARGET_EXTERNAL=sys-clean
 # Whether to die if the source cleaning fails.
 CLEAN_IGNORE=yes
 # The clean target to run.  Defaults to clean.
-CLEAN_TARGET=clobber
+CLEAN_TARGET=clean
 # Files to exclude from the diff.
 DIFF_EXCLUDE="Makefile.in configure"
 # Where the patches are located(duh!).

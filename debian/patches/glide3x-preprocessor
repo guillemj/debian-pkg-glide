@@ -1,3 +1,5 @@
+Status: applied
+
 diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/cvg/glide3/src/fxglide.h build-tree/glide3x/cvg/glide3/src/fxglide.h
 --- build-tree.orig/glide3x/cvg/glide3/src/fxglide.h	1999-12-07 22:42:31.000000000 +0100
 +++ build-tree/glide3x/cvg/glide3/src/fxglide.h	2003-05-28 07:00:14.000000000 +0200

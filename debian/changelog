@@ -1,3 +1,31 @@
+glide (2002.04.10-3) unstable; urgency=low
+
+  * The Great Unification Release:
+    - Added 64bit support, deprecating glide3-alpha. Patches:
+      debian/patches/z01-64bit-support
+      debian/patches/z02-64bit-support
+
+  * Switch from inbound dbs to the Debian dbs package. Depend on dbs >= 0.25
+    as previous versions had a bug with sys-build.mk.
+  * debian/rules: Now only one rule unpacks and patches the source. It was
+    causing problems with 64 bit ports building only glide2.
+  * Updated the TODO list.
+  * Debconf template translations:
+    - Added Brazilian Portuguese. (Closes: #198256)
+      Thanks to Andre Luis Lopes <andrelop@debian.org>.
+    - Added French. (Closes: #199687)
+      Thanks to Christian Perrier <bubulle@debian.org>.
+  * Updated to latest libtool (1.5.0a) as well as config.guess and config.sub.
+    (Closes: #208851)
+  * Removed debian/old.patches directory.
+  * Split debian/patches/glide-fix-warnings into:
+    debian/patches/glide2x-fix-warnings
+    debian/patches/glide3x-fix-warnings
+    debian/patches/swlibs-fix-warnings
+  * Now using Standards-Version 3.6.1.
+
+ -- Guillem Jover <guillem@debian.org>  Fri,  5 Sep 2003 20:26:40 +0200
+
 glide (2002.04.10-2) unstable; urgency=low
 
   * Fixed a call to the old perl debconf module from libglide3.config,

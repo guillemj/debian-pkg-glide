@@ -11,36 +11,54 @@ INSTALL_SCRIPT=$(INSTALL) -m 755
 INSTALL_LIB=$(INSTALL) -m 644
 INSTALL_DATA=$(INSTALL) -m 644
 
+SYS_BUILD := /usr/share/dbs/sys-build.mk
+
+DEB_HOST_ARCH := $(shell dpkg-architecture -qDEB_HOST_ARCH)
+
 CFLAGS = -g -Wall
 
 ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
   CFLAGS += -O0
 else
+ifeq ($(DEB_HOST_ARCH),alpha)
+  CFLAGS += -O2 -mcpu=ev5 -fomit-frame-pointer \
+	    -fexpensive-optimizations -mieee -DBIG_OPT
+else
+ifeq ($(DEB_HOST_ARCH),i386)
   CFLAGS += -O6 -mcpu=i486 -fomit-frame-pointer -funroll-loops \
 	    -fexpensive-optimizations -ffast-math -DBIG_OPT
+else
+  CFLAGS += -fomit-frame-pointer -fexpensive-optimizations -ffast-math \
+	    -DBIG_OPT
+endif
+endif
 endif
 
 
-include debian/scripts/vars
+include debian/vars
 SRC_DIR=$(SOURCE_DIR)
 
 debian/po/templates.pot: debian/libglide2.templates debian/libglide3.templates
 	@debconf-updatepo
 
-$(SRC_DIR)/glide2x: $(STAMP_DIR)/SCR_DIR_glide2x
-$(STAMP_DIR)/SCR_DIR_glide2x:
-	$(MAKE) -f debian/sys-build.mk source.make
+setup:
+	$(MAKE) -f $(SYS_BUILD) source.make
+
+make_patch:
+	$(MAKE) -f $(SYS_BUILD) make-diff
+
+$(SRC_DIR)/glide2x $(SRC_DIR)/glide3x: $(STAMP_DIR)/SRC_DIR_glide
+$(STAMP_DIR)/SRC_DIR_glide:
+	$(MAKE) -f $(SYS_BUILD) source.make
 	cd $(SRC_DIR)/glide2x; ln -s ../swlibs swlibs
 	cd $(SRC_DIR)/glide3x; ln -s ../swlibs swlibs
-	touch $(STAMP_DIR)/SCR_DIR_glide2x
+	touch $(STAMP_DIR)/SRC_DIR_glide
 
-$(SRC_DIR)/glide3x: $(STAMP_DIR)/SCR_DIR_glide3x
-$(STAMP_DIR)/SCR_DIR_glide3x:
-	cd $(SRC_DIR)/glide3x; ln -s ../swlibs swlibs
-	touch $(STAMP_DIR)/SCR_DIR_glide3x
+ifeq ($(DEB_HOST_ARCH),i386)
+BUILD_TARGETS := build.glide2
+endif
 
-
-build: build.glide2 build.glide3 debian/po/templates.pot
+build: $(BUILD_TARGETS) build.glide3 debian/po/templates.pot
 build.glide2: build.glide2.cvg build.glide2.h3
 build.glide3: build.glide3.h3 build.glide3.h5
 
@@ -93,18 +111,23 @@ sys-clean:
 
 clean:
 # No need to run clean
-	$(MAKE) -f debian/sys-build.mk source.clean
+	$(MAKE) -f $(SYS_BUILD) source.clean
 	rm -f $(STAMP_DIR)
 	rm -rf $(PWD)/debian/tmp.h3 $(PWD)/debian/tmp.h5
 	dh_clean
 
-binary-indep: build binary-libglide2-dev binary-libglide3-dev
+binary: binary-indep binary-arch
+
+ifeq ($(DEB_HOST_ARCH),i386)
+BINARY_INDEP_TARGETS := binary-libglide2-dev
+BINARY_ARCH_TARGETS := binary-libglide2 binary-glide2-bin
+endif
+
+binary-indep: build $(BINARY_INDEP_TARGETS) binary-libglide3-dev
 # Add rules here to build the indep debs.
 
-binary-arch: build binary-libglide2 binary-glide2-bin binary-libglide3
+binary-arch: build $(BINARY_ARCH_TARGETS) binary-libglide3
 # Add rules here to build the arch debs.
-
-binary: binary-indep binary-arch
 
 binary-libglide2:
 	DH_OPTIONS="-plibglide2" $(this) binary-libglide2-real
