@@ -1,0 +1,78 @@
+diff -Naur build-tree.orig/glide3x/configure.in build-tree/glide3x/configure.in
+--- build-tree.orig/glide3x/configure.in	2004-06-16 08:22:22.000000000 +0200
++++ build-tree/glide3x/configure.in	2004-06-16 08:25:26.000000000 +0200
+@@ -146,7 +146,7 @@
+               [dnl
+   --enable-build-architecture Enable AMD 3DNow instructions [default=current]],
+               [case ${enableval} in
+-               i[3456]86|alpha)
++               i[3456]86|x86_64|alpha)
+                    FX_GLIDE_BUILD_ARCHITECTURE=${enableval}
+                    ;;
+                *)
+diff -Naur build-tree.orig/glide3x/cvg/init/sst1init.h build-tree/glide3x/cvg/init/sst1init.h
+--- build-tree.orig/glide3x/cvg/init/sst1init.h	2000-11-16 20:26:02.000000000 +0100
++++ build-tree/glide3x/cvg/init/sst1init.h	2004-06-16 08:35:54.000000000 +0200
+@@ -146,7 +146,7 @@
+ #  define P6FENCE {_asm xchg eax, p6FenceVar}
+ #elif defined(macintosh) && __POWERPC__ && defined(__MWERKS__)
+ #  define P6FENCE __eieio()
+-#elif defined (__GNUC__) && defined(__i386__)
++#elif defined (__GNUC__) && (defined(__i386__) || defined(__x86_64__))
+ #  define P6FENCE asm("xchg %%eax,%0" : /*outputs*/ : "m" (p6FenceVar) : \
+ 					"eax");
+ #else
+diff -Naur build-tree.orig/glide3x/h3/glide3/src/fxglide.h build-tree/glide3x/h3/glide3/src/fxglide.h
+--- build-tree.orig/glide3x/h3/glide3/src/fxglide.h	2004-06-16 08:22:23.000000000 +0200
++++ build-tree/glide3x/h3/glide3/src/fxglide.h	2004-06-16 08:33:51.000000000 +0200
+@@ -1488,7 +1488,7 @@
+ #  pragma warning(default : 4035)
+ #elif defined(macintosh) && defined(__POWERPC__) && defined(__MWERKS__)
+ #  define P6FENCE __eieio()
+-#elif defined(__GNUC__) && defined(__i386__)
++#elif defined(__GNUC__) && (defined(__i386__) || defined(__x86_64__))
+ #define P6FENCE asm("xchg %%eax, %0" : : "m" (_GlideRoot.p6Fencer) : "eax");
+ #elif defined(__GNUC__) && defined(__ia64__)
+ #define P6FENCE asm volatile("mf.a" ::: "memory")
+diff -Naur build-tree.orig/glide3x/h3/minihwc/linhwc.c.dri build-tree/glide3x/h3/minihwc/linhwc.c.dri
+--- build-tree.orig/glide3x/h3/minihwc/linhwc.c.dri	2004-06-16 08:22:24.000000000 +0200
++++ build-tree/glide3x/h3/minihwc/linhwc.c.dri	2004-06-16 08:33:04.000000000 +0200
+@@ -67,11 +67,11 @@
+ #include "lindri.h"
+ 
+ static FxU32 fenceVar;
+-#ifdef __ia64__
++#if defined(__ia64__)
+ #define P6FENCE asm volatile("mf.a" ::: "memory");
+-#elif __alpha__
++#elif defined(__alpha__)
+ #define P6FENCE asm volatile("mb" ::: "memory");
+-#elif __i386__
++#elif defined(__i386__) || defined(__x86_64__)
+ #define P6FENCE asm("xchg %%eax, %0" : : "m" (fenceVar) : "eax");
+ #elif
+ Error Need to Define P6FENCE for this architecture
+diff -Naur build-tree.orig/glide3x/h5/glide3/src/fxglide.h build-tree/glide3x/h5/glide3/src/fxglide.h
+--- build-tree.orig/glide3x/h5/glide3/src/fxglide.h	2004-06-16 08:22:24.000000000 +0200
++++ build-tree/glide3x/h5/glide3/src/fxglide.h	2004-06-16 08:30:46.000000000 +0200
+@@ -2093,7 +2093,7 @@
+ #  pragma warning(default : 4035)
+ #elif defined(macintosh) && defined(__POWERPC__) && defined(__MWERKS__)
+ #  define P6FENCE __sync()
+-#elif defined(__GNUC__) && defined(__i386__)
++#elif defined(__GNUC__) && (defined(__i386__) || defined(__x86_64__))
+ /*
+  * This is the __linux__ code.
+  */
+diff -Naur build-tree.orig/glide3x/h5/minihwc/linhwc.c build-tree/glide3x/h5/minihwc/linhwc.c
+--- build-tree.orig/glide3x/h5/minihwc/linhwc.c	2004-06-16 08:22:24.000000000 +0200
++++ build-tree/glide3x/h5/minihwc/linhwc.c	2004-06-16 08:28:20.000000000 +0200
+@@ -67,7 +67,7 @@
+ #include "lindri.h"
+ 
+ static FxU32 fenceVar;
+-#if defined(__i386__)
++#if defined(__i386__) || defined(__x86_64__)
+ #define P6FENCE asm("xchg %%eax, %0" : : "m" (fenceVar) : "eax");
+ #elif defined(__alpha__)
+ #define P6FENCE asm volatile("mb" ::: "memory")

@@ -1,3 +1,11 @@
+glide (2002.04.10-7) UNRELEASED; urgency=low
+
+  * Added amd64 support.
+    - debian/patches/z03-amd64-port. (Closes: #248156)
+  * Enabled amd64 and ia64 on debian/control.
+
+ -- Guillem Jover <guillem@debian.org>  Wed, 16 Jun 2004 08:40:19 +0200
+
 glide (2002.04.10-6) unstable; urgency=low
 
   * Debconf template translations:
