@@ -1,3 +1,5 @@
+Status: applied
+
 diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/include/make/makefile.autoconf.bottom build-tree/swlibs/include/make/makefile.autoconf.bottom
 --- build-tree.orig/swlibs/include/make/makefile.autoconf.bottom	2003-06-11 21:50:04.000000000 +0200
 +++ build-tree/swlibs/include/make/makefile.autoconf.bottom	2003-06-11 21:49:37.000000000 +0200

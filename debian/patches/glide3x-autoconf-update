@@ -1,3 +1,5 @@
+Status: applied
+
 diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/chores.3dfx build-tree/glide3x/chores.3dfx
 --- build-tree.orig/glide3x/chores.3dfx	2000-11-03 12:23:57.000000000 +0100
 +++ build-tree/glide3x/chores.3dfx	2003-06-12 05:23:41.000000000 +0200

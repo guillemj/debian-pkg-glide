@@ -1,3 +1,5 @@
+Status: wont-apply
+
 diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/cvg/glide/src/makefile.linux build-tree/glide2x/cvg/glide/src/makefile.linux
 --- build-tree.orig/glide2x/cvg/glide/src/makefile.linux	2000-01-28 11:25:44.000000000 -0800
 +++ build-tree/glide2x/cvg/glide/src/makefile.linux	2003-03-15 02:51:56.000000000 -0800

@@ -1,3 +1,5 @@
+Status: not-applied
+
 diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/makefile.autoconf.am build-tree/glide3x/h3/glide3/src/makefile.autoconf.am
 --- build-tree.orig/glide3x/h3/glide3/src/makefile.autoconf.am	2003-08-24 07:16:56.000000000 +0200
 +++ build-tree/glide3x/h3/glide3/src/makefile.autoconf.am	2003-08-24 07:14:48.000000000 +0200
