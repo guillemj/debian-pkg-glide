@@ -51,7 +51,6 @@ Section: libs
 Architecture: i386 alpha
 Depends: ${shlibs:Depends}, pciutils, debconf (>= 0.5)
 Provides: libglide3-alpha
-Suggests: device3dfx-module, device3dfx-source
 Replaces: libglide3-alpha
 Conflicts: libglide3, libglide3-alpha
 Description: Graphics library for 3Dfx Voodoo based cards - shared libraries
@@ -60,7 +59,7 @@ Description: Graphics library for 3Dfx Voodoo based cards - shared libraries
  Voodoo 5, chipsets.
  You should install it if you have such a card.
  .
- NOTE: You'll need the /dev/3dfx kernel driver to use this library.
+ NB: This package does NOT need device3dfx, as it is using DRI instead.
 
 Package: libglide3-dev
 Section: libdevel

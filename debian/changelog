@@ -1,6 +1,8 @@
 glide (2002.04.10-5) unstable; urgency=low
 
-  * debian/control: Tighten libtool Build-Depends. (Closes: #215512)
+  * debian/control:
+    - Tighten libtool Build-Depends. (Closes: #215512)
+    - Removed libglide3 Suggests for device3dfx, as it used DRI instead.
   * debian/patches/swlibs-004-ioctl: Adapt to the new libc's ioctl.h.
   * debian/patches/glide3x-autoconf-update: Updated to fix missing symbols
     in glide3 H5 library, due to deprecated usage of compiler options.
