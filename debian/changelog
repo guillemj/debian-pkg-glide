@@ -1,12 +1,13 @@
-glide (2002.04.10-7) UNRELEASED; urgency=low
+glide (2002.04.10-7) unstable; urgency=low
 
   * Added amd64 support.
     - debian/patches/z03-amd64-port. (Closes: #248156)
   * Enabled amd64 and ia64 on debian/control.
   * Allow building binary independent packages on any arch.
   * Build-Conflict against automake1.4, as it lacks AM_PROG_AS.
+  * Added the location of the Subversion repo used for the packages.
 
- -- Guillem Jover <guillem@debian.org>  Wed, 16 Jun 2004 08:40:19 +0200
+ -- Guillem Jover <guillem@debian.org>  Thu, 17 Jun 2004 05:16:09 +0200
 
 glide (2002.04.10-6) unstable; urgency=low
 
