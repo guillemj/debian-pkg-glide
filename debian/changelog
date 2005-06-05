@@ -1,3 +1,11 @@
+glide (2002.04.10-10) UNRELEASED; urgency=low
+
+  * Debconf template translations:
+    - Added Vietnamese. (Closes: #311796)
+      Thanks to Clytie Siddall <clytie@riverland.net.au>.
+
+ -- Guillem Jover <guillem@debian.org>  Sun,  5 Jun 2005 03:43:49 +0300
+
 glide (2002.04.10-9) unstable; urgency=low
 
   * Fix build failure when using libglide3.so and it points to
