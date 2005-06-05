@@ -1,4 +1,4 @@
-Status: not-applied
+Status: applied
 
 diff -Naur build-tree.orig/glide3x/h3/minihwc/linhwc.c.dri build-tree/glide3x/h3/minihwc/linhwc.c.dri
 --- build-tree.orig/glide3x/h3/minihwc/linhwc.c.dri	2004-09-20 11:36:50.000000000 +0200

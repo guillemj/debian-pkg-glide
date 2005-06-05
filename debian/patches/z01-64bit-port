@@ -5878,18 +5878,6 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/texus2/lib/texusint
  
  FxBool _txReadTGAHeader( FILE *stream, FxU32 cookie, TxMip *info);
  FxBool _txReadTGAData( FILE *stream, TxMip *info);
-diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/texus2/lib/tga.c build-tree/swlibs/texus2/lib/tga.c
---- build-tree.orig/swlibs/texus2/lib/tga.c	2000-08-03 02:27:21.000000000 +0200
-+++ build-tree/swlibs/texus2/lib/tga.c	2003-08-23 16:43:07.000000000 +0200
-@@ -335,7 +335,7 @@
-     int		i, stride;
-     int 	bpp;			// bytesPerPixel
-     FxU8*	data;
--    long	BigEndian = 0xff000000;
-+    long 	BigEndian = 0xff000000;
- 
-     // printf("TxREAD TGA DATA\n");
-     tgaRLEcount = 0;
 diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/texus2/lib/util.c build-tree/swlibs/texus2/lib/util.c
 --- build-tree.orig/swlibs/texus2/lib/util.c	2000-08-07 17:24:44.000000000 +0200
 +++ build-tree/swlibs/texus2/lib/util.c	2003-08-23 16:43:07.000000000 +0200

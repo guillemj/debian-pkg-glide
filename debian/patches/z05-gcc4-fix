@@ -1,4 +1,4 @@
-Status: not-applied
+Status: applied
 
 diff -urN tmp/h3/glide3/src/gaa.c glide3x/h3/glide3/src/gaa.c
 --- tmp/h3/glide3/src/gaa.c	2004-12-22 08:35:39.401766000 +0100
