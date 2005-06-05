@@ -5,7 +5,7 @@ Currently maintained by Guillem Jover <guillem@debian.org>.
 
 The debian packages are maintained through Subversion on:
 
-	<http://svn.debian.org/viewcvs/pkg-glide/>
+	<svn://svn.debian.org/pkg-glide/>
 
 It was downloaded from the glide CVS branch glide-devel-branch at
 sourceforge:
