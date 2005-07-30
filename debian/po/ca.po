@@ -17,7 +17,7 @@ msgstr ""
 "Project-Id-Version: glide 2002.04.10-2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-07-30 18:38+0300\n"
-"PO-Revision-Date: 2003-06-13 03:12+0200\n"
+"PO-Revision-Date: 2005-07-30 18:44+0300\n"
 "Last-Translator: Guillem Jover <guillem@debian.org>\n"
 "Language-Team: Catalan <debian-l10n-catalan@debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -75,7 +75,6 @@ msgstr ""
 #. Type: boolean
 #. Description
 #: ../libglide2.templates:4 ../libglide3.templates:4
-#, fuzzy
 msgid ""
 "Would you like to manually select the driver to use for now? (If not, a "
 "default sane value for compiling against will be selected.)"
@@ -86,7 +85,6 @@ msgstr ""
 #. Type: select
 #. Description
 #: ../libglide2.templates:25 ../libglide3.templates:25
-#, fuzzy
 msgid "Please select a driver."
 msgstr "Si us plau, seleccioneu un dispositiu."
 
@@ -109,9 +107,8 @@ msgstr ""
 #. Type: select
 #. Description
 #: ../libglide2.templates:34 ../libglide3.templates:34
-#, fuzzy
 msgid "Please select a card."
-msgstr "Si us plau seleccioneu una targeta."
+msgstr "Si us plau, seleccioneu una targeta."
 
 #. Type: select
 #. Description
