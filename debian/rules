@@ -100,7 +100,7 @@ $(STAMP_DIR)/build.glide3.h3:
 		--prefix=/usr" --build-dir=build.h3; \
 	  cd build.h3; \
 	  ./build.3dfx DESTDIR="$(PWD)/debian/tmp.h3/" CFLAGS="$(CFLAGS)" \
-		install; \
+		--no-x install; \
 	)
 	touch $(STAMP_DIR)/build.glide3.h3
 
@@ -113,7 +113,7 @@ $(STAMP_DIR)/build.glide3.h5:
 		--prefix=/usr" --build-dir=build.h5; \
 	  cd build.h5; \
 	  ./build.3dfx DESTDIR="$(PWD)/debian/tmp.h5/" CFLAGS="$(CFLAGS)" \
-		install; \
+		--no-x install; \
 	)
 	touch $(STAMP_DIR)/build.glide3.h5
 
