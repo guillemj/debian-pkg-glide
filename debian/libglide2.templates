@@ -16,13 +16,13 @@ _Description: No 3Dfx card supported by glide2 found! Manually select driver?
  the bug report.
  .
  Would you like to manually select the driver to use for now? (If not, a
- default sane for compiling against will be selected.)
+ default sane value for compiling against will be selected.)
 
 Template: libglide2/driver
 Type: select
 Choices: cvg, h3
 Default: ${default}
-_Description: Please select driver.
+_Description: Please select a driver.
  Please select the driver you would like to use.
  .
   cvg  - Voodoo 2.
@@ -31,7 +31,7 @@ _Description: Please select driver.
 Template: libglide2/card
 Type: select
 Choices: ${choices}
-_Description: Please select card.
+_Description: Please select a card.
  We have detected more then one video card based on the following 3Dfx
  chipsets: Voodoo 2, Voodoo Banshee, and Voodoo 3.
  .

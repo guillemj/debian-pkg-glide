@@ -15,7 +15,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2003-06-04 23:43+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-07-30 18:38+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,16 +24,19 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. Type: boolean
 #. Description
 #: ../libglide2.templates:4
 msgid "No 3Dfx card supported by glide2 found! Manually select driver?"
 msgstr ""
 
+#. Type: boolean
 #. Description
 #: ../libglide2.templates:4
 msgid "ERROR: No 3Dfx card supported by glide2 found!"
 msgstr ""
 
+#. Type: boolean
 #. Description
 #: ../libglide2.templates:4
 msgid ""
@@ -40,6 +44,7 @@ msgid ""
 "Voodoo Banshee, and Voodoo 3."
 msgstr ""
 
+#. Type: boolean
 #. Description
 #: ../libglide2.templates:4 ../libglide3.templates:4
 msgid ""
@@ -48,6 +53,7 @@ msgid ""
 "installed."
 msgstr ""
 
+#. Type: boolean
 #. Description
 #: ../libglide2.templates:4 ../libglide3.templates:4
 msgid ""
@@ -56,23 +62,27 @@ msgid ""
 "bug report."
 msgstr ""
 
+#. Type: boolean
 #. Description
 #: ../libglide2.templates:4 ../libglide3.templates:4
 msgid ""
 "Would you like to manually select the driver to use for now? (If not, a "
-"default sane for compiling against will be selected.)"
+"default sane value for compiling against will be selected.)"
 msgstr ""
 
+#. Type: select
 #. Description
 #: ../libglide2.templates:25 ../libglide3.templates:25
-msgid "Please select driver."
+msgid "Please select a driver."
 msgstr ""
 
+#. Type: select
 #. Description
 #: ../libglide2.templates:25 ../libglide3.templates:25
 msgid "Please select the driver you would like to use."
 msgstr ""
 
+#. Type: select
 #. Description
 #: ../libglide2.templates:25
 msgid ""
@@ -80,11 +90,13 @@ msgid ""
 " h3   - Voodoo Banshee and Voodoo 3."
 msgstr ""
 
+#. Type: select
 #. Description
 #: ../libglide2.templates:34 ../libglide3.templates:34
-msgid "Please select card."
+msgid "Please select a card."
 msgstr ""
 
+#. Type: select
 #. Description
 #: ../libglide2.templates:34
 msgid ""
@@ -92,31 +104,37 @@ msgid ""
 "chipsets: Voodoo 2, Voodoo Banshee, and Voodoo 3."
 msgstr ""
 
+#. Type: select
 #. Description
 #: ../libglide2.templates:34 ../libglide3.templates:34
 msgid "Please select the card you would like to use for 3D acceleration."
 msgstr ""
 
+#. Type: note
 #. Description
 #: ../libglide2.templates:42 ../libglide3.templates:42
 msgid "${e1}"
 msgstr ""
 
+#. Type: note
 #. Description
 #: ../libglide2.templates:42 ../libglide3.templates:42
 msgid "${e2}"
 msgstr ""
 
+#. Type: boolean
 #. Description
 #: ../libglide3.templates:4
 msgid "No 3Dfx card supported by glide3 found! Manually select driver?"
 msgstr ""
 
+#. Type: boolean
 #. Description
 #: ../libglide3.templates:4
 msgid "ERROR: No 3Dfx card supported by glide3 found!"
 msgstr ""
 
+#. Type: boolean
 #. Description
 #: ../libglide3.templates:4
 msgid ""
@@ -124,6 +142,7 @@ msgid ""
 "Banshee, Voodoo 3, Voodoo 4, and Voodoo 5."
 msgstr ""
 
+#. Type: select
 #. Description
 #: ../libglide3.templates:25
 msgid ""
@@ -131,6 +150,7 @@ msgid ""
 " h5   - Voodoo 4 and Voodoo 5."
 msgstr ""
 
+#. Type: select
 #. Description
 #: ../libglide3.templates:34
 msgid ""

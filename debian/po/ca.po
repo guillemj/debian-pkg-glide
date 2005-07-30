@@ -15,7 +15,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: glide 2002.04.10-2\n"
-"POT-Creation-Date: 2003-06-04 23:43+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-07-30 18:38+0300\n"
 "PO-Revision-Date: 2003-06-13 03:12+0200\n"
 "Last-Translator: Guillem Jover <guillem@debian.org>\n"
 "Language-Team: Catalan <debian-l10n-catalan@debian.org>\n"
@@ -23,27 +24,31 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. Type: boolean
 #. Description
 #: ../libglide2.templates:4
 msgid "No 3Dfx card supported by glide2 found! Manually select driver?"
 msgstr ""
-"No s'ha trobat cap targeta 3Dfx suportada per glide2! "
-"Desitgeu seleccionar el dispositiu manualment?"
+"No s'ha trobat cap targeta 3Dfx suportada per glide2! Desitgeu seleccionar "
+"el dispositiu manualment?"
 
+#. Type: boolean
 #. Description
 #: ../libglide2.templates:4
 msgid "ERROR: No 3Dfx card supported by glide2 found!"
 msgstr "ERROR: No s'ha trobat cap targeta 3Dfx suportada per glide2!"
 
+#. Type: boolean
 #. Description
 #: ../libglide2.templates:4
 msgid ""
 "This package is for cards based on the following 3Dfx chipsets: Voodoo 2, "
 "Voodoo Banshee, and Voodoo 3."
 msgstr ""
-"Aquest paquet és per a targes 3Dfx basades en els següents chipsets: "
-"Voodoo 2, Voodoo Banshee i Voodoo 3."
+"Aquest paquet és per a targes 3Dfx basades en els següents chipsets: Voodoo "
+"2, Voodoo Banshee i Voodoo 3."
 
+#. Type: boolean
 #. Description
 #: ../libglide2.templates:4 ../libglide3.templates:4
 msgid ""
@@ -55,6 +60,7 @@ msgstr ""
 "compilant programes contra glide, no haurieu de tenir instal·lat aquest "
 "paquet."
 
+#. Type: boolean
 #. Description
 #: ../libglide2.templates:4 ../libglide3.templates:4
 msgid ""
@@ -63,28 +69,34 @@ msgid ""
 "bug report."
 msgstr ""
 "Si teniu alguna targeta basada en algun dels chipsets llistats, si us plau "
-"envieu un informe d'error a aquest paquet, incloent la sortida de "
-"l'ordre «lspci -vm» al mateix informe."
+"envieu un informe d'error a aquest paquet, incloent la sortida de l'ordre "
+"«lspci -vm» al mateix informe."
 
+#. Type: boolean
 #. Description
 #: ../libglide2.templates:4 ../libglide3.templates:4
+#, fuzzy
 msgid ""
 "Would you like to manually select the driver to use for now? (If not, a "
-"default sane for compiling against will be selected.)"
+"default sane value for compiling against will be selected.)"
 msgstr ""
-"Desitjeu seleccionar manualment el dispositiu a fer servir per ara? "
-"(Si no, es seleccionarà un valor predeterminat correcte per compilar)."
+"Desitjeu seleccionar manualment el dispositiu a fer servir per ara? (Si no, "
+"es seleccionarà un valor predeterminat correcte per compilar)."
 
+#. Type: select
 #. Description
 #: ../libglide2.templates:25 ../libglide3.templates:25
-msgid "Please select driver."
+#, fuzzy
+msgid "Please select a driver."
 msgstr "Si us plau, seleccioneu un dispositiu."
 
+#. Type: select
 #. Description
 #: ../libglide2.templates:25 ../libglide3.templates:25
 msgid "Please select the driver you would like to use."
 msgstr "Si us plau seleccioneu el dispositiu que voleu fer servir."
 
+#. Type: select
 #. Description
 #: ../libglide2.templates:25
 msgid ""
@@ -94,11 +106,14 @@ msgstr ""
 " cvg  - Voodoo 2.\n"
 " h3   - Voodoo Banshee i Voodoo 3."
 
+#. Type: select
 #. Description
 #: ../libglide2.templates:34 ../libglide3.templates:34
-msgid "Please select card."
+#, fuzzy
+msgid "Please select a card."
 msgstr "Si us plau seleccioneu una targeta."
 
+#. Type: select
 #. Description
 #: ../libglide2.templates:34
 msgid ""
@@ -108,32 +123,39 @@ msgstr ""
 "S'ha detectat més d'una targeta gràfica basada en un dels següents chipsets "
 "de 3Dfx: Voodoo 2, Voodoo Banshee i Voodoo 3."
 
+#. Type: select
 #. Description
 #: ../libglide2.templates:34 ../libglide3.templates:34
 msgid "Please select the card you would like to use for 3D acceleration."
 msgstr "Si us plau seleccioneu la targeta desitjada per a l'acceleració 3D."
 
+#. Type: note
 #. Description
 #: ../libglide2.templates:42 ../libglide3.templates:42
 msgid "${e1}"
 msgstr "${e1}"
 
+#. Type: note
 #. Description
 #: ../libglide2.templates:42 ../libglide3.templates:42
 msgid "${e2}"
 msgstr "${e2}"
 
+#. Type: boolean
 #. Description
 #: ../libglide3.templates:4
 msgid "No 3Dfx card supported by glide3 found! Manually select driver?"
-msgstr "No s'ha trobat cap targeta 3Dfx suportada per glide3! Desitgeu "
-"seleccionar el dispositiu manualment?"
+msgstr ""
+"No s'ha trobat cap targeta 3Dfx suportada per glide3! Desitgeu seleccionar "
+"el dispositiu manualment?"
 
+#. Type: boolean
 #. Description
 #: ../libglide3.templates:4
 msgid "ERROR: No 3Dfx card supported by glide3 found!"
 msgstr "ERROR: No s'ha trobat cap targeta 3Dfx suportada per glide3!"
 
+#. Type: boolean
 #. Description
 #: ../libglide3.templates:4
 msgid ""
@@ -143,6 +165,7 @@ msgstr ""
 "Aquest paquet és per a targes 3Dfx basades en els següents chipsets: Voodoo "
 "Banshee, Voodoo 3, Voodoo 4 i Voodoo 5."
 
+#. Type: select
 #. Description
 #: ../libglide3.templates:25
 msgid ""
@@ -152,6 +175,7 @@ msgstr ""
 " h3   - Voodoo Banshee i Voodoo 3.\n"
 " h5   - Voodoo 4 i Voodoo 5."
 
+#. Type: select
 #. Description
 #: ../libglide3.templates:34
 msgid ""
@@ -160,4 +184,3 @@ msgid ""
 msgstr ""
 "S'ha detectat més d'una targeta gràfica basada en un dels següents chipsets "
 "de 3Dfx: Voodoo 2, Voodoo Banshee, Voodoo 3, Voodoo 4 i Voodoo 5."
-

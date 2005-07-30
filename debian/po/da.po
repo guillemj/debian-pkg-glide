@@ -5,7 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: da\n"
-"POT-Creation-Date: 2003-06-04 23:43+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-07-30 18:38+0300\n"
 "PO-Revision-Date: 2004-02-10 20:01+0100\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -14,16 +15,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0.2\n"
 
+#. Type: boolean
 #. Description
 #: ../libglide2.templates:4
 msgid "No 3Dfx card supported by glide2 found! Manually select driver?"
-msgstr "Fandt ingen 3Dfx-kort, som understøttes af glide2! Vil du vælge en driver manuelt?"
+msgstr ""
+"Fandt ingen 3Dfx-kort, som understøttes af glide2! Vil du vælge en driver "
+"manuelt?"
 
+#. Type: boolean
 #. Description
 #: ../libglide2.templates:4
 msgid "ERROR: No 3Dfx card supported by glide2 found!"
 msgstr "FEJL: Ingen 3Dfx-kort, som understøttes af glide2 blev fundet!"
 
+#. Type: boolean
 #. Description
 #: ../libglide2.templates:4
 msgid ""
@@ -33,6 +39,7 @@ msgstr ""
 "Denne pakke er for kort, der er baseret på følgende 3Dfx-chipsæt: Voodoo 2, "
 "Voodoo Banshee og Voodoo 3."
 
+#. Type: boolean
 #. Description
 #: ../libglide2.templates:4 ../libglide3.templates:4
 msgid ""
@@ -44,6 +51,7 @@ msgstr ""
 "oversætter programmer ved brug af glide, skal du ikke have denne pakke "
 "installeret."
 
+#. Type: boolean
 #. Description
 #: ../libglide2.templates:4 ../libglide3.templates:4
 msgid ""
@@ -52,28 +60,34 @@ msgid ""
 "bug report."
 msgstr ""
 "Hvis du har et kort, der er baseret på et af de nævnte chipsæt, bedes du "
-"rapportere en fejl i denne pakke. Medtag uddata fra kommandoen 'lspci -vm' "
-"i rapporten."
+"rapportere en fejl i denne pakke. Medtag uddata fra kommandoen 'lspci -vm' i "
+"rapporten."
 
+#. Type: boolean
 #. Description
 #: ../libglide2.templates:4 ../libglide3.templates:4
+#, fuzzy
 msgid ""
 "Would you like to manually select the driver to use for now? (If not, a "
-"default sane for compiling against will be selected.)"
+"default sane value for compiling against will be selected.)"
 msgstr ""
-"Ønsker du selv at vælge den driver, der skal bruges, nu? (Hvis ikke, vil "
-"et standardvalg at til brug for programoversættelser blive valgt.)"
+"Ønsker du selv at vælge den driver, der skal bruges, nu? (Hvis ikke, vil et "
+"standardvalg at til brug for programoversættelser blive valgt.)"
 
+#. Type: select
 #. Description
 #: ../libglide2.templates:25 ../libglide3.templates:25
-msgid "Please select driver."
+#, fuzzy
+msgid "Please select a driver."
 msgstr "Vælg driver."
 
+#. Type: select
 #. Description
 #: ../libglide2.templates:25 ../libglide3.templates:25
 msgid "Please select the driver you would like to use."
 msgstr "Vælg venligst den driver, du ønsker at bruge."
 
+#. Type: select
 #. Description
 #: ../libglide2.templates:25
 msgid ""
@@ -83,47 +97,56 @@ msgstr ""
 " cvg  - Voodoo 2.\n"
 " h3   - Voodoo Banshee og Voodoo 3."
 
+#. Type: select
 #. Description
 #: ../libglide2.templates:34 ../libglide3.templates:34
-msgid "Please select card."
+#, fuzzy
+msgid "Please select a card."
 msgstr "Vælg kort."
 
+#. Type: select
 #. Description
 #: ../libglide2.templates:34
 msgid ""
 "We have detected more then one video card based on the following 3Dfx "
 "chipsets: Voodoo 2, Voodoo Banshee, and Voodoo 3."
 msgstr ""
-"Der er fundet mere end ét videokort baseret på følgende 3Dfx-chipsæt: "
-"Voodoo 2, Voodoo Banshee og Voodoo 3."
+"Der er fundet mere end ét videokort baseret på følgende 3Dfx-chipsæt: Voodoo "
+"2, Voodoo Banshee og Voodoo 3."
 
+#. Type: select
 #. Description
 #: ../libglide2.templates:34 ../libglide3.templates:34
 msgid "Please select the card you would like to use for 3D acceleration."
 msgstr "Vælg det kort, du ønsker at bruge til 3D-acceleration."
 
+#. Type: note
 #. Description
 #: ../libglide2.templates:42 ../libglide3.templates:42
 msgid "${e1}"
 msgstr "${e1}"
 
+#. Type: note
 #. Description
 #: ../libglide2.templates:42 ../libglide3.templates:42
 msgid "${e2}"
 msgstr "${e2}"
 
+#. Type: boolean
 #. Description
 #: ../libglide3.templates:4
 msgid "No 3Dfx card supported by glide3 found! Manually select driver?"
 msgstr ""
-"Der blev ikke fundet noget kort, der understøttes af glide3! Vil du "
-"vælge driver manuelt?"
+"Der blev ikke fundet noget kort, der understøttes af glide3! Vil du vælge "
+"driver manuelt?"
 
+#. Type: boolean
 #. Description
 #: ../libglide3.templates:4
 msgid "ERROR: No 3Dfx card supported by glide3 found!"
 msgstr "FEJL: Der blev ikke fundet noget kort, der understøttes af glide3!"
 
+#. Type: boolean
 #. Description
 #: ../libglide3.templates:4
 msgid ""
@@ -133,6 +156,7 @@ msgstr ""
 "Denne pakke er til kort, der er baseret på følgende 3Dfx-chipsæt: Voodoo "
 "Banshee, Voodoo 3, Voodoo 4 og Voodoo 5."
 
+#. Type: select
 #. Description
 #: ../libglide3.templates:25
 msgid ""
@@ -142,12 +166,12 @@ msgstr ""
 " h3   - Voodoo Banshee og Voodoo 3.\n"
 " h5   - Voodoo 4 og Voodoo 5."
 
+#. Type: select
 #. Description
 #: ../libglide3.templates:34
 msgid ""
 "We have detected more then one video card based on the following 3Dfx "
 "chipsets: Voodoo 2, Voodoo Banshee, Voodoo 3, Voodoo 4, and Voodoo 5."
 msgstr ""
-"Der er fundet mere end ét videokort baseret på følgende 3Dfx-chipsæt: "
-"Voodoo 2, Voodoo Banshee, Voodoo 3, Voodoo 4 og Voodoo 5."
-
+"Der er fundet mere end ét videokort baseret på følgende 3Dfx-chipsæt: Voodoo "
+"2, Voodoo Banshee, Voodoo 3, Voodoo 4 og Voodoo 5."

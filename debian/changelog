@@ -5,6 +5,8 @@ glide (2002.04.10-10) UNRELEASED; urgency=low
       Thanks to Clytie Siddall <clytie@riverland.net.au>.
     - Added Czech. (Closes: #310880)
       Thanks to Miroslav Kure <kurem@upcase.inf.upol.cz>.
+  * Fix some typos in the templates. (Closes: #311797)
+    Thanks to Clytie Siddall <clytie@riverland.net.au>.
   * Do not change xterm title on build. (Closes: #297276)
   * Fix Subversion repository URL.
 
