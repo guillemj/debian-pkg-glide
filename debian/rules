@@ -99,8 +99,8 @@ $(STAMP_DIR)/build.glide3.h3:
 	  ./chores.3dfx --generate "--configure=--enable-fx-glide-hw=h3 \
 		--prefix=/usr" --build-dir=build.h3; \
 	  cd build.h3; \
-	  ./build.3dfx DESTDIR="$(PWD)/debian/tmp.h3/" CFLAGS="$(CFLAGS)" \
-		--no-x install; \
+	  ./build.3dfx --no-x DESTDIR="$(PWD)/debian/tmp.h3/" \
+		CFLAGS="$(CFLAGS)" install; \
 	)
 	touch $(STAMP_DIR)/build.glide3.h3
 
@@ -112,8 +112,8 @@ $(STAMP_DIR)/build.glide3.h5:
 	  ./chores.3dfx --generate "--configure=--enable-fx-glide-hw=h5 \
 		--prefix=/usr" --build-dir=build.h5; \
 	  cd build.h5; \
-	  ./build.3dfx DESTDIR="$(PWD)/debian/tmp.h5/" CFLAGS="$(CFLAGS)" \
-		--no-x install; \
+	  ./build.3dfx --no-x DESTDIR="$(PWD)/debian/tmp.h5/" \
+		CFLAGS="$(CFLAGS)" install; \
 	)
 	touch $(STAMP_DIR)/build.glide3.h5
 
