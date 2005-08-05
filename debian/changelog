@@ -10,6 +10,8 @@ glide (2002.04.10-10) UNRELEASED; urgency=low
   * Unfuzzy correct translations for Catalan, Spanish, French and
     Brazilian Portuguese.
   * Use -march instead of -mpcu.
+  * Use misc:Depends instead of an explicit dependency to debconf (>= 0.5)
+    to get the alternative debconf-2.0 as well.
   * Do not change xterm title on build. (Closes: #297276)
   * Fix Subversion repository URL.
 
