@@ -12,6 +12,13 @@ glide (2002.04.10-10) UNRELEASED; urgency=low
   * Use -march instead of -mpcu.
   * Use misc:Depends instead of an explicit dependency to debconf (>= 0.5)
     to get the alternative debconf-2.0 as well.
+  * Do not mark PIC register %ebx as clobbered in asm statement, as it is
+    being restored from the stack with eip contents before jumping to the
+    function. (Closes: #320588)
+    - debian/patches/glide2x-clobber-pic-reg: New file.
+  * Do not declare functions inside other functions. Protect assembler macro
+    redefinitions with C preprocessor macros.
+    - debian/patches/z06-gcc401-fix: New file.
   * Do not change xterm title on build. (Closes: #297276)
   * Fix Subversion repository URL.
 
