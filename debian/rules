@@ -35,11 +35,11 @@ ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
   CFLAGS += -O0
 else
 ifeq ($(DEB_HOST_ARCH),alpha)
-  CFLAGS += -O2 -mcpu=ev5 -fomit-frame-pointer \
+  CFLAGS += -O2 -march=ev5 -fomit-frame-pointer \
 	    -fexpensive-optimizations -mieee -DBIG_OPT
 else
 ifeq ($(DEB_HOST_ARCH),i386)
-  CFLAGS += -O6 -mcpu=i486 -fomit-frame-pointer -funroll-loops \
+  CFLAGS += -O6 -march=i486 -fomit-frame-pointer -funroll-loops \
 	    -fexpensive-optimizations -ffast-math -DBIG_OPT
 else
   CFLAGS += -O2 -fomit-frame-pointer -fexpensive-optimizations -ffast-math \

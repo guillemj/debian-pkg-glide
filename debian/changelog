@@ -9,6 +9,7 @@ glide (2002.04.10-10) UNRELEASED; urgency=low
     Thanks to Clytie Siddall <clytie@riverland.net.au>.
   * Unfuzzy correct translations for Catalan, Spanish, French and
     Brazilian Portuguese.
+  * Use -march instead of -mpcu.
   * Do not change xterm title on build. (Closes: #297276)
   * Fix Subversion repository URL.
 
