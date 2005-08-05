@@ -1,4 +1,4 @@
-glide (2002.04.10-10) UNRELEASED; urgency=low
+glide (2002.04.10-10) unstable; urgency=low
 
   * Debconf template translations:
     - Added Vietnamese. (Closes: #311796)
@@ -9,7 +9,7 @@ glide (2002.04.10-10) UNRELEASED; urgency=low
     Thanks to Clytie Siddall <clytie@riverland.net.au>.
   * Unfuzzy correct translations for Catalan, Spanish, French and
     Brazilian Portuguese.
-  * Use -march instead of -mpcu.
+  * Use -march instead of -mcpu.
   * Use misc:Depends instead of an explicit dependency to debconf (>= 0.5)
     to get the alternative debconf-2.0 as well.
   * Do not mark PIC register %ebx as clobbered in asm statement, as it is
@@ -23,7 +23,7 @@ glide (2002.04.10-10) UNRELEASED; urgency=low
   * Fix Subversion repository URL.
   * Now using Standards-Version 3.6.2 (no changes needed).
 
- -- Guillem Jover <guillem@debian.org>  Sun,  5 Jun 2005 03:43:49 +0300
+ -- Guillem Jover <guillem@debian.org>  Fri,  5 Aug 2005 06:25:28 +0300
 
 glide (2002.04.10-9) unstable; urgency=low
 
