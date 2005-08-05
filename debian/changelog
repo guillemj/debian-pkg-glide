@@ -21,6 +21,7 @@ glide (2002.04.10-10) UNRELEASED; urgency=low
     - debian/patches/z06-gcc401-fix: New file.
   * Do not change xterm title on build. (Closes: #297276)
   * Fix Subversion repository URL.
+  * Now using Standards-Version 3.6.2 (no changes needed).
 
  -- Guillem Jover <guillem@debian.org>  Sun,  5 Jun 2005 03:43:49 +0300
 
