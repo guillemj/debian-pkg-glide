@@ -1,3 +1,9 @@
+glide (2002.04.10-11) UNRELEASED; urgency=low
+
+  * Use -march only on i386, revert to -mcpu for alpha.
+
+ -- Guillem Jover <guillem@debian.org>  Sat,  6 Aug 2005 19:40:40 +0300
+
 glide (2002.04.10-10) unstable; urgency=low
 
   * Debconf template translations:
