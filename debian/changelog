@@ -6,6 +6,8 @@ glide (2002.04.10-12) UNRELEASED; urgency=low
     - Updated Danish by Claus Hindsgaul. (Closes: #321920)
     - Updated Vietnamese. (Closes: #322285)
       Thanks to Clytie Siddall <clytie@riverland.net.au>.
+    - Updated Czech. (Closes: #322426)
+      Thanks to Miroslav Kure <kurem@upcase.inf.upol.cz>.
 
  -- Guillem Jover <guillem@debian.org>  Sat, 17 Sep 2005 17:53:46 +0300
 

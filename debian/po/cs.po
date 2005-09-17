@@ -16,7 +16,7 @@ msgstr ""
 "Project-Id-Version: glide\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-07-30 18:38+0300\n"
-"PO-Revision-Date: 2005-05-26 19:37+0200\n"
+"PO-Revision-Date: 2005-08-10 17:27+0200\n"
 "Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
 "Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -71,7 +71,6 @@ msgstr ""
 #. Type: boolean
 #. Description
 #: ../libglide2.templates:4 ../libglide3.templates:4
-#, fuzzy
 msgid ""
 "Would you like to manually select the driver to use for now? (If not, a "
 "default sane value for compiling against will be selected.)"
@@ -82,7 +81,6 @@ msgstr ""
 #. Type: select
 #. Description
 #: ../libglide2.templates:25 ../libglide3.templates:25
-#, fuzzy
 msgid "Please select a driver."
 msgstr "Vyberte prosím ovladač."
 
@@ -105,7 +103,6 @@ msgstr ""
 #. Type: select
 #. Description
 #: ../libglide2.templates:34 ../libglide3.templates:34
-#, fuzzy
 msgid "Please select a card."
 msgstr "Vyberte prosím kartu."
 
