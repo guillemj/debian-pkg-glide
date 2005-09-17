@@ -1,3 +1,9 @@
+glide (2002.04.10-12) UNRELEASED; urgency=low
+
+  * Update FSF's address in debian/copyright.
+
+ -- Guillem Jover <guillem@debian.org>  Sat, 17 Sep 2005 17:53:46 +0300
+
 glide (2002.04.10-11) unstable; urgency=low
 
   * Use -march only on i386, revert to -mcpu for alpha.
