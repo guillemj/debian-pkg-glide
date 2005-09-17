@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: glide 2002.04.10-9\n"
+"Project-Id-Version: glide 2002.04.10-11\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-07-30 18:38+0300\n"
 "PO-Revision-Date: 2005-06-03 21:27+0930\n"
@@ -66,18 +66,16 @@ msgstr ""
 #. Type: boolean
 #. Description
 #: ../libglide2.templates:4 ../libglide3.templates:4
-#, fuzzy
 msgid ""
 "Would you like to manually select the driver to use for now? (If not, a "
 "default sane value for compiling against will be selected.)"
 msgstr ""
-"Bạn có muốn tự chọn trình hỗ trợ thiết bị để dùng tạm thời không? (Nếu không "
+"Bạn có muốn tự chọn trình hỗ trợ thiết bị cần dùng tạm thời không? (Nếu không "
 "thì sẽ chọn một giá trị hữu ích mặc định để biên dịch với nó.)"
 
 #. Type: select
 #. Description
 #: ../libglide2.templates:25 ../libglide3.templates:25
-#, fuzzy
 msgid "Please select a driver."
 msgstr "Hãy chọn trình hỗ trợ thiết bị."
 
@@ -100,7 +98,6 @@ msgstr ""
 #. Type: select
 #. Description
 #: ../libglide2.templates:34 ../libglide3.templates:34
-#, fuzzy
 msgid "Please select a card."
 msgstr "Hãy chọn thẻ."
 
