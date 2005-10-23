@@ -1,4 +1,4 @@
-Status: not-applied
+Status: applied
 
 diff -Naur build-tree.orig/glide2x/cvg/glide/src/gdraw.c build-tree/glide2x/cvg/glide/src/gdraw.c
 --- build-tree.orig/glide2x/cvg/glide/src/gdraw.c	2005-08-05 03:25:55.000000000 +0300

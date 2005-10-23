@@ -1,4 +1,4 @@
-Status: not-applied
+Status: applied
 
 diff -ur build-tree.orig/glide2x/cvg/glide/tests/display.c build-tree/glide2x/cvg/glide/tests/display.c
 --- build-tree.orig/glide2x/cvg/glide/tests/display.c	2005-08-05 03:46:20.000000000 +0300
