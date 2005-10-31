@@ -1,7 +1,8 @@
 Source: glide
 Section: libs
 Priority: optional
-Build-Depends: dbs (>= 0.25), debhelper (>= 4.1.16), autoconf, automake1.7, libtool (>= 1.5), libx11-dev, libxext-dev, libxxf86dga-dev, libxxf86vm-dev
+Build-Depends: dbs (>= 0.25), debhelper (>= 4.1.16), autoconf, automake1.7,
+ libtool (>= 1.5), libx11-dev, libxext-dev, libxxf86dga-dev, libxxf86vm-dev
 Build-Conflicts: automake1.4
 Maintainer: Guillem Jover <guillem@debian.org>
 Standards-Version: 3.6.2
