@@ -8,6 +8,8 @@ glide (2002.04.10-12) UNRELEASED; urgency=low
       Thanks to Clytie Siddall <clytie@riverland.net.au>.
     - Updated Czech. (Closes: #322426)
       Thanks to Miroslav Kure <kurem@upcase.inf.upol.cz>.
+    - Updated German. (Closes: #345847)
+      Thanks to Erik Schanze <schanzi_usenet@gmx.de>.
   * Wrap lines in debian/control fields.
 
  -- Guillem Jover <guillem@debian.org>  Sat, 17 Sep 2005 17:53:46 +0300
