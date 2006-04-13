@@ -11,8 +11,7 @@ glide (2002.04.10-12) UNRELEASED; urgency=low
     - Updated German. (Closes: #345847)
       Thanks to Erik Schanze <schanzi_usenet@gmx.de>.
   * Wrap lines in debian/control fields.
-  * Use new X modularized paths for modules. (Closes: #362116)
-    Thanks to Andreas Jochens <aj@andaco.de>.
+  * Use new X.org 7.0 paths for modules. (Closes: #362116)
   * Switched to debhelper compatibility level 5.
   * Change architectures for development packages from all to match their
     library packages.
