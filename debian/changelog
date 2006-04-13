@@ -1,4 +1,4 @@
-glide (2002.04.10-12) UNRELEASED; urgency=low
+glide (2002.04.10-12) unstable; urgency=low
 
   * Update FSF's address in debian/copyright.
   * Reindent 3dfx license in debian/copyright.
@@ -17,7 +17,7 @@ glide (2002.04.10-12) UNRELEASED; urgency=low
     library packages.
   * Change Build-Depends from automake1.7 to automake1.9.
 
- -- Guillem Jover <guillem@debian.org>  Sat, 17 Sep 2005 17:53:46 +0300
+ -- Guillem Jover <guillem@debian.org>  Thu, 13 Apr 2006 13:14:03 +0300
 
 glide (2002.04.10-11) unstable; urgency=low
 
