@@ -16,6 +16,7 @@ glide (2002.04.10-12) UNRELEASED; urgency=low
   * Switched to debhelper compatibility level 5.
   * Change architectures for development packages from all to match their
     library packages.
+  * Change Build-Depends from automake1.7 to automake1.9.
 
  -- Guillem Jover <guillem@debian.org>  Sat, 17 Sep 2005 17:53:46 +0300
 
