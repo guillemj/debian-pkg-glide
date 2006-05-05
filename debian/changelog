@@ -1,4 +1,4 @@
-glide (2002.04.10-13) UNRELEASED; urgency=low
+glide (2002.04.10-13) unstable; urgency=low
 
   * Build all binary dependent packages under binary-arch. (Closes: #366062)
   * Use CURDIR instead of PWD in debian/rules.
@@ -6,7 +6,7 @@ glide (2002.04.10-13) UNRELEASED; urgency=low
     - Added Portuguese. (Closes: #362838)
       Thanks to André Costa <skit@argon.ath.cx>.
 
- -- Guillem Jover <guillem@debian.org>  Fri,  5 May 2006 04:33:05 +0300
+ -- Guillem Jover <guillem@debian.org>  Fri,  5 May 2006 04:55:13 +0300
 
 glide (2002.04.10-12) unstable; urgency=low
 
