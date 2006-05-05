@@ -136,12 +136,12 @@ clean:
 binary: binary-indep binary-arch
 
 ifeq ($(DEB_HOST_ARCH),i386)
-BINARY_ARCH_GLIDE2 := binary-libglide2 binary-glide2-bin
+BINARY_ARCH_GLIDE2 := binary-libglide2 binary-glide2-bin binary-libglide2-dev
 endif
 
 binary-indep:
 
-binary-arch: build $(BINARY_ARCH_GLIDE2) binary-libglide3 binary-libglide2-dev binary-libglide3-dev
+binary-arch: build $(BINARY_ARCH_GLIDE2) binary-libglide3 binary-libglide3-dev
 
 binary-libglide2:
 	DH_OPTIONS="-plibglide2" $(this) binary-libglide2-real
