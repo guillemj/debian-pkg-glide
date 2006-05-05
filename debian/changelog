@@ -1,3 +1,9 @@
+glide (2002.04.10-13) UNRELEASED; urgency=low
+
+  * Build all binary dependent packages under binary-arch. (Closes: #366062)
+
+ -- Guillem Jover <guillem@debian.org>  Fri,  5 May 2006 04:33:05 +0300
+
 glide (2002.04.10-12) unstable; urgency=low
 
   * Update FSF's address in debian/copyright.

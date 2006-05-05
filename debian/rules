@@ -139,9 +139,9 @@ ifeq ($(DEB_HOST_ARCH),i386)
 BINARY_ARCH_GLIDE2 := binary-libglide2 binary-glide2-bin
 endif
 
-binary-indep: build binary-libglide2-dev binary-libglide3-dev
+binary-indep:
 
-binary-arch: build $(BINARY_ARCH_GLIDE2) binary-libglide3
+binary-arch: build $(BINARY_ARCH_GLIDE2) binary-libglide3 binary-libglide2-dev binary-libglide3-dev
 
 binary-libglide2:
 	DH_OPTIONS="-plibglide2" $(this) binary-libglide2-real
