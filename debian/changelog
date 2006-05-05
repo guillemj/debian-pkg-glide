@@ -1,6 +1,7 @@
 glide (2002.04.10-13) UNRELEASED; urgency=low
 
   * Build all binary dependent packages under binary-arch. (Closes: #366062)
+  * Use CURDIR instead of PWD in debian/rules.
   * Debconf template translations:
     - Added Portuguese. (Closes: #362838)
       Thanks to André Costa <skit@argon.ath.cx>.

@@ -12,7 +12,7 @@ this = $(MAKE) -f debian/rules
 dbs_build := $(MAKE) -f /usr/share/dbs/sys-build.mk
 glide2_build := $(MAKE) -C $(SRC_DIR)/glide2x -f makefile.linux
 
-pkg_dir := $(PWD)/debian
+pkg_dir := $(CURDIR)/debian
 
 glide2_bin_dir := $(pkg_dir)/glide2-bin
 glide3_bin_dir := $(pkg_dir)/glide3-bin
@@ -95,11 +95,11 @@ build.glide3.h3: $(SRC_DIR)/glide3x $(STAMP_DIR)/build.glide3.h3
 $(STAMP_DIR)/build.glide3.h3:
 	( \
 	  cd $(SRC_DIR)/glide3x; \
-	  mkdir $(PWD)/debian/tmp.h3; \
+	  mkdir $(CURDIR)/debian/tmp.h3; \
 	  ./chores.3dfx --generate "--configure=--enable-fx-glide-hw=h3 \
 		--prefix=/usr" --build-dir=build.h3; \
 	  cd build.h3; \
-	  ./build.3dfx --no-x DESTDIR="$(PWD)/debian/tmp.h3/" \
+	  ./build.3dfx --no-x DESTDIR="$(CURDIR)/debian/tmp.h3/" \
 		CFLAGS="$(CFLAGS)" install; \
 	)
 	touch $(STAMP_DIR)/build.glide3.h3
@@ -108,11 +108,11 @@ build.glide3.h5: $(SRC_DIR)/glide3x $(STAMP_DIR)/build.glide3.h5
 $(STAMP_DIR)/build.glide3.h5:
 	( \
 	  cd $(SRC_DIR)/glide3x; \
-	  mkdir $(PWD)/debian/tmp.h5; \
+	  mkdir $(CURDIR)/debian/tmp.h5; \
 	  ./chores.3dfx --generate "--configure=--enable-fx-glide-hw=h5 \
 		--prefix=/usr" --build-dir=build.h5; \
 	  cd build.h5; \
-	  ./build.3dfx --no-x DESTDIR="$(PWD)/debian/tmp.h5/" \
+	  ./build.3dfx --no-x DESTDIR="$(CURDIR)/debian/tmp.h5/" \
 		CFLAGS="$(CFLAGS)" install; \
 	)
 	touch $(STAMP_DIR)/build.glide3.h5
@@ -120,8 +120,8 @@ $(STAMP_DIR)/build.glide3.h5:
 
 sys-clean:
 	cd $(SRC_DIR)/glide3x; ./chores.3dfx --clean
-	rm -rf $(SRC_DIR)/glide3x/build.h3 $(PWD)/debian/tmp.h3
-	rm -rf $(SRC_DIR)/glide3x/build.h5 $(PWD)/debian/tmp.h5
+	rm -rf $(SRC_DIR)/glide3x/build.h3 $(CURDIR)/debian/tmp.h3
+	rm -rf $(SRC_DIR)/glide3x/build.h5 $(CURDIR)/debian/tmp.h5
 	rm -f $(STAMP_DIR)/build.glide2.* $(STAMP_DIR)/build.glide3.*
 	$(glide2_build) FX_GLIDE_HW=cvg clobber
 	$(glide2_build) FX_GLIDE_HW=h3 clobber
@@ -130,7 +130,7 @@ clean:
 	# No need to run clean
 	$(dbs_build) source.clean
 	rm -f $(STAMP_DIR)
-	rm -rf $(PWD)/debian/tmp.h3 $(PWD)/debian/tmp.h5
+	rm -rf $(CURDIR)/debian/tmp.h3 $(CURDIR)/debian/tmp.h5
 	dh_clean
 
 binary: binary-indep binary-arch
@@ -252,9 +252,9 @@ binary-libglide3-real: build
 
 	dh_installdirs
 
-	$(INSTALL_LIB) $(PWD)/debian/tmp.h3/usr/lib/libglide3.so.3.10.0 \
+	$(INSTALL_LIB) $(CURDIR)/debian/tmp.h3/usr/lib/libglide3.so.3.10.0 \
 		       $(libglide3_dir)/usr/lib/glide3/libglide3_h3.so.3.10.0
-	$(INSTALL_LIB) $(PWD)/debian/tmp.h5/usr/lib/libglide3.so.3.10.0 \
+	$(INSTALL_LIB) $(CURDIR)/debian/tmp.h5/usr/lib/libglide3.so.3.10.0 \
 		       $(libglide3_dir)/usr/lib/glide3/libglide3_h5.so.3.10.0
 
 	dh_strip
@@ -282,7 +282,7 @@ binary-libglide3-dev-real: build
 
 	dh_installdirs
 
-	$(INSTALL_DATA) $(PWD)/debian/tmp.h5/usr/include/glide3/* \
+	$(INSTALL_DATA) $(CURDIR)/debian/tmp.h5/usr/include/glide3/* \
 			$(libglide3_dev_dir)/usr/include/glide3/
 
 	dh_strip
