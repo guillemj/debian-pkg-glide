@@ -1,3 +1,32 @@
+glide (2006.07.04-1) UNRELEASED; urgency=low
+
+  * New Upstream Snapshot.
+    - debian/patches/glide2x-clobber-pic-reg: Remove file. Merged upstream.
+    - debian/patches/glide2x-fix-warnings: Likewise.
+    - debian/patches/glide2x-preprocessor: Likewise.
+    - debian/patches/glide2x-use-3dfx.mak: Likewise.
+    - debian/patches/glide3x-autoconf-update: Likewise.
+    - debian/patches/glide3x-build-fix: Likewise.
+    - debian/patches/glide3x-build-multiargs: Likewise.
+    - debian/patches/glide3x-build-with-voodoo5: Likewise.
+    - debian/patches/glide3x-comments-warnings: Likewise.
+    - debian/patches/glide3x-debug-vaargs: Likewise.
+    - debian/patches/glide3x-fix-warnings: Likewise.
+    - debian/patches/glide3x-libtool-patch: Likewise.
+    - debian/patches/glide3x-preprocessor: Likewise.
+    - debian/patches/swlibs-000-fix-warnings: Likewise.
+    - debian/patches/swlibs-000-makefile-000: Likewise.
+    - debian/patches/swlibs-001-mcpu-flag: Likewise.
+    - debian/patches/swlibs-002-automake: Likewise.
+    - debian/patches/swlibs-003-libm: Likewise.
+    - debian/patches/swlibs-004-ioctl: Likewise.
+    - debian/patches/swlibs-nomore-csh: Likewise.
+    - debian/patches/z04-gcc34-port: Likewise.
+    - debian/patches/z05-gcc4-fix: Likewise.
+    - debian/patches/z06-gcc401-fix: Likewise.
+
+ -- Guillem Jover <guillem@debian.org>  Tue,  4 Jul 2006 04:47:24 +0300
+
 glide (2002.04.10-13) unstable; urgency=low
 
   * Build all binary dependent packages under binary-arch. (Closes: #366062)
