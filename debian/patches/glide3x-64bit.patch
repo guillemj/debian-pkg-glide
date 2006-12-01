@@ -1,0 +1,2093 @@
+#DPATCHLEVEL=0
+--- glide3x/h3/glide3/src/diget.c	2006-07-04 04:42:11.000000000 +0300
++++ glide3x/h3/glide3/src/diget.c	2006-07-04 07:53:25.000000000 +0300
+@@ -630,11 +630,10 @@ GR_DIENTRY(grGet, FxU32, (FxU32 pname, F
+     break;
+ 
+   case GR_SURFACE_TEXTURE:
+-    if (plength == sizeof(unsigned long)) {
+-      unsigned long *p = (unsigned long *)params;
++    if (plength == sizeof(AnyPtr)) {
+       GR_DCL_GC;
+ 
+-      *p = (unsigned long) &gc->tBuffer;
++      *params = (AnyPtr)&gc->tBuffer;
+       retVal = plength;
+     }
+     break;
+--- glide3x/h3/glide3/src/disst.c	2006-07-04 04:42:11.000000000 +0300
++++ glide3x/h3/glide3/src/disst.c	2006-07-04 07:53:25.000000000 +0300
+@@ -186,7 +186,7 @@ GR_DIENTRY(grSstSelect, void, ( int whic
+     GrErrorCallback( "grSstSelect:  non-existent SST", FXTRUE );
+ 
+   _GlideRoot.current_sst = which;
+-  setThreadValue( (unsigned long)&_GlideRoot.GCs[_GlideRoot.current_sst] );
++  setThreadValue((AnyPtr)&_GlideRoot.GCs[_GlideRoot.current_sst]);
+ 
+ #ifdef GLIDE_MULTIPLATFORM
+   _GlideRoot.curGCFuncs = _GlideRoot.curGC->gcFuncs;
+--- glide3x/h3/glide3/src/distrip.c	2006-07-04 04:42:11.000000000 +0300
++++ glide3x/h3/glide3/src/distrip.c	2006-07-04 07:53:25.000000000 +0300
+@@ -550,10 +550,10 @@ GR_DIENTRY(grDrawVertexArrayContiguous, 
+     else {
+       void *b_ptr, *c_ptr;
+       while ((int)Count >= 3) {
+-        b_ptr = (void *)((unsigned long)pointers + stride);
+-        c_ptr = (void *)((unsigned long)pointers + stride*2);
++        b_ptr = (void *)((AnyPtr)pointers + stride);
++        c_ptr = (void *)((AnyPtr)pointers + stride * 2);
+         TRISETUP(pointers, b_ptr, c_ptr);
+-        pointers = (void *)((unsigned long)c_ptr + stride);
++        pointers = (void *)((AnyPtr)c_ptr + stride);
+         Count -= 3;
+       }
+     }
+--- glide3x/h3/glide3/src/fifo.c	2006-07-04 04:42:12.000000000 +0300
++++ glide3x/h3/glide3/src/fifo.c	2006-07-04 07:53:25.000000000 +0300
+@@ -493,7 +493,7 @@ static const char * h3SstIORegNames[] = 
+ } ;
+ 
+ 
+-#define GEN_INDEX(a) ((((unsigned long) a) - ((unsigned long) gc->reg_ptr)) >> 2)
++#define GEN_INDEX(a) ((((AnyPtr) a) - ((AnyPtr)gc->reg_ptr)) >> 2)
+ 
+ void
+ _grFifoWriteDebug(FxU32 addr, FxU32 val, FxU32 fifoPtr)
+@@ -850,7 +850,7 @@ _grCommandTransportMakeRoom(const FxI32 
+ #endif
+     if (gc->contextP) {
+ #if 0
+-      FxU32 wrapAddr = 0x00UL;
++      AnyPtr wrapAddr = 0x00UL;
+ #endif
+       FxU32 checks;
+ 
+@@ -897,11 +897,11 @@ _grCommandTransportMakeRoom(const FxI32 
+   again:
+       /* do we need to stall? */
+       {
+-        FxU32 lastHwRead = gc->cmdTransportInfo.fifoRead;
++        AnyPtr lastHwRead = gc->cmdTransportInfo.fifoRead;
+         FxI32 roomToReadPtr = gc->cmdTransportInfo.roomToReadPtr;
+         
+         while (roomToReadPtr < blockSize) {
+-          FxU32 curReadPtr = HW_FIFO_PTR(FXTRUE);
++          AnyPtr curReadPtr = HW_FIFO_PTR(FXTRUE);
+           FxU32 curReadDist = curReadPtr - lastHwRead;
+           
+           checks++;
+@@ -934,8 +934,8 @@ _grCommandTransportMakeRoom(const FxI32 
+             checks = 0;
+           }
+ #endif /* GLIDE_DEBUG */
+-          GR_ASSERT((curReadPtr >= (FxU32)gc->cmdTransportInfo.fifoStart) &&
+-                    (curReadPtr < (FxU32)gc->cmdTransportInfo.fifoEnd));
++          GR_ASSERT((curReadPtr >= (AnyPtr)gc->cmdTransportInfo.fifoStart) &&
++                    (curReadPtr < (AnyPtr)gc->cmdTransportInfo.fifoEnd));
+               
+           roomToReadPtr += curReadDist;
+               
+@@ -947,8 +947,8 @@ _grCommandTransportMakeRoom(const FxI32 
+           lastHwRead = curReadPtr;
+         }
+           
+-        GR_ASSERT((lastHwRead >= (FxU32)gc->cmdTransportInfo.fifoStart) &&
+-                  (lastHwRead < (FxU32)gc->cmdTransportInfo.fifoEnd));
++        GR_ASSERT((lastHwRead >= (AnyPtr)gc->cmdTransportInfo.fifoStart) &&
++                  (lastHwRead < (AnyPtr)gc->cmdTransportInfo.fifoEnd));
+           
+         /* Update cached copies */
+         gc->cmdTransportInfo.fifoRead = lastHwRead;
+@@ -992,7 +992,7 @@ _grCommandTransportMakeRoom(const FxI32 
+         P6FENCE;
+     
+ #if 0
+-        wrapAddr = (FxU32)gc->cmdTransportInfo.fifoPtr;
++        wrapAddr = (AnyPtr)gc->cmdTransportInfo.fifoPtr;
+ #endif
+           
+         /* Update roomXXX fields for the actual wrap */
+@@ -1022,12 +1022,14 @@ _grCommandTransportMakeRoom(const FxI32 
+                 "\tfifoBlock: (0x%X : 0x%X)\n"
+                 "\tfifoRoom: (0x%X : 0x%X : 0x%X)\n"
+                 "\tfifo hw: (0x%X : 0x%X) : (0x%X : 0x%X : 0x%X)\n",
+-                (((FxU32)gc->cmdTransportInfo.fifoPtr - (FxU32)gc->cmdTransportInfo.fifoStart) + 
+-                 (FxU32)gc->cmdTransportInfo.fifoOffset),
++                (((AnyPtr)gc->cmdTransportInfo.fifoPtr -
++                  (AnyPtr)gc->cmdTransportInfo.fifoStart) +
++                 (AnyPtr)gc->cmdTransportInfo.fifoOffset),
+                 blockSize,
+                 gc->cmdTransportInfo.roomToReadPtr, 
+                 gc->cmdTransportInfo.roomToEnd, gc->cmdTransportInfo.fifoRoom,
+-                HW_FIFO_PTR(FXTRUE) - (FxU32)gc->rawLfb, gc->cmdTransportInfo.fifoRead, 
++                HW_FIFO_PTR(FXTRUE) - (AnyPtr)gc->rawLfb,
++                gc->cmdTransportInfo.fifoRead,
+                 GR_CAGP_GET(depth), GR_CAGP_GET(holeCount), GR_GET(hw->status));
+       
+       FIFO_ASSERT();
+@@ -1067,10 +1069,10 @@ _grH3FifoDump_Linear(const FxU32* const 
+ }
+ 
+ 
+-unsigned long
++AnyPtr
+ _grHwFifoPtr(FxBool ignored)
+ {
+-  unsigned long rVal = 0;
++  AnyPtr rVal = 0;
+ 
+   FxU32 status, readPtrL1, readPtrL2;
+   GR_DCL_GC;
+@@ -1089,7 +1091,7 @@ _grHwFifoPtr(FxBool ignored)
+ #endif      
+       readPtrL2 = GET(gc->cRegs->cmdFifo0.readPtrL);
+     } while (readPtrL1 != readPtrL2);
+-    rVal = (((unsigned long)gc->cmdTransportInfo.fifoStart) + 
++    rVal = (((AnyPtr)gc->cmdTransportInfo.fifoStart) +
+             readPtrL2 - 
+             (FxU32)gc->cmdTransportInfo.fifoOffset);
+   }
+@@ -1192,8 +1194,30 @@ _reg_group_begin_internal_wax( FxU32 __r
+ #endif /* USE_PACKET_FIFO */
+ 
+ #if DRI_BUILD
++
++#ifdef __alpha__
++FxU8 _fxget8(FxU8 *pval)
++{
++    __asm__ __volatile__("mb": : :"memory");
++    return *pval;
++}
++
++FxU16 _fxget16(FxU16 *pval)
++{
++    __asm__ __volatile__("mb": : :"memory");
++    return *pval;
++}
++
++FxU32 _fxget32(FxU32 *pval)
++{
++    __asm__ __volatile__("mb": : :"memory");
++    return *pval;
++}
++#endif /* __alpha__ */
++
+ void
+-_grImportFifo(int fifoPtr, int fifoRead) {
++_grImportFifo(AnyPtr fifoPtr, AnyPtr fifoRead)
++{
+   struct cmdTransportInfo* gcFifo;
+   FxU32 readPos;
+   GR_DCL_GC;
+@@ -1211,13 +1235,14 @@ _grImportFifo(int fifoPtr, int fifoRead)
+   gcFifo=&gc->cmdTransportInfo;
+   readPos=readPos-gcFifo->fifoOffset;
+   gcFifo->fifoPtr = gcFifo->fifoStart + (readPos>>2);
+-  gcFifo->fifoRead = (unsigned long)gcFifo->fifoPtr;
++  gcFifo->fifoRead = (AnyPtr)gcFifo->fifoPtr;
+ #else
+   gcFifo=&gc->cmdTransportInfo;
+   gcFifo->fifoPtr = gc->rawLfb+(fifoPtr>>2);
+   gcFifo->fifoRead = ((int)gc->rawLfb)+fifoRead;
+ #endif
+-  gcFifo->roomToReadPtr = gcFifo->fifoRead-((long)gcFifo->fifoPtr)-FIFO_END_ADJUST-sizeof(FxU32);
++  gcFifo->roomToReadPtr = gcFifo->fifoRead - ((AnyPtr)gcFifo->fifoPtr) -
++                          FIFO_END_ADJUST - sizeof(FxU32);
+   if (gcFifo->roomToReadPtr<0) gcFifo->roomToReadPtr+=gcFifo->fifoSize;
+   gcFifo->roomToEnd = gcFifo->fifoSize - 
+     ((gcFifo->fifoPtr-gcFifo->fifoStart)<<2) -
+@@ -1230,12 +1255,13 @@ _grImportFifo(int fifoPtr, int fifoRead)
+ }
+ 
+ void
+-_grExportFifo(int *fifoPtr, int *fifoRead) {
++_grExportFifo(FxU32 *fifoPtr, FxU32 *fifoRead)
++{
+   struct cmdTransportInfo* gcFifo;
+   GR_DCL_GC;
+   gcFifo=&gc->cmdTransportInfo;
+   *fifoPtr=(gcFifo->fifoPtr-gc->rawLfb)<<2;
+-  *fifoRead=(gcFifo->fifoRead-(long)gc->rawLfb);
++  *fifoRead = gcFifo->fifoRead - (AnyPtr)gc->rawLfb;
+ }
+ 
+ #endif
+--- glide3x/h3/glide3/src/fxcmd.h	2006-07-04 04:42:12.000000000 +0300
++++ glide3x/h3/glide3/src/fxcmd.h	2006-07-04 07:53:25.000000000 +0300
+@@ -160,6 +160,12 @@ extern FxU32
+ _grGet32(volatile FxU32* const sstAddr);
+ #endif /* USE_PACKET_FIFO */
+ 
++#ifdef DRI_BUILD
++void _grImportFifo(AnyPtr fifoPtr, AnyPtr fifoRead);
++void _grExportFifo(FxU32 *fifoPtr, FxU32 *fifoRead);
++void _grInvalidateAll(void);
++#endif
++
+ #if !USE_PACKET_FIFO
+ /* NOTE: fifoFree is the number of entries, each is 8 bytes */
+ #define GR_CHECK_FOR_ROOM(n,p) \
+@@ -194,7 +200,7 @@ do { \
+ /* NB: This should be used sparingly because it does a 'real' hw read
+  * which is *SLOW*.
+  */
+-unsigned long _grHwFifoPtr(FxBool);
++AnyPtr _grHwFifoPtr(FxBool);
+ #define HW_FIFO_PTR(a) _grHwFifoPtr(a)
+ 
+ #if FIFO_ASSERT_FULL
+@@ -205,7 +211,7 @@ unsigned long _grHwFifoPtr(FxBool);
+ #else /* !FIFO_ASSERT_FULL */
+ #define FIFO_ASSERT() \
+ ASSERT_FAULT_IMMED((FxU32)gc->cmdTransportInfo.fifoRoom < gc->cmdTransportInfo.fifoSize); \
+-ASSERT_FAULT_IMMED((FxU32)gc->cmdTransportInfo.fifoPtr < (FxU32)gc->cmdTransportInfo.fifoEnd)
++ASSERT_FAULT_IMMED((AnyPtr)gc->cmdTransportInfo.fifoPtr < (AnyPtr)gc->cmdTransportInfo.fifoEnd)
+ #endif /* !FIFO_ASSERT_FULL */
+ 
+ #if (GLIDE_PLATFORM & GLIDE_OS_WIN32)
+@@ -246,7 +252,7 @@ extern void _grBumpNGrind(void);
+ #define GR_CHECK_FOR_ROOM(__n, __p) \
+ do { \
+   const FxU32 writeSize = (__n) + ((__p) * sizeof(FxU32));            /* Adjust for size of hdrs */ \
+-  ASSERT(((FxU32)(gc->cmdTransportInfo.fifoPtr) & FIFO_ALIGN_MASK) == 0); /* alignment */ \
++  ASSERT(((AnyPtr)(gc->cmdTransportInfo.fifoPtr) & FIFO_ALIGN_MASK) == 0); /* alignment */ \
+   ASSERT(writeSize < gc->cmdTransportInfo.fifoSize - sizeof(FxU32)); \
+   FIFO_ASSERT(); \
+   if (gc->cmdTransportInfo.fifoRoom < (FxI32)writeSize) { \
+@@ -274,7 +280,7 @@ if (gc->cmdTransportInfo.autoBump) {\
+ }
+ 
+ #define GR_SET_FIFO_PTR(__n, __p) \
+-  gc->checkPtr = (FxU32)gc->cmdTransportInfo.fifoPtr; \
++  gc->checkPtr = (AnyPtr)gc->cmdTransportInfo.fifoPtr; \
+   gc->checkCounter = ((__n) + ((__p) << 2))
+ #else
+ #define GR_CHECK_FIFO_PTR() 
+@@ -286,7 +292,7 @@ if (gc->cmdTransportInfo.autoBump) {\
+                   GDBG_ERROR("GR_ASSERT_SIZE","byte counter should be %d but is %d\n", \
+                               gc->expected_counter,gc->counter); \
+                 GR_CHECK_FIFO_PTR(); \
+-                gc->checkPtr = (FxU32)gc->cmdTransportInfo.fifoPtr; \
++                gc->checkPtr = (AnyPtr)gc->cmdTransportInfo.fifoPtr; \
+                 gc->checkCounter = 0; \
+                 ASSERT(gc->counter == gc->expected_counter); \
+                 gc->counter = gc->expected_counter = 0
+@@ -661,7 +667,7 @@ do {                                    
+     GDBG_INFO(120, "REG_GROUP_SET:\n");                                  \
+   }                                                                      \
+   GDBG_INFO(120, "\tFile: %s Line %d\n", __FILE__, __LINE__);            \
+-  GDBG_INFO(120, "\tfifoPtr: 0x%x, Val: 0x%x\n", (FxU32) _regGroupFifoPtr - (FxU32)gc->rawLfb, __val);\
++  GDBG_INFO(120, "\tfifoPtr: 0x%x, Val: 0x%x\n", (AnyPtr) _regGroupFifoPtr - (AnyPtr)gc->rawLfb, __val);\
+   SET_FIFO(*_regGroupFifoPtr++, (__val)); \
+   GR_INC_SIZE(sizeof(FxU32)); \
+ } while(0)
+@@ -682,7 +688,7 @@ do {                                    
+     GDBG_INFO(120, "REG_GROUP_SET:\n");                                  \
+   }                                                                      \
+   GDBG_INFO(120, "\tFile: %s Line %d\n", __FILE__, __LINE__);            \
+-  GDBG_INFO(120, "\tfifoPtr: 0x%x, Val: 0x%x\n", (FxU32) _regGroupFifoPtr - (FxU32)gc->rawLfb, __val);\
++  GDBG_INFO(120, "\tfifoPtr: 0x%x, Val: 0x%x\n", (AnyPtr) _regGroupFifoPtr - (AnyPtr)gc->rawLfb, __val);\
+   SET_FIFO(*_regGroupFifoPtr++, (__val)); \
+   GR_INC_SIZE(sizeof(FxU32)); \
+ } while(0)
+@@ -698,7 +704,7 @@ do { \
+   }                                                                      \
+   GDBG_INFO(220, "REG_GROUP_SET_WAX:\n");\
+   GDBG_INFO(220, "\tFile: %s Line %d\n", __FILE__, __LINE__);\
+-  GDBG_INFO(220, "\tfifoPtr: 0x%x, Val: 0x%x\n", (FxU32) _regGroupFifoPtr - (FxU32)gc->rawLfb, __val);\
++  GDBG_INFO(220, "\tfifoPtr: 0x%x, Val: 0x%x\n", (AnyPtr) _regGroupFifoPtr - (AnyPtr)gc->rawLfb, __val);\
+   SET_FIFO(*_regGroupFifoPtr++, (__val)); \
+   GR_INC_SIZE(sizeof(FxU32)); \
+ } while(0)
+@@ -728,8 +734,8 @@ do { \
+ 
+ #define REG_GROUP_END() \
+   ASSERT(_checkP); \
+-  ASSERT((((unsigned long)_regGroupFifoPtr - (unsigned long)gc->cmdTransportInfo.fifoPtr) >> 2) == _groupNum + 1); \
+-  gc->cmdTransportInfo.fifoRoom -= ((unsigned long)_regGroupFifoPtr - (unsigned long)gc->cmdTransportInfo.fifoPtr); \
++  ASSERT((((AnyPtr)_regGroupFifoPtr - (AnyPtr)gc->cmdTransportInfo.fifoPtr) >> 2) == _groupNum + 1); \
++  gc->cmdTransportInfo.fifoRoom -= ((AnyPtr)_regGroupFifoPtr - (AnyPtr)gc->cmdTransportInfo.fifoPtr); \
+   gc->cmdTransportInfo.fifoPtr = (FxU32*)_regGroupFifoPtr; \
+   GDBG_INFO(gc->myLevel + 200, "\tGroupEnd: (0x%X : 0x%X)\n", \
+             gc->cmdTransportInfo.fifoPtr, gc->cmdTransportInfo.fifoRoom); \
+@@ -742,7 +748,7 @@ do { \
+   if (gc->contextP) { \
+     FxU32* curFifoPtr = gc->cmdTransportInfo.fifoPtr; \
+     FXUNUSED(__base); \
+-    GR_ASSERT(((FxU32)(curFifoPtr) & FIFO_ALIGN_MASK) == 0);    /* alignment */ \
++    GR_ASSERT(((AnyPtr)(curFifoPtr) & FIFO_ALIGN_MASK) == 0);    /* alignment */ \
+     GR_CHECK_COMPATABILITY(FN_NAME, \
+                            !gc->open, \
+                            "Called before grSstWinOpen()"); \
+@@ -785,7 +791,7 @@ do { \
+   if (gc->contextP) { \
+     FxU32* curFifoPtr = gc->cmdTransportInfo.fifoPtr; \
+     FXUNUSED(__base); \
+-    GR_ASSERT(((FxU32)(curFifoPtr) & FIFO_ALIGN_MASK) == 0);    /* alignment */ \
++    GR_ASSERT(((AnyPtr)(curFifoPtr) & FIFO_ALIGN_MASK) == 0);    /* alignment */ \
+     GR_CHECK_COMPATABILITY(FN_NAME, \
+                            !gc->open, \
+                            "Called before grSstWinOpen()"); \
+@@ -955,27 +961,27 @@ _grH3FifoDump_Linear(const FxU32* const 
+   pCount++; \
+   GDBG_INFO(gc->myLevel + 200, "\t(0x%X) : V#: 0x%X - P#: 0x%X - ParamVal: (%f : 0x%X)\n", \
+             (FxU32)tPackPtr, \
+-            ((FxU32)tPackPtr - ((FxU32)gc->cmdTransportInfo.fifoPtr + sizeof(FxU32))) / sVertex, \
+-             (((FxU32)tPackPtr - ((FxU32)gc->cmdTransportInfo.fifoPtr + sizeof(FxU32))) % sVertex) >> 2, \
++            ((AnyPtr)tPackPtr - ((AnyPtr)gc->cmdTransportInfo.fifoPtr + sizeof(FxU32))) / sVertex, \
++             (((AnyPtr)tPackPtr - ((AnyPtr)gc->cmdTransportInfo.fifoPtr + sizeof(FxU32))) % sVertex) >> 2, \
+             (((__val) < 786432.875) ? (__val) : ((__val) - 786432.875)), \
+             (__floatVal))
+ #define SETF_DUMP(__val) \
+   pCount++; \
+   GDBG_INFO(gc->myLevel + 200, "\t(0x%X) : V#: 0x%X - P#: 0x%X - ParamVal: %f\n", \
+             (FxU32)tPackPtr, \
+-            ((FxU32)tPackPtr - ((FxU32)gc->cmdTransportInfo.fifoPtr + sizeof(FxU32))) / sVertex, \
+-             (((FxU32)tPackPtr - ((FxU32)gc->cmdTransportInfo.fifoPtr + sizeof(FxU32))) % sVertex) >> 2, \
++            ((AnyPtr)tPackPtr - ((AnyPtr)gc->cmdTransportInfo.fifoPtr + sizeof(FxU32))) / sVertex, \
++             (((AnyPtr)tPackPtr - ((AnyPtr)gc->cmdTransportInfo.fifoPtr + sizeof(FxU32))) % sVertex) >> 2, \
+             (((__val) < 786432.875) ? (__val) : ((__val) - 786432.875)))
+ #define SET_DUMP(__val) \
+   pCount++; \
+   GDBG_INFO(gc->myLevel + 200, "\t(0x%X) : V#: 0x%X - P#: 0x%X - ParamVal: 0x%X\n", \
+             (FxU32)tPackPtr, \
+-            ((FxU32)tPackPtr - ((FxU32)gc->cmdTransportInfo.fifoPtr + sizeof(FxU32))) / sVertex, \
+-             (((FxU32)tPackPtr - ((FxU32)gc->cmdTransportInfo.fifoPtr + sizeof(FxU32))) % sVertex) >> 2, \
++            ((AnyPtr)tPackPtr - ((AnyPtr)gc->cmdTransportInfo.fifoPtr + sizeof(FxU32))) / sVertex, \
++             (((AnyPtr)tPackPtr - ((AnyPtr)gc->cmdTransportInfo.fifoPtr + sizeof(FxU32))) % sVertex) >> 2, \
+             (__val))
+ #define TRI_ASSERT() \
+   GR_ASSERT(pCount == (nVertex * (sVertex >> 2))); \
+-  ASSERT(((FxU32)tPackPtr - (FxU32)gc->cmdTransportInfo.fifoPtr) == (nVertex * sVertex) + sizeof(FxU32))
++  ASSERT(((AnyPtr)tPackPtr - (AnyPtr)gc->cmdTransportInfo.fifoPtr) == (nVertex * sVertex) + sizeof(FxU32))
+ #else /* !GDBG_INFO_ON */
+ #define DEBUGFIFODUMP_TRI(__packetAddr)
+ #define DEBUGFIFODUMP_LINEAR(__packetAddr)
+@@ -1040,7 +1046,7 @@ do { \
+ 
+ #define TRI_END \
+   TRI_ASSERT(); \
+-  gc->cmdTransportInfo.fifoRoom -= ((unsigned long)tPackPtr - (unsigned long)gc->cmdTransportInfo.fifoPtr); \
++  gc->cmdTransportInfo.fifoRoom -= ((AnyPtr)tPackPtr - (AnyPtr)gc->cmdTransportInfo.fifoPtr); \
+   gc->cmdTransportInfo.fifoPtr = tPackPtr; \
+   GDBG_INFO(gc->myLevel + 200, "\tTriEnd: (0x%X : 0x%X)\n", tPackPtr, gc->cmdTransportInfo.fifoRoom); \
+   FIFO_ASSERT(); \
+@@ -1059,12 +1065,12 @@ do { \
+   GR_CHECK_COMPATABILITY(FN_NAME, \
+                          !gc->open, \
+                          "Called before grSstWinOpen()"); \
+-  GR_ASSERT(((unsigned long)(packetPtr) & FIFO_ALIGN_MASK) == 0);        /* alignment */ \
++  GR_ASSERT(((AnyPtr)(packetPtr) & FIFO_ALIGN_MASK) == 0);        /* alignment */ \
+   GR_ASSERT((__numWords) > 0);                                   /* packet size */ \
+   GR_ASSERT((__numWords) < ((0x01 << 19) - 2)); \
+   GR_ASSERT((((FxU32)(__numWords) + 2) << 2) <= (FxU32)gc->cmdTransportInfo.fifoRoom); \
+-  GR_ASSERT(((unsigned long)packetPtr + (((__numWords) + 2) << 2)) < \
+-            (unsigned long)gc->cmdTransportInfo.fifoEnd); \
++  GR_ASSERT(((AnyPtr)packetPtr + (((__numWords) + 2) << 2)) < \
++            (AnyPtr)gc->cmdTransportInfo.fifoEnd); \
+   GR_ASSERT((hdr2 & 0xE0000000UL) == 0x00UL); \
+   GR_ASSERT(((__addr) & 0x03UL) == 0x00UL); \
+   FIFO_ASSERT(); \
+@@ -1109,8 +1115,8 @@ do { \
+ 
+ #define FIFO_LINEAR_WRITE_END \
+   DEBUGFIFODUMP_LINEAR(gc->cmdTransportInfo.fifoPtr); \
+-  GR_ASSERT((((unsigned long)packetPtr - (unsigned long)gc->cmdTransportInfo.fifoPtr) >> 2) == __writeSize + 2); \
+-  gc->cmdTransportInfo.fifoRoom -= ((unsigned long)packetPtr - (unsigned long)gc->cmdTransportInfo.fifoPtr); \
++  GR_ASSERT((((AnyPtr)packetPtr - (AnyPtr)gc->cmdTransportInfo.fifoPtr) >> 2) == __writeSize + 2); \
++  gc->cmdTransportInfo.fifoRoom -= ((AnyPtr)packetPtr - (AnyPtr)gc->cmdTransportInfo.fifoPtr); \
+   gc->cmdTransportInfo.fifoPtr = packetPtr; \
+   GDBG_INFO(gc->myLevel + 200, "\tLinearEnd: (0x%X : 0x%X)\n", \
+             packetPtr, gc->cmdTransportInfo.fifoRoom); \
+--- glide3x/h3/glide3/src/fxglide.h	2006-07-04 04:42:12.000000000 +0300
++++ glide3x/h3/glide3/src/fxglide.h	2006-07-04 07:53:25.000000000 +0300
+@@ -1101,7 +1101,7 @@ typedef struct GrGC_s
+           SET(*curFifoPtr++, *curPktData++); \
+         } \
+         GR_INC_SIZE((__writeCount) * sizeof(FxU32)); \
+-        gc->cmdTransportInfo.fifoRoom -= ((unsigned long)curFifoPtr - (unsigned long)gc->cmdTransportInfo.fifoPtr); \
++        gc->cmdTransportInfo.fifoRoom -= ((AnyPtr)curFifoPtr - (AnyPtr)gc->cmdTransportInfo.fifoPtr); \
+         gc->cmdTransportInfo.fifoPtr = curFifoPtr; \
+       } \
+       GR_CHECK_SIZE(); \
+@@ -1220,7 +1220,7 @@ typedef struct GrGC_s
+                           */
+     
+     FxU32* fifoPtr;      /* Current write pointer into fifo */
+-    unsigned long   fifoRead;     /* Last known hw read ptr. 
++    AnyPtr fifoRead;     /* Last known hw read ptr.
+                           * If on an sli enabled system this will be
+                           * the 'closest' hw read ptr of the sli
+                           * master and slave.
+@@ -1304,11 +1304,11 @@ typedef struct GrGC_s
+     frontBuffer,
+     backBuffer,
+     buffers[4];
+-  unsigned long
++  AnyPtr
+     lfbBuffers[4];              /* Tile relative addresses of the color/aux
+                                  * buffers for lfbReads.
+                                  */  
+-  unsigned long lockPtrs[2];        /* pointers to locked buffers */
++  AnyPtr lockPtrs[2];           /* pointers to locked buffers */
+   FxU32 fbStride;
+ 
+   struct {
+@@ -1343,7 +1343,7 @@ typedef struct GrGC_s
+   FxI32 expected_counter;       /* the number of bytes expected to be sent */
+ 
+   FxU32 checkCounter;
+-  FxU32 checkPtr;
++  AnyPtr checkPtr;
+    
+   FxVideoTimingInfo* vidTimings;/* init code overrides */
+ 
+@@ -1921,7 +1921,7 @@ getThreadValueFast() {
+ #endif
+ 
+ #ifdef __linux__
+-extern unsigned long threadValueLinux;
++extern AnyPtr threadValueLinux;
+ #define getThreadValueFast() threadValueLinux
+ #endif
+ 
+@@ -1941,9 +1941,9 @@ void 
+ initThreadStorage( void );
+ 
+ void 
+-setThreadValue( unsigned long value );
++setThreadValue( AnyPtr value );
+ 
+-unsigned long
++AnyPtr
+ getThreadValueSLOW( void );
+ 
+ void 
+--- glide3x/h3/glide3/src/gaa.c	2006-07-04 04:42:12.000000000 +0300
++++ glide3x/h3/glide3/src/gaa.c	2006-07-04 07:53:25.000000000 +0300
+@@ -1081,8 +1081,8 @@ _grAADrawLineStrip(FxI32 mode, FxI32 lty
+         ady = -ady;
+       /*
+       if (gc->state.vData.colorType != GR_FLOAT) {
+-        *((FxU32 *)&v1a)=*((FxU32 *)((int)v1 + ia))&0x00ffffff;
+-        *((FxU32 *)&v2a)=*((FxU32 *)((int)v2 + ia))&0x00ffffff;
++        *((FxU32 *)&v1a)=*((FxU32 *)((long)v1 + ia))&0x00ffffff;
++        *((FxU32 *)&v2a)=*((FxU32 *)((long)v2 + ia))&0x00ffffff;
+       }
+       */
+       
+--- glide3x/h3/glide3/src/gdraw.c	2006-07-04 04:42:12.000000000 +0300
++++ glide3x/h3/glide3/src/gdraw.c	2006-07-04 07:53:25.000000000 +0300
+@@ -356,7 +356,7 @@ GR_ENTRY(grDrawTriangle, void, (const vo
+   GR_INC_SIZE(sizeof(FxU32))
+ 
+ #define DA_END \
+-  gc->cmdTransportInfo.fifoRoom -= ((unsigned long)packetPtr - (unsigned long)gc->cmdTransportInfo.fifoPtr); \
++  gc->cmdTransportInfo.fifoRoom -= ((AnyPtr)packetPtr - (AnyPtr)gc->cmdTransportInfo.fifoPtr); \
+   gc->cmdTransportInfo.fifoPtr = packetPtr; \
+   FIFO_ASSERT(); \
+ }
+--- glide3x/h3/glide3/src/gerror.c	2006-07-04 04:42:12.000000000 +0300
++++ glide3x/h3/glide3/src/gerror.c	2006-07-04 07:53:25.000000000 +0300
+@@ -278,7 +278,7 @@ _grAssert(char *exp, char *fileName, int
+     
+     gdbg_printf("Command Fifo:\n");
+     gdbg_printf("\tSoftware:\n");
+-    gdbg_printf("\t\tfifoPtr:           0x%X\n", (unsigned long)gc->cmdTransportInfo.fifoPtr - (unsigned long) gc->rawLfb);
++    gdbg_printf("\t\tfifoPtr:           0x%X\n", (AnyPtr)gc->cmdTransportInfo.fifoPtr - (AnyPtr) gc->rawLfb);
+     gdbg_printf("\t\tfifoOffset:        0x%X\n", gc->cmdTransportInfo.fifoOffset); 
+     gdbg_printf("\t\tfifoEnd:           0x%X\n", gc->cmdTransportInfo.fifoEnd - gc->rawLfb);
+     gdbg_printf("\t\tfifoSize:          0x%X\n", gc->cmdTransportInfo.fifoSize); 
+@@ -288,7 +288,7 @@ _grAssert(char *exp, char *fileName, int
+ 
+     if ( !gc->windowed ) {
+       gdbg_printf("\tHardware:\n");
+-      gdbg_printf("\t\treadPtrL:          0x%X\n", HW_FIFO_PTR(FXTRUE) - (unsigned long)gc->rawLfb);
++      gdbg_printf("\t\treadPtrL:          0x%X\n", HW_FIFO_PTR(FXTRUE) - (AnyPtr)gc->rawLfb);
+       gdbg_printf("\t\tdepth:             0x%X\n", GR_CAGP_GET(depth));
+       gdbg_printf("\t\tholeCount:         0x%X\n", GR_CAGP_GET(holeCount));
+       gdbg_printf("\t\tbaseAddrL:         0x%X\n", GR_CAGP_GET(baseAddrL));
+--- glide3x/h3/glide3/src/glide.h	2006-07-04 04:42:12.000000000 +0300
++++ glide3x/h3/glide3/src/glide.h	2006-07-04 07:53:25.000000000 +0300
+@@ -54,7 +54,7 @@ typedef FxU8  GrAlpha_t;
+ typedef FxU32 GrMipMapId_t;
+ typedef FxU32 GrStipplePattern_t;
+ typedef FxU8  GrFog_t;
+-typedef unsigned long GrContext_t;
++typedef AnyPtr GrContext_t;
+ typedef int (FX_CALL *GrProc)();
+ 
+ /*
+--- glide3x/h3/glide3/src/gpci.c	2006-07-04 04:42:12.000000000 +0300
++++ glide3x/h3/glide3/src/gpci.c	2006-07-04 07:53:25.000000000 +0300
+@@ -1049,7 +1049,7 @@ DllMain(HANDLE hInst, ULONG  ul_reason_f
+       GR_DCL_GC;
+ 
+       /* If there is no current gc in tls then set the current context. */
+-      if (gc == NULL) setThreadValue((unsigned long)&_GlideRoot.GCs[_GlideRoot.current_sst]);
++      if (gc == NULL) setThreadValue((AnyPtr)&_GlideRoot.GCs[_GlideRoot.current_sst]);
+     }
+     break;
+   case DLL_THREAD_DETACH:
+--- glide3x/h3/glide3/src/gsst.c	2006-03-23 03:18:12.000000000 +0200
++++ glide3x/h3/glide3/src/gsst.c	2006-07-04 07:53:25.000000000 +0300
+@@ -559,9 +559,6 @@
+ #define kPageBoundarySlop 0x1000UL
+ #define kPageBoundaryMask (kPageBoundarySlop - 1)
+ 
+-/* Some forward declarations */
+-void _grImportFifo (int, int);
+-
+ /* Init hw */
+ 
+ ResEntry
+--- glide3x/h3/glide3/src/gthread.c	2006-07-04 04:42:12.000000000 +0300
++++ glide3x/h3/glide3/src/gthread.c	2006-07-04 07:53:25.000000000 +0300
+@@ -63,13 +63,15 @@ initThreadStorage( void ) 
+ 
+ } /* initThreadStorage */
+ 
+-void setThreadValue( unsigned long value ) {
++void setThreadValue(AnyPtr value)
++{
+     GR_CHECK_F( "setThreadValue", !threadInit, "Thread storage not initialized\n" );
+     TlsSetValue( _GlideRoot.tlsIndex, (void*)value );
+ }
+ 
+ #pragma warning (4:4035)        /* No return value */
+-unsigned long getThreadValueSLOW( void ) {
++AnyPtr getThreadValueSLOW(void)
++{
+     GR_CHECK_F( "getThreadValue", !threadInit, "Thread storage not initialized\n" );
+ 
+ #if 0
+@@ -116,18 +118,18 @@ void endCriticalSection( void ) {
+ #include "fxglide.h"
+ #include "fxcmd.h"
+ 
+-FxU32 _threadValueMacOS;
++AnyPtr _threadValueMacOS;
+ 
+ void initThreadStorage(void)
+ {
+ }
+ 
+-void setThreadValue( unsigned long value )
++void setThreadValue(AnyPtr value)
+ {
+ 	_threadValueMacOS = value;
+ }
+ 
+-FxU32 getThreadValueSLOW( void )
++AnyPtr getThreadValueSLOW(void)
+ {
+ 	return _threadValueMacOS;
+ }
+@@ -157,18 +159,18 @@ void endCriticalSection(void)
+ #include "fxglide.h"
+ #include "fxcmd.h"
+ 
+-unsigned long threadValueLinux;
++AnyPtr threadValueLinux;
+ 
+ void initThreadStorage(void)
+ {
+ }
+ 
+-void setThreadValue( unsigned long value )
++void setThreadValue(AnyPtr value)
+ {
+ 	threadValueLinux = value;
+ }
+ 
+-unsigned long getThreadValueSLOW( void )
++AnyPtr getThreadValueSLOW(void)
+ {
+ 	return threadValueLinux;
+ }
+--- glide3x/h3/glide3/src/xdraw2.inc.S	2006-07-04 04:42:12.000000000 +0300
++++ glide3x/h3/glide3/src/xdraw2.inc.S	2006-07-04 07:53:25.000000000 +0300
+@@ -260,7 +260,7 @@ LOCAL(nocull):
+ 	push %edi	/*  save caller's register variable */
+ 	push %esi	/*  save caller's register variable  */
+ 
+-	mov _gc-8(%esp) , gc	/*  gc on stack (NOT!!! in edx) from caller */
++	mov %edx , gc	/*  gc in edx from caller */
+ 	push %ebx	/*  save caller's register variable */
+ 
+ 	push %ebp	/*  save frame pointer */
+--- glide3x/h3/glide3/src/xtexdl_def.c	2006-07-04 04:42:12.000000000 +0300
++++ glide3x/h3/glide3/src/xtexdl_def.c	2006-07-04 07:53:25.000000000 +0300
+@@ -219,7 +219,7 @@ _grTexDownload_Default_8_4(struct GrGC_s
+       const FxU32 t0 = *(const FxU32*)src8;
+       
+       GDBG_INFO(195, "s = %d, t= %d, address = 0x%x\n", s, t,
+-                (FxU32) tex_address - (FxU32) gc->tex_ptr + 0x200000);
++                (AnyPtr)tex_address - (AnyPtr)gc->tex_ptr + 0x200000);
+       
+       LINEAR_WRITE_SET_8(tex_address, t0);
+       
+@@ -257,7 +257,7 @@ _grTexDownload_Default_8_WideS(struct Gr
+         t1 = *(const FxU32*)(src8 + 4);
+       
+       GDBG_INFO(195, "s = %d, t= %d, address = 0x%x\n", s, t,
+-                (FxU32) tex_address - (FxU32) gc->tex_ptr + 0x200000);
++                (AnyPtr)tex_address - (AnyPtr)gc->tex_ptr + 0x200000);
+       
+       LINEAR_WRITE_SET_8(tex_address + 0, t0);
+       LINEAR_WRITE_SET_8(tex_address + 4, t1);
+@@ -357,7 +357,7 @@ _grTexDownload_Default_16_WideS(struct G
+       const FxU32 t1 = *(const FxU32*)(src16 + 2);
+       
+       GDBG_INFO(195, "s = %d, t= %d, address = 0x%x\n", s, t,
+-                (FxU32) tex_address - (FxU32) gc->tex_ptr + 0x200000);
++                (AnyPtr)tex_address - (AnyPtr)gc->tex_ptr + 0x200000);
+       
+       LINEAR_WRITE_SET_16(tex_address + 0, t0);
+       LINEAR_WRITE_SET_16(tex_address + 4, t1);
+--- glide3x/h3/incsrc/fxhal.h	2006-07-04 04:42:12.000000000 +0300
++++ glide3x/h3/incsrc/fxhal.h	2006-07-04 07:53:25.000000000 +0300
+@@ -147,9 +147,18 @@ fxHalInitVideoOverlaySurface(
+ extern int DRIlock;
+ 
+ // Here are the macro defines for talking to hardware
++#ifdef __alpha__
++extern FxU8 _fxget8(FxU8 *);
++extern FxU16 _fxget16(FxU16 *);
++extern FxU32 _fxget32(FxU32 *);
++	#define GET8(s) _fxget8((FxU8 *)&s);
++	#define GET16(s) _fxget16((FxU16 *)&s);
++	#define GET(s) _fxget32((FxU32 *)&s);
++#else
+         #define GET8(s) s
+         #define GET16(s) s
+         #define GET(s) s
++#endif
+         #define SET8(d,s) d = s
+         #define SET16(d,s) d = s
+         #define SET(d,s) d = s
+--- glide3x/h3/incsrc/h3defs.h	2006-07-04 04:42:12.000000000 +0300
++++ glide3x/h3/incsrc/h3defs.h	2006-07-04 07:53:25.000000000 +0300
+@@ -1267,9 +1267,9 @@
+ 
+ //----------------- useful addressing macros -----------------------
+ // return pointer to SST at specified WRAP, CHIP, or TREX
+-#define SST_WRAP(sst,n) ((SstRegs *)((n)*0x4000+(long)(sst)))
+-#define SST_CHIP(sst,n) ((SstRegs *)((n)*0x400+(long)(sst)))
+-#define SST_TMU(sst,n)  ((SstRegs *)((0x800<<(n))+(long)(sst)))
++#define SST_WRAP(sst,n) ((SstRegs *)((n) * 0x4000 + (AnyPtr)(sst)))
++#define SST_CHIP(sst,n) ((SstRegs *)((n) * 0x400 + (AnyPtr)(sst)))
++#define SST_TMU(sst,n)  ((SstRegs *)((0x800 << (n)) + (AnyPtr)(sst)))
+ #define SST_TREX(sst,n) SST_TMU(sst,n)
+ 
+ // offsets from the base of memBaseAddr0
+@@ -1314,7 +1314,7 @@
+ 
+ #define SST_IS_REGISTER_ADDR(a)  ( (a) >= SST_IO_OFFSET       && (a) < SST_TEX_OFFSET )
+ 
+-#define SST_BASE_ADDRESS(sst)   ((long)(sst)-SST_3D_OFFSET)
++#define SST_BASE_ADDRESS(sst)   ((AnyPtr)(sst) - SST_3D_OFFSET)
+ #define SST_IO_ADDRESS(sst)     (SST_IO_OFFSET+SST_BASE_ADDRESS(sst))
+ #define SST_CMDAGP_ADDRESS(sst) (SST_CMDAGP_OFFSET+SST_BASE_ADDRESS(sst))
+ #define SST_GUI_ADDRESS(sst)    (SST_2D_OFFSET+SST_BASE_ADDRESS(sst))
+--- glide3x/h3/minihwc/hwcext.h	2006-07-04 04:42:12.000000000 +0300
++++ glide3x/h3/minihwc/hwcext.h	2006-07-04 07:53:25.000000000 +0300
+@@ -200,7 +200,7 @@ typedef struct hwcExtLinearAddrReq_s {
+ /* Returned from HWCEXT_GETLINEARADDR */
+ typedef struct hwcExtLinearAddrRes_s {
+   FxU32 numBaseAddrs;               /* # base addresses */
+-  unsigned long baseAddresses[HWCEXT_MAX_BASEADDR]; /* linear Addresses  */
++  AnyPtr baseAddresses[HWCEXT_MAX_BASEADDR]; /* linear Addresses  */
+ } hwcExtLinearAddrRes_t;
+ 
+ /*
+--- glide3x/h3/minihwc/hwcio.h	2006-07-04 04:42:12.000000000 +0300
++++ glide3x/h3/minihwc/hwcio.h	2006-07-04 07:53:25.000000000 +0300
+@@ -41,46 +41,57 @@ extern char *cmdAGPRegNames[];
+ extern char *waxRegNames[];
+ extern char *sstRegNames[];
+ 
++#ifdef __alpha__
++extern FxU32 _fxget32(FxU32 *);
++#define GET(s) _fxget32((FxU32 *)&s);
++#define SET(d, s) d = s
++#endif
++
++#ifndef GET
++#define GET(s) s
++#define SET(d, s) d = s
++#endif
++
+ /*
+ **  I/O Macros
+ */
+ #define HWC_IO_STORE(regInfo, reg, val)\
+ GDBG_INFO(120, "Storing 0x%x to IO Register %s\n", val,\
+   ioRegNames[(offsetof(SstIORegs, reg)) >> 2]);\
+-((SstIORegs *) regInfo.ioMemBase)->reg = val
++  SET(((SstIORegs *)regInfo.ioMemBase)->reg, val)
+ 
+ #define HWC_IO_LOAD(regInfo, reg, val)\
+-val = ((SstIORegs *) regInfo.ioMemBase)->reg;\
++  val = GET(((SstIORegs *)regInfo.ioMemBase)->reg); \
+ GDBG_INFO(120, "Loaded 0x%x from IO Register %s\n", val,\
+   ioRegNames[(offsetof(SstIORegs, reg)) >> 2]);
+ 
+ #define HWC_CAGP_STORE(regInfo, reg, val)\
+ GDBG_INFO(120, "Storing 0x%x to CAGP Register %s\n", val,\
+   cmdAGPRegNames[(offsetof(SstCRegs, reg)) >> 2]);\
+-((SstCRegs *) (regInfo.cmdAGPBase))->reg = val
++  SET(((SstCRegs *)(regInfo.cmdAGPBase))->reg, val)
+ 
+ #define HWC_CAGP_LOAD(regInfo, reg, val)\
+-val = ((SstCRegs *) (regInfo).cmdAGPBase)->reg;\
++  val = GET(((SstCRegs *)(regInfo).cmdAGPBase)->reg); \
+ GDBG_INFO(120, "Loaded 0x%x from CAGP Register %s\n", val,\
+   cmdAGPRegNames[(offsetof(SstCRegs, reg)) >> 2]);
+   
+ #define HWC_WAX_STORE(regInfo, reg, val)\
+ GDBG_INFO(120, "Storing 0x%x to WAX Register %s\n", val,\
+   waxRegnames[(offsetof(SstGRegs, reg)) >> 2]);\
+-((SstGRegs *) regInfo.waxBase)->reg = val
++  SET(((SstGRegs *)regInfo.waxBase)->reg, val)
+ 
+ #define HWC_WAX_LOAD(regInfo, reg, val)\
+-val = ((SstGRegs *) regInfo.waxBase)->reg;\
++  val = GET(((SstGRegs *)regInfo.waxBase)->reg); \
+ GDBG_INFO(120, "Loaded 0x%x from WAX Register %s\n", val,\
+   waxRegnames[(offsetof(SstGRegs, reg)) >> 2]);
+ 
+ #define HWC_SST_STORE(regInfo, reg, val)\
+ GDBG_INFO(120, "Storing 0x%x to 3D Register %s\n", val,\
+  sstRegNames[(offsetof(SstRegs, reg)) >> 2]);\
+-((SstRegs *) regInfo.sstBase)->reg = val
++  SET(((SstRegs *)regInfo.sstBase)->reg, val)
+ 
+ #define HWC_SST_LOAD(regInfo, reg, val)\
+-val = ((SstRegs *) regInfo.sstBase)->reg;\
++  val = GET(((SstRegs *)regInfo.sstBase)->reg); \
+ GDBG_INFO(120, "Loaded 0x%x from WAX Register %s\n", val,\
+  sstRegNames[(offsetof(SstRegs, reg)) >> 2]);
+ 
+--- glide3x/h3/minihwc/minihwc.h	2006-07-04 04:42:12.000000000 +0300
++++ glide3x/h3/minihwc/minihwc.h	2006-07-04 07:53:25.000000000 +0300
+@@ -244,13 +244,13 @@ typedef struct hwcPCIInfo_s {
+ typedef struct hwcLinearInfo_s {
+   FxBool
+     initialized;
+-  unsigned long linearAddress[HWC_NUM_BASE_ADDR];
++  AnyPtr linearAddress[HWC_NUM_BASE_ADDR];
+ } hwcLinearInfo;
+ 
+ typedef struct hwcRegInfo_s {
+   FxBool
+     initialized;
+-  volatile unsigned long
++  volatile AnyPtr
+     ioMemBase,                 /* mem base for I/O aliases */
+     cmdAGPBase,                /* CMD/AGP register base */
+     waxBase,                   /* 2D register base */
+--- glide3x/h5/glide3/src/diget.c	2006-07-04 04:42:12.000000000 +0300
++++ glide3x/h5/glide3/src/diget.c	2006-07-04 07:53:25.000000000 +0300
+@@ -810,12 +810,11 @@ GR_DIENTRY(grGet, FxU32, (FxU32 pname, F
+     break;
+ 
+   case GR_SURFACE_TEXTURE:
+-    if (plength == sizeof(unsigned long)) {
+-      unsigned long *p = (unsigned long *)params;
++    if (plength == sizeof(AnyPtr)) {
+       GR_DCL_GC;
+ 
+ #ifdef GLIDE_INIT_HWC
+-      *p = (unsigned long) &gc->tBuffer;
++      *params = (AnyPtr) &gc->tBuffer;
+       retVal = plength;
+ #endif
+     }
+--- glide3x/h5/glide3/src/disst.c	2006-07-04 04:42:12.000000000 +0300
++++ glide3x/h5/glide3/src/disst.c	2006-07-04 07:53:25.000000000 +0300
+@@ -209,7 +209,7 @@ GR_DIENTRY(grSstSelect, void, ( int whic
+   
+   /* Attach a full screen context to the TLS slot */
+   _GlideRoot.current_sst = which;
+-  setThreadValue( (unsigned long)&_GlideRoot.GCs[_GlideRoot.current_sst] );
++  setThreadValue((AnyPtr)&_GlideRoot.GCs[_GlideRoot.current_sst]);
+   
+ #ifdef GLIDE_MULTIPLATFORM
+   _GlideRoot.curGCFuncs = _GlideRoot.curGC->gcFuncs;
+--- glide3x/h5/glide3/src/distrip.c	2006-07-04 04:42:12.000000000 +0300
++++ glide3x/h5/glide3/src/distrip.c	2006-07-04 07:53:25.000000000 +0300
+@@ -497,7 +497,7 @@ GR_DIENTRY(grDrawVertexArrayContiguous, 
+     FxU32 i;
+     for (i = 0; i < Count; i++)
+       GDBG_INFO(110, "%s:  pointers[%d] = 0x%x\n",
+-                FN_NAME, i, (int)pointers + gc->state.vData.vStride * i);
++                FN_NAME, i, (long)pointers + gc->state.vData.vStride * i);
+   }
+ #endif
+ 
+@@ -552,12 +552,12 @@ GR_DIENTRY(grDrawVertexArrayContiguous, 
+     else {
+       void *b_ptr, *c_ptr;
+       while ((int)Count >= 3) {
+-        b_ptr = (void *)((unsigned long)pointers + stride);
+-        c_ptr = (void *)((unsigned long)b_ptr + stride);
++        b_ptr = (void *)((AnyPtr)pointers + stride);
++        c_ptr = (void *)((AnyPtr)b_ptr + stride);
+         /*TRISETUP(pointers, b_ptr, c_ptr);*/
+         /* Do extra context checking. Fixes GLExcess (Spaceship chase) crash with Mesa. */
+         grDrawTriangle(pointers, b_ptr, c_ptr);
+-        pointers = (void *)((unsigned long)c_ptr + stride);
++        pointers = (void *)((AnyPtr)c_ptr + stride);
+         Count -= 3;
+       }
+     }
+--- glide3x/h5/glide3/src/fifo.c	2006-07-04 04:42:12.000000000 +0300
++++ glide3x/h5/glide3/src/fifo.c	2006-07-04 07:53:25.000000000 +0300
+@@ -502,7 +502,7 @@ static const char * h3SstIORegNames[] = 
+ } ;
+ 
+ 
+-#define GEN_INDEX(a) ((((unsigned long) a) - ((unsigned long) gc->reg_ptr)) >> 2)
++#define GEN_INDEX(a) ((((AnyPtr)a) - ((AnyPtr)gc->reg_ptr)) >> 2)
+ #endif /* GDBG_INFO_ON || _FIFODUMP */
+ 
+ #if GDBG_INFO_ON
+@@ -793,7 +793,7 @@ _FifoFlush( void ) 
+ #undef FN_NAME
+ } /* _FifoFlush */
+ 
+-unsigned long _grHwFifoPtrSlave(FxU32 slave, FxBool ignored);
++AnyPtr _grHwFifoPtrSlave(FxU32 slave, FxBool ignored);
+ 
+ void FX_CALL
+ _grCommandTransportMakeRoom(const FxI32 blockSize, const char* fName, const int fLine)
+@@ -817,9 +817,9 @@ _grCommandTransportMakeRoom(const FxI32 
+     /* Update to the currently writing command buffer */
+     fifo.cmdBuf.baseAddr += cmdBufferOffset;
+     fifo.cmdBuf.hwOffset += cmdBufferOffset;
+-    fifo.cmdBuf.size      = ((FxU32)gcFifo->fifoPtr - fifo.cmdBuf.baseAddr);
++    fifo.cmdBuf.size      = (AnyPtr)gcFifo->fifoPtr - fifo.cmdBuf.baseAddr;
+     
+-    fifo.stateBuf.baseAddr  = (FxU32)gcFifo->stateBuffer;
++    fifo.stateBuf.baseAddr  = (AnyPtr)gcFifo->stateBuffer;
+     fifo.stateBuf.hwOffset += (gcFifo->hwcFifoInfo.stateBuf.allocUnit * gcFifo->curCommandBuf);
+     fifo.stateBuf.size      = sizeof(GrStateBuffer);
+     
+@@ -865,7 +865,7 @@ _grCommandTransportMakeRoom(const FxI32 
+           gcFifo->curCommandBuf = nextBufferIndex;
+         
+         /* Set the current fifo ptr in allocation blocks */
+-        gcFifo->fifoPtr = (FxU32*)(gcFifo->hwcFifoInfo.cmdBuf.baseAddr +
++        gcFifo->fifoPtr = (AnyPtr*)(gcFifo->hwcFifoInfo.cmdBuf.baseAddr +
+                                    (gcFifo->hwcFifoInfo.cmdBuf.allocUnit * gcFifo->curCommandBuf));
+         
+         /* Set the state buffer to be the 'next' one in the ready
+@@ -986,12 +986,13 @@ _grCommandTransportMakeRoom(const FxI32 
+                        "\tfifoRoom: (0x%X : 0x%X) : (0x%X : 0x%X)\n"
+                        "\tfifo hw: (0x%X : 0x%X)\n",
+                        ((fName == NULL) ? "Unknown" : fName), fLine,
+-                       (((FxU32)gc->cmdTransportInfo.fifoPtr - (FxU32)gc->cmdTransportInfo.fifoStart) + 
++                       (((AnyPtr)gc->cmdTransportInfo.fifoPtr - (AnyPtr)gc->cmdTransportInfo.fifoStart) +
+                         (FxU32)gc->cmdTransportInfo.fifoOffset),
+                        blockSize,
+                        gc->cmdTransportInfo.roomToReadPtr, gc->cmdTransportInfo.roomToEnd, 
+                        gc->cmdTransportInfo.fifoRoom, writes,
+-                       HW_FIFO_PTR(FXTRUE) - (FxU32)gc->rawLfb, gc->cmdTransportInfo.fifoRead);
++                       HW_FIFO_PTR(FXTRUE) - (AnyPtr)gc->rawLfb,
++                       gc->cmdTransportInfo.fifoRead);
+         
+ #endif /* GDBG_INFO_ON */
+         
+@@ -1009,25 +1010,25 @@ _grCommandTransportMakeRoom(const FxI32 
+   again:
+       /* do we need to stall? */
+       {
+-        unsigned long lastHwRead = gc->cmdTransportInfo.fifoRead;
++        AnyPtr lastHwRead = gc->cmdTransportInfo.fifoRead;
+         FxI32 roomToReadPtr = gc->cmdTransportInfo.roomToReadPtr;
+         
+         while (roomToReadPtr < blockSize) {
+-          unsigned long curReadPtr = HW_FIFO_PTR(FXTRUE);
+-          FxU32 curReadDist = curReadPtr - lastHwRead;
++          AnyPtr curReadPtr = HW_FIFO_PTR(FXTRUE);
++          FxI32 curReadDist = curReadPtr - lastHwRead;
+ 
+           /* Handle slave chips.  This code lifted from cvg and modified
+            * to deal with multiple slave chips. */
+           if(gc->chipCount > 1) {
+             FxU32 slave;
+             for(slave = 1; slave < gc->chipCount; slave++) {              
+-              const unsigned long slaveReadPtr = _grHwFifoPtrSlave(slave, 0);
++              const AnyPtr slaveReadPtr = _grHwFifoPtrSlave(slave, 0);
+               const FxU32 slaveReadDist = (slaveReadPtr - lastHwRead);
+               FxI32 distSlave = (FxI32)slaveReadDist;
+               FxI32 distMaster = (FxI32)curReadDist;
+ 
+-              GR_ASSERT((slaveReadPtr >= (unsigned long)gc->cmdTransportInfo.fifoStart) &&
+-                        (slaveReadPtr < (unsigned long)gc->cmdTransportInfo.fifoEnd));
++              GR_ASSERT((slaveReadPtr >= (AnyPtr)gc->cmdTransportInfo.fifoStart) &&
++                        (slaveReadPtr < (AnyPtr)gc->cmdTransportInfo.fifoEnd));
+           
+               /* Get the actual absolute distance to the respective fifo ptrs */
+               if (distSlave < 0) distSlave += (FxI32)gc->cmdTransportInfo.fifoSize - FIFO_END_ADJUST;
+@@ -1103,8 +1104,8 @@ _grCommandTransportMakeRoom(const FxI32 
+             checks = 0;
+           }
+ #endif /* GLIDE_DEBUG */
+-          GR_ASSERT((curReadPtr >= (unsigned long)gc->cmdTransportInfo.fifoStart) &&
+-                    (curReadPtr < (unsigned long)gc->cmdTransportInfo.fifoEnd));
++          GR_ASSERT((curReadPtr >= (AnyPtr)gc->cmdTransportInfo.fifoStart) &&
++                    (curReadPtr < (AnyPtr)gc->cmdTransportInfo.fifoEnd));
+               
+           roomToReadPtr += curReadDist;
+               
+@@ -1116,8 +1117,8 @@ _grCommandTransportMakeRoom(const FxI32 
+           lastHwRead = curReadPtr;
+         }
+           
+-        GR_ASSERT((lastHwRead >= (FxU32)gc->cmdTransportInfo.fifoStart) &&
+-                  (lastHwRead < (FxU32)gc->cmdTransportInfo.fifoEnd));
++        GR_ASSERT((lastHwRead >= (AnyPtr)gc->cmdTransportInfo.fifoStart) &&
++                  (lastHwRead < (AnyPtr)gc->cmdTransportInfo.fifoEnd));
+           
+         /* Update cached copies */
+         gc->cmdTransportInfo.fifoRead = lastHwRead;
+@@ -1199,12 +1200,13 @@ _grCommandTransportMakeRoom(const FxI32 
+                 "\tfifoBlock: (0x%X : 0x%X)\n"
+                 "\tfifoRoom: (0x%X : 0x%X : 0x%X)\n"
+                 "\tfifo hw: (0x%X : 0x%X) : (0x%X : 0x%X : 0x%X)\n",
+-                (((FxU32)gc->cmdTransportInfo.fifoPtr - (FxU32)gc->cmdTransportInfo.fifoStart) + 
++                (((AnyPtr)gc->cmdTransportInfo.fifoPtr - (AnyPtr)gc->cmdTransportInfo.fifoStart) +
+                  (FxU32)gc->cmdTransportInfo.fifoOffset),
+                 blockSize,
+                 gc->cmdTransportInfo.roomToReadPtr, 
+                 gc->cmdTransportInfo.roomToEnd, gc->cmdTransportInfo.fifoRoom,
+-                HW_FIFO_PTR(FXTRUE) - (FxU32)gc->rawLfb, gc->cmdTransportInfo.fifoRead, 
++                HW_FIFO_PTR(FXTRUE) - (AnyPtr)gc->rawLfb,
++                gc->cmdTransportInfo.fifoRead,
+                 GR_CAGP_GET(depth), GR_CAGP_GET(holeCount), GR_GET(hw->status));
+       
+       FIFO_ASSERT();
+@@ -1244,10 +1246,10 @@ _grH3FifoDump_Linear(const FxU32* const 
+ }
+ 
+ 
+-unsigned long
++AnyPtr
+ _grHwFifoPtr(FxBool ignored)
+ {
+-  unsigned long rVal = 0;
++  AnyPtr rVal = 0;
+ 
+   FxU32 status, readPtrL1, readPtrL2;
+   FxU32 chip ; /* AJB SLI MAYHEM */
+@@ -1306,7 +1308,7 @@ _grHwFifoPtr(FxBool ignored)
+         readPtrL2 = GET(gc->cRegs->cmdFifo0.readPtrL);
+       } while (readPtrL1 != readPtrL2);
+     }
+-    rVal = (((unsigned long)gc->cmdTransportInfo.fifoStart) + 
++    rVal = (((AnyPtr)gc->cmdTransportInfo.fifoStart) +
+             readPtrL2 - 
+             (FxU32)gc->cmdTransportInfo.fifoOffset);
+   }
+@@ -1314,7 +1316,7 @@ _grHwFifoPtr(FxBool ignored)
+ } /* _grHwFifoPtr */
+ 
+ 
+-unsigned long
++AnyPtr
+ _grHwFifoPtrSlave(FxU32 slave, FxBool ignored)
+ {
+   FxU32 status, readPtrL1, readPtrL2;
+@@ -1330,7 +1332,7 @@ _grHwFifoPtrSlave(FxU32 slave, FxBool ig
+     readPtrL2 = GET(gc->slaveCRegs[slave-1]->cmdFifo0.readPtrL);
+   } while (readPtrL1 != readPtrL2);
+ 
+-  return (((unsigned long)gc->cmdTransportInfo.fifoStart) + 
++  return (((AnyPtr)gc->cmdTransportInfo.fifoStart) +
+     readPtrL2 - gc->cmdTransportInfo.fifoOffset);
+ } /* _grHwFifoPtr */
+ 
+@@ -1436,8 +1438,28 @@ _reg_group_begin_internal_wax( FxU32 __r
+ 
+ #ifdef DRI_BUILD
+ 
++#ifdef __alpha__
++FxU8 _fxget8(FxU8 *pval)
++{
++    __asm__ __volatile__("mb": : :"memory");
++    return *pval;
++}
++
++FxU16 _fxget16(FxU16 *pval )
++{
++    __asm__ __volatile__("mb": : :"memory");
++    return *pval;
++}
++
++FxU32 _fxget32(FxU32 *pval)
++{
++    __asm__ __volatile__("mb": : :"memory");
++    return *pval;
++}
++#endif /* __alpha__ */
++
+ void
+-_grImportFifo(int fifoPtr, int fifoRead) {
++_grImportFifo(AnyPtr fifoPtr, AnyPtr fifoRead) {
+   struct cmdTransportInfo* gcFifo;
+   FxU32 readPos;
+   GR_DCL_GC;
+@@ -1456,13 +1478,14 @@ _grImportFifo(int fifoPtr, int fifoRead)
+   gcFifo=&gc->cmdTransportInfo;
+   readPos=readPos-gcFifo->fifoOffset;
+   gcFifo->fifoPtr = gcFifo->fifoStart + (readPos>>2);
+-  gcFifo->fifoRead = (unsigned long)gcFifo->fifoPtr;
++  gcFifo->fifoRead = (AnyPtr)gcFifo->fifoPtr;
+ #else
+   gcFifo=&gc->cmdTransportInfo;
+   gcFifo->fifoPtr = gc->rawLfb+(fifoPtr>>2);
+   gcFifo->fifoRead = ((int)gc->rawLfb)+fifoRead;
+ #endif
+-  gcFifo->roomToReadPtr = gcFifo->fifoRead-((long)gcFifo->fifoPtr)-FIFO_END_ADJUST-sizeof(FxU32);
++  gcFifo->roomToReadPtr = gcFifo->fifoRead - ((AnyPtr)gcFifo->fifoPtr) -
++                          FIFO_END_ADJUST - sizeof(FxU32);
+   if (gcFifo->roomToReadPtr<0) gcFifo->roomToReadPtr+=gcFifo->fifoSize;
+   gcFifo->roomToEnd = gcFifo->fifoSize - 
+     ((gcFifo->fifoPtr-gcFifo->fifoStart)<<2) -
+@@ -1475,12 +1498,12 @@ _grImportFifo(int fifoPtr, int fifoRead)
+ }
+ 
+ void
+-_grExportFifo(int *fifoPtr, int *fifoRead) {
++_grExportFifo(FxU32 *fifoPtr, FxU32 *fifoRead) {
+   struct cmdTransportInfo* gcFifo;
+   GR_DCL_GC;
+   gcFifo=&gc->cmdTransportInfo;
+   *fifoPtr=(gcFifo->fifoPtr-gc->rawLfb)<<2;
+-  *fifoRead=(gcFifo->fifoRead-(long)gc->rawLfb);
++  *fifoRead = gcFifo->fifoRead - (AnyPtr)gc->rawLfb;
+ }
+ 
+ int
+--- glide3x/h5/glide3/src/fxcmd.h	2006-07-04 04:42:13.000000000 +0300
++++ glide3x/h5/glide3/src/fxcmd.h	2006-07-04 07:53:25.000000000 +0300
+@@ -188,6 +188,12 @@ extern FxU32
+ _grGet32(volatile FxU32* const sstAddr);
+ #endif /* USE_PACKET_FIFO */
+ 
++#ifdef DRI_BUILD
++void _grImportFifo(AnyPtr fifoPtr, AnyPtr fifoRead);
++void _grExportFifo(FxU32 *fifoPtr, FxU32 *fifoRead);
++void _grInvalidateAll(void);
++#endif
++
+ #if !USE_PACKET_FIFO
+ /* NOTE: fifoFree is the number of entries, each is 8 bytes */
+ #define GR_CHECK_FOR_ROOM(n,p) \
+@@ -227,7 +233,7 @@ do { \
+ /* NB: This should be used sparingly because it does a 'real' hw read
+  * which is *SLOW*.
+  */
+-unsigned long _grHwFifoPtr(FxBool);
++AnyPtr _grHwFifoPtr(FxBool);
+ #define HW_FIFO_PTR(a) _grHwFifoPtr(a)
+ 
+ #if FIFO_ASSERT_FULL
+@@ -238,7 +244,7 @@ unsigned long _grHwFifoPtr(FxBool);
+ #else /* !FIFO_ASSERT_FULL */
+ #define FIFO_ASSERT() \
+ ASSERT_FAULT_IMMED((FxU32)gc->cmdTransportInfo.fifoRoom < gc->cmdTransportInfo.fifoSize); \
+-ASSERT_FAULT_IMMED((FxU32)gc->cmdTransportInfo.fifoPtr < (FxU32)gc->cmdTransportInfo.fifoEnd)
++ASSERT_FAULT_IMMED((AnyPtr)gc->cmdTransportInfo.fifoPtr < (AnyPtr)gc->cmdTransportInfo.fifoEnd)
+ #endif /* !FIFO_ASSERT_FULL */
+ 
+ #if (GLIDE_PLATFORM & GLIDE_OS_WIN32)
+@@ -301,7 +307,7 @@ do {\
+ #define GR_CHECK_FOR_ROOM(__n, __p) \
+ do { \
+   const FxU32 writeSize = (__n) + ((__p) * sizeof(FxU32));            /* Adjust for size of hdrs */ \
+-  ASSERT(((FxU32)(gc->cmdTransportInfo.fifoPtr) & FIFO_ALIGN_MASK) == 0); /* alignment */ \
++  ASSERT(((AnyPtr)(gc->cmdTransportInfo.fifoPtr) & FIFO_ALIGN_MASK) == 0); /* alignment */ \
+   ASSERT(writeSize < gc->cmdTransportInfo.fifoSize - sizeof(FxU32)); \
+   FIFO_ASSERT(); \
+   if (gc->cmdTransportInfo.fifoRoom < (FxI32)writeSize) { \
+@@ -330,7 +336,7 @@ if (gc->cmdTransportInfo.autoBump) {\
+ }
+ 
+ #define GR_SET_FIFO_PTR(__n, __p) \
+-  gc->checkPtr = (FxU32)gc->cmdTransportInfo.fifoPtr; \
++  gc->checkPtr = (AnyPtr)gc->cmdTransportInfo.fifoPtr; \
+   gc->checkCounter = ((__n) + ((__p) << 2))
+ #else
+ #define GR_CHECK_FIFO_PTR() 
+@@ -342,7 +348,7 @@ if (gc->cmdTransportInfo.autoBump) {\
+                   GDBG_ERROR("GR_ASSERT_SIZE","byte counter should be %d but is %d\n", \
+                               gc->expected_counter,gc->counter); \
+                 GR_CHECK_FIFO_PTR(); \
+-                gc->checkPtr = (FxU32)gc->cmdTransportInfo.fifoPtr; \
++                gc->checkPtr = (AnyPtr)gc->cmdTransportInfo.fifoPtr; \
+                 gc->checkCounter = 0; \
+                 ASSERT(gc->counter == gc->expected_counter); \
+                 gc->counter = gc->expected_counter = 0
+@@ -378,12 +384,17 @@ if (gc->cmdTransportInfo.autoBump) {\
+ 
+ #if USE_PACKET_FIFO
+ #if GLIDE_DEBUG
++#if defined(__alpha__) || defined(__LP64__)
++#define DEBUGFIFOWRITE(a,b,c)
++#define DEBUGFIFOFWRITE(a,b,c)
++#else
+ void _grFifoWriteDebug(FxU32 addr, FxU32 val, FxU32 fifoPtr);
+ #define DEBUGFIFOWRITE(a,b,c) \
+ _grFifoWriteDebug((FxU32) a, (FxU32) b, (FxU32) c)
+ void _grFifoFWriteDebug(FxU32 addr, float val, FxU32 fifoPtr);
+ #define DEBUGFIFOFWRITE(a,b,c) \
+ _grFifoFWriteDebug((FxU32) a, (float) b, (FxU32) c)
++#endif
+ 
+ extern void _reg_group_begin_internal_wax( FxU32 regBase,
+                                            FxU32 groupNum,             
+@@ -780,7 +791,7 @@ do {                                    
+     GDBG_INFO(120, "REG_GROUP_SET:\n");                                  \
+   }                                                                      \
+   GDBG_INFO(120, "\tFile: %s Line %d\n", __FILE__, __LINE__);            \
+-  GDBG_INFO(120, "\tfifoPtr: 0x%x, Val: 0x%x\n", (FxU32) _regGroupFifoPtr - (FxU32)gc->rawLfb, __val);\
++  GDBG_INFO(120, "\tfifoPtr: 0x%x, Val: 0x%x\n", (AnyPtr)_regGroupFifoPtr - (AnyPtr)gc->rawLfb, __val); \
+   SET_FIFO(*_regGroupFifoPtr++, (__val)); \
+   GR_INC_SIZE(sizeof(FxU32)); \
+ } while(0)
+@@ -801,7 +812,7 @@ do {                                    
+     GDBG_INFO(120, "REG_GROUP_SET:\n");                                  \
+   }                                                                      \
+   GDBG_INFO(120, "\tFile: %s Line %d\n", __FILE__, __LINE__);            \
+-  GDBG_INFO(120, "\tfifoPtr: 0x%x, Val: 0x%x\n", (FxU32) _regGroupFifoPtr - (FxU32)gc->rawLfb, __val);\
++  GDBG_INFO(120, "\tfifoPtr: 0x%x, Val: 0x%x\n", (AnyPtr)_regGroupFifoPtr - (AnyPtr)gc->rawLfb, __val); \
+   SET_FIFO(*_regGroupFifoPtr++, (__val)); \
+   GR_INC_SIZE(sizeof(FxU32)); \
+ } while(0)
+@@ -817,7 +828,7 @@ do { \
+   }                                                                      \
+   GDBG_INFO(220, "REG_GROUP_SET_WAX:\n");\
+   GDBG_INFO(220, "\tFile: %s Line %d\n", __FILE__, __LINE__);\
+-  GDBG_INFO(220, "\tfifoPtr: 0x%x, Val: 0x%x\n", (FxU32) _regGroupFifoPtr - (FxU32)gc->rawLfb, __val);\
++  GDBG_INFO(220, "\tfifoPtr: 0x%x, Val: 0x%x\n", (AnyPtr)_regGroupFifoPtr - (AnyPtr)gc->rawLfb, __val); \
+   SET_FIFO(*_regGroupFifoPtr++, (__val)); \
+   GR_INC_SIZE(sizeof(FxU32)); \
+ } while(0)
+@@ -847,8 +858,8 @@ do { \
+ 
+ #define REG_GROUP_END() \
+   ASSERT(_checkP); \
+-  ASSERT((((unsigned long)_regGroupFifoPtr - (unsigned long)gc->cmdTransportInfo.fifoPtr) >> 2) == _groupNum + 1); \
+-  gc->cmdTransportInfo.fifoRoom -= ((unsigned long)_regGroupFifoPtr - (unsigned long)gc->cmdTransportInfo.fifoPtr); \
++  ASSERT((((AnyPtr)_regGroupFifoPtr - (AnyPtr)gc->cmdTransportInfo.fifoPtr) >> 2) == _groupNum + 1); \
++  gc->cmdTransportInfo.fifoRoom -= ((AnyPtr)_regGroupFifoPtr - (AnyPtr)gc->cmdTransportInfo.fifoPtr); \
+   gc->cmdTransportInfo.fifoPtr = (FxU32*)_regGroupFifoPtr; \
+   GDBG_INFO(gc->myLevel + 200, "\tGroupEnd: (0x%X : 0x%X)\n", \
+             gc->cmdTransportInfo.fifoPtr, gc->cmdTransportInfo.fifoRoom); \
+@@ -861,7 +872,7 @@ do { \
+   if (gc->contextP) { \
+     FxU32* curFifoPtr = gc->cmdTransportInfo.fifoPtr; \
+     FXUNUSED(__base); \
+-    GR_ASSERT(((FxU32)(curFifoPtr) & FIFO_ALIGN_MASK) == 0);    /* alignment */ \
++    GR_ASSERT(((AnyPtr)(curFifoPtr) & FIFO_ALIGN_MASK) == 0);    /* alignment */ \
+     GR_CHECK_COMPATABILITY(FN_NAME, \
+                            !gc->open, \
+                            "Called before grSstWinOpen()"); \
+@@ -906,7 +917,7 @@ do { \
+   if (gc->contextP) { \
+     FxU32* curFifoPtr = gc->cmdTransportInfo.fifoPtr; \
+     FXUNUSED(__base); \
+-    GR_ASSERT(((FxU32)(curFifoPtr) & FIFO_ALIGN_MASK) == 0);    /* alignment */ \
++    GR_ASSERT(((AnyPtr)(curFifoPtr) & FIFO_ALIGN_MASK) == 0);    /* alignment */ \
+     GR_CHECK_COMPATABILITY(FN_NAME, \
+                            !gc->open, \
+                            "Called before grSstWinOpen()"); \
+@@ -1066,10 +1077,10 @@ _grH3FifoDump_Linear(const FxU32* const 
+   GR_CHECK_COMPATABILITY(FN_NAME, \
+                          !gc->open, \
+                          "Called before grSstWinOpen()"); \
+-  GR_ASSERT(((FxU32)(tPackPtr) & FIFO_ALIGN_MASK) == 0);   /* alignment */ \
++  GR_ASSERT(((AnyPtr)(tPackPtr) & FIFO_ALIGN_MASK) == 0);   /* alignment */ \
+   GR_ASSERT((((__nVerts) * (__vertSize)) + sizeof(FxU32)) <= (FxU32)gc->cmdTransportInfo.fifoRoom); \
+-  GR_ASSERT((((FxU32)tPackPtr) + ((__nVerts) * (__vertSize)) + sizeof(FxU32)) < \
+-            (FxU32)gc->cmdTransportInfo.fifoEnd); \
++  GR_ASSERT((((AnyPtr)tPackPtr) + ((__nVerts) * (__vertSize)) + sizeof(FxU32)) < \
++            (AnyPtr)gc->cmdTransportInfo.fifoEnd); \
+   GR_ASSERT(nVertex < 0x10); \
+   GR_ASSERT(nVertex > 0x00); \
+   GR_ASSERT(((__packetHdr) & 0xE0000000UL) == 0x00UL); \
+@@ -1080,27 +1091,27 @@ _grH3FifoDump_Linear(const FxU32* const 
+   pCount++; \
+   GDBG_INFO(gc->myLevel + 200, "\t(0x%X) : V#: 0x%X - P#: 0x%X - ParamVal: (%f : 0x%X)\n", \
+             (FxU32)tPackPtr, \
+-            ((FxU32)tPackPtr - ((FxU32)gc->cmdTransportInfo.fifoPtr + sizeof(FxU32))) / sVertex, \
+-             (((FxU32)tPackPtr - ((FxU32)gc->cmdTransportInfo.fifoPtr + sizeof(FxU32))) % sVertex) >> 2, \
++            ((AnyPtr)tPackPtr - ((AnyPtr)gc->cmdTransportInfo.fifoPtr + sizeof(FxU32))) / sVertex, \
++             (((AnyPtr)tPackPtr - ((AnyPtr)gc->cmdTransportInfo.fifoPtr + sizeof(FxU32))) % sVertex) >> 2, \
+             (((__val) < 786432.875) ? (__val) : ((__val) - 786432.875)), \
+             (__floatVal))
+ #define SETF_DUMP(__val) \
+   pCount++; \
+   GDBG_INFO(gc->myLevel + 200, "\t(0x%X) : V#: 0x%X - P#: 0x%X - ParamVal: %f\n", \
+             (FxU32)tPackPtr, \
+-            ((FxU32)tPackPtr - ((FxU32)gc->cmdTransportInfo.fifoPtr + sizeof(FxU32))) / sVertex, \
+-             (((FxU32)tPackPtr - ((FxU32)gc->cmdTransportInfo.fifoPtr + sizeof(FxU32))) % sVertex) >> 2, \
++            ((AnyPtr)tPackPtr - ((AnyPtr)gc->cmdTransportInfo.fifoPtr + sizeof(FxU32))) / sVertex, \
++             (((AnyPtr)tPackPtr - ((AnyPtr)gc->cmdTransportInfo.fifoPtr + sizeof(FxU32))) % sVertex) >> 2, \
+             (((__val) < 786432.875) ? (__val) : ((__val) - 786432.875)))
+ #define SET_DUMP(__val) \
+   pCount++; \
+   GDBG_INFO(gc->myLevel + 200, "\t(0x%X) : V#: 0x%X - P#: 0x%X - ParamVal: 0x%X\n", \
+             (FxU32)tPackPtr, \
+-            ((FxU32)tPackPtr - ((FxU32)gc->cmdTransportInfo.fifoPtr + sizeof(FxU32))) / sVertex, \
+-             (((FxU32)tPackPtr - ((FxU32)gc->cmdTransportInfo.fifoPtr + sizeof(FxU32))) % sVertex) >> 2, \
++            ((AnyPtr)tPackPtr - ((AnyPtr)gc->cmdTransportInfo.fifoPtr + sizeof(FxU32))) / sVertex, \
++             (((AnyPtr)tPackPtr - ((AnyPtr)gc->cmdTransportInfo.fifoPtr + sizeof(FxU32))) % sVertex) >> 2, \
+             (__val))
+ #define TRI_ASSERT() \
+   GR_ASSERT(pCount == (nVertex * (sVertex >> 2))); \
+-  ASSERT(((FxU32)tPackPtr - (FxU32)gc->cmdTransportInfo.fifoPtr) == (nVertex * sVertex) + sizeof(FxU32))
++  ASSERT(((AnyPtr)tPackPtr - (AnyPtr)gc->cmdTransportInfo.fifoPtr) == (nVertex * sVertex) + sizeof(FxU32))
+ #else /* !GDBG_INFO_ON */
+ #define DEBUGFIFODUMP_TRI(__packetAddr)
+ #define DEBUGFIFODUMP_LINEAR(__packetAddr)
+@@ -1165,7 +1176,7 @@ do { \
+ 
+ #define TRI_END \
+   TRI_ASSERT(); \
+-  gc->cmdTransportInfo.fifoRoom -= ((unsigned long)tPackPtr - (unsigned long)gc->cmdTransportInfo.fifoPtr); \
++  gc->cmdTransportInfo.fifoRoom -= ((AnyPtr)tPackPtr - (AnyPtr)gc->cmdTransportInfo.fifoPtr); \
+   gc->cmdTransportInfo.fifoPtr = tPackPtr; \
+   GDBG_INFO(gc->myLevel + 200, "\tTriEnd: (0x%X : 0x%X)\n", tPackPtr, gc->cmdTransportInfo.fifoRoom); \
+   FIFO_ASSERT(); \
+@@ -1261,12 +1272,12 @@ do { \
+   GR_CHECK_COMPATABILITY(FN_NAME, \
+                          !gc->open, \
+                          "Called before grSstWinOpen()"); \
+-  GR_ASSERT(((unsigned long)(packetPtr) & FIFO_ALIGN_MASK) == 0);        /* alignment */ \
++  GR_ASSERT(((AnyPtr)(packetPtr) & FIFO_ALIGN_MASK) == 0);        /* alignment */ \
+   GR_ASSERT((__numWords) > 0);                                   /* packet size */ \
+   GR_ASSERT((__numWords) < ((0x01 << 19) - 2)); \
+   GR_ASSERT((((FxU32)(__numWords) + 2) << 2) <= (FxU32)gc->cmdTransportInfo.fifoRoom); \
+-  GR_ASSERT(((unsigned unsigned long)packetPtr + (((__numWords) + 2) << 2)) < \
+-            (unsigned unsigned long)gc->cmdTransportInfo.fifoEnd); \
++  GR_ASSERT(((AnyPtr)packetPtr + (((__numWords) + 2) << 2)) < \
++            (AnyPtr)gc->cmdTransportInfo.fifoEnd); \
+   GR_ASSERT((hdr2 & 0xE0000000UL) == 0x00UL); \
+   GR_ASSERT(((__addr) & 0x03UL) == 0x00UL); \
+   FIFO_ASSERT(); \
+@@ -1311,8 +1322,8 @@ do { \
+ 
+ #define FIFO_LINEAR_WRITE_END \
+   DEBUGFIFODUMP_LINEAR(gc->cmdTransportInfo.fifoPtr); \
+-  GR_ASSERT((((unsigned long)packetPtr - (unsigned long)gc->cmdTransportInfo.fifoPtr) >> 2) == __writeSize + 2); \
+-  gc->cmdTransportInfo.fifoRoom -= ((unsigned long)packetPtr - (unsigned long)gc->cmdTransportInfo.fifoPtr); \
++  GR_ASSERT((((AnyPtr)packetPtr - (AnyPtr)gc->cmdTransportInfo.fifoPtr) >> 2) == __writeSize + 2); \
++  gc->cmdTransportInfo.fifoRoom -= ((AnyPtr)packetPtr - (AnyPtr)gc->cmdTransportInfo.fifoPtr); \
+   gc->cmdTransportInfo.fifoPtr = packetPtr; \
+   GDBG_INFO(gc->myLevel + 200, "\tLinearEnd: (0x%X : 0x%X)\n", \
+             packetPtr, gc->cmdTransportInfo.fifoRoom); \
+--- glide3x/h5/glide3/src/fxglide.h	2006-07-04 04:42:13.000000000 +0300
++++ glide3x/h5/glide3/src/fxglide.h	2006-07-04 07:53:25.000000000 +0300
+@@ -1640,7 +1640,7 @@ typedef struct GrGC_s
+           SET_FIFO(*curFifoPtr++, *curPktData++); \
+         } \
+         GR_INC_SIZE((__writeCount) * sizeof(FxU32)); \
+-        gc->cmdTransportInfo.fifoRoom -= ((unsigned long)curFifoPtr - (unsigned long)gc->cmdTransportInfo.fifoPtr); \
++        gc->cmdTransportInfo.fifoRoom -= ((AnyPtr)curFifoPtr - (AnyPtr)gc->cmdTransportInfo.fifoPtr); \
+         gc->cmdTransportInfo.fifoPtr = curFifoPtr; \
+       } \
+       GR_CHECK_SIZE(); \
+@@ -1770,7 +1770,7 @@ typedef struct GrGC_s
+                           */
+     
+     FxU32* fifoPtr;      /* Current write pointer into fifo */
+-    unsigned long   fifoRead;     /* Last known hw read ptr. 
++    AnyPtr fifoRead;     /* Last known hw read ptr.
+                           * If on an sli enabled system this will be
+                           * the 'closest' hw read ptr of the sli
+                           * master and slave.
+@@ -1862,13 +1862,14 @@ typedef struct GrGC_s
+     nBuffers,
+     curBuffer,
+     frontBuffer,
+-    backBuffer,
++    backBuffer;
++  AnyPtr
+     buffers0[4],
+-    buffers1[4];
+-    unsigned long lfbBuffers[4];              /* Tile relative addresses of the color/aux
++    buffers1[4],
++    lfbBuffers[4];              /* Tile relative addresses of the color/aux
+                                  * buffers for lfbReads.
+                                  */  
+-  unsigned long lockPtrs[2];        /* pointers to locked buffers */
++  AnyPtr lockPtrs[2];        /* pointers to locked buffers */
+   FxU32 fbStride;
+ 
+   FxBool colTiled,            // AJB - grBufferClear needs to know when target surfaces
+@@ -1948,7 +1949,7 @@ typedef struct GrGC_s
+   FxI32 expected_counter;       /* the number of bytes expected to be sent */
+ 
+   FxU32 checkCounter;
+-  FxU32 checkPtr;
++  AnyPtr checkPtr;
+    
+   FxVideoTimingInfo* vidTimings;/* init code overrides */
+ 
+@@ -2809,15 +2810,15 @@ getThreadValueFast() {
+ #endif
+ 
+ #if (GLIDE_PLATFORM & GLIDE_OS_MACOS)
+-extern FxU32 _threadValueMacOS;
+-__inline FxU32
++extern AnyPtr _threadValueMacOS;
++__inline AnyPtr
+ getThreadValueFast() {
+         return _threadValueMacOS;
+ }
+ #endif
+ 
+ #if (GLIDE_PLATFORM & GLIDE_OS_UNIX)
+-extern unsigned long threadValueLinux;
++extern AnyPtr threadValueLinux;
+ #define getThreadValueFast() threadValueLinux
+ #endif /* defined(GLIDE_PLATFORM & GLIDE_OS_UNIX) */
+ 
+@@ -2845,9 +2846,9 @@ void
+ freeThreadStorage( void );
+ 
+ void 
+-setThreadValue( unsigned long value );
++setThreadValue(AnyPtr value);
+ 
+-unsigned long
++AnyPtr
+ getThreadValueSLOW( void );
+ 
+ void 
+@@ -3087,7 +3088,7 @@ assertDefaultState( void );
+                                 saveLevel = gc->myLevel; \
+                                 myName = name;  \
+                                 gc->myLevel = level; \
+-                gc->checkPtr = (FxU32)gc->cmdTransportInfo.fifoPtr; \
++                gc->checkPtr = (AnyPtr)gc->cmdTransportInfo.fifoPtr; \
+                 GDBG_INFO(gc->myLevel,myName); \
+                 FXUNUSED(saveLevel); \
+                 FXUNUSED(hw); \
+@@ -3098,7 +3099,7 @@ assertDefaultState( void );
+                 const char* myName = name;  \
+                 GR_ASSERT(gc != NULL);  \
+                 gc->myLevel = level; \
+-                gc->checkPtr = (FxU32)gc->cmdTransportInfo.fifoPtr; \
++                gc->checkPtr = (AnyPtr)gc->cmdTransportInfo.fifoPtr; \
+                 GDBG_INFO(gc->myLevel,myName); \
+                 FXUNUSED(saveLevel); \
+                 FXUNUSED(hw); \
+@@ -3269,7 +3270,7 @@ extern FxU32 SST_TEXTURE_ALIGN;
+ #define HW_TEX_PTR(__b)        ((FxU32*)(((FxU32)(__b)) + HW_TEXTURE_OFFSET))   
+ 
+ /* access a floating point array with a byte index */
+-#define FARRAY(p,i)    (*(float *)((i)+(long)(p)))
++#define FARRAY(p, i)    (*(float *)((i)+(AnyPtr)(p)))
+ #define ArraySize(__a) (sizeof(__a) / sizeof((__a)[0]))
+ 
+ #if GDBG_INFO_ON
+--- glide3x/h5/glide3/src/gaa.c	2006-07-04 04:42:13.000000000 +0300
++++ glide3x/h5/glide3/src/gaa.c	2006-07-04 07:53:25.000000000 +0300
+@@ -1076,8 +1076,8 @@ _grAADrawLineStrip(FxI32 mode, FxI32 lty
+         ady = -ady;
+       /*
+       if (gc->state.vData.colorType != GR_FLOAT) {
+-        *((FxU32 *)&v1a)=*((FxU32 *)((int)v1 + ia))&0x00ffffff;
+-        *((FxU32 *)&v2a)=*((FxU32 *)((int)v2 + ia))&0x00ffffff;
++        *((FxU32 *)&v1a)=*((FxU32 *)((long)v1 + ia))&0x00ffffff;
++        *((FxU32 *)&v2a)=*((FxU32 *)((long)v2 + ia))&0x00ffffff;
+       }
+       */
+       
+--- glide3x/h5/glide3/src/gdraw.c	2006-07-04 04:42:13.000000000 +0300
++++ glide3x/h5/glide3/src/gdraw.c	2006-07-04 07:53:25.000000000 +0300
+@@ -223,7 +223,7 @@
+ #define OUTBOUNDS(a) (OUTBOUNDSX(a) || OUTBOUNDSY(a))
+ 
+ /* access an array of four-byte opaque datums with a byte index */
+-#define ARRAY(p,i)    (*(int *)((i)+(long)(p)))
++#define ARRAY(p, i)    (*(int *)((i) + (AnyPtr)(p)))
+ 
+ /*---------------------------------------------------------------------------
+ ** grDrawPoint
+@@ -275,13 +275,12 @@ GR_ENTRY(grDrawPoint, void, (const void 
+ 
+ GR_ENTRY(grDrawLine, void, (const void *a, const void *b))
+ {
+-  const void *verts[2];
+ #define FN_NAME "grDrawLine"
++  const void *verts[2] = { a, b };
++
+   GR_BEGIN_NOFIFOCHECK(FN_NAME, 91);
+   GDBG_INFO_MORE(gc->myLevel, "(a = 0x%x, b = 0x%x)\n", a, b);
+ 
+-        verts[0] = a; verts[1] = b;
+-        
+           if (gc->state.grEnableArgs.primitive_smooth_mode & GR_AA_ORDERED_LINES_MASK)
+             _grAADrawLineStrip(GR_VTX_PTR_ARRAY, GR_LINES, 2, verts);
+           else
+@@ -322,7 +321,7 @@ GR_ENTRY(grDrawTriangle, void, (const vo
+     /* HackAlert: Nuke the fifo ptr checking stuff here if we're just
+      * debugging the asm tri code.
+      */    
+-    gc->checkPtr = (FxU32)gc->cmdTransportInfo.fifoPtr;
++    gc->checkPtr = (AnyPtr)gc->cmdTransportInfo.fifoPtr;
+     gc->checkCounter = 0;
+ #else  /* GLIDE_DEBUG */
+     GR_END();
+@@ -401,7 +400,7 @@ GR_ENTRY(grDrawTriangle, void, (const vo
+   GR_INC_SIZE(sizeof(FxU32))
+ 
+ #define DA_END \
+-  gc->cmdTransportInfo.fifoRoom -= ((unsigned long)packetPtr - (unsigned long)gc->cmdTransportInfo.fifoPtr); \
++  gc->cmdTransportInfo.fifoRoom -= ((AnyPtr)packetPtr - (AnyPtr)gc->cmdTransportInfo.fifoPtr); \
+   gc->cmdTransportInfo.fifoPtr = packetPtr; \
+   FIFO_ASSERT(); \
+ }
+--- glide3x/h5/glide3/src/gerror.c	2006-07-04 04:42:13.000000000 +0300
++++ glide3x/h5/glide3/src/gerror.c	2006-07-04 07:53:25.000000000 +0300
+@@ -263,7 +263,7 @@ _grAssert(char *exp, char *fileName, int
+     
+     GDBG_PRINTF("Command Fifo:\n");
+     GDBG_PRINTF("\tSoftware:\n");
+-    GDBG_PRINTF("\t\tfifoPtr:           0x%lX\n", (unsigned long)gc->cmdTransportInfo.fifoPtr - (unsigned long)gc->rawLfb);
++    GDBG_PRINTF("\t\tfifoPtr:           0x%lX\n", (AnyPtr)gc->cmdTransportInfo.fifoPtr - (AnyPtr)gc->rawLfb);
+     GDBG_PRINTF("\t\tfifoOffset:        0x%X\n", gc->cmdTransportInfo.fifoOffset); 
+     GDBG_PRINTF("\t\tfifoEnd:           0x%X\n", gc->cmdTransportInfo.fifoEnd - gc->rawLfb);
+     GDBG_PRINTF("\t\tfifoSize:          0x%X\n", gc->cmdTransportInfo.fifoSize); 
+@@ -273,7 +273,7 @@ _grAssert(char *exp, char *fileName, int
+ 
+     if ( !gc->windowed ) {
+       GDBG_PRINTF("\tHardware:\n");
+-      GDBG_PRINTF("\t\treadPtrL:          0x%lX\n", HW_FIFO_PTR(FXTRUE) - (unsigned long)gc->rawLfb);
++      GDBG_PRINTF("\t\treadPtrL:          0x%lX\n", HW_FIFO_PTR(FXTRUE) - (AnyPtr)gc->rawLfb);
+       GDBG_PRINTF("\t\tdepth:             0x%X\n", GR_CAGP_GET(depth));
+       GDBG_PRINTF("\t\tholeCount:         0x%X\n", GR_CAGP_GET(holeCount));
+       GDBG_PRINTF("\t\tbaseAddrL:         0x%X\n", GR_CAGP_GET(baseAddrL));
+--- glide3x/h5/glide3/src/gglide.c	2006-07-04 04:42:13.000000000 +0300
++++ glide3x/h5/glide3/src/gglide.c	2006-07-04 07:53:25.000000000 +0300
+@@ -2823,9 +2823,8 @@ GR_ENTRY(grBufferSwap, void, (FxU32 swap
+ #if USE_PACKET_FIFO
+   {
+     int i, j = -1;
+-    FxU32 newBufferSwaps =
+-      (FxU32) gc->cmdTransportInfo.fifoPtr -
+-      (FxU32) gc->cmdTransportInfo.fifoStart; 
++    AnyPtr newBufferSwaps = (AnyPtr)gc->cmdTransportInfo.fifoPtr -
++                            (AnyPtr)gc->cmdTransportInfo.fifoStart;
+ 
+     for ( i = 0; i < MAX_BUFF_PENDING && j == -1; i++) {
+       if (gc->bufferSwaps[i] == 0xffffffff) {
+@@ -4153,7 +4152,7 @@ GR_ENTRY(grGlideShutdown, void, (void))
+            * continuing so that any internal glide calls have a valid
+            * gc from tls via GR_DCL_GC. F*ck this up at your own peril.
+            */
+-          setThreadValue((unsigned long)gc);
++          setThreadValue((AnyPtr)gc);
+ #if (GLIDE_PLATFORM & GLIDE_OS_WIN32)
+           /* Flush any remaining commands and cleanup any per gc state */
+           grSurfaceReleaseContext((GrContext_t)gc);
+--- glide3x/h5/glide3/src/glfb.c	2006-07-04 04:42:13.000000000 +0300
++++ glide3x/h5/glide3/src/glfb.c	2006-07-04 07:53:25.000000000 +0300
+@@ -1646,14 +1646,14 @@ static FxBool _grLfbLock (GrLock_t type,
+         if(gc->textureBuffer.on && 
+            (buffer == GR_BUFFER_TEXTUREBUFFER_EXT || buffer == GR_BUFFER_TEXTUREAUXBUFFER_EXT)) {
+           if(type == GR_LFB_READ_ONLY) {
+-            info->lfbPtr         = (void *)((unsigned long)gc->rawLfb + gc->textureBuffer.addr);
++            info->lfbPtr         = (void *)((AnyPtr)gc->rawLfb + gc->textureBuffer.addr);
+             info->strideInBytes  = gc->textureBuffer.stride;
+ #if __POWERPC__
+             if(IS_NAPALM(gc->bInfo->pciInfo.deviceID)) {
+               if(gc->grPixelSize == 2) {
+-                info->lfbPtr = (void *)((FxU32)info->lfbPtr + gc->bInfo->pciInfo.swizzleOffset[3]);
++                info->lfbPtr = (void *)((AnyPtr)info->lfbPtr + gc->bInfo->pciInfo.swizzleOffset[3]);
+               } else {
+-                info->lfbPtr = (void *)((FxU32)info->lfbPtr + gc->bInfo->pciInfo.swizzleOffset[1]);
++                info->lfbPtr = (void *)((AnyPtr)info->lfbPtr + gc->bInfo->pciInfo.swizzleOffset[1]);
+               }
+             }
+ #endif
+@@ -1668,7 +1668,7 @@ static FxBool _grLfbLock (GrLock_t type,
+                   (!pixelPipeline) &&
+                   /* Origin must be upper left since we will return raw lfb */
+                   (origin != GR_ORIGIN_LOWER_LEFT)) {
+-            info->lfbPtr        = (void *)((unsigned long)gc->rawLfb + gc->textureBuffer.addr);
++            info->lfbPtr        = (void *)((AnyPtr)gc->rawLfb + gc->textureBuffer.addr);
+             info->strideInBytes = gc->textureBuffer.stride;
+           }
+ #endif
+@@ -2298,7 +2298,7 @@ _grLfbWriteRegion(FxBool pixPipelineP,
+ 	  }
+ #else
+       length  = src_width * 2;
+-      aligned = !((long)dstData&0x2);
++      aligned = !((AnyPtr)dstData & 0x2);
+       srcJump = src_stride - length;
+       dstJump = info.strideInBytes - length;
+       if (aligned) {
+@@ -2310,7 +2310,7 @@ _grLfbWriteRegion(FxBool pixPipelineP,
+             srcData++;
+           }
+                     
+-          if (((int)length) & 0x2) {
++          if (length & 0x2) {
+             SET_LFB_16((*(FxU16*)&(dstData[0])),
+                        (*(FxU16*)&(srcData[0])));
+             dstData = (FxU32*)(((FxU16*)dstData) + 1);
+@@ -2553,7 +2553,7 @@ static FxBool grLfbReadRegionOrigin (GrB
+      FxU32 src_adjust,dst_adjust,tmp;
+ 
+      /* set length - alignment fix*/
+-     tmp=((unsigned long)src)&2;
++     tmp = ((AnyPtr)src) & 2;
+      len -= tmp;
+      src_adjust=info.strideInBytes - tmp;
+      dst_adjust=dst_stride - tmp;
+@@ -2564,7 +2564,7 @@ static FxBool grLfbReadRegionOrigin (GrB
+      if(!gc->state.forced32BPP) {
+        while(src_height--) {
+          /* adjust starting alignment */
+-         if (((unsigned long)src)&3) {
++         if (((AnyPtr)src) & 3) {
+            /* Old code: *((FxU16 *)dst)++ = *((FxU16 *)src)++; */
+            FxU16 *p = (FxU16 *)dst;
+            *p = *((FxU16 *)src);
+@@ -2579,12 +2579,12 @@ static FxBool grLfbReadRegionOrigin (GrB
+ 
+            /* copies aligned dwords */
+            do {
+-             *((FxU32 *)(((unsigned long)dst) + byte_index))=*((FxU32 *)(((unsigned long)src) + byte_index));
++             *((FxU32 *)(((AnyPtr)dst) + byte_index)) = *((FxU32 *)(((AnyPtr)src) + byte_index));
+            } while((byte_index+=4)<aligned);
+ 
+            /* handle backend misalignment */
+            if(byte_index!=(FxU32)len) {
+-               *((FxU16 *)(((unsigned long)dst) + byte_index))=*((FxU16 *)(((unsigned long)src) + byte_index));
++             *((FxU16 *)(((AnyPtr)dst) + byte_index)) = *((FxU16 *)(((AnyPtr)src) + byte_index));
+            }
+          }
+          /* adjust for next line */
+@@ -2604,11 +2604,11 @@ static FxBool grLfbReadRegionOrigin (GrB
+ 
+            /* copies aligned dwords */
+            do {
+-             FxU32 s =*((FxU32 *)(((unsigned long)src) + byte_index));
++             FxU32 s = *((FxU32 *)(((AnyPtr)src) + byte_index));
+              FxU16 d = (FxU16) (s & 0xF8) >> 3;
+              d |= (s & 0xFC00) >> 5;
+              d |= (s & 0xF80000) >> 8;
+-             *((FxU16 *)(((unsigned long)dst_data) + (byte_index2))) = d;
++             *((FxU16 *)(((AnyPtr)dst_data) + (byte_index2))) = d;
+              byte_index +=4;
+            } while((byte_index2+=2)<(src_width*2));
+          }
+@@ -2626,11 +2626,11 @@ static FxBool grLfbReadRegionOrigin (GrB
+ 
+            /* copies aligned dwords */
+            do {
+-             FxU32 s =*((FxU32 *)(((unsigned long)src) + byte_index));
++             FxU32 s = *((FxU32 *)(((AnyPtr)src) + byte_index));
+              FxU16 d = (FxU16) (s & 0xF8) >> 3;
+              d |= (s & 0xF800) >> 6;
+              d |= (s & 0xF80000) >> 9;
+-             *((FxU16 *)(((unsigned long)dst_data) + (byte_index2))) = d;
++             *((FxU16 *)(((AnyPtr)dst_data) + (byte_index2))) = d;
+              byte_index +=4;
+            } while((byte_index2+=2)<(src_width*2));
+          }
+@@ -2700,7 +2700,7 @@ GR_ENTRY(grLfbReadRegion, FxBool, (GrBuf
+     length   = src_width * 2;
+     dstJump  = dst_stride - length;
+     srcJump  = info.strideInBytes - length;
+-    aligned  = !((long)srcData&0x2);
++    aligned  = !((AnyPtr)srcData & 0x2);
+     odd      = (src_y+src_height) & 0x1;
+     
+ #if __POWERPC__
+@@ -2714,7 +2714,7 @@ GR_ENTRY(grLfbReadRegion, FxBool, (GrBuf
+           *dstData++ = GET_LFB(*srcData++);
+         }
+ 
+-        if (((int)length) & 0x2) {
++        if (length & 0x2) {
+           (*(FxU16*)dstData) = (FxU16)GET_LFB_16(*srcData);
+           dstData = (FxU32*)(((FxU16*)dstData) + 1);
+           srcData = (FxU32*)(((FxU16*)srcData) + 1);
+@@ -2735,7 +2735,7 @@ GR_ENTRY(grLfbReadRegion, FxBool, (GrBuf
+           *dstData++ = GET_LFB(*srcData++);
+         }
+ 
+-        if (!(((int)length) & 0x2)) {
++        if (!(length & 0x2)) {
+           (*(FxU16*)dstData) = (FxU16)GET_LFB_16(*srcData);
+           dstData = (FxU32*)(((FxU16*)dstData) + 1);
+           srcData = (FxU32*)(((FxU16*)srcData) + 1);
+@@ -2755,7 +2755,7 @@ GR_ENTRY(grLfbReadRegion, FxBool, (GrBuf
+           *dstData++ = *srcData++;
+         }
+ 
+-        if (((int)length) & 0x2) {
++        if (length & 0x2) {
+           (*(FxU16*)dstData) = (*(FxU16 *)srcData);
+           dstData = (FxU32*)(((FxU16*)dstData) + 1);
+           srcData = (FxU32*)(((FxU16*)srcData) + 1);
+@@ -2776,7 +2776,7 @@ GR_ENTRY(grLfbReadRegion, FxBool, (GrBuf
+           *dstData++ = *srcData++;
+         }
+ 
+-        if (!(((int)length) & 0x2)) {
++        if (!(length & 0x2)) {
+           (*(FxU16*)dstData) = (*(FxU16 *)srcData);
+           dstData = (FxU32*)(((FxU16*)dstData) + 1);
+           srcData = (FxU32*)(((FxU16*)srcData) + 1);
+--- glide3x/h5/glide3/src/glide.h	2006-07-04 04:42:13.000000000 +0300
++++ glide3x/h5/glide3/src/glide.h	2006-07-04 07:53:25.000000000 +0300
+@@ -57,7 +57,7 @@ typedef FxU8  GrAlpha_t;
+ typedef FxU32 GrMipMapId_t;
+ typedef FxU32 GrStipplePattern_t;
+ typedef FxU8  GrFog_t;
+-typedef unsigned long GrContext_t;
++typedef AnyPtr GrContext_t;
+ typedef int (FX_CALL *GrProc)();
+ 
+ /*
+--- glide3x/h5/glide3/src/gpci.c	2006-07-04 04:42:13.000000000 +0300
++++ glide3x/h5/glide3/src/gpci.c	2006-07-04 07:53:25.000000000 +0300
+@@ -621,7 +621,7 @@ static GrTriSetupProc _triSetupProcs[][2
+  * unset for C_TRISETUP. Currently, teh grDrawTriangle code will only
+  * vector to the asm code if C_TRISETUP is not set.  
+  */
+-#if GLIDE_USE_C_TRISETUP || __POWERPC__
++#if GLIDE_USE_C_TRISETUP || __alpha__ || __POWERPC__
+ static GrVertexListProc _vertexListProcs[][2] = {
+   { _grDrawVertexList, _grDrawVertexList },
+ #if GL_AMD3D
+@@ -2054,7 +2054,7 @@ DllMain(HANDLE hInst, ULONG  ul_reason_f
+       GR_DCL_GC;
+ 
+       /* If there is no current gc in tls then set the current context. */
+-      if (gc == NULL) setThreadValue((unsigned long)&_GlideRoot.GCs[_GlideRoot.current_sst]);
++      if (gc == NULL) setThreadValue((AnyPtr)&_GlideRoot.GCs[_GlideRoot.current_sst]);
+     }
+     break;
+   case DLL_THREAD_DETACH:
+--- glide3x/h5/glide3/src/gsst.c	2006-07-04 04:42:13.000000000 +0300
++++ glide3x/h5/glide3/src/gsst.c	2006-07-04 07:53:53.000000000 +0300
+@@ -843,7 +843,6 @@ static FxU32 lostcontext_csim;
+ #define kPageBoundaryMask (kPageBoundarySlop - 1)
+ 
+ /* Some forward declarations */
+-void _grImportFifo (int, int);
+ GR_ENTRY(grDRIBufferSwap, void, (FxU32 swapInterval));
+ #ifdef FX_GLIDE_NAPALM
+ static void _grSstSetColumnsOfNWidth(FxU32 width);
+@@ -1212,8 +1211,8 @@ initGC ( GrGC *gc ) 
+     gc->bufferSwaps[t] = 0xffffffff;
+   }
+   
+-  gc->bufferSwaps[0] = ((unsigned long) gc->cmdTransportInfo.fifoPtr -
+-                        (unsigned long) gc->cmdTransportInfo.fifoStart);
++  gc->bufferSwaps[0] = ((AnyPtr)gc->cmdTransportInfo.fifoPtr -
++                        (AnyPtr)gc->cmdTransportInfo.fifoStart);
+   
+   gc->swapsPending = 1;
+   
+@@ -1504,7 +1503,7 @@ GR_EXT_ENTRY(grSstWinOpenExt, GrContext_
+    * current gc. This gc is valid for all threads in the fullscreen
+    * context.
+    */
+-  setThreadValue( (unsigned long)&_GlideRoot.GCs[_GlideRoot.current_sst] );
++  setThreadValue((AnyPtr)&_GlideRoot.GCs[_GlideRoot.current_sst]);
+   
+   {
+     /* Partial Argument Validation */
+@@ -2338,7 +2337,7 @@ GR_EXT_ENTRY(grSstWinOpenExt, GrContext_
+     for (buffer = 0; buffer < nColBuffers; buffer++) {
+       gc->buffers0[buffer] = bufInfo->colBuffStart0[buffer];
+       GDBG_INFO(80, "Buffer %d:  Start: 0x%x\n", buffer, gc->buffers0[buffer]);
+-      gc->lfbBuffers[buffer] = (unsigned long)gc->rawLfb + bufInfo->lfbBuffAddr0[buffer];
++      gc->lfbBuffers[buffer] = (AnyPtr)gc->rawLfb + bufInfo->lfbBuffAddr0[buffer];
+       if (bInfo->buffInfo.enable2ndbuffer) {
+         gc->buffers1[buffer] = bufInfo->colBuffStart1[buffer];
+         GDBG_INFO(80, "Buffer %d:  Start: 0x%x\n", buffer, gc->buffers1[buffer]);
+@@ -2347,7 +2346,7 @@ GR_EXT_ENTRY(grSstWinOpenExt, GrContext_
+     if (nAuxBuffers != 0) {
+       gc->buffers0[buffer] = bufInfo->auxBuffStart0;
+       GDBG_INFO(80, "Aux Buffer:  Start: 0x%x\n", gc->buffers0[buffer]);
+-      gc->lfbBuffers[buffer] = (unsigned long)gc->rawLfb + bufInfo->lfbBuffAddr0[buffer];
++      gc->lfbBuffers[buffer] = (AnyPtr)gc->rawLfb + bufInfo->lfbBuffAddr0[buffer];
+       if (bInfo->buffInfo.enable2ndbuffer) {
+         gc->buffers1[buffer] = bufInfo->auxBuffStart1;
+         GDBG_INFO(80, "Aux Buffer:  Start: 0x%x\n", gc->buffers1[buffer]);
+@@ -2557,7 +2556,7 @@ GR_EXT_ENTRY(grSstWinOpenExt, GrContext_
+       for ( buffer = 0; buffer < nColBuffers; buffer++ ) {
+         gc->buffers0[buffer] = bufInfo->colBuffStart0[buffer];
+         GDBG_INFO(80, "Buffer %d:  Start: 0x%x\n", buffer, gc->buffers0[buffer]);
+-        gc->lfbBuffers[buffer] = (FxU32)gc->rawLfb + bufInfo->lfbBuffAddr0[buffer];
++        gc->lfbBuffers[buffer] = (AnyPtr)gc->rawLfb + bufInfo->lfbBuffAddr0[buffer];
+         if (bInfo->buffInfo.enable2ndbuffer) {
+           gc->buffers1[buffer] = bufInfo->colBuffStart1[buffer];
+           GDBG_INFO(80, "Buffer %d:  Start: 0x%x\n", buffer, gc->buffers1[buffer]);
+@@ -2566,7 +2565,7 @@ GR_EXT_ENTRY(grSstWinOpenExt, GrContext_
+       if (nAuxBuffers != 0) {
+         gc->buffers0[buffer] = bufInfo->auxBuffStart0;
+         GDBG_INFO(80, "Aux Buffer:  Start: 0x%x\n", gc->buffers0[buffer]);
+-        gc->lfbBuffers[buffer] = (FxU32)gc->rawLfb + bufInfo->lfbBuffAddr0[buffer];
++        gc->lfbBuffers[buffer] = (AnyPtr)gc->rawLfb + bufInfo->lfbBuffAddr0[buffer];
+         if (bInfo->buffInfo.enable2ndbuffer) {
+           gc->buffers1[buffer] = bufInfo->auxBuffStart1;
+           GDBG_INFO(80, "Aux Buffer:  Start: 0x%x\n", gc->buffers1[buffer]);
+@@ -2719,7 +2718,7 @@ GR_EXT_ENTRY(grSstWinOpenExt, GrContext_
+       for ( buffer = 0; buffer < nColBuffers; buffer++ ) {
+         gc->buffers0[buffer] = bufInfo->colBuffStart0[buffer];
+         GDBG_INFO(80, "Buffer %d:  Start: 0x%x\n", buffer, gc->buffers0[buffer]);
+-        gc->lfbBuffers[buffer] = (FxU32)gc->rawLfb + bufInfo->lfbBuffAddr0[buffer];
++        gc->lfbBuffers[buffer] = (AnyPtr)gc->rawLfb + bufInfo->lfbBuffAddr0[buffer];
+         if (bInfo->buffInfo.enable2ndbuffer) {
+           gc->buffers1[buffer] = bufInfo->colBuffStart1[buffer];
+           GDBG_INFO(80, "Buffer %d:  Start: 0x%x\n", buffer, gc->buffers1[buffer]);
+@@ -2728,7 +2727,7 @@ GR_EXT_ENTRY(grSstWinOpenExt, GrContext_
+       if (nAuxBuffers != 0) {
+         gc->buffers0[buffer] = bufInfo->auxBuffStart0;
+         GDBG_INFO(80, "Aux Buffer:  Start: 0x%x\n", gc->buffers0[buffer]);
+-        gc->lfbBuffers[buffer] = (FxU32)gc->rawLfb + bufInfo->lfbBuffAddr0[buffer];
++        gc->lfbBuffers[buffer] = (AnyPtr)gc->rawLfb + bufInfo->lfbBuffAddr0[buffer];
+         if (bInfo->buffInfo.enable2ndbuffer) {
+           gc->buffers1[buffer] = bufInfo->auxBuffStart1;
+           GDBG_INFO(80, "Aux Buffer:  Start: 0x%x\n", gc->buffers1[buffer]);
+@@ -3200,7 +3199,7 @@ GR_ENTRY(grSstWinClose, FxBool, (GrConte
+    * the tls gc explicitly otherwise other whacky-ness (read 'random
+    * crashes' will ensue). 
+    */
+-  setThreadValue((unsigned long)gc);
++  setThreadValue((AnyPtr)gc);
+   if ((gc != NULL) && gc->open) grFlush();
+ 
+   /* Make sure that the user specified gc is not whacked */
+@@ -3533,8 +3532,8 @@ GR_ENTRY(grFlush, void, (void))
+   if ( gc->windowed ) {
+ #ifdef GLIDE_INIT_HWC
+     GDBG_INFO(gc->myLevel + 200, FN_NAME": cmdSize(0x%X)\n",
+-              ((FxU32)gc->cmdTransportInfo.fifoPtr - 
+-               (FxU32)gc->cmdTransportInfo.hwcFifoInfo.cmdBuf.baseAddr));
++              ((AnyPtr)gc->cmdTransportInfo.fifoPtr -
++               (AnyPtr)gc->cmdTransportInfo.hwcFifoInfo.cmdBuf.baseAddr));
+     _FifoFlush();
+ #endif
+   } else if (!gc->cmdTransportInfo.autoBump) {
+--- glide3x/h5/glide3/src/gstrip_ppc.c	2006-07-04 04:42:13.000000000 +0300
++++ glide3x/h5/glide3/src/gstrip_ppc.c	2006-07-04 07:53:25.000000000 +0300
+@@ -177,7 +177,7 @@ _grDrawVertexList(FxU32 pktype, FxU32 ty
+   ** simplified code
+   */
+   FxU32 vSize;
+-  FxI32 stride = mode;
++  FxI32 stride;
+ 
+   GR_BEGIN_NOFIFOCHECK(FN_NAME, 90);
+ 
+@@ -187,8 +187,10 @@ _grDrawVertexList(FxU32 pktype, FxU32 ty
+   GR_FLUSH_STATE();
+ 
+   vSize = gc->state.vData.vSize;
+-  if (stride == 0)
++  if (mode == 0)
+     stride = gc->state.vData.vStride;
++  else
++    stride = sizeof(float *) / sizeof(float);
+ 
+   /* Draw the first (or possibly only) set.  This is necessary because
+      the packet is 3_BDDDDDD, and in the next set, the packet is
+--- glide3x/h5/glide3/src/gthread.c	2006-07-04 04:42:13.000000000 +0300
++++ glide3x/h5/glide3/src/gthread.c	2006-07-04 07:53:25.000000000 +0300
+@@ -76,12 +76,13 @@ initThreadStorage( void ) 
+   }
+ } /* initThreadStorage */
+ 
+-void setThreadValue( unsigned long value ) {
++void setThreadValue(AnyPtr value)
++{
+     GR_CHECK_F( "setThreadValue", !threadInit, "Thread storage not initialized\n" );
+     TlsSetValue( _GlideRoot.tlsIndex, (void*)value );
+ }
+ 
+-unsigned long getThreadValueSLOW(void)
++AnyPtr getThreadValueSLOW(void)
+ {
+   GR_CHECK_F( "getThreadValue", !threadInit, "Thread storage not initialized\n" );
+ 
+@@ -130,18 +131,18 @@ void endCriticalSection( void ) {
+ 
+ #elif defined(macintosh)
+ 
+-FxU32 _threadValueMacOS;
++AnyPtr _threadValueMacOS;
+ 
+ void initThreadStorage(void)
+ {
+ }
+ 
+-void setThreadValue( unsigned long value )
++void setThreadValue(AnyPtr value)
+ {
+ 	_threadValueMacOS = value;
+ }
+ 
+-FxU32 getThreadValueSLOW( void )
++AnyPtr getThreadValueSLOW(void)
+ {
+ 	return _threadValueMacOS;
+ }
+@@ -168,7 +169,7 @@ void endCriticalSection(void)
+ 
+ #elif (GLIDE_PLATFORM & GLIDE_OS_UNIX)
+ 
+-unsigned long threadValueLinux;
++AnyPtr threadValueLinux;
+ 
+ void initThreadStorage(void)
+ {
+@@ -176,12 +177,12 @@ void initThreadStorage(void)
+ 
+ 
+ 
+-void setThreadValue( unsigned long value )
++void setThreadValue(AnyPtr value)
+ {
+ 	threadValueLinux = value;
+ }
+ 
+-unsigned long getThreadValueSLOW( void )
++AnyPtr getThreadValueSLOW(void)
+ {
+ 	return threadValueLinux;
+ }
+--- glide3x/h5/glide3/src/xtexdl_def.c	2006-07-04 04:42:13.000000000 +0300
++++ glide3x/h5/glide3/src/xtexdl_def.c	2006-07-04 07:53:25.000000000 +0300
+@@ -319,7 +319,7 @@ _grTexDownload_Default_8_4(struct GrGC_s
+       const FxU32 t0 = *(const FxU32*)src8;
+       
+       GDBG_INFO(195, "s = %d, t = %d, address = 0x%x\n", s, t,
+-                (FxU32) tex_address - (FxU32) gc->tex_ptr + 0x200000);
++                (AnyPtr)tex_address - (AnyPtr)gc->tex_ptr + 0x200000);
+       
+       LINEAR_WRITE_SET_8(tex_address, t0);
+       
+@@ -412,7 +412,7 @@ _grTexDownload_Default_8_WideS(struct Gr
+         t1 = *(const FxU32*)(src8 + 4);
+       
+       GDBG_INFO(195, "s = %d, t = %d, address = 0x%x\n", s, t,
+-                (FxU32) tex_address - (FxU32) gc->tex_ptr + 0x200000);
++                (AnyPtr)tex_address - (AnyPtr)gc->tex_ptr + 0x200000);
+       
+       LINEAR_WRITE_SET_8(tex_address + 0, t0);
+       LINEAR_WRITE_SET_8(tex_address + 4, t1);
+@@ -572,7 +572,7 @@ _grTexDownload_Default_16_WideS(struct G
+       const FxU32 t1 = *(const FxU32*)(src16 + 2);
+       
+       GDBG_INFO(195, "s = %d, t = %d, address = 0x%x\n", s, t,
+-                (FxU32) tex_address - (FxU32) gc->tex_ptr + 0x200000);
++                (AnyPtr)tex_address - (AnyPtr)gc->tex_ptr + 0x200000);
+       
+       LINEAR_WRITE_SET_16(tex_address + 0, t0);
+       LINEAR_WRITE_SET_16(tex_address + 4, t1);
+@@ -639,7 +639,7 @@ _grTexDownload_Default_32_WideS(struct G
+       const FxU32 t1 = *(src32 + 1);
+       
+       GDBG_INFO(195, "s = %d, t = %d, address = 0x%x\n", s, t,
+-                (FxU32) tex_address - (FxU32) gc->tex_ptr + 0x200000);
++                (AnyPtr)tex_address - (AnyPtr)gc->tex_ptr + 0x200000);
+       
+       LINEAR_WRITE_SET(tex_address,     t0);
+       LINEAR_WRITE_SET(tex_address + 4, t1);
+--- glide3x/h5/incsrc/fxhal.h	2006-07-04 04:42:13.000000000 +0300
++++ glide3x/h5/incsrc/fxhal.h	2006-07-04 07:53:25.000000000 +0300
+@@ -105,7 +105,7 @@ FX_ENTRY void   FX_CALL fxHalPutenv(char
+ FX_ENTRY HalInfo * FX_CALL fxHalInit(FxU32 flags);
+ FX_ENTRY FxU32  FX_CALL fxHalNumBoardsInSystem(void);
+ FX_ENTRY SstRegs * FX_CALL fxHalMapBoard(FxU32 boardNum);
+-FX_ENTRY FxBool FX_CALL fxHalInitCmdFifo( SstRegs *sst, int which, FxU32 fifoStart,
++FX_ENTRY FxBool FX_CALL fxHalInitCmdFifo(SstRegs *sst, int which, AnyPtr fifoStart,
+                   FxU32 size, FxBool directExec, FxBool disableHoles, FxBool agpEnable);
+ FX_ENTRY FxBool FX_CALL fxHalInitRegisters(SstRegs *sst);
+ FX_ENTRY FxBool FX_CALL fxHalInitRenderingRegisters(SstRegs *sst);
+@@ -212,9 +212,18 @@ fxHalInitVideoOverlaySurface(
+         #define AGPWRP(aHi,aLo,d)  AGPWRV( *agpPhysToVirt(aHi,aLo), d )
+         #define AGPRDP(aHi,aLo)    AGPRDV( *agpPhysToVirt(aHi,aLo) )
+ #else  // #ifdef HAL_CSIM                          // REAL hw
++#ifdef __alpha__
++extern FxU8 _fxget8(FxU8 *);
++extern FxU16 _fxget16(FxU16 *);
++extern FxU32 _fxget32(FxU32 *);
++	#define GET8(s) _fxget8((FxU8 *)&s);
++	#define GET16(s) _fxget16((FxU16 *)&s);
++	#define GET(s) _fxget32((FxU32 *)&s);
++#else
+         #define GET8(s) s
+         #define GET16(s) s
+         #define GET(s) s
++#endif
+         #define SET8(d,s) d = s
+         #define SET16(d,s) d = s
+         #define SET(d,s) d = s
+--- glide3x/h5/incsrc/h3defs.h	2006-07-04 04:42:14.000000000 +0300
++++ glide3x/h5/incsrc/h3defs.h	2006-07-04 07:53:25.000000000 +0300
+@@ -2090,9 +2090,9 @@
+ 
+ //----------------- useful addressing macros -----------------------
+ // return pointer to SST at specified WRAP, CHIP, or TREX
+-#define SST_WRAP(sst,n) ((SstRegs *)((n)*0x4000+(long)(sst)))
+-#define SST_CHIP(sst,n) ((SstRegs *)((n)*0x400+(long)(sst)))
+-#define SST_TMU(sst,n)  ((SstRegs *)((0x800<<(n))+(long)(sst)))
++#define SST_WRAP(sst, n) ((SstRegs *)((n) * 0x4000 + (AnyPtr)(sst)))
++#define SST_CHIP(sst, n) ((SstRegs *)((n) * 0x400 + (AnyPtr)(sst)))
++#define SST_TMU(sst, n)  ((SstRegs *)((0x800 << (n)) + (AnyPtr)(sst)))
+ #define SST_TREX(sst,n) SST_TMU(sst,n)
+ 
+ // offsets from the base of memBaseAddr0
+@@ -2139,7 +2139,7 @@
+ 
+ #define SST_IS_REGISTER_ADDR(a)  ( (a) >= SST_IO_OFFSET         && (a) < SST_TEX_OFFSET )
+ 
+-#define SST_BASE_ADDRESS(sst)   ((long)(sst)-SST_3D_OFFSET)
++#define SST_BASE_ADDRESS(sst)   ((AnyPtr)(sst) - SST_3D_OFFSET)
+ #define SST_IO_ADDRESS(sst)     (SST_IO_OFFSET+SST_BASE_ADDRESS(sst))
+ #define SST_CMDAGP_ADDRESS(sst) (SST_CMDAGP_OFFSET+SST_BASE_ADDRESS(sst))
+ #define SST_GUI_ADDRESS(sst)    (SST_2D_OFFSET+SST_BASE_ADDRESS(sst))
+--- glide3x/h5/minihwc/hwcext.h	2006-07-04 04:42:14.000000000 +0300
++++ glide3x/h5/minihwc/hwcext.h	2006-07-04 07:53:25.000000000 +0300
+@@ -265,7 +265,7 @@ typedef struct hwcExtLinearAddrReq_s {
+ /* Returned from HWCEXT_GETLINEARADDR */
+ typedef struct hwcExtLinearAddrRes_s {
+   FxU32 numBaseAddrs;               /* # base addresses */
+-  unsigned long baseAddresses[HWCEXT_MAX_BASEADDR]; /* linear Addresses  */
++  AnyPtr baseAddresses[HWCEXT_MAX_BASEADDR]; /* linear Addresses  */
+ } hwcExtLinearAddrRes_t;
+ 
+ /*
+--- glide3x/h5/minihwc/hwcio.h	2006-07-04 04:42:14.000000000 +0300
++++ glide3x/h5/minihwc/hwcio.h	2006-07-04 07:53:25.000000000 +0300
+@@ -48,6 +48,12 @@ extern char *cmdAGPRegNames[];
+ extern char *waxRegNames[];
+ extern char *sstRegNames[];
+ 
++#ifdef __alpha__
++extern FxU32 _fxget32(FxU32 *);
++#define GET(s) _fxget32((FxU32 *)&s);
++#define SET(d, s) d = s
++#endif
++
+ #ifndef GET
+ #  define GET(s) s
+ #  define SET(d, s)    d = s
+--- glide3x/h5/minihwc/linhwc.c	2006-07-04 04:42:14.000000000 +0300
++++ glide3x/h5/minihwc/linhwc.c	2006-07-04 07:56:21.000000000 +0300
+@@ -71,8 +71,10 @@ static FxU32 fenceVar;
+ # define P6FENCE asm volatile("mf.a" ::: "memory");
+ #elif defined (__alpha__)
+ # define P6FENCE asm volatile("mb" ::: "memory");
+-#else
++#elif defined (__i386__) || defined (__x86_64__)
+ # define P6FENCE asm("xchg %%eax, %0" : : "m" (fenceVar) : "eax");
++#else
++#error "error: need to define P6FENCE for this architecture"
+ #endif
+ 
+ #define MAXFIFOSIZE     0x40000
+@@ -245,8 +247,8 @@ hwcMapBoard(hwcBoardInfo *bInfo, FxU32 b
+   bInfo->linearInfo.initialized = FXTRUE;
+   /*bInfo->osNT = FXFALSE;*/
+   bInfo->procHandle = getpid();
+-  bInfo->linearInfo.linearAddress[0]=(unsigned long)driInfo.pRegs;
+-  bInfo->linearInfo.linearAddress[1]=(unsigned long)driInfo.pFB;
++  bInfo->linearInfo.linearAddress[0] = (AnyPtr)driInfo.pRegs;
++  bInfo->linearInfo.linearAddress[1] = (AnyPtr)driInfo.pFB;
+   return FXTRUE;
+ }
+ 
+@@ -905,9 +907,9 @@ hwcResolutionSupported(hwcBoardInfo *bIn
+ #undef FN_NAME
+ } /* hwcResolutionSupported */
+ 
+-extern void _grImportFifo (int, int);
++extern void _grImportFifo(AnyPtr fifoPtr, AnyPtr fifoRead);
++extern void _grExportFifo(FxU32 *fifoPtr, FxU32 *fifoRead);
+ extern void _grInvalidateAll (void);
+-extern void _grExportFifo (int *, int *);
+ 
+ /* This two routines hwcSLIRead{Enable,Disable} are currently NOPs XXX */
+ 
+@@ -986,7 +988,7 @@ char hwcGetCH( void ) {
+   return lin_getch();
+ }
+ 
+-void grDRIImportFifo(int fifoPtr, int fifoRead)
++void grDRIImportFifo(FxU32 fifoPtr, FxU32 fifoRead)
+ {
+   _grImportFifo(fifoPtr, fifoRead);
+ }
+--- glide3x/h5/minihwc/minihwc.h	2006-07-04 04:42:14.000000000 +0300
++++ glide3x/h5/minihwc/minihwc.h	2006-07-04 07:53:25.000000000 +0300
+@@ -318,14 +318,14 @@ typedef struct hwcPCIInfo_s {
+ typedef struct hwcLinearInfo_s {
+   FxBool
+     initialized;
+-  unsigned long
++  AnyPtr
+     linearAddress[HWC_NUM_BASE_ADDR];
+ } hwcLinearInfo;
+ 
+ typedef struct hwcRegInfo_s {
+   FxBool
+     initialized;
+-  volatile unsigned long
++  volatile AnyPtr
+     ioMemBase,                  /* mem base for I/O aliases */
+     cmdAGPBase,                 /* CMD/AGP register base */
+     waxBase,                    /* 2D register base */
+@@ -349,12 +349,14 @@ typedef struct hwcFifoInfo_s {
+   FxBool
+     agpFifo,
+     initialized;
+-  unsigned long
++  AnyPtr
+     agpVirtAddr;
+   FxU32
+     agpPhysAddr,
+-    agpSize,
+-    fifoStart,                  /* Beg of fifo (offset from base) */
++    agpSize;
++  AnyPtr
++    fifoStart;                  /* Beg of fifo (offset from base) */
++  FxU32
+     fifoLength;                 /* Fifo size in bytes */
+ } hwcFifoInfo;
+ 
+--- glide3x/sst1/glide3/src/gpci.c	2006-07-04 04:42:14.000000000 +0300
++++ glide3x/sst1/glide3/src/gpci.c	2006-07-04 07:53:25.000000000 +0300
+@@ -365,6 +365,7 @@ displayBoardInfo( int i, GrHwConfigurati
+   }
+ } /* displayBoardInfo */
+ 
++#if GL_X86
+ /* Returns 16:16 pair indicating the cpu's manufacturer and its
+  * capabilities. Non-Intel processors should have a vendor id w/ the
+  * high bit set so that it appears to be a negative #. The value of
+@@ -391,6 +392,7 @@ enum {
+ };
+ extern FxI32 GR_CDECL
+ _cpu_detect_asm(void);
++#endif
+ 
+ #if defined(FX_DLL_ENABLE) && (GLIDE_PLATFORM & GLIDE_OS_WIN32)
+ #include <windows.h>

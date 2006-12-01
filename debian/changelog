@@ -1,4 +1,4 @@
-glide (2006.07.04-1) UNRELEASED; urgency=low
+glide (2006.12.01-1) UNRELEASED; urgency=low
 
   * New Upstream Snapshot.
     - debian/patches/glide2x-clobber-pic-reg: Remove file. Merged upstream.
@@ -24,6 +24,13 @@ glide (2006.07.04-1) UNRELEASED; urgency=low
     - debian/patches/z04-gcc34-port: Likewise.
     - debian/patches/z05-gcc4-fix: Likewise.
     - debian/patches/z06-gcc401-fix: Likewise.
+    - debian/patches/patches/glide2x-pregasp: Removed file. Use nasm in
+      upstream instead.
+    - debian/patches/z02-64bit-port: Removed. Upstream canged build system.
+    - debian/patches/z03-amd64-port: Merged with ...
+    - debian/patches/z01-64bit-port: ... this. Split into ...
+    - debian/patches/glide3x-64bit.patch: ... this and ...
+    - debian/patches/swlibs-64bit.patch: ... this.
 
  -- Guillem Jover <guillem@debian.org>  Tue,  4 Jul 2006 04:47:24 +0300
 

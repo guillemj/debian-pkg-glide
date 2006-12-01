@@ -1,0 +1,456 @@
+#DPATCHLEVEL=0
+--- swlibs/fxmisc/fximg.c	2006-07-04 04:42:21.000000000 +0300
++++ swlibs/fxmisc/fximg.c	2006-07-04 06:03:17.000000000 +0300
+@@ -1471,8 +1471,8 @@ FxBool _imgWriteP6Header( FILE *stream, 
+ 	imgErrorString = "Image write error.";
+ 	if ( 0 > fprintf( stream, "P6\n" ) ) return FXFALSE;
+ 	if ( 0 > fprintf( stream, "# PPM Comment\n" ) ) return FXFALSE;
+-	if ( 0 > fprintf( stream, "%ld ", info->width ) ) return FXFALSE;
+-	if ( 0 > fprintf( stream, "%ld\n", info->height ) ) return FXFALSE;
++	if ( 0 > fprintf( stream, "%d ", info->width ) ) return FXFALSE;
++	if ( 0 > fprintf( stream, "%d\n", info->height ) ) return FXFALSE;
+ 	if ( 0 > fprintf( stream, "255\n" ) ) return FXFALSE;
+ 	imgErrorString = "No error.";
+ 	return FXTRUE;
+--- swlibs/newpci/pcilib/fxlinux.c	2006-07-04 04:42:21.000000000 +0300
++++ swlibs/newpci/pcilib/fxlinux.c	2006-07-04 06:03:17.000000000 +0300
+@@ -40,10 +40,10 @@ static const char* pciIdentifyLinux(void
+ static FxBool pciOutputStringLinux(const char *msg);
+ static FxBool pciInitializeLinux(void);
+ static FxBool pciShutdownLinux(void);
+-static FxBool pciMapLinearLinux(FxU32, FxU32 physical_addr, unsigned long *linear_addr,
++static FxBool pciMapLinearLinux(FxU32, FxU32 physical_addr, AnyPtr *linear_addr,
+ 				FxU32 *length);
+-static FxBool pciUnmapLinearLinux(unsigned long linear_addr, FxU32 length);
+-static FxBool pciSetPermissionLinux(const unsigned long, const FxU32, const FxBool);
++static FxBool pciUnmapLinearLinux(AnyPtr linear_addr, FxU32 length);
++static FxBool pciSetPermissionLinux(const AnyPtr, const FxU32, const FxBool);
+ static FxU8 pciPortInByteLinux(unsigned short port);
+ static FxU16 pciPortInWordLinux(unsigned short port);
+ static FxU32 pciPortInLongLinux(unsigned short port);
+@@ -223,9 +223,10 @@ pciShutdownLinux(void)
+ 
+ static FxBool 
+ pciMapLinearLinux(FxU32 bus, FxU32 physical_addr,
+-		  unsigned long *linear_addr, FxU32 *length) 
++		  AnyPtr *linear_addr, FxU32 *length)
+ {
+   int fd;
++  void *mmap_addr;
+   if (linuxDevFd!=-1) {
+     fd=linuxDevFd;
+   } else {
+@@ -234,9 +235,10 @@ pciMapLinearLinux(FxU32 bus, FxU32 physi
+       return FXFALSE;
+     }
+   }
+-  if (((*linear_addr)=(unsigned long)mmap(0, *length, PROT_READ|PROT_WRITE,
+-				  MAP_SHARED, fd, physical_addr)) ==
+-       (unsigned long)MAP_FAILED)
++  mmap_addr = mmap(0, *length, PROT_READ|PROT_WRITE, MAP_SHARED, fd,
++		   physical_addr);
++  *linear_addr = (AnyPtr)mmap_addr;
++  if (mmap_addr == MAP_FAILED)
+   {
+     if (fd!=linuxDevFd) close(fd);
+     return FXFALSE;
+@@ -246,14 +248,14 @@ pciMapLinearLinux(FxU32 bus, FxU32 physi
+ }
+ 
+ static FxBool
+-pciUnmapLinearLinux(unsigned long linear_addr, FxU32 length) 
++pciUnmapLinearLinux(AnyPtr linear_addr, FxU32 length)
+ {
+   munmap((void *) linear_addr, length);
+   return FXTRUE;
+ }
+ 
+ static FxBool
+-pciSetPermissionLinux(const unsigned long addrBase, const FxU32 addrLen, 
++pciSetPermissionLinux(const AnyPtr addrBase, const FxU32 addrLen,
+ 		      const FxBool writePermP)
+ {
+   return FXTRUE;
+--- swlibs/newpci/pcilib/fxpci.c	2006-07-04 04:42:21.000000000 +0300
++++ swlibs/newpci/pcilib/fxpci.c	2006-07-04 06:03:17.000000000 +0300
+@@ -56,7 +56,7 @@ static struct {
+   struct {
+     FxBool
+     mapped;
+-    unsigned long
++    AnyPtr
+     addr;
+   } addrList[MAX_PCI_BASEADDRESSES];
+ } linearAddressMapList[MAX_PCI_DEVICES];
+@@ -280,12 +280,12 @@ _pciUpdateRegister( FxU32 offset, FxU32 
+   return;
+ } /* _pciUpdateRegister */
+ 
+-static unsigned long
++static AnyPtr
+ find_mapped_address(FxU32 device_bus_func_number, FxU32 addrNum) 
+ {
+   FxU32 
+     i;
+-  unsigned long
++  AnyPtr
+     retVal = 0x00UL;
+ 
+   for(i = 0; i < MAX_PCI_DEVICES; i++) {
+@@ -301,7 +301,7 @@ find_mapped_address(FxU32 device_bus_fun
+ }
+ 
+ static void 
+-set_mapped_address(FxU32 device_bus_func_number, FxU32 addrNum, unsigned long value) 
++set_mapped_address(FxU32 device_bus_func_number, FxU32 addrNum, AnyPtr value)
+ {
+   FxU32 i;
+   
+@@ -611,18 +611,11 @@ pciSetConfigData( PciRegister reg, FxU32
+     return FXFALSE;
+   }
+ 
+-  /*
+-   * NOTE: This should really be this way, at least for now.
+-   *
+-   * Changing this to return the value returned by 
+-   * pciUpdateRegisterLinux breaks sst1.
+-   */
+ #ifdef __linux__
+   if (hasDev3DfxLinux()) {
+-    pciUpdateRegisterLinux( reg.regAddress, *data, reg.sizeInBytes,
+-			    device_bus_func_number);
++    return pciUpdateRegisterLinux(reg.regAddress, *data, reg.sizeInBytes,
++				  device_bus_func_number);
+     
+-    return FXTRUE;
+   }
+ #endif
+   _pciUpdateRegister( reg.regAddress, *data, reg.sizeInBytes,
+@@ -712,7 +705,7 @@ pciMapCardMulti(FxU32 vendorID, FxU32 de
+                 FxU32 cardNum, FxU32 addressNum)
+ {
+   FxU32 physAddress;
+-  unsigned long virtAddress;
++  AnyPtr virtAddress;
+   
+   /* 1) open the PCI device and scan it for devices
+    * 2) scan the existing devices for a match
+@@ -762,7 +755,6 @@ pciMapCardMulti(FxU32 vendorID, FxU32 de
+   return (FxU32*)virtAddress;
+ } /* pciMapCardMulti */
+ 
+-
+ FX_EXPORT FxU32 * FX_CSTYLE
+ pciMapCard(FxU32 vendorID, FxU32 deviceID,
+            FxI32 length, FxU32 *devNum, FxU32 addressNum)
+@@ -771,7 +763,7 @@ pciMapCard(FxU32 vendorID, FxU32 deviceI
+ } /* pciMapCard */
+ 
+ FX_EXPORT FxBool FX_CSTYLE
+-pciMapPhysicalToLinear( unsigned long *linear_addr, FxU32 physical_addr,
++pciMapPhysicalToLinear(AnyPtr *linear_addr, FxU32 physical_addr,
+                         FxU32 *length ) 
+ { 
+   return pciMapPhysicalDeviceToLinear(linear_addr, 
+@@ -780,7 +772,7 @@ pciMapPhysicalToLinear( unsigned long *l
+ } /* pciMapPhysicalToLinear */
+ 
+ FX_ENTRY FxBool FX_CALL 
+-pciMapPhysicalDeviceToLinear(unsigned long *linear_addr, 
++pciMapPhysicalDeviceToLinear(AnyPtr *linear_addr,
+                              FxU32 busNumber, FxU32 physical_addr,
+                              FxU32 *length)
+ {
+@@ -790,7 +782,7 @@ pciMapPhysicalDeviceToLinear(unsigned lo
+ 
+ 
+ FX_EXPORT void FX_CSTYLE
+-pciUnmapPhysical( unsigned long linear_addr, FxU32 length ) 
++pciUnmapPhysical(AnyPtr linear_addr, FxU32 length)
+ {
+   int i,j;
+   
+@@ -830,7 +822,7 @@ pciOutputDebugString(const char* msg)
+ }
+ 
+ FX_EXPORT FxBool FX_CSTYLE
+-pciLinearRangeSetPermission(const unsigned long addrBase, const FxU32 addrLen, const FxBool writeableP)
++pciLinearRangeSetPermission(const AnyPtr addrBase, const FxU32 addrLen, const FxBool writeableP)
+ {
+   return pciLinearRangeSetPermissionDD(addrBase, addrLen, writeableP);
+ }
+--- swlibs/newpci/pcilib/fxpci.h	2006-07-04 04:42:21.000000000 +0300
++++ swlibs/newpci/pcilib/fxpci.h	2006-07-04 06:03:17.000000000 +0300
+@@ -180,15 +180,15 @@ pciSetConfigDataRaw( PciRegister reg, Fx
+  * on bus0 which would not work across pci bridges or on agp devices.   
+  */
+ FX_ENTRY FxBool FX_CALL 
+-pciMapPhysicalToLinear(unsigned long *linear_addr, FxU32 physical_addr,FxU32 *length);
++pciMapPhysicalToLinear(AnyPtr *linear_addr, FxU32 physical_addr,FxU32 *length);
+ 
+ FX_ENTRY FxBool FX_CALL 
+-pciMapPhysicalDeviceToLinear(unsigned long *linear_addr, 
++pciMapPhysicalDeviceToLinear(AnyPtr *linear_addr,
+                              FxU32 busNumber, FxU32 physical_addr,
+                              FxU32 *length);
+ 
+ FX_ENTRY void   FX_CALL 
+-pciUnmapPhysical( unsigned long linear_addr, FxU32 length );
++pciUnmapPhysical(AnyPtr linear_addr, FxU32 length);
+ 
+ const char *
+ pciGetVendorName( FxU16 vendor_id );
+@@ -235,7 +235,7 @@ FX_ENTRY FxBool FX_CALL
+ pciOutputDebugString(const char* debugMsg);
+ 
+ FX_ENTRY FxBool FX_CALL
+-pciLinearRangeSetPermission(const unsigned long addrBase, const FxU32 addrLen, const FxBool writeableP);
++pciLinearRangeSetPermission(const AnyPtr addrBase, const FxU32 addrLen, const FxBool writeableP);
+ 
+ #define PCI_ERR_NOERR           0
+ #define PCI_ERR_WINRTINIT       1
+--- swlibs/newpci/pcilib/pcilib.h	2006-07-04 04:42:21.000000000 +0300
++++ swlibs/newpci/pcilib/pcilib.h	2006-07-04 06:03:17.000000000 +0300
+@@ -74,13 +74,13 @@ typedef struct {
+ 
+   /* Platform device address management */
+   FxBool (*addrMap)(FxU32 busNumber, FxU32 physAddr,
+-                    unsigned long* linearAddr, FxU32* length);
+-  FxBool (*addrUnmap)(unsigned long linearAddr, FxU32 length);
++                    AnyPtr* linearAddr, FxU32* length);
++  FxBool (*addrUnmap)(AnyPtr linearAddr, FxU32 length);
+ 
+   /* Optional things that a platform may or maynot support and clients
+    * should not rely on the call to suceed.  
+    */
+-  FxBool (*addrSetPermission)(const unsigned long addrBase, const FxU32 addrLen,
++  FxBool (*addrSetPermission)(const AnyPtr addrBase, const FxU32 addrLen,
+                               const FxBool writePermP);
+ 
+   FxBool (*msrGet)(MSRInfo* in, MSRInfo* out);
+--- swlibs/texus/lib/pal256.c	2006-07-04 04:42:22.000000000 +0300
++++ swlibs/texus/lib/pal256.c	2006-07-04 06:03:17.000000000 +0300
+@@ -93,7 +93,7 @@ typedef struct {
+ #if 0
+ static uint    *Histogram;             /* image histogram      */
+ #else
+-static uint     Histogram[COLORMAXI*COLORMAXI*COLORMAXI * sizeof(long)];
++static uint     Histogram[COLORMAXI*COLORMAXI*COLORMAXI * sizeof(uint)];
+ #endif
+ static uint     SumPixels;              /* total # of pixels    */
+ static uint     ColormaxI;              /* # of colors, 2^Bits */
+--- swlibs/texus/lib/texus.h	2006-07-04 04:42:22.000000000 +0300
++++ swlibs/texus/lib/texus.h	2006-07-04 06:03:17.000000000 +0300
+@@ -40,6 +40,7 @@ typedef unsigned short  FxU16;
+ typedef short           FxI16;
+ typedef unsigned int    FxU32;
+ typedef int             FxI32;
++typedef unsigned long   AnyPtr;
+ typedef int             FxBool;
+ 
+ /*
+--- swlibs/texus2/lib/dequant.c	2006-07-04 04:42:22.000000000 +0300
++++ swlibs/texus2/lib/dequant.c	2006-07-04 06:03:17.000000000 +0300
+@@ -158,12 +158,12 @@ _txImgDequantizeRGB332(FxU32 *out, FxU8 
+ }
+ 
+ static void
+-_txImgDequantizeYIQ422(FxU32 *out, FxU8 *in, int w, int h, const int *yabTable)
++_txImgDequantizeYIQ422(FxU32 *out, FxU8 *in, int w, int h, const FxU32 *yabTable)
+ {
+     int                         n = w * h;
+     FxU32                       pal[256];
+ 
+-    txYABtoPal256((int *)pal, (int *)yabTable);
++    txYABtoPal256(pal, yabTable);
+     out += n;
+     in  += n;
+     while (n--) *--out = pal[*--in] | 0xff000000;
+@@ -221,10 +221,10 @@ _txImgDequantizeARGB8332(FxU32 *out, FxU
+ }
+ 
+ static void
+-_txImgDequantizeAYIQ8422(FxU32 *out, FxU16 *in, int w, int h, const int *yab)
++_txImgDequantizeAYIQ8422(FxU32 *out, FxU16 *in, int w, int h, const FxU32 *yab)
+ {
+     int         n = w * h;
+-    int        pal[256];
++    FxU32       pal[256];
+ 
+     txYABtoPal256(pal, yab);
+     out += n;
+@@ -489,13 +489,13 @@ txMipDequantize(TxMip *txMip, TxMip *pxM
+             
+         switch(pxMip->format) {
+         case GR_TEXFMT_RGB_332:         _txImgDequantizeRGB332(dst, src, w, h); break;
+-        case GR_TEXFMT_YIQ_422:         _txImgDequantizeYIQ422(dst, src, w, h, (int *)pxMip->pal); break;
++        case GR_TEXFMT_YIQ_422:         _txImgDequantizeYIQ422(dst, src, w, h, pxMip->pal); break;
+         case GR_TEXFMT_A_8:             _txImgDequantizeA8(dst, src, w, h); break;
+         case GR_TEXFMT_I_8:             _txImgDequantizeI8(dst, src, w, h); break;
+         case GR_TEXFMT_AI_44:           _txImgDequantizeAI44(dst, src, w, h); break;
+         case GR_TEXFMT_P_8:             _txImgDequantizeP8(dst, src, w, h, pxMip->pal); break;
+         case GR_TEXFMT_ARGB_8332:       _txImgDequantizeARGB8332(dst, src, w, h); break;
+-        case GR_TEXFMT_AYIQ_8422:       _txImgDequantizeAYIQ8422(dst, src, w, h, (int *)pxMip->pal); break;
++        case GR_TEXFMT_AYIQ_8422:       _txImgDequantizeAYIQ8422(dst, src, w, h, pxMip->pal); break;
+         case GR_TEXFMT_RGB_565:         _txImgDequantizeRGB565(dst, src, w, h); break;
+         case GR_TEXFMT_ARGB_1555:       _txImgDequantizeARGB1555(dst, src, w, h); break;
+         case GR_TEXFMT_ARGB_4444:       _txImgDequantizeARGB4444(dst, src, w, h); break;
+--- swlibs/texus2/lib/ncc.c	2006-07-04 04:42:22.000000000 +0300
++++ swlibs/texus2/lib/ncc.c	2006-07-04 06:03:17.000000000 +0300
+@@ -35,7 +35,7 @@ static struct   {
+     int yhist[256], ihist[256], qhist[256];
+     int ymin, ymax, imin, imax, qmin, qmax;
+     int npixels;
+-    int y[16], a[3*4], b[3*4];          // please leave these contiguous
++    FxU32 y[16], a[3*4], b[3*4];          // please leave these contiguous
+ } ncc;
+ 
+ static int
+@@ -305,7 +305,7 @@ txMipNcc(TxMip *pxMip, TxMip *txMip, int
+ 
+ 
+     if ((dither & TX_DITHER_MASK) == TX_DITHER_ERR) {
+-        txYABtoPal256((int *)pxMip->pal, (int *) &ncc.y[0]);
++        txYABtoPal256(pxMip->pal, &ncc.y[0]);
+         txDiffuseIndex(pxMip, txMip, pixsize, pxMip->pal, 256);
+     }
+     else {
+--- swlibs/texus2/lib/nccnnet.c	2006-07-04 04:42:22.000000000 +0300
++++ swlibs/texus2/lib/nccnnet.c	2006-07-04 06:03:17.000000000 +0300
+@@ -268,7 +268,7 @@ txMapPal256toYAB(FxU32 *YAB, FxU8 *map, 
+     int        bstR, bstG, bstB, bstMax;
+     int         iterations;                     // track how many inputs have been fed to NN
+     int         drySpells;                      // how many inputs since last best case.
+-    int        yab2pal[256];
++    FxU32       yab2pal[256];
+ 
+     _nn_initTables();
+     /* 
+@@ -364,7 +364,7 @@ txMapPal256toYAB(FxU32 *YAB, FxU8 *map, 
+      * Replace MSB of samples with index to be used with YAB table.
+      */
+ 
+-    txYABtoPal256((int*)yab2pal, (int*)YAB);
++    txYABtoPal256(yab2pal, YAB);
+ 
+     for (i=0; i<nsamples; i++) {
+         int             ir, ig, ib;
+@@ -375,7 +375,7 @@ txMapPal256toYAB(FxU32 *YAB, FxU8 *map, 
+         ib = (samples[i]      ) & 0xFF;
+ 
+         // Find closest color in the yab2pal tables
+-        map[i] = (FxU8) txNearestColor(ir, ig, ib, (const FxU32 *)yab2pal, 256);
++        map[i] = (FxU8) txNearestColor(ir, ig, ib, yab2pal, 256);
+     }
+ }
+ 
+@@ -385,7 +385,7 @@ txMipNccNNet(TxMip *pxMip, TxMip *txMip,
+     int         i, w, h;
+     int         ncolors;
+     int         pixsize = (pxMip->format == GR_TEXFMT_YIQ_422) ? 1 : 2;
+-    int        yabTable[16+12+12];
++    FxU32       yabTable[16+12+12];
+     FxU8        map[256];
+ 
+ 
+@@ -406,7 +406,7 @@ txMipNccNNet(TxMip *pxMip, TxMip *txMip,
+       {
+         printf("%d samples...", ncolors); fflush(stdout);
+       }
+-    txMapPal256toYAB((FxU32 *)yabTable, (FxU8 *)map, ncolors, (FxU32 *)pxMip->pal);
++    txMapPal256toYAB(yabTable, map, ncolors, pxMip->pal);
+     if( txVerbose )
+       {
+         printf("eMax=(%3d%3d%3d)...eAvg=(%3d%3d%3d)\n",
+@@ -422,7 +422,7 @@ txMipNccNNet(TxMip *pxMip, TxMip *txMip,
+          * the 256 color palette generated from the YAB table. This will be 
+          * useful for error diffusion dithering.
+          */
+-        txYABtoPal256((int *)pxMip->pal, (int *)yabTable);
++        txYABtoPal256(pxMip->pal, yabTable);
+         txDiffuseIndex(pxMip, txMip, pixsize, pxMip->pal, 256);
+     } 
+     else {
+--- swlibs/texus2/lib/pal256.c	2006-07-04 04:42:22.000000000 +0300
++++ swlibs/texus2/lib/pal256.c	2006-07-04 06:03:17.000000000 +0300
+@@ -91,7 +91,7 @@ typedef struct {
+ #if 0
+ static uint    *Histogram;             /* image histogram      */
+ #else
+-static uint    Histogram[COLORMAXI*COLORMAXI*COLORMAXI * sizeof(int)];
++static uint    Histogram[COLORMAXI*COLORMAXI*COLORMAXI * sizeof(uint)];
+ #endif
+ static uint    SumPixels;              /* total # of pixels    */
+ static uint    ColormaxI;              /* # of colors, 2^Bits */
+@@ -133,7 +133,7 @@ txMipPal256(TxMip *pxMip, TxMip *txMip, 
+ 
+     Boxes = _Boxes;     
+ #if 0
+-    Histogram = (uint *) txMalloc(ColormaxI*ColormaxI*ColormaxI * sizeof(int));
++    Histogram = (uint *) txMalloc(ColormaxI*ColormaxI*ColormaxI * sizeof(uint));
+     rgbmap = txMalloc((1<<NBITS)*(1<<NBITS)*(1<<NBITS));
+ #endif
+ 
+@@ -143,7 +143,7 @@ txMipPal256(TxMip *pxMip, TxMip *txMip, 
+     bzero(Boxes->freq[0], ColormaxI * sizeof(uint));
+     bzero(Boxes->freq[1], ColormaxI * sizeof(uint));
+     bzero(Boxes->freq[2], ColormaxI * sizeof(uint));
+-    bzero(Histogram, ColormaxI * ColormaxI * ColormaxI * sizeof(int));
++    bzero(Histogram, ColormaxI * ColormaxI * ColormaxI * sizeof(uint));
+ 
+     /* Feed all bitmaps & generate histogram */
+     SumPixels = 0;
+--- swlibs/texus2/lib/pal6666.c	2006-07-04 04:42:22.000000000 +0300
++++ swlibs/texus2/lib/pal6666.c	2006-07-04 06:03:17.000000000 +0300
+@@ -138,7 +138,7 @@ txMipPal6666(TxMip *pxMip, TxMip *txMip,
+ 
+     Boxes = _Boxes;     
+ #if 0
+-    Histogram = (uint *) txMalloc(INVERSE_PAL_SIZE * sizeof(int));
++    Histogram = (uint *) txMalloc(INVERSE_PAL_SIZE * sizeof(uint));
+     argbmap = txMalloc(INVERSE_PAL_SIZE);
+ #endif
+ 
+--- swlibs/texus2/lib/texus.h	2006-07-04 04:42:22.000000000 +0300
++++ swlibs/texus2/lib/texus.h	2006-07-04 06:03:17.000000000 +0300
+@@ -40,6 +40,7 @@ typedef unsigned short  FxU16;
+ typedef short           FxI16;
+ typedef unsigned int    FxU32;
+ typedef int             FxI32;
++typedef unsigned long   AnyPtr;
+ typedef int             FxBool;
+ 
+ /*
+--- swlibs/texus2/lib/texusint.h	2006-07-04 04:42:22.000000000 +0300
++++ swlibs/texus2/lib/texusint.h	2006-07-04 06:03:17.000000000 +0300
+@@ -73,7 +73,7 @@ int     txGCD(int a, int b);
+ int             txAspectRatio(int w, int h);
+ void    txPanic(char *);
+ void    txError(char *);
+-void    txYABtoPal256(int *palette, const int* yabTable);
++void    txYABtoPal256(FxU32 *palette, const FxU32* yabTable);
+ void    txRectCopy(FxU8 *dst, int dstStride, const FxU8 *src, int srcStride,
+                         int width, int height);
+ FxBool  txMipAlloc(TxMip *txMip);
+--- swlibs/texus2/lib/util.c	2006-07-04 04:42:22.000000000 +0300
++++ swlibs/texus2/lib/util.c	2006-07-04 06:03:17.000000000 +0300
+@@ -156,14 +156,14 @@ txGCD(int a, int b)
+ }
+ 
+ void
+-txYABtoPal256(int *palette, const int* yabTable)
++txYABtoPal256(FxU32 *palette, const FxU32* yabTable)
+ {
+         // Convert YAB table to a 256 color palette 
+         // Assume yabTable[] has first 16Y's, 12 A's, 12 B's
+ 
+-        const   int    *Y = yabTable;
+-        const   int    *A = yabTable + 16;
+-        const   int    *B = yabTable + 16 + 12;
++        const FxU32 *Y = yabTable;
++        const FxU32 *A = yabTable + 16;
++        const FxU32 *B = yabTable + 16 + 12;
+         int             i;
+ 
+         for (i=0; i<256; i++) {
