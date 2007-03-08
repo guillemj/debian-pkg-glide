@@ -1,3 +1,12 @@
+glide (2002.04.10-14) UNRELEASED; urgency=low
+
+  * The "anything for the statistics" release.
+  * Debconf template translations:
+    - Updated Dutch. (Closes: #375673, #377260, #388113)
+      Thanks to Kurt De Bree <kdebree@telenet.be>.
+
+ -- Guillem Jover <guillem@debian.org>  Thu,  8 Mar 2007 03:35:45 +0200
+
 glide (2002.04.10-13) unstable; urgency=low
 
   * Build all binary dependent packages under binary-arch. (Closes: #366062)
