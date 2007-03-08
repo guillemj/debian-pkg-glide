@@ -12,6 +12,9 @@ glide (2002.04.10-14) UNRELEASED; urgency=high
     rid of non-existing unresolvable insterted symbols.
     (Closes: #329920, #326099)
     - debian/patches/glide3x-link-unresolved: New file.
+  * Enable C based cpu detection code on !i386 instead of only on alpha.
+    This fixes a missing unresolved symbol on amd64 and probably ia64.
+    (Closes: #307058)
   * Debconf template translations:
     - Updated Dutch. (Closes: #375673, #377260, #388113)
       Thanks to Kurt De Bree <kdebree@telenet.be>.

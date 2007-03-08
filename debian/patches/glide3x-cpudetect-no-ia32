@@ -1,0 +1,18 @@
+diff -Naur build-tree.orig/glide3x/h3/glide3/src/cpu_alpha.c build-tree/glide3x/h3/glide3/src/cpu_alpha.c
+--- build-tree.orig/glide3x/h3/glide3/src/cpu_alpha.c	2007-03-08 05:58:19.000000000 +0200
++++ build-tree/glide3x/h3/glide3/src/cpu_alpha.c	2007-03-08 05:59:30.000000000 +0200
+@@ -1,4 +1,4 @@
+-#ifdef __alpha__
++#ifndef __i386__
+ 
+ #include <stdio.h>
+ #include <string.h>
+diff -Naur build-tree.orig/glide3x/h5/glide3/src/cpu_alpha.c build-tree/glide3x/h5/glide3/src/cpu_alpha.c
+--- build-tree.orig/glide3x/h5/glide3/src/cpu_alpha.c	2007-03-08 05:58:19.000000000 +0200
++++ build-tree/glide3x/h5/glide3/src/cpu_alpha.c	2007-03-08 05:59:59.000000000 +0200
+@@ -1,4 +1,4 @@
+-#ifdef __alpha__
++#ifndef __i386__
+ 
+ #include <stdio.h>
+ #include <string.h>
