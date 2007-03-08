@@ -1,0 +1,12 @@
+diff -Naur build-tree.orig/glide3x/h5/glide3/src/makefile.autoconf.am build-tree/glide3x/h5/glide3/src/makefile.autoconf.am
+--- build-tree.orig/glide3x/h5/glide3/src/makefile.autoconf.am	2007-03-08 05:20:31.000000000 +0200
++++ build-tree/glide3x/h5/glide3/src/makefile.autoconf.am	2007-03-08 05:31:22.000000000 +0200
+@@ -152,7 +152,7 @@
+ #
+ # Special rules for assembly files.
+ #
+-PREPROCESSOR=$(CPP) -fdollars-in-identifiers -x assembler-with-cpp  -I.
++PREPROCESSOR=$(CPP) -x assembler-with-cpp  -I.
+ xdraw2_def.o xdraw2_def.lo: xdraw2.s xdraw2.inc.s fxgasm.h
+ 	$(PREPROCESSOR) $< > $*.tmp.s
+ 	libtool --mode=compile $(CC) $(AFLAGS) -c -o $*.o $*.tmp.s

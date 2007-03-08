@@ -8,6 +8,10 @@ glide (2002.04.10-14) UNRELEASED; urgency=high
   * Link against libm, so that pow is a resolvable symbol.
     - debian/patches/glide2x-link-libm: New file.
     - debian/patches/glide3x-link-libm: Likewise.
+  * Do not consider dollar signs as part of the symbol names, thus getting
+    rid of non-existing unresolvable insterted symbols.
+    (Closes: #329920, #326099)
+    - debian/patches/glide3x-link-unresolved: New file.
   * Debconf template translations:
     - Updated Dutch. (Closes: #375673, #377260, #388113)
       Thanks to Kurt De Bree <kdebree@telenet.be>.
