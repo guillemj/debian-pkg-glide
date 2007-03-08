@@ -1,6 +1,10 @@
-glide (2002.04.10-14) UNRELEASED; urgency=low
+glide (2002.04.10-14) UNRELEASED; urgency=high
 
   * The "anything for the statistics" release.
+  * Disable assembler optimized triangle setup functions for glide2, as they
+    are not PIC ready. (Closes: #376812)
+    - debian/patches/glide2x-clobber-pic-reg: Removed file.
+    - debian/patches/glide2x-c-trisetup: New file.
   * Debconf template translations:
     - Updated Dutch. (Closes: #375673, #377260, #388113)
       Thanks to Kurt De Bree <kdebree@telenet.be>.

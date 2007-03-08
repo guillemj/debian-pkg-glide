@@ -1,0 +1,45 @@
+diff -ruN -x Makefile.in -x configure glide2x-old/cvg/glide/src/makefile.linux glide2x/cvg/glide/src/makefile.linux
+--- build-tree/glide2x-old/cvg/glide/src/makefile.linux	2000-01-28 21:25:44.000000000 +0200
++++ build-tree/glide2x/cvg/glide/src/makefile.linux	2007-02-22 03:00:17.000000000 +0200
+@@ -23,7 +23,7 @@
+ # Compile for specific hardware
+ ifeq ($(FX_GLIDE_HW),cvg)
+ FX_GLIDE_REAL_HW=       1
+-FX_GLIDE_CTRISETUP =    0
++FX_GLIDE_CTRISETUP =    1
+ 
+ HWSPEC          =       fifo.c
+ LCDEFS          +=      -DCVG \
+diff -Naur build-tree.orig/glide2x/h3/glide/src/makefile.linux build-tree/glide2x/h3/glide/src/makefile.linux
+--- build-tree.orig/glide2x/h3/glide/src/makefile.linux	2000-01-28 21:25:44.000000000 +0200
++++ build-tree/glide2x/h3/glide/src/makefile.linux	2007-03-08 04:15:18.000000000 +0200
+@@ -17,6 +17,8 @@
+ # 
+ # COPYRIGHT 3DFX INTERACTIVE, INC. 1999, ALL RIGHTS RESERVED
+ 
++FX_GLIDE_CTRISETUP = 1
++
+ ifeq ($(FX_CHRIS_DENIS_ANTHONY_HACK),1)
+ LCDEFS          +=       -DCHRIS_DENIS_ANTHONY_HACK=1
+ endif
+@@ -90,9 +90,10 @@
+ ifneq ($(GL_AMD3D),)
+ LCDEFS          +=      -DGL_AMD3D
+ LIBOBJS         +=      xtexdl_3dnow.o
+-CFILES          +=      xtexdl_def.c
+ endif
+ 
++CFILES          +=      xtexdl_def.c
++
+ # Do culling test in sw for independent triangles
+ CULL_MODE       =
+ ifneq ($(FX_GLIDE_HW_CULL),1)
+@@ -132,7 +132,7 @@
+ ifeq ($(FX_GLIDE_CTRISETUP),1)
+ ASMTRISETUP     =
+ ATSOPTS         =       -DGLIDE_USE_C_TRISETUP 
+-CFILES          =       gxdraw.c
++CFILES          +=       gxdraw.c
+ else
+ DSPOPTS         +=      -DGLIDE_DISPATCH_SETUP=1 -DGLIDE_PACKED_RGB=0
+ 
