@@ -1,0 +1,24 @@
+diff -ruN -x Makefile.in -x configure glide2x-old/cvg/glide/src/makefile.linux glide2x/cvg/glide/src/makefile.linux
+--- build-tree/glide2x-old/cvg/glide/src/makefile.linux	2000-01-28 21:25:44.000000000 +0200
++++ build-tree/glide2x/cvg/glide/src/makefile.linux	2007-02-22 03:00:17.000000000 +0200
+@@ -206,6 +206,8 @@
+ endif
+ RCFILE          =       glide.rc
+ 
++LINKLIBRARIES	=	-lm
++
+ # Make a static link library for things like the diags.
+ ifeq ($(FX_DLL_BUILD),1)
+ FX_DLL_LIBRARY  =       1
+diff -Naur build-tree.orig/glide2x/h3/glide/src/makefile.linux build-tree/glide2x/h3/glide/src/makefile.linux
+--- build-tree.orig/glide2x/h3/glide/src/makefile.linux	2000-01-28 21:25:44.000000000 +0200
++++ build-tree/glide2x/h3/glide/src/makefile.linux	2007-03-08 04:15:18.000000000 +0200
+@@ -218,6 +218,8 @@
+ endif
+ RCFILE          =       glide.rc
+ 
++LINKLIBRARIES	+=	-lm
++
+ # Make a static link library for things like the diags.
+ ifeq ($(FX_DLL_BUILD),1)
+ FX_DLL_LIBRARY  =       1

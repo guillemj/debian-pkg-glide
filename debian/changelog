@@ -5,6 +5,9 @@ glide (2002.04.10-14) UNRELEASED; urgency=high
     are not PIC ready. (Closes: #376812)
     - debian/patches/glide2x-clobber-pic-reg: Removed file.
     - debian/patches/glide2x-c-trisetup: New file.
+  * Link against libm, so that pow is a resolvable symbol.
+    - debian/patches/glide2x-link-libm: New file.
+    - debian/patches/glide3x-link-libm: Likewise.
   * Debconf template translations:
     - Updated Dutch. (Closes: #375673, #377260, #388113)
       Thanks to Kurt De Bree <kdebree@telenet.be>.
