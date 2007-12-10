@@ -1,25 +1,25 @@
-glide (2002.04.10-14) UNRELEASED; urgency=high
+glide (2002.04.10-14) unstable; urgency=high
 
-  * The "anything for the statistics" release.
+  * The "anything for the percentages" release.
   * Disable assembler optimized triangle setup functions for glide2, as they
-    are not PIC ready. (Closes: #376812)
+    are not PIC clean. (Closes: #376812)
     - debian/patches/glide2x-clobber-pic-reg: Removed file.
     - debian/patches/glide2x-c-trisetup: New file.
   * Link against libm, so that pow is a resolvable symbol.
     - debian/patches/glide2x-link-libm: New file.
     - debian/patches/glide3x-link-libm: Likewise.
-  * Do not consider dollar signs as part of the symbol names, thus getting
-    rid of non-existing unresolvable insterted symbols.
+  * Do not consider dollar signs as part of the symbol names in assembler
+    code, thus getting rid of non-existing unresolvable insterted symbols.
     (Closes: #329920, #326099)
     - debian/patches/glide3x-link-unresolved: New file.
   * Enable C based cpu detection code on !i386 instead of only on alpha.
-    This fixes a missing unresolved symbol on amd64 and probably ia64.
-    (Closes: #307058)
+    This fixes a missing unresolved symbol on amd64 and ia64. (Closes: #307058)
+    - debian/patches/z07-cpudetect-no-ia32: New file.
   * Debconf template translations:
     - Updated Dutch. (Closes: #375673, #377260, #388113)
       Thanks to Kurt De Bree <kdebree@telenet.be>.
 
- -- Guillem Jover <guillem@debian.org>  Thu,  8 Mar 2007 03:35:45 +0200
+ -- Guillem Jover <guillem@debian.org>  Thu,  8 Mar 2007 06:05:36 +0200
 
 glide (2002.04.10-13) unstable; urgency=low
 
