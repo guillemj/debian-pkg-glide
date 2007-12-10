@@ -9,6 +9,7 @@ glide (2002.04.10-15) UNRELEASED; urgency=low
   * Do not include empty directories in libglide3-dev, glide3-bin and
     glide2-bin packages.
   * Now using Standards-Version 3.7.3 (no changes needed).
+  * Add Homepage field.
 
  -- Guillem Jover <guillem@debian.org>  Tue, 11 Dec 2007 01:03:47 +0200
 
