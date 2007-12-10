@@ -6,6 +6,8 @@ Build-Depends: dbs (>= 0.25), debhelper (>= 5), autoconf, automake,
 Build-Conflicts: automake1.4
 Maintainer: Guillem Jover <guillem@debian.org>
 Homepage: http://glide.sf.net/
+Vcs-Browser: http://svn.debian.org/wsvn/pkg-glide/
+Vcs-Svn: svn://svn.debian.org/svn/pkg-glide/trunk/
 Standards-Version: 3.7.3
 
 Package: glide2-bin

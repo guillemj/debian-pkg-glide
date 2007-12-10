@@ -10,6 +10,7 @@ glide (2002.04.10-15) UNRELEASED; urgency=low
     glide2-bin packages.
   * Now using Standards-Version 3.7.3 (no changes needed).
   * Add Homepage field.
+  * Add Vcs-Browser and Vcs-Svn fields.
 
  -- Guillem Jover <guillem@debian.org>  Tue, 11 Dec 2007 01:03:47 +0200
 
