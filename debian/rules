@@ -238,7 +238,7 @@ binary-glide2-bin-real: build
 	dh_compress
 	dh_fixperms
 	dh_installdeb
-	dh_shlibdeps
+	dh_shlibdeps -Llibglide2 -l$(libglide2_dir)/usr/lib/
 	dh_gencontrol
 	dh_builddeb
 
@@ -319,7 +319,7 @@ binary-glide3-bin-real: build
 	dh_compress
 	dh_fixperms
 	dh_installdeb
-	dh_shlibdeps
+	dh_shlibdeps -Llibglide3 -l$(libglide3_dir)/usr/lib/
 	dh_gencontrol
 	dh_builddeb
 

@@ -3,6 +3,8 @@ glide (2002.04.10-15) UNRELEASED; urgency=low
   * Debconf template translations:
     - Added Galician. (Closes: #412657)
       Thanks to Jacobo Tarrio <jtarrio@trasno.net>.
+  * Add -L and -l arguments to dh_shlibdeps for glide2-bin and glide3-bin
+    package stanzas. (Closes: #453790)
 
  -- Guillem Jover <guillem@debian.org>  Tue, 11 Dec 2007 01:03:47 +0200
 
