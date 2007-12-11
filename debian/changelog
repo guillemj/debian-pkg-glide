@@ -1,4 +1,4 @@
-glide (2002.04.10-15) UNRELEASED; urgency=low
+glide (2002.04.10-15) unstable; urgency=low
 
   * Debconf template translations:
     - Added Galician. (Closes: #412657)
@@ -12,7 +12,7 @@ glide (2002.04.10-15) UNRELEASED; urgency=low
   * Add Homepage field.
   * Add Vcs-Browser and Vcs-Svn fields.
 
- -- Guillem Jover <guillem@debian.org>  Tue, 11 Dec 2007 01:03:47 +0200
+ -- Guillem Jover <guillem@debian.org>  Tue, 11 Dec 2007 01:44:28 +0200
 
 glide (2002.04.10-14) unstable; urgency=high
 
