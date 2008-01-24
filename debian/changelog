@@ -1,3 +1,12 @@
+glide (2002.04.10-16) UNRELEASED; urgency=low
+
+  * Pass the proper -l argument to dh_shlibdeps for glide2-bin, from the
+    build dir instead of the installed dir, as there's no symlink pointing
+    to the hardware specific library there. (Closes: #456875)
+    Based on a patch by Anibal Avelar <aavelar@cofradia.org>.
+
+ -- Guillem Jover <guillem@debian.org>  Thu, 24 Jan 2008 23:42:16 +0200
+
 glide (2002.04.10-15) unstable; urgency=low
 
   * Debconf template translations:

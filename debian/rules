@@ -238,7 +238,9 @@ binary-glide2-bin-real: build
 	dh_compress
 	dh_fixperms
 	dh_installdeb
-	dh_shlibdeps -Llibglide2 -l$(libglide2_dir)/usr/lib/
+	# XXX: We use $(SRC_DIR) instead of $(libglide2_dir) because we do not
+	# ship in the .deb the symlink to the hardware specific library.
+	dh_shlibdeps -Llibglide2 -l$(SRC_DIR)/glide2x/h3/lib
 	dh_gencontrol
 	dh_builddeb
 
