@@ -14,8 +14,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: glide\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-30 18:38+0300\n"
+"Report-Msgid-Bugs-To: glide@packages.debian.org\n"
+"POT-Creation-Date: 2008-06-21 09:58+0300\n"
 "PO-Revision-Date: 2005-08-10 17:27+0200\n"
 "Last-Translator: Miroslav Kure <kurem@debian.cz>\n"
 "Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
@@ -25,19 +25,19 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../libglide2.templates:4
+#: ../libglide2.templates:1001
 msgid "No 3Dfx card supported by glide2 found! Manually select driver?"
 msgstr "Nebyla nalezena 3Dfx karta podporovaná glide2! Vybrat ovladač ručně?"
 
 #. Type: boolean
 #. Description
-#: ../libglide2.templates:4
+#: ../libglide2.templates:1001
 msgid "ERROR: No 3Dfx card supported by glide2 found!"
 msgstr "CHYBA: nebyla nalezena 3Dfx karta podporovaná glide2!"
 
 #. Type: boolean
 #. Description
-#: ../libglide2.templates:4
+#: ../libglide2.templates:1001
 msgid ""
 "This package is for cards based on the following 3Dfx chipsets: Voodoo 2, "
 "Voodoo Banshee, and Voodoo 3."
@@ -47,7 +47,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../libglide2.templates:4 ../libglide3.templates:4
+#: ../libglide2.templates:1001 ../libglide3.templates:1001
 msgid ""
 "If you do not have a card based on one of the listed chipsets, and you are "
 "not compiling programs against glide, you should not have this package "
@@ -58,7 +58,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../libglide2.templates:4 ../libglide3.templates:4
+#: ../libglide2.templates:1001 ../libglide3.templates:1001
 msgid ""
 "If you do have a card based on one of the listed chipsets please file a bug "
 "on this package, including the output from the command 'lspci -vm' in the "
@@ -70,7 +70,7 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../libglide2.templates:4 ../libglide3.templates:4
+#: ../libglide2.templates:1001 ../libglide3.templates:1001
 msgid ""
 "Would you like to manually select the driver to use for now? (If not, a "
 "default sane value for compiling against will be selected.)"
@@ -80,19 +80,19 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../libglide2.templates:25 ../libglide3.templates:25
+#: ../libglide2.templates:2001 ../libglide3.templates:2001
 msgid "Please select a driver."
 msgstr "Vyberte prosím ovladač."
 
 #. Type: select
 #. Description
-#: ../libglide2.templates:25 ../libglide3.templates:25
+#: ../libglide2.templates:2001 ../libglide3.templates:2001
 msgid "Please select the driver you would like to use."
 msgstr "Vyberte prosím ovladač, který byste chtěli použít."
 
 #. Type: select
 #. Description
-#: ../libglide2.templates:25
+#: ../libglide2.templates:2001
 msgid ""
 " cvg  - Voodoo 2.\n"
 " h3   - Voodoo Banshee and Voodoo 3."
@@ -102,13 +102,13 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../libglide2.templates:34 ../libglide3.templates:34
+#: ../libglide2.templates:3001 ../libglide3.templates:3001
 msgid "Please select a card."
 msgstr "Vyberte prosím kartu."
 
 #. Type: select
 #. Description
-#: ../libglide2.templates:34
+#: ../libglide2.templates:3001
 msgid ""
 "We have detected more then one video card based on the following 3Dfx "
 "chipsets: Voodoo 2, Voodoo Banshee, and Voodoo 3."
@@ -118,37 +118,37 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../libglide2.templates:34 ../libglide3.templates:34
+#: ../libglide2.templates:3001 ../libglide3.templates:3001
 msgid "Please select the card you would like to use for 3D acceleration."
 msgstr "Vyberte prosím kartu, kterou chcete použít pro 3D akceleraci."
 
 #. Type: note
 #. Description
-#: ../libglide2.templates:42 ../libglide3.templates:42
+#: ../libglide2.templates:4001 ../libglide3.templates:4001
 msgid "${e1}"
 msgstr "${e1}"
 
 #. Type: note
 #. Description
-#: ../libglide2.templates:42 ../libglide3.templates:42
+#: ../libglide2.templates:4001 ../libglide3.templates:4001
 msgid "${e2}"
 msgstr "${e2}"
 
 #. Type: boolean
 #. Description
-#: ../libglide3.templates:4
+#: ../libglide3.templates:1001
 msgid "No 3Dfx card supported by glide3 found! Manually select driver?"
 msgstr "Nebyla nalezena 3Dfx karta podporovaná glide3! Vybrat ovladač ručně?"
 
 #. Type: boolean
 #. Description
-#: ../libglide3.templates:4
+#: ../libglide3.templates:1001
 msgid "ERROR: No 3Dfx card supported by glide3 found!"
 msgstr "CHYBA: nebyla nalezena 3Dfx karta podporovaná glide3!"
 
 #. Type: boolean
 #. Description
-#: ../libglide3.templates:4
+#: ../libglide3.templates:1001
 msgid ""
 "This package is for cards based on the following 3Dfx chipsets: Voodoo "
 "Banshee, Voodoo 3, Voodoo 4, and Voodoo 5."
@@ -158,7 +158,7 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../libglide3.templates:25
+#: ../libglide3.templates:2001
 msgid ""
 " h3   - Voodoo Banshee and Voodoo 3.\n"
 " h5   - Voodoo 4 and Voodoo 5."
@@ -168,7 +168,7 @@ msgstr ""
 
 #. Type: select
 #. Description
-#: ../libglide3.templates:34
+#: ../libglide3.templates:3001
 msgid ""
 "We have detected more then one video card based on the following 3Dfx "
 "chipsets: Voodoo 2, Voodoo Banshee, Voodoo 3, Voodoo 4, and Voodoo 5."

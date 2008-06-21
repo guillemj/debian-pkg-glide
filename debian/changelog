@@ -5,6 +5,7 @@ glide (2002.04.10-17) UNRELEASED; urgency=low
   * Debconf template translations:
     - Added Swedish. (Closes: #484006)
       Thanks to Martin Bagge <brother@bsnet.se>.
+  * Update debconf .po files.
 
  -- Guillem Jover <guillem@debian.org>  Sat, 21 Jun 2008 05:03:10 +0300
 
