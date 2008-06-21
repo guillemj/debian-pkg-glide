@@ -1,3 +1,9 @@
+glide (2002.04.10-17) UNRELEASED; urgency=low
+
+  * Update packaging Vcs fields to the new URL.
+
+ -- Guillem Jover <guillem@debian.org>  Sat, 21 Jun 2008 05:03:10 +0300
+
 glide (2002.04.10-16) unstable; urgency=low
 
   * Pass the proper -l argument to dh_shlibdeps for glide2-bin, from the
