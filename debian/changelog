@@ -1,6 +1,7 @@
 glide (2002.04.10-17) UNRELEASED; urgency=low
 
   * Update packaging Vcs fields to the new URL.
+  * Remove packaging svn information from debian/copyright.
 
  -- Guillem Jover <guillem@debian.org>  Sat, 21 Jun 2008 05:03:10 +0300
 
