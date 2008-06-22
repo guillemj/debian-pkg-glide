@@ -2,6 +2,7 @@ glide (2002.04.10-17) UNRELEASED; urgency=low
 
   * Update packaging Vcs fields to the new URL.
   * Remove packaging svn information from debian/copyright.
+  * Refer to LGPL-2 from common-licenses instead of just LGPL.
   * Debconf template translations:
     - Added Swedish. (Closes: #484006)
       Thanks to Martin Bagge <brother@bsnet.se>.
