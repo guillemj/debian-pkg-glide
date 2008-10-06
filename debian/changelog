@@ -4,6 +4,8 @@ glide (2002.04.10-17) UNRELEASED; urgency=low
   * Remove packaging svn information from debian/copyright.
   * Refer to LGPL-2 from common-licenses instead of just LGPL.
   * Debconf template translations:
+    - Add Basque. (Closes: #494804)
+      Thanks to Piarres Beobide <pi+debian@beobide.net>.
     - Added Swedish. (Closes: #484006)
       Thanks to Martin Bagge <brother@bsnet.se>.
   * Update debconf .po files.
