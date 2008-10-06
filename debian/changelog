@@ -6,6 +6,8 @@ glide (2002.04.10-17) UNRELEASED; urgency=low
   * Debconf template translations:
     - Add Basque. (Closes: #494804)
       Thanks to Piarres Beobide <pi+debian@beobide.net>.
+    - Add Finnish. (Closes: #495253)
+      Thanks to Esko Arajärvi <edu@iki.fi>.
     - Added Swedish. (Closes: #484006)
       Thanks to Martin Bagge <brother@bsnet.se>.
   * Update debconf .po files.
