@@ -12,6 +12,8 @@ glide (2002.04.10-17) UNRELEASED; urgency=low
       Thanks to Luca Monducci <luca.mo@tiscali.it>.
     - Add Japanese. (Closes: #495161)
       Thanks to Hideki Yamane <henrich@debian.or.jp>.
+    - Add Russian. (Closes: #494465)
+      Thanks to Yuri Kozlov <kozlov.y@gmail.com>.
     - Added Swedish. (Closes: #484006)
       Thanks to Martin Bagge <brother@bsnet.se>.
   * Update debconf .po files.
