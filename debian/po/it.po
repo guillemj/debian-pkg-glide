@@ -1,0 +1,171 @@
+# Italian (it) translation of debconf templates for glide
+# Copyright (C) 2008 Software in the Public Interest
+# This file is distributed under the same license as the glide package.
+# Luca Monducci <luca.mo@tiscali.it>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: glide\n"
+"Report-Msgid-Bugs-To: glide@packages.debian.org\n"
+"POT-Creation-Date: 2008-08-09 17:24-0300\n"
+"PO-Revision-Date: 2008-08-10 18:22+0200\n"
+"Last-Translator: Luca Monducci <luca.mo@tiscali.it>\n"
+"Language-Team: Italian <debian-l10n-italian@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: boolean
+#. Description
+#: ../libglide2.templates:1001
+msgid "No 3Dfx card supported by glide2 found! Manually select driver?"
+msgstr ""
+"Nessuna scheda 3Dfx supportata da glide2! Scegliere un driver manualmente?"
+
+#. Type: boolean
+#. Description
+#: ../libglide2.templates:1001
+msgid "ERROR: No 3Dfx card supported by glide2 found!"
+msgstr "ERRORE: Non è stata rilevata alcuna scheda supportata da glide2!"
+
+#. Type: boolean
+#. Description
+#: ../libglide2.templates:1001
+msgid ""
+"This package is for cards based on the following 3Dfx chipsets: Voodoo 2, "
+"Voodoo Banshee, and Voodoo 3."
+msgstr ""
+"Questo pacchetto è per le schede basate sui seguenti chipset 3Dfx: Voodoo 2, "
+"Voodoo Banshee e Voodoo 3."
+
+#. Type: boolean
+#. Description
+#: ../libglide2.templates:1001 ../libglide3.templates:1001
+msgid ""
+"If you do not have a card based on one of the listed chipsets, and you are "
+"not compiling programs against glide, you should not have this package "
+"installed."
+msgstr ""
+"Se non si possiede una scheda basata su uno dei chipset elencati e non si "
+"compilano programmi con glide, non si dovrebbe installare questo pacchetto."
+
+#. Type: boolean
+#. Description
+#: ../libglide2.templates:1001 ../libglide3.templates:1001
+msgid ""
+"If you do have a card based on one of the listed chipsets please file a bug "
+"on this package, including the output from the command 'lspci -vm' in the "
+"bug report."
+msgstr ""
+"Se si possiede una scheda basata su uno dei chipset elencati, segnalare un "
+"bug per questo pacchetto inserendo nella segnalazione l'output del comando "
+"\"lspci -vm\"."
+
+#. Type: boolean
+#. Description
+#: ../libglide2.templates:1001 ../libglide3.templates:1001
+msgid ""
+"Would you like to manually select the driver to use for now? (If not, a "
+"default sane value for compiling against will be selected.)"
+msgstr ""
+"Si desidera scegliere manualmente un driver da usare per ora? (Se no, viene "
+"impostato un valore sicuro per la compilazione.)"
+
+#. Type: select
+#. Description
+#: ../libglide2.templates:2001 ../libglide3.templates:2001
+msgid "Please select a driver."
+msgstr "Scegliere un driver."
+
+#. Type: select
+#. Description
+#: ../libglide2.templates:2001 ../libglide3.templates:2001
+msgid "Please select the driver you would like to use."
+msgstr "Scegliere il driver che si desidera utilizzare."
+
+#. Type: select
+#. Description
+#: ../libglide2.templates:2001
+msgid ""
+" cvg  - Voodoo 2.\n"
+" h3   - Voodoo Banshee and Voodoo 3."
+msgstr ""
+" cvg  - Voodoo 2.\n"
+" h3   - Voodoo Banshee e Voodoo 3."
+
+#. Type: select
+#. Description
+#: ../libglide2.templates:3001 ../libglide3.templates:3001
+msgid "Please select a card."
+msgstr "Scegliere una scheda."
+
+#. Type: select
+#. Description
+#: ../libglide2.templates:3001
+msgid ""
+"We have detected more then one video card based on the following 3Dfx "
+"chipsets: Voodoo 2, Voodoo Banshee, and Voodoo 3."
+msgstr ""
+"Sono state rilevate più schede basate sui seguenti chipset 3Dfx: Voodoo 2, "
+"Voodoo Banshee e Voodoo 3."
+
+#. Type: select
+#. Description
+#: ../libglide2.templates:3001 ../libglide3.templates:3001
+msgid "Please select the card you would like to use for 3D acceleration."
+msgstr "Scegliere la scheda che si vuole usare per l'accellerazione 3D."
+
+#. Type: note
+#. Description
+#: ../libglide2.templates:4001 ../libglide3.templates:4001
+msgid "${e1}"
+msgstr "${e1}"
+
+#. Type: note
+#. Description
+#: ../libglide2.templates:4001 ../libglide3.templates:4001
+msgid "${e2}"
+msgstr "${e2}"
+
+#. Type: boolean
+#. Description
+#: ../libglide3.templates:1001
+msgid "No 3Dfx card supported by glide3 found! Manually select driver?"
+msgstr ""
+"Nessuna scheda 3Dfx supportata da glide3! Selezionare manualmente un driver?"
+
+#. Type: boolean
+#. Description
+#: ../libglide3.templates:1001
+msgid "ERROR: No 3Dfx card supported by glide3 found!"
+msgstr "ERRORE: Non è stata rilevata alcuna scheda supportata da glide3!"
+
+#. Type: boolean
+#. Description
+#: ../libglide3.templates:1001
+msgid ""
+"This package is for cards based on the following 3Dfx chipsets: Voodoo "
+"Banshee, Voodoo 3, Voodoo 4, and Voodoo 5."
+msgstr ""
+"Questo pacchetto è per le schede basate sui seguenti chipset 3Dfx: Voodoo "
+"Banshee, Voodoo 3, Voodoo 4 e Voodoo 5."
+
+#. Type: select
+#. Description
+#: ../libglide3.templates:2001
+msgid ""
+" h3   - Voodoo Banshee and Voodoo 3.\n"
+" h5   - Voodoo 4 and Voodoo 5."
+msgstr ""
+" h3   - Voodoo Banshee e Voodoo 3.\n"
+" h5   - Voodoo 4 e Voodoo 5."
+
+#. Type: select
+#. Description
+#: ../libglide3.templates:3001
+msgid ""
+"We have detected more then one video card based on the following 3Dfx "
+"chipsets: Voodoo 2, Voodoo Banshee, Voodoo 3, Voodoo 4, and Voodoo 5."
+msgstr ""
+"Sono state rilevate più schede basate sui seguenti chipset 3Dfx: Voodoo 2, "
+"Voodoo Banshee, Voodoo 3, Voodoo 4 e Voodoo 5."
