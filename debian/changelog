@@ -1,4 +1,4 @@
-glide (2002.04.10-17) UNRELEASED; urgency=low
+glide (2002.04.10-17) unstable; urgency=low
 
   * Update packaging Vcs fields to the new URL.
   * Remove packaging svn information from debian/copyright.
@@ -14,11 +14,11 @@ glide (2002.04.10-17) UNRELEASED; urgency=low
       Thanks to Hideki Yamane <henrich@debian.or.jp>.
     - Add Russian. (Closes: #494465)
       Thanks to Yuri Kozlov <kozlov.y@gmail.com>.
-    - Added Swedish. (Closes: #484006)
+    - Add Swedish. (Closes: #484006)
       Thanks to Martin Bagge <brother@bsnet.se>.
   * Update debconf .po files.
 
- -- Guillem Jover <guillem@debian.org>  Sat, 21 Jun 2008 05:03:10 +0300
+ -- Guillem Jover <guillem@debian.org>  Tue, 07 Oct 2008 00:49:42 +0300
 
 glide (2002.04.10-16) unstable; urgency=low
 
