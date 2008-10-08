@@ -240,7 +240,9 @@ binary-glide2-bin-real: build
 	dh_installdeb
 	# XXX: We use $(SRC_DIR) instead of $(libglide2_dir) because we do not
 	# ship in the .deb the symlink to the hardware specific library.
-	dh_shlibdeps -Llibglide2 -l$(SRC_DIR)/glide2x/h3/lib
+	# XXX: dh_shlibdeps forces the -l argument to be an absolute path
+	# breaking the build, so pass LD_LIBRARY_PATH directly.
+	LD_LIBRARY_PATH=$(LD_LIBRARY_PATH):$(SRC_DIR)/glide2x/h3/lib dh_shlibdeps -Llibglide2
 	dh_gencontrol
 	dh_builddeb
 

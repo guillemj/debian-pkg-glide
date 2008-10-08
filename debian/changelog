@@ -1,3 +1,10 @@
+glide (2002.04.10-18) UNRELEASED; urgency=low
+
+  * Pass LD_LIBRARY_PATH directly to dh_shlibdeps, because it forces the -l
+    argument to be an absolute path breaking the build. (Closes: #501426)
+
+ -- Guillem Jover <guillem@debian.org>  Wed, 08 Oct 2008 04:41:33 +0300
+
 glide (2002.04.10-17) unstable; urgency=low
 
   * Update packaging Vcs fields to the new URL.
