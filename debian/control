@@ -23,8 +23,7 @@ Package: libglide2
 Section: libs
 Architecture: i386
 Depends: ${shlibs:Depends}, ${misc:Depends}, pciutils
-Recommends: glide2-bin
-Suggests: device3dfx-module, device3dfx-source
+Suggests: glide2-bin, device3dfx-module, device3dfx-source
 Conflicts: libglide2
 Description: graphics library for 3Dfx Voodoo based cards - shared libraries
  This package allows you to use the 3D functions of cards based on
