@@ -3,6 +3,7 @@ glide (2002.04.10-19) UNRELEASED; urgency=low
   * Demote glide2-bin from Recommends to Suggests in libglide2.
     (Closes: #504647)
   * Switch to debhelper compatibility level 7.
+  * Use dh_prep instead of “dh_clean -k”.
 
  -- Guillem Jover <guillem@debian.org>  Mon, 09 Feb 2009 21:57:55 +0200
 

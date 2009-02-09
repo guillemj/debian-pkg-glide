@@ -149,7 +149,7 @@ binary-libglide2:
 binary-libglide2-real: build
 	dh_testdir
 	dh_testroot
-	dh_clean -k
+	dh_prep
 
 	dh_installdirs
 
@@ -180,7 +180,7 @@ binary-libglide2-dev:
 binary-libglide2-dev-real: build
 	dh_testdir
 	dh_testroot
-	dh_clean -k
+	dh_prep
 
 	dh_installdirs
 
@@ -221,7 +221,7 @@ binary-glide2-bin:
 binary-glide2-bin-real: build
 	dh_testdir
 	dh_testroot
-	dh_clean -k
+	dh_prep
 
 	dh_installdirs
 
@@ -252,7 +252,7 @@ binary-libglide3:
 binary-libglide3-real: build
 	dh_testdir
 	dh_testroot
-	dh_clean -k
+	dh_prep
 
 	dh_installdirs
 
@@ -282,7 +282,7 @@ binary-libglide3-dev:
 binary-libglide3-dev-real: build
 	dh_testdir
 	dh_testroot
-	dh_clean -k
+	dh_prep
 
 	dh_installdirs
 
@@ -308,7 +308,7 @@ binary-glide3-bin:
 binary-glide3-bin-real: build
 	dh_testdir
 	dh_testroot
-	dh_clean -k
+	dh_prep
 
 	dh_installdirs
 
