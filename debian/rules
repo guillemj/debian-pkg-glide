@@ -61,8 +61,6 @@ debian/po/templates.pot: debian/libglide2.templates debian/libglide3.templates
 
 ifeq ($(DEB_HOST_ARCH),i386)
 BUILD_GLIDE2 := build.glide2
-else
-BUILD_GLIDE2 := install.headers.glide2
 endif
 
 build: patch $(BUILD_GLIDE2) build.glide3 debian/po/templates.pot
@@ -72,13 +70,6 @@ build.glide2.stamp:
 	ln -fs ../swlibs glide2x/
 	$(glide2_build) FX_GLIDE_HW=cvg CNODEBUG="$(CFLAGS)"
 	$(glide2_build) FX_GLIDE_HW=h3 CNODEBUG="$(CFLAGS)"
-	touch $@
-
-install.headers.glide2: install.headers.glide2.stamp
-install.headers.glide2.stamp:
-	ln -fs ../swlibs glide2x/
-	$(glide2_build) FX_GLIDE_HW=cvg CNODEBUG="$(CFLAGS)" incs
-	$(glide2_build) FX_GLIDE_HW=h3 CNODEBUG="$(CFLAGS)" incs
 	touch $@
 
 build.glide3: build.glide3.stamp
@@ -303,5 +294,5 @@ binary-glide3-bin-real: build
 	dh_builddeb
 
 .PHONY: build clean binary binary-arch binary-indep
-.PHONY: install.headers.glide2 build.glide2 build.glide3
+.PHONY: build.glide2 build.glide3
 
