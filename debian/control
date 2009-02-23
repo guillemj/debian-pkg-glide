@@ -43,7 +43,7 @@ Section: libdevel
 Architecture: i386
 Depends: libglide2
 Provides: libglide-dev
-Conflicts: llibglide-dev
+Conflicts: libglide-dev
 Description: graphics library for 3Dfx Voodoo based cards - development files
  This package contains the necessary header files, example programs,
  and documentation necessary to develop software for cards based on
