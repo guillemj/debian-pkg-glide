@@ -4,16 +4,11 @@
 
 export FX_GLIDE_PIC = 1
 
-include debian/vars
-
-SRC_DIR = $(SOURCE_DIR)
-
 this = $(MAKE) -f debian/rules
-dbs_build := $(MAKE) -f /usr/share/dbs/sys-build.mk
-glide2_build := $(MAKE) -C $(SRC_DIR)/glide2x -f makefile.linux
+glide2_build := $(MAKE) -C $(CURDIR)/glide2x -f makefile.linux
 define glide3_build
 ( \
-  cd $(SRC_DIR)/glide3x; \
+  cd $(CURDIR)/glide3x; \
   mkdir $(CURDIR)/debian/tmp.$(1); \
   ./chores.3dfx --generate "--configure=--enable-fx-glide-hw=$(1) \
     --prefix=/usr" --build-dir=build.$(1); \
@@ -59,22 +54,10 @@ endif
 endif
 endif
 
+include /usr/share/quilt/quilt.make
 
 debian/po/templates.pot: debian/libglide2.templates debian/libglide3.templates
 	@debconf-updatepo
-
-unpack:
-	$(dbs_build) source.make
-
-make-patch:
-	$(dbs_build) make-diff
-
-$(SRC_DIR)/glide2x $(SRC_DIR)/glide3x: $(STAMP_DIR)/SRC_DIR_glide
-$(STAMP_DIR)/SRC_DIR_glide:
-	$(dbs_build) source.make
-	cd $(SRC_DIR)/glide2x; ln -s ../swlibs swlibs
-	cd $(SRC_DIR)/glide3x; ln -s ../swlibs swlibs
-	touch $(STAMP_DIR)/SRC_DIR_glide
 
 ifeq ($(DEB_HOST_ARCH),i386)
 BUILD_GLIDE2 := build.glide2
@@ -82,50 +65,47 @@ else
 BUILD_GLIDE2 := install.headers.glide2
 endif
 
-build: $(BUILD_GLIDE2) build.glide3 debian/po/templates.pot
-build.glide2: build.glide2.cvg build.glide2.h3
-build.glide3: build.glide3.h3 build.glide3.h5
+build: patch $(BUILD_GLIDE2) build.glide3 debian/po/templates.pot
 
-build.glide2.cvg: $(SRC_DIR)/glide2x $(STAMP_DIR)/build.glide2.cvg
-$(STAMP_DIR)/build.glide2.cvg:
+build.glide2: build.glide2.stamp
+build.glide2.stamp:
+	ln -fs ../swlibs glide2x/
 	$(glide2_build) FX_GLIDE_HW=cvg CNODEBUG="$(CFLAGS)"
-	touch $(STAMP_DIR)/build.glide2.cvg
-
-build.glide2.h3: $(SRC_DIR)/glide2x $(STAMP_DIR)/build.glide2.h3
-$(STAMP_DIR)/build.glide2.h3:
 	$(glide2_build) FX_GLIDE_HW=h3 CNODEBUG="$(CFLAGS)"
-	touch $(STAMP_DIR)/build.glide2.h3
+	touch $@
 
-install.headers.glide2: $(SRC_DIR)/glide2x $(STAMP_DIR)/install.headers.glide2
-$(STAMP_DIR)/install.headers.glide2:
+install.headers.glide2: install.headers.glide2.stamp
+install.headers.glide2.stamp:
+	ln -fs ../swlibs glide2x/
 	$(glide2_build) FX_GLIDE_HW=cvg CNODEBUG="$(CFLAGS)" incs
 	$(glide2_build) FX_GLIDE_HW=h3 CNODEBUG="$(CFLAGS)" incs
-	touch $(STAMP_DIR)/install.headers.glide2
+	touch $@
 
-build.glide3.h3: $(SRC_DIR)/glide3x $(STAMP_DIR)/build.glide3.h3
-$(STAMP_DIR)/build.glide3.h3:
+build.glide3: build.glide3.stamp
+build.glide3.stamp:
+	ln -fs ../swlibs glide3x/
 	$(call glide3_build,h3)
-	touch $(STAMP_DIR)/build.glide3.h3
-
-build.glide3.h5: $(SRC_DIR)/glide3x $(STAMP_DIR)/build.glide3.h5
-$(STAMP_DIR)/build.glide3.h5:
 	$(call glide3_build,h5)
-	touch $(STAMP_DIR)/build.glide3.h5
-
-
-sys-clean:
-	cd $(SRC_DIR)/glide3x; ./chores.3dfx --clean
-	rm -rf $(SRC_DIR)/glide3x/build.h3 $(CURDIR)/debian/tmp.h3
-	rm -rf $(SRC_DIR)/glide3x/build.h5 $(CURDIR)/debian/tmp.h5
-	rm -f $(STAMP_DIR)/build.glide2.* $(STAMP_DIR)/build.glide3.*
-	$(glide2_build) FX_GLIDE_HW=cvg clobber
-	$(glide2_build) FX_GLIDE_HW=h3 clobber
+	touch $@
 
 clean:
-	# No need to run clean
-	$(dbs_build) source.clean
-	rm -f $(STAMP_DIR)
-	rm -rf $(CURDIR)/debian/tmp.h3 $(CURDIR)/debian/tmp.h5
+	$(this) patch
+	
+	ln -fs ../swlibs glide2x/
+	$(glide2_build) FX_GLIDE_HW=cvg clobber
+	$(glide2_build) FX_GLIDE_HW=h3 clobber
+	rm -f glide2x/swlibs
+	
+	ln -fs ../swlibs glide3x/
+	cd $(CURDIR)/glide3x; ./chores.3dfx --clean
+	rm -f glide3x/swlibs
+	
+	$(this) unpatch
+	
+	rm -rf $(CURDIR)/glide3x/build.h3 $(CURDIR)/debian/tmp.h3
+	rm -rf $(CURDIR)/glide3x/build.h5 $(CURDIR)/debian/tmp.h5
+	rm -f *.stamp
+	
 	dh_clean
 
 binary: binary-indep binary-arch
@@ -148,11 +128,11 @@ binary-libglide2-real: build
 
 	dh_installdirs
 
-	$(INSTALL_LIB) $(SRC_DIR)/glide2x/cvg/lib/libglide.so.2.53 \
+	$(INSTALL_LIB) $(CURDIR)/glide2x/cvg/lib/libglide.so.2.53 \
 		       $(libglide2_dir)/usr/lib/glide2/libglide_cvg.so.2.53
-	$(INSTALL_LIB) $(SRC_DIR)/glide2x/h3/lib/libglide.so.2.60 \
+	$(INSTALL_LIB) $(CURDIR)/glide2x/h3/lib/libglide.so.2.60 \
 		       $(libglide2_dir)/usr/lib/glide2/libglide_h3.so.2.60
-	$(INSTALL_LIB) $(SRC_DIR)/glide2x/swlibs/lib/libtexus.so.1.1 \
+	$(INSTALL_LIB) $(CURDIR)/glide2x/swlibs/lib/libtexus.so.1.1 \
 		       $(libglide2_dir)/usr/lib/
 	dh_strip
 
@@ -179,22 +159,22 @@ binary-libglide2-dev-real: build
 
 	dh_installdirs
 
-	$(INSTALL_DATA) $(SRC_DIR)/glide2x/h3/include/glide.h \
+	$(INSTALL_DATA) $(CURDIR)/glide2x/h3/include/glide.h \
 			$(libglide2_dev_dir)/usr/include/glide/
-	$(INSTALL_DATA) $(SRC_DIR)/glide2x/h3/include/glidesys.h \
+	$(INSTALL_DATA) $(CURDIR)/glide2x/h3/include/glidesys.h \
 			$(libglide2_dev_dir)/usr/include/glide/
-	$(INSTALL_DATA) $(SRC_DIR)/glide2x/h3/include/glideutl.h \
+	$(INSTALL_DATA) $(CURDIR)/glide2x/h3/include/glideutl.h \
 			$(libglide2_dev_dir)/usr/include/glide/
-	$(INSTALL_DATA) $(SRC_DIR)/glide2x/h3/include/sst1vid.h \
+	$(INSTALL_DATA) $(CURDIR)/glide2x/h3/include/sst1vid.h \
 			$(libglide2_dev_dir)/usr/include/glide/
-	$(INSTALL_DATA) $(SRC_DIR)/glide2x/h3/include/gump.h \
+	$(INSTALL_DATA) $(CURDIR)/glide2x/h3/include/gump.h \
 			$(libglide2_dev_dir)/usr/include/glide/
 
-	$(INSTALL_DATA) $(SRC_DIR)/glide2x/swlibs/include/3dfx.h \
+	$(INSTALL_DATA) $(CURDIR)/glide2x/swlibs/include/3dfx.h \
 			$(libglide2_dev_dir)/usr/include/glide/
-	$(INSTALL_DATA) $(SRC_DIR)/glide2x/swlibs/include/linutil.h \
+	$(INSTALL_DATA) $(CURDIR)/glide2x/swlibs/include/linutil.h \
 			$(libglide2_dev_dir)/usr/include/glide/
-	$(INSTALL_DATA) $(SRC_DIR)/glide2x/swlibs/include/texus.h \
+	$(INSTALL_DATA) $(CURDIR)/glide2x/swlibs/include/texus.h \
 			$(libglide2_dev_dir)/usr/include/glide/
 
 	dh_strip
@@ -220,9 +200,9 @@ binary-glide2-bin-real: build
 
 	dh_installdirs
 
-	$(INSTALL_PROGRAM) $(SRC_DIR)/glide2x/h3/glide/tests/test[0-9][0-9] \
+	$(INSTALL_PROGRAM) $(CURDIR)/glide2x/h3/glide/tests/test[0-9][0-9] \
 			   $(glide2_bin_dir)/usr/lib/glide2/bin/
-	$(INSTALL_PROGRAM) $(SRC_DIR)/glide2x/cvg/bin/pass \
+	$(INSTALL_PROGRAM) $(CURDIR)/glide2x/cvg/bin/pass \
 			   $(glide2_bin_dir)/usr/lib/glide2/bin/
 	dh_strip
 
@@ -233,11 +213,11 @@ binary-glide2-bin-real: build
 	dh_compress
 	dh_fixperms
 	dh_installdeb
-	# XXX: We use $(SRC_DIR) instead of $(libglide2_dir) because we do not
+	# XXX: We use $(CURDIR) instead of $(libglide2_dir) because we do not
 	# ship in the .deb the symlink to the hardware specific library.
 	# XXX: dh_shlibdeps forces the -l argument to be an absolute path
 	# breaking the build, so pass LD_LIBRARY_PATH directly.
-	LD_LIBRARY_PATH=$(LD_LIBRARY_PATH):$(SRC_DIR)/glide2x/h3/lib dh_shlibdeps -Llibglide2
+	LD_LIBRARY_PATH=$(LD_LIBRARY_PATH):$(CURDIR)/glide2x/h3/lib dh_shlibdeps -Llibglide2
 	dh_gencontrol
 	dh_builddeb
 
@@ -307,7 +287,7 @@ binary-glide3-bin-real: build
 
 	dh_installdirs
 
-	$(INSTALL_PROGRAM) $(SRC_DIR)/glide3x/h3/glide/tests/test[0-9][0-9] \
+	$(INSTALL_PROGRAM) $(CURDIR)/glide3x/h3/glide/tests/test[0-9][0-9] \
 			   $(glide3_bin_dir)/usr/lib/glide3/bin/
 	dh_strip
 
@@ -322,8 +302,6 @@ binary-glide3-bin-real: build
 	dh_gencontrol
 	dh_builddeb
 
-.PHONY: unpack make-patch build sys-clean clean binary binary-arch binary-indep
-.PHONY: install.headers.glide2
-.PHONY: build.glide2 build.glide2.cvg build.glide2.h3
-.PHONY: build.glide3 build.glide3.h3 build.glide3.h5
+.PHONY: build clean binary binary-arch binary-indep
+.PHONY: install.headers.glide2 build.glide2 build.glide3
 

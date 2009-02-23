@@ -1,11 +1,26 @@
-glide (2002.04.10-19) UNRELEASED; urgency=low
+glide (2002.04.10.1-1) UNRELEASED; urgency=low
 
+  * Repackage upstream tarball to stop using tar-in-tar.
   * Demote glide2-bin from Recommends to Suggests in libglide2.
     (Closes: #504647)
   * Switch to debhelper compatibility level 7.
   * Use dh_prep instead of “dh_clean -k”.
   * Fix typo (llibglide → libglide) in libglide2-dev Conflicts field.
   * Refactor glide3 build code into a make define and use it for h3 and h5.
+  * Switch from dbs to quilt:
+    - Remove debian/vars.
+    - Remove dbs and added quilt to Build-Depends.
+    - Add new debian/patches/series file.
+  * Update debian/rules for quilt:
+    - Use CURDIR instead of SRC_DIR.
+    - Include quilt.make.
+    - Remove now unused debian/patch.mk.
+    - Merge sys-clean into clean target.
+    - Merge build.glide2.cvg and build.glide2.h3 into build.glide2.
+    - Merge build.glide3.h3 and build.glide3.h5 into build.glide3.
+    - Move swlibs symlinking into each build and clean target.
+    - On clean patch and unpatch before the actual cleaning.
+    - Remove now unused targets unpack and make-patch.
 
  -- Guillem Jover <guillem@debian.org>  Mon, 09 Feb 2009 21:57:55 +0200
 
