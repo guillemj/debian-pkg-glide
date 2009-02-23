@@ -101,55 +101,24 @@ clean:
 
 binary: binary-indep binary-arch
 
-ifeq ($(DEB_HOST_ARCH),i386)
-BINARY_ARCH_GLIDE2 := binary-libglide2 binary-glide2-bin binary-libglide2-dev
-endif
-
 binary-indep:
 
-binary-arch: build $(BINARY_ARCH_GLIDE2) binary-libglide3 binary-libglide3-dev
-
-binary-libglide2:
-	DH_OPTIONS="-plibglide2" $(this) binary-libglide2-real
-
-binary-libglide2-real: build
+binary-arch: build
 	dh_testdir
 	dh_testroot
-	dh_prep
-
-	dh_installdirs
-
+	dh_prep -s
+	
+	dh_installdirs -s
+	
+	# libglide2
 	$(INSTALL_LIB) $(CURDIR)/glide2x/cvg/lib/libglide.so.2.53 \
 		       $(libglide2_dir)/usr/lib/glide2/libglide_cvg.so.2.53
 	$(INSTALL_LIB) $(CURDIR)/glide2x/h3/lib/libglide.so.2.60 \
 		       $(libglide2_dir)/usr/lib/glide2/libglide_h3.so.2.60
 	$(INSTALL_LIB) $(CURDIR)/glide2x/swlibs/lib/libtexus.so.1.1 \
 		       $(libglide2_dir)/usr/lib/
-	dh_strip
-
-	dh_installdocs
-	dh_installchangelogs
-	dh_installdebconf
-	dh_link
-
-	dh_compress
-	dh_fixperms
-	dh_makeshlibs
-	dh_installdeb
-	dh_shlibdeps
-	dh_gencontrol
-	dh_builddeb
-
-binary-libglide2-dev:
-	DH_OPTIONS="-plibglide2-dev" $(this) binary-libglide2-dev-real
-
-binary-libglide2-dev-real: build
-	dh_testdir
-	dh_testroot
-	dh_prep
-
-	dh_installdirs
-
+	
+	# libglide2-dev
 	$(INSTALL_DATA) $(CURDIR)/glide2x/h3/include/glide.h \
 			$(libglide2_dev_dir)/usr/include/glide/
 	$(INSTALL_DATA) $(CURDIR)/glide2x/h3/include/glidesys.h \
@@ -160,138 +129,56 @@ binary-libglide2-dev-real: build
 			$(libglide2_dev_dir)/usr/include/glide/
 	$(INSTALL_DATA) $(CURDIR)/glide2x/h3/include/gump.h \
 			$(libglide2_dev_dir)/usr/include/glide/
-
+	
 	$(INSTALL_DATA) $(CURDIR)/glide2x/swlibs/include/3dfx.h \
 			$(libglide2_dev_dir)/usr/include/glide/
 	$(INSTALL_DATA) $(CURDIR)/glide2x/swlibs/include/linutil.h \
 			$(libglide2_dev_dir)/usr/include/glide/
 	$(INSTALL_DATA) $(CURDIR)/glide2x/swlibs/include/texus.h \
 			$(libglide2_dev_dir)/usr/include/glide/
-
-	dh_strip
-
-	dh_installdocs
-	dh_installchangelogs
-	dh_link
-
-	dh_compress
-	dh_fixperms
-	dh_installdeb
-	dh_shlibdeps
-	dh_gencontrol
-	dh_builddeb
-
-binary-glide2-bin:
-	DH_OPTIONS="-pglide2-bin" $(this) binary-glide2-bin-real
-
-binary-glide2-bin-real: build
-	dh_testdir
-	dh_testroot
-	dh_prep
-
-	dh_installdirs
-
+	
+	# glide2-bin
 	$(INSTALL_PROGRAM) $(CURDIR)/glide2x/h3/glide/tests/test[0-9][0-9] \
 			   $(glide2_bin_dir)/usr/lib/glide2/bin/
 	$(INSTALL_PROGRAM) $(CURDIR)/glide2x/cvg/bin/pass \
 			   $(glide2_bin_dir)/usr/lib/glide2/bin/
-	dh_strip
-
-	dh_installdocs
-	dh_installchangelogs
-	dh_link
-
-	dh_compress
-	dh_fixperms
-	dh_installdeb
-	# XXX: We use $(CURDIR) instead of $(libglide2_dir) because we do not
-	# ship in the .deb the symlink to the hardware specific library.
-	# XXX: dh_shlibdeps forces the -l argument to be an absolute path
-	# breaking the build, so pass LD_LIBRARY_PATH directly.
-	LD_LIBRARY_PATH=$(LD_LIBRARY_PATH):$(CURDIR)/glide2x/h3/lib dh_shlibdeps -Llibglide2
-	dh_gencontrol
-	dh_builddeb
-
-binary-libglide3:
-	DH_OPTIONS="-plibglide3" $(this) binary-libglide3-real
-
-binary-libglide3-real: build
-	dh_testdir
-	dh_testroot
-	dh_prep
-
-	dh_installdirs
-
+	
+	# libglide3
 	$(INSTALL_LIB) $(CURDIR)/debian/tmp.h3/usr/lib/libglide3.so.3.10.0 \
 		       $(libglide3_dir)/usr/lib/glide3/libglide3_h3.so.3.10.0
 	$(INSTALL_LIB) $(CURDIR)/debian/tmp.h5/usr/lib/libglide3.so.3.10.0 \
 		       $(libglide3_dir)/usr/lib/glide3/libglide3_h5.so.3.10.0
-
-	dh_strip
-
-	dh_installdocs
-	dh_installchangelogs
-	dh_link
-	dh_installdebconf
-
-	dh_compress
-	dh_fixperms
-	dh_makeshlibs
-	dh_installdeb
-	dh_shlibdeps
-	dh_gencontrol
-	dh_builddeb
-
-binary-libglide3-dev:
-	DH_OPTIONS="-plibglide3-dev" $(this) binary-libglide3-dev-real
-
-binary-libglide3-dev-real: build
-	dh_testdir
-	dh_testroot
-	dh_prep
-
-	dh_installdirs
-
+	
+	# libglide3-dev
 	$(INSTALL_DATA) $(CURDIR)/debian/tmp.h5/usr/include/glide3/* \
 			$(libglide3_dev_dir)/usr/include/glide3/
-
-	dh_strip
-
-	dh_installdocs
-	dh_installchangelogs
-	dh_link
-
-	dh_compress
-	dh_fixperms
-	dh_installdeb
-	dh_shlibdeps
-	dh_gencontrol
-	dh_builddeb
-
-binary-glide3-bin:
-	DH_OPTIONS="-pglide3-bin" $(this) binary-glide3-bin-real
-
-binary-glide3-bin-real: build
-	dh_testdir
-	dh_testroot
-	dh_prep
-
-	dh_installdirs
-
-	$(INSTALL_PROGRAM) $(CURDIR)/glide3x/h3/glide/tests/test[0-9][0-9] \
-			   $(glide3_bin_dir)/usr/lib/glide3/bin/
-	dh_strip
-
-	dh_installdocs
-	dh_installchangelogs
-	dh_link
-
-	dh_compress
-	dh_fixperms
-	dh_installdeb
-	dh_shlibdeps -Llibglide3 -l$(libglide3_dir)/usr/lib/
-	dh_gencontrol
-	dh_builddeb
+	
+	# glide3-bin
+	#$(INSTALL_PROGRAM) $(CURDIR)/glide3x/h3/glide/tests/test[0-9][0-9] \
+	#		   $(glide3_bin_dir)/usr/lib/glide3/bin/
+	dh_strip -s
+	
+	dh_installdocs -s
+	dh_installchangelogs -s
+	dh_installdebconf -s
+	dh_link -s
+	
+	dh_compress -s
+	dh_fixperms -s
+	dh_makeshlibs -s
+	dh_installdeb -s
+	
+	dh_shlibdeps -s -Nglide2-bin -Nglide3-bin
+	# XXX: We use $(CURDIR) instead of $(libglide2_dir) because we do not
+	# ship in the .deb the symlink to the hardware specific library.
+	# XXX: dh_shlibdeps forces the -l argument to be an absolute path
+	# breaking the build, so pass LD_LIBRARY_PATH directly.
+	LD_LIBRARY_PATH=$(LD_LIBRARY_PATH):$(CURDIR)/glide2x/h3/lib \
+	  dh_shlibdeps -pglide2-bin -Llibglide2
+	#dh_shlibdeps -pglide3-bin -Llibglide3 -l$(libglide3_dir)/usr/lib/
+	
+	dh_gencontrol -s
+	dh_builddeb -s
 
 .PHONY: build clean binary binary-arch binary-indep
 .PHONY: build.glide2 build.glide3
