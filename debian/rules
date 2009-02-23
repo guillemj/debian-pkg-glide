@@ -11,6 +11,17 @@ SRC_DIR = $(SOURCE_DIR)
 this = $(MAKE) -f debian/rules
 dbs_build := $(MAKE) -f /usr/share/dbs/sys-build.mk
 glide2_build := $(MAKE) -C $(SRC_DIR)/glide2x -f makefile.linux
+define glide3_build
+( \
+  cd $(SRC_DIR)/glide3x; \
+  mkdir $(CURDIR)/debian/tmp.$(1); \
+  ./chores.3dfx --generate "--configure=--enable-fx-glide-hw=$(1) \
+    --prefix=/usr" --build-dir=build.$(1); \
+  cd build.$(1); \
+  ./build.3dfx --no-x DESTDIR="$(CURDIR)/debian/tmp.$(1)/" \
+    CFLAGS="$(CFLAGS)" install; \
+)
+endef
 
 pkg_dir := $(CURDIR)/debian
 
@@ -93,28 +104,12 @@ $(STAMP_DIR)/install.headers.glide2:
 
 build.glide3.h3: $(SRC_DIR)/glide3x $(STAMP_DIR)/build.glide3.h3
 $(STAMP_DIR)/build.glide3.h3:
-	( \
-	  cd $(SRC_DIR)/glide3x; \
-	  mkdir $(CURDIR)/debian/tmp.h3; \
-	  ./chores.3dfx --generate "--configure=--enable-fx-glide-hw=h3 \
-		--prefix=/usr" --build-dir=build.h3; \
-	  cd build.h3; \
-	  ./build.3dfx --no-x DESTDIR="$(CURDIR)/debian/tmp.h3/" \
-		CFLAGS="$(CFLAGS)" install; \
-	)
+	$(call glide3_build,h3)
 	touch $(STAMP_DIR)/build.glide3.h3
 
 build.glide3.h5: $(SRC_DIR)/glide3x $(STAMP_DIR)/build.glide3.h5
 $(STAMP_DIR)/build.glide3.h5:
-	( \
-	  cd $(SRC_DIR)/glide3x; \
-	  mkdir $(CURDIR)/debian/tmp.h5; \
-	  ./chores.3dfx --generate "--configure=--enable-fx-glide-hw=h5 \
-		--prefix=/usr" --build-dir=build.h5; \
-	  cd build.h5; \
-	  ./build.3dfx --no-x DESTDIR="$(CURDIR)/debian/tmp.h5/" \
-		CFLAGS="$(CFLAGS)" install; \
-	)
+	$(call glide3_build,h5)
 	touch $(STAMP_DIR)/build.glide3.h5
 
 
