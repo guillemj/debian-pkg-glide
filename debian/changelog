@@ -21,6 +21,7 @@ glide (2002.04.10.1-1) UNRELEASED; urgency=low
     - Move swlibs symlinking into each build and clean target.
     - On clean patch and unpatch before the actual cleaning.
     - Remove now unused targets unpack and make-patch.
+  * Refresh all patches with -pab.
 
  -- Guillem Jover <guillem@debian.org>  Mon, 09 Feb 2009 21:57:55 +0200
 

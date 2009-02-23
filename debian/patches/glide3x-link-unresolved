@@ -1,7 +1,8 @@
-diff -Naur build-tree.orig/glide3x/h5/glide3/src/makefile.autoconf.am build-tree/glide3x/h5/glide3/src/makefile.autoconf.am
---- build-tree.orig/glide3x/h5/glide3/src/makefile.autoconf.am	2007-03-08 05:20:31.000000000 +0200
-+++ build-tree/glide3x/h5/glide3/src/makefile.autoconf.am	2007-03-08 05:31:22.000000000 +0200
-@@ -152,7 +152,7 @@
+Index: b/glide3x/h5/glide3/src/makefile.autoconf.am
+===================================================================
+--- a/glide3x/h5/glide3/src/makefile.autoconf.am
++++ b/glide3x/h5/glide3/src/makefile.autoconf.am
+@@ -152,7 +152,7 @@ LDEFS = -DGLIDE_LIB -DGLIDE3 -DGLIDE3_AL
  #
  # Special rules for assembly files.
  #

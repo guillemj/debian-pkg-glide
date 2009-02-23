@@ -1,9 +1,10 @@
 Status: applied
 
-diff -Naur build-tree.orig/glide3x/chores.3dfx build-tree/glide3x/chores.3dfx
---- build-tree.orig/glide3x/chores.3dfx	2004-04-07 21:04:50.000000000 +0200
-+++ build-tree/glide3x/chores.3dfx	2004-04-07 21:04:02.000000000 +0200
-@@ -169,6 +169,13 @@
+Index: b/glide3x/chores.3dfx
+===================================================================
+--- a/glide3x/chores.3dfx
++++ b/glide3x/chores.3dfx
+@@ -169,6 +169,13 @@ if [ "$DO_GENERATE" = YES ] ; then
      # Regenerate everything.
      #
      echo -n 'Regenerating everything...'

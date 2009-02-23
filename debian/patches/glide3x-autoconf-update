@@ -1,9 +1,10 @@
 Status: applied
 
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/chores.3dfx build-tree/glide3x/chores.3dfx
---- build-tree.orig/glide3x/chores.3dfx	2000-11-03 12:23:57.000000000 +0100
-+++ build-tree/glide3x/chores.3dfx	2003-06-12 05:23:41.000000000 +0200
-@@ -177,7 +177,7 @@
+Index: b/glide3x/chores.3dfx
+===================================================================
+--- a/glide3x/chores.3dfx
++++ b/glide3x/chores.3dfx
+@@ -177,7 +177,7 @@ if [ "$DO_GENERATE" = YES ] ; then
          exit 100
      fi
      echo -n 'Automake...'
@@ -12,10 +13,11 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/chores.3dfx build-
          do_nothing
      else
          echo 'Failed!!'
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/configure.in build-tree/glide3x/configure.in
---- build-tree.orig/glide3x/configure.in	2000-10-20 21:07:00.000000000 +0200
-+++ build-tree/glide3x/configure.in	2003-06-12 05:23:41.000000000 +0200
-@@ -21,11 +21,14 @@
+Index: b/glide3x/configure.in
+===================================================================
+--- a/glide3x/configure.in
++++ b/glide3x/configure.in
+@@ -21,11 +21,14 @@ dnl Process this file with autoconf to p
  # $Revision: 1.8 $
  # $Date: 2000/10/20 19:07:00 $
  #
@@ -33,7 +35,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/configure.in build
  #
  # Variables local to the build.
  #
-@@ -219,7 +222,7 @@
+@@ -219,7 +222,7 @@ AM_CONDITIONAL(FX_HOOPTI_TRI_SETUP_COMPA
  dnl Checks for programs.
  AC_PROG_CC
  AC_PROG_CPP
@@ -42,7 +44,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/configure.in build
  AC_CHECK_TOOL(OBJDUMP, objdump, false)
  AC_CHECK_TOOL(DLLTOOL, dlltool, false)
  AC_CHECK_TOOL(CP, cp, false)
-@@ -257,7 +260,7 @@
+@@ -257,7 +260,7 @@ dnl     o $makefile.in
  dnl     o swlibs/include/make/makefile.autoconf.bottom
  dnl where $makefile is the makefile name.
  dnl
@@ -51,7 +53,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/configure.in build
            makefile.autoconf:makefile.autoconf.in:swlibs/include/make/makefile.autoconf.bottom
            cvg/makefile.autoconf:cvg/makefile.autoconf.in:swlibs/include/make/makefile.autoconf.bottom
            cvg/incsrc/makefile.autoconf:cvg/incsrc/makefile.autoconf.in:swlibs/include/make/makefile.autoconf.bottom
-@@ -283,6 +286,6 @@
+@@ -283,6 +286,6 @@ AC_OUTPUT(build.3dfx
            swlibs/texus2/makefile.autoconf:swlibs/texus2/makefile.autoconf.in:swlibs/include/make/makefile.autoconf.bottom
            swlibs/texus2/lib/makefile.autoconf:swlibs/texus2/lib/makefile.autoconf.in:swlibs/include/make/makefile.autoconf.bottom
            swlibs/texus2/cmd/makefile.autoconf:swlibs/texus2/cmd/makefile.autoconf.in:swlibs/include/make/makefile.autoconf.bottom
@@ -60,9 +62,10 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/configure.in build
 +          ], [chmod +x build.3dfx])
 +AC_OUTPUT
  
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/cvg/init/makefile.autoconf.am build-tree/glide3x/cvg/init/makefile.autoconf.am
---- build-tree.orig/glide3x/cvg/init/makefile.autoconf.am	2000-07-27 04:39:18.000000000 +0200
-+++ build-tree/glide3x/cvg/init/makefile.autoconf.am	2003-06-12 05:23:41.000000000 +0200
+Index: b/glide3x/cvg/init/makefile.autoconf.am
+===================================================================
+--- a/glide3x/cvg/init/makefile.autoconf.am
++++ b/glide3x/cvg/init/makefile.autoconf.am
 @@ -42,12 +42,8 @@
  ## $Revision: 1.1 $
  ## $Date: 2000/07/27 02:39:18 $
@@ -77,10 +80,11 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/cvg/init/makefile.
  
  lib_LTLIBRARIES             = libsst1init.la
  libsst1init_la_SOURCES      = sst1init.c info.c print.c parse.c \
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/makefile.autoconf.am build-tree/glide3x/h3/glide3/src/makefile.autoconf.am
---- build-tree.orig/glide3x/h3/glide3/src/makefile.autoconf.am	2002-04-10 00:21:43.000000000 +0200
-+++ build-tree/glide3x/h3/glide3/src/makefile.autoconf.am	2003-06-12 05:23:41.000000000 +0200
-@@ -66,7 +66,7 @@
+Index: b/glide3x/h3/glide3/src/makefile.autoconf.am
+===================================================================
+--- a/glide3x/h3/glide3/src/makefile.autoconf.am
++++ b/glide3x/h3/glide3/src/makefile.autoconf.am
+@@ -66,7 +66,7 @@ if FX_GLIDE_CTRISETUP
  FX_GLIDE_CTRISETUP_VDEFS = -DGLIDE_USE_C_TRISETUP
  else
  FX_GLIDE_CTRISETUP_VDEFS = -DGLIDE_PACKED_RGB=0 \
@@ -89,7 +93,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/make
  endif
  
  if FX_GLIDE_NO_PLUG
-@@ -104,6 +104,10 @@
+@@ -104,6 +104,10 @@ if GL_AMD3D
  GL_AMD3D_SRC = xtexdl_3dnow.S xdraw2_3dnow.S xdraw3_3dnow.S xdraw2_def.S xdraw3_def.S
  endif
  
@@ -100,7 +104,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/make
  VDEFS = $(FX_CHRIS_DENIS_ANTHONY_HACK_VDEFS) \
          $(FX_GLIDE_ALT_TAB_VDEFS) \
          $(FX_GLIDE_DIRECT_WRITE_VDEFS) \
-@@ -113,7 +117,8 @@
+@@ -113,7 +117,8 @@ VDEFS = $(FX_CHRIS_DENIS_ANTHONY_HACK_VD
          $(FX_GLIDE_CTRISETUP_VDEFS) \
          $(FX_GLIDE_NO_PLUG_VDEFS) \
          $(FX_GLIDE_NO_SPLASH_VDEFS) \
@@ -110,7 +114,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/make
  
  LDEFS = -DGLIDE_INIT_HWC \
          -DGLIDE_LIB      \
-@@ -122,46 +127,35 @@
+@@ -122,46 +127,35 @@ LDEFS = -DGLIDE_INIT_HWC \
          -DH3
  
  #
@@ -166,7 +170,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/make
  
  endif
  
-@@ -190,6 +184,7 @@
+@@ -190,6 +184,7 @@ glfb.c: $(top_srcdir)/h3/glide3/src/glfb
  	rm -f gglide.c
  	ln -sf $(top_srcdir)/h3/glide3/src/glfb.c.save glfb.c
  endif
@@ -174,7 +178,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/make
  #
  # Library definitions.
  #
-@@ -207,7 +202,9 @@
+@@ -207,7 +202,9 @@ include_HEADERS        = g3ext.h glide.h
  noinst_HEADERS         = fxglide.h gsstdef.h gsfc.h \
                           fxcmd.h fxsplash.h tv.h rcver.h qmodes.h \
                           macglide3.h
@@ -185,10 +189,11 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/make
  
  lib_LTLIBRARIES        = libglide3.la
  libglide3_la_SOURCES   = fxinline.h fxgasm.h \
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/makefile.autoconf.am build-tree/glide3x/h5/glide3/src/makefile.autoconf.am
---- build-tree.orig/glide3x/h5/glide3/src/makefile.autoconf.am	2002-04-10 00:21:19.000000000 +0200
-+++ build-tree/glide3x/h5/glide3/src/makefile.autoconf.am	2003-06-12 05:23:41.000000000 +0200
-@@ -114,6 +114,11 @@
+Index: b/glide3x/h5/glide3/src/makefile.autoconf.am
+===================================================================
+--- a/glide3x/h5/glide3/src/makefile.autoconf.am
++++ b/glide3x/h5/glide3/src/makefile.autoconf.am
+@@ -114,6 +114,11 @@ FX_GLIDE_CTRISETUP_VDEFS = -DGLIDE_USE_C
  else
  FX_GLIDE_CTRISETUP_VDEFS = -DGLIDE_PACKED_RGB=0 -DGLIDE_TRI_CULLING=1
  endif
@@ -200,7 +205,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/make
  VDEFS = $(FX_CHRIS_DENIS_ANTHONY_HACK_VDEFS) \
          $(FX_GLIDE_ALT_TAB_VDEFS) \
          $(FX_GLIDE_DIRECT_WRITE_VDEFS) \
-@@ -131,19 +136,14 @@
+@@ -131,19 +136,14 @@ VDEFS = $(FX_CHRIS_DENIS_ANTHONY_HACK_VD
          $(HAL_CSIM_VDEFS) \
          $(HAL_HW_VDEFS) \
          $(FX_GLIDE_HW_CULL_VDEFS) \
@@ -223,7 +228,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/make
  
  #
  # Nothing for CPPFLAGS or OPTS here.
-@@ -152,7 +152,7 @@
+@@ -152,7 +152,7 @@ VINCLUDES = $(HAL_CSIM_INCLUDES)
  #
  # Special rules for assembly files.
  #
@@ -232,7 +237,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/make
  xdraw2_def.o xdraw2_def.lo: xdraw2.s xdraw2.inc.s fxgasm.h
  	$(PREPROCESSOR) $< > $*.tmp.s
  	libtool --mode=compile $(CC) $(AFLAGS) -c -o $*.o $*.tmp.s
-@@ -215,7 +215,8 @@
+@@ -215,7 +215,8 @@ noinst_HEADERS         = fxcmd.h     fxs
                           gsfc.h      gsstdef.h   \
                           qmodes.h    tv.h        \
                           fxgasm.h    fxinline.h
@@ -242,9 +247,10 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/make
  fxgasm_DEPENDENCIES    = gthread.lo
  
  lib_LTLIBRARIES        = libglide3.la
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/minihwc/makefile.autoconf.am build-tree/glide3x/h5/minihwc/makefile.autoconf.am
---- build-tree.orig/glide3x/h5/minihwc/makefile.autoconf.am	2000-07-27 04:39:18.000000000 +0200
-+++ build-tree/glide3x/h5/minihwc/makefile.autoconf.am	2003-06-12 05:23:41.000000000 +0200
+Index: b/glide3x/h5/minihwc/makefile.autoconf.am
+===================================================================
+--- a/glide3x/h5/minihwc/makefile.autoconf.am
++++ b/glide3x/h5/minihwc/makefile.autoconf.am
 @@ -23,13 +23,8 @@
  #
  # First, the variable defs.

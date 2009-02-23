@@ -1,9 +1,10 @@
 Status: applied
 
-diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/include/make/3dfx.linux.mak build-tree/swlibs/include/make/3dfx.linux.mak
---- build-tree.orig/swlibs/include/make/3dfx.linux.mak	2000-07-12 23:35:28.000000000 +0200
-+++ build-tree/swlibs/include/make/3dfx.linux.mak	2003-05-18 15:38:09.000000000 +0200
-@@ -87,7 +87,7 @@
+Index: b/swlibs/include/make/3dfx.linux.mak
+===================================================================
+--- a/swlibs/include/make/3dfx.linux.mak
++++ b/swlibs/include/make/3dfx.linux.mak
+@@ -87,7 +87,7 @@ endif
  # assembly language in grDrawTriangle. Larger optimization removes
  # an extra push in the calling sequence.
  #
@@ -12,10 +13,11 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/include/make/3dfx.l
  	-fexpensive-optimizations -ffast-math -DBIG_OPT
  
  CDEBUG	       = -g -O
-diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/include/make/3dfx.mak build-tree/swlibs/include/make/3dfx.mak
---- build-tree.orig/swlibs/include/make/3dfx.mak	2000-10-03 20:25:35.000000000 +0200
-+++ build-tree/swlibs/include/make/3dfx.mak	2003-05-18 15:37:51.000000000 +0200
-@@ -120,7 +120,7 @@
+Index: b/swlibs/include/make/3dfx.mak
+===================================================================
+--- a/swlibs/include/make/3dfx.mak
++++ b/swlibs/include/make/3dfx.mak
+@@ -120,7 +120,7 @@ endif
  # assembly language in grDrawTriangle. Larger optimization removes
  # an extra push in the calling sequence.
  #
@@ -24,7 +26,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/include/make/3dfx.m
  	-fexpensive-optimizations -ffast-math -DBIG_OPT
  
  CDEBUG	       = -g -O
-@@ -138,7 +138,7 @@
+@@ -138,7 +138,7 @@ GCOPTS	       = -Wall
  # assembly language in grDrawTriangle. Larger optimization removes
  # an extra push in the calling sequence.
  #
@@ -33,10 +35,11 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/include/make/3dfx.m
  	-fexpensive-optimizations -ffast-math -DBIG_OPT
  
  CDEBUG	       = -g -O
-diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/include/make/makefile.autoconf.bottom build-tree/swlibs/include/make/makefile.autoconf.bottom
---- build-tree.orig/swlibs/include/make/makefile.autoconf.bottom	2000-08-07 17:24:44.000000000 +0200
-+++ build-tree/swlibs/include/make/makefile.autoconf.bottom	2003-05-18 15:38:31.000000000 +0200
-@@ -51,7 +51,7 @@
+Index: b/swlibs/include/make/makefile.autoconf.bottom
+===================================================================
+--- a/swlibs/include/make/makefile.autoconf.bottom
++++ b/swlibs/include/make/makefile.autoconf.bottom
+@@ -51,7 +51,7 @@ ifeq ("@GLIDE_DEBUG@","true")
  GLIDE_DEBUG_GCFLAGS = -g -O
  GLIDE_DEBUG_GDEFS = -DGDBG_INFO_ON -DGLIDE_DEBUG
  else

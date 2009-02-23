@@ -1,8 +1,9 @@
 Status: applied
 
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/cvg/glide/src/cpudetect.c build-tree/glide2x/cvg/glide/src/cpudetect.c
---- build-tree.orig/glide2x/cvg/glide/src/cpudetect.c	1999-12-07 22:49:08.000000000 +0100
-+++ build-tree/glide2x/cvg/glide/src/cpudetect.c	2003-05-18 19:08:02.000000000 +0200
+Index: b/glide2x/cvg/glide/src/cpudetect.c
+===================================================================
+--- a/glide2x/cvg/glide/src/cpudetect.c
++++ b/glide2x/cvg/glide/src/cpudetect.c
 @@ -20,6 +20,7 @@
  
  #include <sys/utsname.h>
@@ -11,10 +12,11 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/cvg/glide/src/cpud
  
  int _cpu_detect_asm() {
    struct utsname name;
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/cvg/glide/src/fxglide.h build-tree/glide2x/cvg/glide/src/fxglide.h
---- build-tree.orig/glide2x/cvg/glide/src/fxglide.h	1999-12-07 22:49:09.000000000 +0100
-+++ build-tree/glide2x/cvg/glide/src/fxglide.h	2003-05-18 19:06:25.000000000 +0200
-@@ -2225,7 +2225,7 @@
+Index: b/glide2x/cvg/glide/src/fxglide.h
+===================================================================
+--- a/glide2x/cvg/glide/src/fxglide.h
++++ b/glide2x/cvg/glide/src/fxglide.h
+@@ -2225,7 +2225,7 @@ do { \
  #define REG_GROUP_SETF_CLAMP(__regBase, __regAddr, __val) \
  do { \
    const FxU32 fpClampVal = FP_FLOAT_CLAMP(__val); \
@@ -23,10 +25,11 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/cvg/glide/src/fxgl
    SET(((FxU32*)(__regBase))[offsetof(SstRegs, __regAddr) >> 2], fpClampVal); \
    GR_INC_SIZE(sizeof(FxU32)); \
  } while(0)
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/h3/glide/src/fxglide.h build-tree/glide2x/h3/glide/src/fxglide.h
---- build-tree.orig/glide2x/h3/glide/src/fxglide.h	1999-12-07 22:49:26.000000000 +0100
-+++ build-tree/glide2x/h3/glide/src/fxglide.h	2003-05-18 19:10:27.000000000 +0200
-@@ -2004,7 +2004,7 @@
+Index: b/glide2x/h3/glide/src/fxglide.h
+===================================================================
+--- a/glide2x/h3/glide/src/fxglide.h
++++ b/glide2x/h3/glide/src/fxglide.h
+@@ -2004,7 +2004,7 @@ _grFifoFWriteDebug((FxU32) a, (float) b,
                                       __stwbrx( *((FxU32*)&temp), (void*)&(d), 0 ); \
                                     }
  #      define SET_LINEAR(d, s)     SET((d), (s))
@@ -35,7 +38,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/h3/glide/src/fxgli
                                             (((FxU32)(s)) << 16UL)))
  #      define SET_LINEAR_8(d, s)   ((d) = (s))
  #    else /* !defined(__MWERKS__) && POWERPC */
-@@ -3008,7 +3008,7 @@
+@@ -3008,7 +3008,7 @@ do { \
  #define REG_GROUP_SETF_CLAMP(__regBase, __regAddr, __val) \
  do { \
    const FxU32 fpClampVal = FP_FLOAT_CLAMP(__val); \
@@ -44,19 +47,21 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/h3/glide/src/fxgli
    SET(((FxU32*)(__regBase))[offsetof(SstRegs, __regAddr) >> 2], fpClampVal); \
    GR_INC_SIZE(sizeof(FxU32)); \
  } while(0)
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/cvg/glide/oem/oeminit.h build-tree/glide2x/cvg/glide/oem/oeminit.h
---- build-tree.orig/glide2x/cvg/glide/oem/oeminit.h	1999-12-07 22:49:07.000000000 +0100
-+++ build-tree/glide2x/cvg/glide/oem/oeminit.h	2003-05-19 14:48:14.000000000 +0200
-@@ -89,5 +89,5 @@
+Index: b/glide2x/cvg/glide/oem/oeminit.h
+===================================================================
+--- a/glide2x/cvg/glide/oem/oeminit.h
++++ b/glide2x/cvg/glide/oem/oeminit.h
+@@ -89,5 +89,5 @@ FX_EXPORT FxU32 FX_CSTYLE fxoemInitSetVi
  FX_EXPORT FxU32 FX_CSTYLE fxoemRestoreVideo(OemInitInfo *oem);
  FX_EXPORT FxU32 FX_CSTYLE fxoemControl(FxU32 mode);
  
 -#endif __OEMINIT_H__
 +#endif /* __OEMINIT_H__ */
  
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/h3/minihwc/fxhwc.h build-tree/glide2x/h3/minihwc/fxhwc.h
---- build-tree.orig/glide2x/h3/minihwc/fxhwc.h	2000-10-03 20:29:57.000000000 +0200
-+++ build-tree/glide2x/h3/minihwc/fxhwc.h	2003-05-19 15:00:10.000000000 +0200
+Index: b/glide2x/h3/minihwc/fxhwc.h
+===================================================================
+--- a/glide2x/h3/minihwc/fxhwc.h
++++ b/glide2x/h3/minihwc/fxhwc.h
 @@ -41,8 +41,8 @@
  **  I/O Macros
  */
@@ -68,10 +73,11 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/h3/minihwc/fxhwc.h
  ((SstIORegs *) regInfo.ioMemBase)->
  
  
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/h3/glide/src/xdraw2.S build-tree/glide2x/h3/glide/src/xdraw2.S
---- build-tree.orig/glide2x/h3/glide/src/xdraw2.S	1999-12-07 22:49:30.000000000 +0100
-+++ build-tree/glide2x/h3/glide/src/xdraw2.S	2003-06-11 07:36:37.000000000 +0200
-@@ -125,10 +125,12 @@
+Index: b/glide2x/h3/glide/src/xdraw2.S
+===================================================================
+--- a/glide2x/h3/glide/src/xdraw2.S
++++ b/glide2x/h3/glide/src/xdraw2.S
+@@ -125,10 +125,12 @@ PROC_TYPE(cull):
  #define GLIDE_GENERIC_SETUP 0
  #include "xdraw2.inc.S"
  #undef cull
@@ -88,7 +94,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/h3/glide/src/xdraw
  
  END_PROC_TYPE(cull):
  .size PROC_TYPE(cull),END_PROC_TYPE(cull)-PROC_TYPE(cull)
-@@ -147,10 +149,12 @@
+@@ -147,10 +149,12 @@ PROC_TYPE(cull_rgb):
  #define GLIDE_PACK_ALPHA 0
  #define GLIDE_GENERIC_SETUP 0
  #include "xdraw2.inc.S"
@@ -105,7 +111,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/h3/glide/src/xdraw
  
  END_PROC_TYPE(cull_rgb):
  .size PROC_TYPE(cull_rgb),END_PROC_TYPE(cull_rgb)-PROC_TYPE(cull_rgb)
-@@ -168,10 +172,10 @@
+@@ -168,10 +172,10 @@ PROC_TYPE(cull_argb):
  #define GLIDE_PACK_ALPHA 1
  #define GLIDE_GENERIC_SETUP 0
  #include "xdraw2.inc.S"
@@ -120,7 +126,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/h3/glide/src/xdraw
  
  END_PROC_TYPE(cull_argb):
  .size PROC_TYPE(cull_argb),END_PROC_TYPE(cull_argb)-PROC_TYPE(cull_argb)
-@@ -190,10 +194,12 @@
+@@ -190,10 +194,12 @@ PROC_TYPE(Default):
  #define GLIDE_PACK_ALPHA 0
  #define GLIDE_GENERIC_SETUP 0
  #include "xdraw2.inc.S"
@@ -137,7 +143,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/h3/glide/src/xdraw
  
  END_PROC_TYPE(Default):
  .size PROC_TYPE(Default),END_PROC_TYPE(Default)-PROC_TYPE(Default)
-@@ -212,10 +218,12 @@
+@@ -212,10 +218,12 @@ PROC_TYPE(rgb):
  #define GLIDE_PACK_ALPHA 0
  #define GLIDE_GENERIC_SETUP 0
  #include "xdraw2.inc.S"
@@ -154,7 +160,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/h3/glide/src/xdraw
  
  END_PROC_TYPE(rgb):
  .size PROC_TYPE(rgb),END_PROC_TYPE(rgb)-PROC_TYPE(rgb)
-@@ -233,10 +241,12 @@
+@@ -233,10 +241,12 @@ PROC_TYPE(argb):
  #define GLIDE_PACK_ALPHA 1
  #define GLIDE_GENERIC_SETUP 0
  #include "xdraw2.inc.S"

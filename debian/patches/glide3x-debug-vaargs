@@ -1,8 +1,9 @@
 Status: applied
 
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/cvg/incsrc/gdebug.h build-tree/glide3x/cvg/incsrc/gdebug.h
---- build-tree.orig/glide3x/cvg/incsrc/gdebug.h	1999-12-07 22:42:43.000000000 +0100
-+++ build-tree/glide3x/cvg/incsrc/gdebug.h	2003-05-27 23:20:59.000000000 +0200
+Index: b/glide3x/cvg/incsrc/gdebug.h
+===================================================================
+--- a/glide3x/cvg/incsrc/gdebug.h
++++ b/glide3x/cvg/incsrc/gdebug.h
 @@ -42,12 +42,12 @@
  // if debug info turned on then GDBG_INFO does something
  #ifdef GDBG_INFO_ON
@@ -50,9 +51,10 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/cvg/incsrc/gdebug.
  
  #define GDBG_GET_DEBUGLEVEL(x) 0
  #define GDBG_SET_DEBUGLEVEL(a,b)
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/incsrc/gdebug.h build-tree/glide3x/h3/incsrc/gdebug.h
---- build-tree.orig/glide3x/h3/incsrc/gdebug.h	1999-11-24 22:45:02.000000000 +0100
-+++ build-tree/glide3x/h3/incsrc/gdebug.h	2003-05-27 23:10:00.000000000 +0200
+Index: b/glide3x/h3/incsrc/gdebug.h
+===================================================================
+--- a/glide3x/h3/incsrc/gdebug.h
++++ b/glide3x/h3/incsrc/gdebug.h
 @@ -42,12 +42,12 @@
  // if debug info turned on then GDBG_INFO does something
  #ifdef GDBG_INFO_ON
@@ -101,9 +103,10 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/incsrc/gdebug.h
  
  #define GDBG_GET_DEBUGLEVEL(x) 0
  #define GDBG_SET_DEBUGLEVEL(a,b)
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/incsrc/gdebug.h build-tree/glide3x/h5/incsrc/gdebug.h
---- build-tree.orig/glide3x/h5/incsrc/gdebug.h	2000-12-14 04:12:51.000000000 +0100
-+++ build-tree/glide3x/h5/incsrc/gdebug.h	2003-05-27 23:05:52.000000000 +0200
+Index: b/glide3x/h5/incsrc/gdebug.h
+===================================================================
+--- a/glide3x/h5/incsrc/gdebug.h
++++ b/glide3x/h5/incsrc/gdebug.h
 @@ -42,12 +42,12 @@
  // if debug info turned on then GDBG_INFO does something
  #ifdef GDBG_INFO_ON

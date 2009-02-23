@@ -1,8 +1,10 @@
 Status: applied
 
---- build-tree.orig/glide3x/h5/glide3/src/gglide.c	2004-09-07 11:54:18.939373784 +0200
-+++ build-tree/glide3x/h5/glide3/src/gglide.c	2004-09-07 11:55:00.657031736 +0200
-@@ -2903,6 +2903,11 @@
+Index: b/glide3x/h5/glide3/src/gglide.c
+===================================================================
+--- a/glide3x/h5/glide3/src/gglide.c
++++ b/glide3x/h5/glide3/src/gglide.c
+@@ -2903,6 +2903,11 @@ GR_ENTRY(grDRIBufferSwap, void, (FxU32 s
    GR_END();
  #undef FN_NAME  
  } /* grBufferSwap */

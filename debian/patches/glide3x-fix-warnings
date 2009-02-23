@@ -1,9 +1,10 @@
 Status: applied
 
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/fxcmd.h build-tree/glide3x/h3/glide3/src/fxcmd.h
---- build-tree.orig/glide3x/h3/glide3/src/fxcmd.h	1999-11-24 22:44:55.000000000 +0100
-+++ build-tree/glide3x/h3/glide3/src/fxcmd.h	2003-05-18 19:22:32.000000000 +0200
-@@ -1312,7 +1312,7 @@
+Index: b/glide3x/h3/glide3/src/fxcmd.h
+===================================================================
+--- a/glide3x/h3/glide3/src/fxcmd.h
++++ b/glide3x/h3/glide3/src/fxcmd.h
+@@ -1312,7 +1312,7 @@ do { \
  #define REG_GROUP_SETF_CLAMP(__regBase, __regAddr, __val) \
  do { \
    const FxU32 fpClampVal = FP_FLOAT_CLAMP(__val); \
@@ -12,9 +13,10 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/fxcm
    SET(((FxU32*)(__regBase))[offsetof(SstRegs, __regAddr) >> 2], fpClampVal); \
    GR_INC_SIZE(sizeof(FxU32)); \
  } while(0)
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/g3df.c build-tree/glide3x/h3/glide3/src/g3df.c
---- build-tree.orig/glide3x/h3/glide3/src/g3df.c	1999-11-24 22:44:56.000000000 +0100
-+++ build-tree/glide3x/h3/glide3/src/g3df.c	2003-05-18 19:26:23.000000000 +0200
+Index: b/glide3x/h3/glide3/src/g3df.c
+===================================================================
+--- a/glide3x/h3/glide3/src/g3df.c
++++ b/glide3x/h3/glide3/src/g3df.c
 @@ -72,6 +72,7 @@
  */
  #include <stdio.h>
@@ -23,10 +25,11 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/g3df
  #include <3dfx.h>
  
  #define FX_DLL_DEFINITION
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/gsplash.c build-tree/glide3x/h3/glide3/src/gsplash.c
---- build-tree.orig/glide3x/h3/glide3/src/gsplash.c	1999-11-24 22:44:57.000000000 +0100
-+++ build-tree/glide3x/h3/glide3/src/gsplash.c	2003-05-18 19:23:38.000000000 +0200
-@@ -185,8 +185,7 @@
+Index: b/glide3x/h3/glide3/src/gsplash.c
+===================================================================
+--- a/glide3x/h3/glide3/src/gsplash.c
++++ b/glide3x/h3/glide3/src/gsplash.c
+@@ -185,8 +185,7 @@ GR_DIENTRY(grSplash,void,(float x, float
  {
  #define FN_NAME "grSplash"
    GR_BEGIN_NOFIFOCHECK("grSplash", 85);
@@ -36,9 +39,10 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/gspl
  
  #if (GLIDE_PLATFORM & GLIDE_OS_WIN32)
    {
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/minihwc/fxhwc.h build-tree/glide3x/h3/minihwc/fxhwc.h
---- build-tree.orig/glide3x/h3/minihwc/fxhwc.h	1999-11-24 22:45:03.000000000 +0100
-+++ build-tree/glide3x/h3/minihwc/fxhwc.h	2003-05-19 14:59:10.000000000 +0200
+Index: b/glide3x/h3/minihwc/fxhwc.h
+===================================================================
+--- a/glide3x/h3/minihwc/fxhwc.h
++++ b/glide3x/h3/minihwc/fxhwc.h
 @@ -38,8 +38,8 @@
  /*
  **  I/O Macros
@@ -50,10 +54,11 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/minihwc/fxhwc.h
  ((SstIORegs *) regInfo.ioMemBase)->
  
  
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/fxcmd.h build-tree/glide3x/h5/glide3/src/fxcmd.h
---- build-tree.orig/glide3x/h5/glide3/src/fxcmd.h	2000-12-14 04:12:49.000000000 +0100
-+++ build-tree/glide3x/h5/glide3/src/fxcmd.h	2003-05-19 14:47:12.000000000 +0200
-@@ -1425,7 +1425,7 @@
+Index: b/glide3x/h5/glide3/src/fxcmd.h
+===================================================================
+--- a/glide3x/h5/glide3/src/fxcmd.h
++++ b/glide3x/h5/glide3/src/fxcmd.h
+@@ -1425,7 +1425,7 @@ do { \
  #define REG_GROUP_SETF_CLAMP(__regBase, __regAddr, __val) \
  do { \
    const FxU32 fpClampVal = FP_FLOAT_CLAMP(__val); \
@@ -62,9 +67,10 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/fxcm
    SET(((FxU32*)(__regBase))[offsetof(SstRegs, __regAddr) >> 2], fpClampVal); \
    GR_INC_SIZE(sizeof(FxU32)); \
  } while(0)
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/minihwc/fxhwc.h build-tree/glide3x/h5/minihwc/fxhwc.h
---- build-tree.orig/glide3x/h5/minihwc/fxhwc.h	2000-12-14 04:12:52.000000000 +0100
-+++ build-tree/glide3x/h5/minihwc/fxhwc.h	2003-05-19 14:59:30.000000000 +0200
+Index: b/glide3x/h5/minihwc/fxhwc.h
+===================================================================
+--- a/glide3x/h5/minihwc/fxhwc.h
++++ b/glide3x/h5/minihwc/fxhwc.h
 @@ -38,8 +38,8 @@
  /*
  **  I/O Macros
@@ -76,9 +82,10 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/minihwc/fxhwc.h
  ((SstIORegs *) regInfo.ioMemBase)->
  
  
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/gsst.c.dri build-tree/glide3x/h3/glide3/src/gsst.c.dri
---- build-tree.orig/glide3x/h3/glide3/src/gsst.c.dri	1999-11-24 22:45:01.000000000 +0100
-+++ build-tree/glide3x/h3/glide3/src/gsst.c.dri	2003-05-31 19:48:14.000000000 +0200
+Index: b/glide3x/h3/glide3/src/gsst.c.dri
+===================================================================
+--- a/glide3x/h3/glide3/src/gsst.c.dri
++++ b/glide3x/h3/glide3/src/gsst.c.dri
 @@ -542,30 +542,30 @@
  
  ResEntry
@@ -134,7 +141,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/gsst
  };
  
  /* ---------------------------------------------
-@@ -1190,7 +1190,7 @@
+@@ -1190,7 +1190,7 @@ GR_ENTRY(grSstWinOpen, GrContext_t, ( Fx
      gc->tBuffer.bufBPP = 0xffffffff; /* Don't matter to me */
  
      GDBG_INFO(1, "autoBump: 0x%x\n", _GlideRoot.environment.autoBump);
@@ -143,10 +150,11 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/gsst
        if (!hwcInitFifo( bInfo, gc->cmdTransportInfo.autoBump)) {
          hwcRestoreVideo(bInfo);
          GrErrorCallback(hwcGetErrorString(), FXFALSE);
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/xdraw2.S build-tree/glide3x/h3/glide3/src/xdraw2.S
---- build-tree.orig/glide3x/h3/glide3/src/xdraw2.S	2000-02-15 23:35:59.000000000 +0100
-+++ build-tree/glide3x/h3/glide3/src/xdraw2.S	2003-05-31 19:58:51.000000000 +0200
-@@ -172,12 +172,14 @@
+Index: b/glide3x/h3/glide3/src/xdraw2.S
+===================================================================
+--- a/glide3x/h3/glide3/src/xdraw2.S
++++ b/glide3x/h3/glide3/src/xdraw2.S
+@@ -172,12 +172,14 @@ PROC_TYPE(clip_nocull_invalid):
  #define GLIDE_PACK_ALPHA 0
  #define GLIDE_GENERIC_SETUP 0
  #include "xdraw2.inc.S"
@@ -167,7 +175,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/xdra
  
  END_PROC_TYPE(clip_nocull_invalid):
  .size PROC_TYPE(clip_nocull_invalid),END_PROC_TYPE(clip_nocull_invalid)-PROC_TYPE(clip_nocull_invalid)
-@@ -196,12 +198,14 @@
+@@ -196,12 +198,14 @@ PROC_TYPE(clip_cull_invalid):
  #define GLIDE_PACK_ALPHA 0
  #define GLIDE_GENERIC_SETUP 0
  #include "xdraw2.inc.S"
@@ -188,7 +196,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/xdra
  
  END_PROC_TYPE(clip_cull_invalid):
  .size PROC_TYPE(clip_cull_invalid),END_PROC_TYPE(clip_cull_invalid)-PROC_TYPE(clip_cull_invalid)
-@@ -220,12 +224,14 @@
+@@ -220,12 +224,14 @@ PROC_TYPE(clip_cull_valid):
  #define GLIDE_PACK_ALPHA 0
  #define GLIDE_GENERIC_SETUP 0
  #include "xdraw2.inc.S"
@@ -209,7 +217,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/xdra
  
  END_PROC_TYPE(clip_cull_valid):
  .size PROC_TYPE(clip_cull_valid),END_PROC_TYPE(clip_cull_valid)-PROC_TYPE(clip_cull_valid)
-@@ -244,12 +250,14 @@
+@@ -244,12 +250,14 @@ PROC_TYPE(clip_nocull_valid):
  #define GLIDE_PACK_ALPHA 0
  #define GLIDE_GENERIC_SETUP 0
  #include "xdraw2.inc.S"
@@ -230,7 +238,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/xdra
  
  END_PROC_TYPE(clip_nocull_valid):
  .size PROC_TYPE(clip_nocull_valid),END_PROC_TYPE(clip_nocull_valid)-PROC_TYPE(clip_nocull_valid)
-@@ -268,12 +276,14 @@
+@@ -268,12 +276,14 @@ PROC_TYPE(win_nocull_invalid):
  #define GLIDE_PACK_ALPHA 0
  #define GLIDE_GENERIC_SETUP 0
  #include "xdraw2.inc.S"
@@ -251,7 +259,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/xdra
  
  END_PROC_TYPE(win_nocull_invalid):
  .size PROC_TYPE(win_nocull_invalid),END_PROC_TYPE(win_nocull_invalid)-PROC_TYPE(win_nocull_invalid)
-@@ -293,12 +303,14 @@
+@@ -293,12 +303,14 @@ PROC_TYPE(win_cull_invalid):
  #define GLIDE_PACK_ALPHA 0
  #define GLIDE_GENERIC_SETUP 0
  #include "xdraw2.inc.S"
@@ -272,7 +280,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/xdra
  
  END_PROC_TYPE(win_cull_invalid):
  .size PROC_TYPE(win_cull_invalid),END_PROC_TYPE(win_cull_invalid)-PROC_TYPE(win_cull_invalid)
-@@ -317,12 +329,14 @@
+@@ -317,12 +329,14 @@ PROC_TYPE(win_cull_valid):
  #define GLIDE_PACK_ALPHA 0
  #define GLIDE_GENERIC_SETUP 0
  #include "xdraw2.inc.S"
@@ -293,7 +301,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/xdra
  
  END_PROC_TYPE(win_cull_valid):
  .size PROC_TYPE(win_cull_valid),END_PROC_TYPE(win_cull_valid)-PROC_TYPE(win_cull_valid)
-@@ -341,12 +355,14 @@
+@@ -341,12 +355,14 @@ PROC_TYPE(win_nocull_valid):
  #define GLIDE_PACK_ALPHA 0
  #define GLIDE_GENERIC_SETUP 0
  #include "xdraw2.inc.S"
@@ -314,10 +322,11 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/xdra
  
  END_PROC_TYPE(win_nocull_valid):
  .size PROC_TYPE(win_nocull_valid),END_PROC_TYPE(win_nocull_valid)-PROC_TYPE(win_nocull_valid)
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/xdraw3.S build-tree/glide3x/h3/glide3/src/xdraw3.S
---- build-tree.orig/glide3x/h3/glide3/src/xdraw3.S	2000-10-20 21:07:00.000000000 +0200
-+++ build-tree/glide3x/h3/glide3/src/xdraw3.S	2003-05-31 20:27:28.000000000 +0200
-@@ -2462,6 +2462,7 @@
+Index: b/glide3x/h3/glide3/src/xdraw3.S
+===================================================================
+--- a/glide3x/h3/glide3/src/xdraw3.S
++++ b/glide3x/h3/glide3/src/xdraw3.S
+@@ -2462,6 +2462,7 @@ _drawvertexlist:
  
  #define gc esi	/*  points to graphics context */
  #define fifo ecx	/*  points to next entry in fifo */
@@ -325,7 +334,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/xdra
  #define vertexPtr edx	/*  pointer to vertex or vertex array */
  
  .align 32
-@@ -2910,6 +2911,7 @@
+@@ -2910,6 +2911,7 @@ _vpdrawvertexlist:
  
  #define gc esi	/*  points to graphics context */
  #define fifo ecx	/*  points to next entry in fifo */
@@ -333,9 +342,10 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/xdra
  #define vertexPtr edi	/*  Current vertex pointer */
  
  /*  NB:  All of the base triangle procs expect to have the gc */
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/g3df.c build-tree/glide3x/h5/glide3/src/g3df.c
---- build-tree.orig/glide3x/h5/glide3/src/g3df.c	2000-11-16 00:32:53.000000000 +0100
-+++ build-tree/glide3x/h5/glide3/src/g3df.c	2003-05-31 20:35:36.000000000 +0200
+Index: b/glide3x/h5/glide3/src/g3df.c
+===================================================================
+--- a/glide3x/h5/glide3/src/g3df.c
++++ b/glide3x/h5/glide3/src/g3df.c
 @@ -101,6 +101,9 @@
  */
  #include <stdio.h>
@@ -346,10 +356,11 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/g3df
  #include <3dfx.h>
  
  #define FX_DLL_DEFINITION
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/gsst.c build-tree/glide3x/h5/glide3/src/gsst.c
---- build-tree.orig/glide3x/h5/glide3/src/gsst.c	2000-11-17 22:31:05.000000000 +0100
-+++ build-tree/glide3x/h5/glide3/src/gsst.c	2003-05-31 20:40:59.000000000 +0200
-@@ -849,30 +849,30 @@
+Index: b/glide3x/h5/glide3/src/gsst.c
+===================================================================
+--- a/glide3x/h5/glide3/src/gsst.c
++++ b/glide3x/h5/glide3/src/gsst.c
+@@ -849,30 +849,30 @@ static void _grSstSetColumnsOfNWidth(FxU
  
  ResEntry
  _resTable[] = {
@@ -404,10 +415,11 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/gsst
  };
  
  /* ---------------------------------------------
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/xdraw3.s build-tree/glide3x/h5/glide3/src/xdraw3.s
---- build-tree.orig/glide3x/h5/glide3/src/xdraw3.s	2000-10-20 21:07:00.000000000 +0200
-+++ build-tree/glide3x/h5/glide3/src/xdraw3.s	2003-05-31 20:46:21.000000000 +0200
-@@ -2925,6 +2925,7 @@
+Index: b/glide3x/h5/glide3/src/xdraw3.s
+===================================================================
+--- a/glide3x/h5/glide3/src/xdraw3.s
++++ b/glide3x/h5/glide3/src/xdraw3.s
+@@ -2925,6 +2925,7 @@ _vpdrawvertexlist:
  
  #define gc esi	/*  points to graphics context */
  #define fifo ecx	/*  points to next entry in fifo */

@@ -1,8 +1,9 @@
 Status: applied
 
-diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/texus2/lib/ncc.c build-tree/swlibs/texus2/lib/ncc.c
---- build-tree.orig/swlibs/texus2/lib/ncc.c	2000-08-03 02:27:17.000000000 +0200
-+++ build-tree/swlibs/texus2/lib/ncc.c	2003-05-18 19:15:05.000000000 +0200
+Index: b/swlibs/texus2/lib/ncc.c
+===================================================================
+--- a/swlibs/texus2/lib/ncc.c
++++ b/swlibs/texus2/lib/ncc.c
 @@ -26,10 +26,10 @@
  #include "texusint.h"
  
@@ -18,9 +19,10 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/texus2/lib/ncc.c bu
  
  static struct   {
      int yhist[256], ihist[256], qhist[256];
-diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/texus2/lib/quantize.c build-tree/swlibs/texus2/lib/quantize.c
---- build-tree.orig/swlibs/texus2/lib/quantize.c	2000-08-03 02:27:20.000000000 +0200
-+++ build-tree/swlibs/texus2/lib/quantize.c	2003-05-18 19:14:25.000000000 +0200
+Index: b/swlibs/texus2/lib/quantize.c
+===================================================================
+--- a/swlibs/texus2/lib/quantize.c
++++ b/swlibs/texus2/lib/quantize.c
 @@ -28,10 +28,10 @@
  #include "texusint.h"
  
@@ -36,10 +38,11 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/texus2/lib/quantize
  
  // for error diffusion.
  static int      errR[MAX_TEXWIDTH], errG[MAX_TEXWIDTH], errB[MAX_TEXWIDTH];     
-diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/texus2/lib/nccnnet.c build-tree/swlibs/texus2/lib/nccnnet.c
---- build-tree.orig/swlibs/texus2/lib/nccnnet.c	2000-08-03 02:27:18.000000000 +0200
-+++ build-tree/swlibs/texus2/lib/nccnnet.c	2003-05-31 20:29:50.000000000 +0200
-@@ -409,7 +409,7 @@
+Index: b/swlibs/texus2/lib/nccnnet.c
+===================================================================
+--- a/swlibs/texus2/lib/nccnnet.c
++++ b/swlibs/texus2/lib/nccnnet.c
+@@ -409,7 +409,7 @@ txMipNccNNet(TxMip *pxMip, TxMip *txMip,
      txMapPal256toYAB((FxU32 *)yabTable, (FxU8 *)map, ncolors, (FxU32 *)pxMip->pal);
      if( txVerbose )
        {

@@ -1,8 +1,9 @@
 Status: applied
 
-diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/include/make/makefile.autoconf.bottom build-tree/swlibs/include/make/makefile.autoconf.bottom
---- build-tree.orig/swlibs/include/make/makefile.autoconf.bottom	2003-06-11 21:50:04.000000000 +0200
-+++ build-tree/swlibs/include/make/makefile.autoconf.bottom	2003-06-11 21:49:37.000000000 +0200
+Index: b/swlibs/include/make/makefile.autoconf.bottom
+===================================================================
+--- a/swlibs/include/make/makefile.autoconf.bottom
++++ b/swlibs/include/make/makefile.autoconf.bottom
 @@ -20,54 +20,25 @@
  ## $Revision: 1.2 $
  ## $Date: 2000/08/07 15:24:44 $
@@ -69,7 +70,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/include/make/makefi
  ifeq ("@FX_GLIDE_HW@","cvg")
  CVG_VINCLUDES= -I$(top_srcdir)/init \
                 -I$(top_srcdir)/cvg/glide3/src \
-@@ -88,15 +60,16 @@
+@@ -88,15 +59,16 @@ H5_VINCLUDES = -I$(top_srcdir)/h5/glide3
                 -I$(top_srcdir)/h5/minihwc
  endif
  
@@ -93,9 +94,10 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/include/make/makefi
 -# Linker definitions
 -#
 -########################################################################
-diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/newpci/pcilib/makefile.autoconf.am build-tree/swlibs/newpci/pcilib/makefile.autoconf.am
---- build-tree.orig/swlibs/newpci/pcilib/makefile.autoconf.am	2000-07-27 04:39:18.000000000 +0200
-+++ build-tree/swlibs/newpci/pcilib/makefile.autoconf.am	2003-06-11 21:18:57.000000000 +0200
+Index: b/swlibs/newpci/pcilib/makefile.autoconf.am
+===================================================================
+--- a/swlibs/newpci/pcilib/makefile.autoconf.am
++++ b/swlibs/newpci/pcilib/makefile.autoconf.am
 @@ -20,12 +20,6 @@
  ## $Revision: 1.1 $
  ## $Date: 2000/07/27 02:39:18 $
@@ -109,9 +111,10 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/newpci/pcilib/makef
  noinst_HEADERS         = fxpci.h sst1_pci.h pcilib.h
  noinst_LTLIBRARIES     = libfxpci.la
  libfxpci_la_SOURCES    = fxpci.c fxinfo.c fxmsr.c sst1_pci.c fxlinux.c
-diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/texus2/lib/makefile.autoconf.am build-tree/swlibs/texus2/lib/makefile.autoconf.am
---- build-tree.orig/swlibs/texus2/lib/makefile.autoconf.am	2000-08-25 19:33:26.000000000 +0200
-+++ build-tree/swlibs/texus2/lib/makefile.autoconf.am	2003-06-11 21:24:19.000000000 +0200
+Index: b/swlibs/texus2/lib/makefile.autoconf.am
+===================================================================
+--- a/swlibs/texus2/lib/makefile.autoconf.am
++++ b/swlibs/texus2/lib/makefile.autoconf.am
 @@ -25,7 +25,7 @@
  #
  

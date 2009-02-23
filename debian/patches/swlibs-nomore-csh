@@ -1,8 +1,9 @@
 Status: applied
 
-diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/include/make/ostype build-tree/swlibs/include/make/ostype
---- build-tree.orig/swlibs/include/make/ostype	2000-06-15 02:11:40.000000000 +0200
-+++ build-tree/swlibs/include/make/ostype	2003-05-18 08:22:42.000000000 +0200
+Index: b/swlibs/include/make/ostype
+===================================================================
+--- a/swlibs/include/make/ostype
++++ b/swlibs/include/make/ostype
 @@ -1,4 +1,4 @@
 -#!/bin/csh -f
 +#!/bin/bash

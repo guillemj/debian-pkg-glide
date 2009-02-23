@@ -1,9 +1,10 @@
 Status: applied
 
-diff -Naur build-tree.orig/glide3x/chores.3dfx build-tree/glide3x/chores.3dfx
---- build-tree.orig/glide3x/chores.3dfx	2004-04-07 20:37:29.000000000 +0200
-+++ build-tree/glide3x/chores.3dfx	2004-04-07 20:32:37.000000000 +0200
-@@ -117,7 +117,7 @@
+Index: b/glide3x/chores.3dfx
+===================================================================
+--- a/glide3x/chores.3dfx
++++ b/glide3x/chores.3dfx
+@@ -117,7 +117,7 @@ while [ ! -z "$1" ] && [ "$DONE" != YES 
          shift
          ;;
      --arch*=*)
@@ -12,7 +13,7 @@ diff -Naur build-tree.orig/glide3x/chores.3dfx build-tree/glide3x/chores.3dfx
          shift
          ;;
      --configure)
-@@ -126,7 +126,7 @@
+@@ -126,7 +126,7 @@ while [ ! -z "$1" ] && [ "$DONE" != YES 
          ;;
      --configure=*)
          DO_CONFIGURE=YES
@@ -21,7 +22,7 @@ diff -Naur build-tree.orig/glide3x/chores.3dfx build-tree/glide3x/chores.3dfx
          shift
          ;;
      --build-dir*=*)
-@@ -135,7 +135,7 @@
+@@ -135,7 +135,7 @@ while [ ! -z "$1" ] && [ "$DONE" != YES 
          ;;
      --build=*)
          DO_BUILD=YES
@@ -30,7 +31,7 @@ diff -Naur build-tree.orig/glide3x/chores.3dfx build-tree/glide3x/chores.3dfx
          shift
          ;;
      --build)
-@@ -147,7 +147,7 @@
+@@ -147,7 +147,7 @@ while [ ! -z "$1" ] && [ "$DONE" != YES 
          shift
          ;;
      --make-hst=*)

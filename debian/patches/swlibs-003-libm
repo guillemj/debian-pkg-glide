@@ -1,9 +1,10 @@
 Status: applied
 
-diff -ruN -x Makefile.in -x configure build-tree.orig/swlibs/texus2/lib/makefile.autoconf.am build-tree/swlibs/texus2/lib/makefile.autoconf.am
---- build-tree.orig/swlibs/texus2/lib/makefile.autoconf.am	2003-06-12 06:21:24.000000000 +0200
-+++ build-tree/swlibs/texus2/lib/makefile.autoconf.am	2003-06-12 06:20:59.000000000 +0200
-@@ -33,6 +33,7 @@
+Index: b/swlibs/texus2/lib/makefile.autoconf.am
+===================================================================
+--- a/swlibs/texus2/lib/makefile.autoconf.am
++++ b/swlibs/texus2/lib/makefile.autoconf.am
+@@ -33,6 +33,7 @@ LDEFS   = -DGLIDE_DIAGS -DHWC_CSIM -DGLI
  noinst_LTLIBRARIES  = libtexus.la
  noinst_HEADERS      = texusint.h
  include_HEADERS     = texus.h

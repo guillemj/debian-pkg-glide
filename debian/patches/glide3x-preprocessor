@@ -1,9 +1,10 @@
 Status: applied
 
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/cvg/glide3/src/fxglide.h build-tree/glide3x/cvg/glide3/src/fxglide.h
---- build-tree.orig/glide3x/cvg/glide3/src/fxglide.h	1999-12-07 22:42:31.000000000 +0100
-+++ build-tree/glide3x/cvg/glide3/src/fxglide.h	2003-05-28 07:00:14.000000000 +0200
-@@ -1417,7 +1417,7 @@
+Index: b/glide3x/cvg/glide3/src/fxglide.h
+===================================================================
+--- a/glide3x/cvg/glide3/src/fxglide.h
++++ b/glide3x/cvg/glide3/src/fxglide.h
+@@ -1417,7 +1417,7 @@ extern GrGCFuncs _curGCFuncs;
  
  #ifdef GLIDE3
  #define GR_STATE_ENTRY(name, type, args) \
@@ -12,10 +13,11 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/cvg/glide3/src/fxg
  #else
  #define GR_STATE_ENTRY(name, type, args) \
     GR_ENTRY(name, type, args)
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/fxglide.h build-tree/glide3x/h3/glide3/src/fxglide.h
---- build-tree.orig/glide3x/h3/glide3/src/fxglide.h	2000-12-14 04:12:48.000000000 +0100
-+++ build-tree/glide3x/h3/glide3/src/fxglide.h	2003-05-28 06:59:04.000000000 +0200
-@@ -1512,7 +1512,7 @@
+Index: b/glide3x/h3/glide3/src/fxglide.h
+===================================================================
+--- a/glide3x/h3/glide3/src/fxglide.h
++++ b/glide3x/h3/glide3/src/fxglide.h
+@@ -1512,7 +1512,7 @@ extern GrGCFuncs _curGCFuncs;
  
  #ifdef GLIDE3
  #define GR_STATE_ENTRY(name, type, args) \
@@ -24,7 +26,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/fxgl
  #else
  #define GR_STATE_ENTRY(name, type, args) \
     GR_ENTRY(name, type, args)
-@@ -1831,7 +1831,7 @@
+@@ -1831,7 +1831,7 @@ extern FxU32 threadValueLinux;
  #define CUR_TRI_PROC(__checkValidP, __cullP) \
    (*gc->archDispatchProcs.coorModeTriVector)[__checkValidP][__cullP]
  #define INVALIDATE(regset) {\
@@ -33,10 +35,11 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/fxgl
    gc->triSetupProc = CUR_TRI_PROC(FXTRUE, (gc->state.cull_mode != GR_CULL_DISABLE)); \
  }
  
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/fxglide.h build-tree/glide3x/h5/glide3/src/fxglide.h
---- build-tree.orig/glide3x/h5/glide3/src/fxglide.h	2000-12-14 04:12:49.000000000 +0100
-+++ build-tree/glide3x/h5/glide3/src/fxglide.h	2003-05-28 07:00:29.000000000 +0200
-@@ -2119,7 +2119,7 @@
+Index: b/glide3x/h5/glide3/src/fxglide.h
+===================================================================
+--- a/glide3x/h5/glide3/src/fxglide.h
++++ b/glide3x/h5/glide3/src/fxglide.h
+@@ -2119,7 +2119,7 @@ extern GrGCFuncs _curGCFuncs;
  
  #ifdef GLIDE3
  #define GR_STATE_ENTRY(name, type, args) \
@@ -45,7 +48,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/fxgl
  #else
  #define GR_STATE_ENTRY(name, type, args) \
     GR_ENTRY(name, type, args)
-@@ -2626,13 +2626,13 @@
+@@ -2626,13 +2626,13 @@ extern FxU32 threadValueLinux;
  #define CUR_TRI_PROC(__checkValidP, __cullP) \
    (*gc->archDispatchProcs.coorModeTriVector)[__checkValidP][__cullP]
  #define INVALIDATE(regset) {\
@@ -61,9 +64,10 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/fxgl
  }
    
  void 
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/cvg/glide3/src/distate.c build-tree/glide3x/cvg/glide3/src/distate.c
---- build-tree.orig/glide3x/cvg/glide3/src/distate.c	1999-12-07 22:42:31.000000000 +0100
-+++ build-tree/glide3x/cvg/glide3/src/distate.c	2003-05-28 07:27:40.000000000 +0200
+Index: b/glide3x/cvg/glide3/src/distate.c
+===================================================================
+--- a/glide3x/cvg/glide3/src/distate.c
++++ b/glide3x/cvg/glide3/src/distate.c
 @@ -166,25 +166,25 @@
   */
  
@@ -97,9 +101,10 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/cvg/glide3/src/dis
  
  /*-------------------------------------------------------------------
    Function: grAlphaBlendFunction
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/distate.c build-tree/glide3x/h3/glide3/src/distate.c
---- build-tree.orig/glide3x/h3/glide3/src/distate.c	2000-12-14 04:12:48.000000000 +0100
-+++ build-tree/glide3x/h3/glide3/src/distate.c	2003-05-28 07:24:21.000000000 +0200
+Index: b/glide3x/h3/glide3/src/distate.c
+===================================================================
+--- a/glide3x/h3/glide3/src/distate.c
++++ b/glide3x/h3/glide3/src/distate.c
 @@ -203,23 +203,23 @@
   */
  
@@ -130,9 +135,10 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/dist
  
  /*-------------------------------------------------------------------
    Function: grAlphaBlendFunction
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/distate.c build-tree/glide3x/h5/glide3/src/distate.c
---- build-tree.orig/glide3x/h5/glide3/src/distate.c	2000-12-14 04:12:49.000000000 +0100
-+++ build-tree/glide3x/h5/glide3/src/distate.c	2003-05-28 07:26:48.000000000 +0200
+Index: b/glide3x/h5/glide3/src/distate.c
+===================================================================
+--- a/glide3x/h5/glide3/src/distate.c
++++ b/glide3x/h5/glide3/src/distate.c
 @@ -349,31 +349,31 @@
   */
  

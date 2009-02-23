@@ -1,9 +1,10 @@
 Status: applied
 
-diff -Naur build-tree.orig/glide3x/h3/minihwc/linhwc.c.dri build-tree/glide3x/h3/minihwc/linhwc.c.dri
---- build-tree.orig/glide3x/h3/minihwc/linhwc.c.dri	2004-09-20 11:36:50.000000000 +0200
-+++ build-tree/glide3x/h3/minihwc/linhwc.c.dri	2004-09-20 11:41:01.000000000 +0200
-@@ -91,6 +91,7 @@
+Index: b/glide3x/h3/minihwc/linhwc.c.dri
+===================================================================
+--- a/glide3x/h3/minihwc/linhwc.c.dri
++++ b/glide3x/h3/minihwc/linhwc.c.dri
+@@ -91,6 +91,7 @@ static FxU32 calcBufferStride(FxU32 xres
  static FxU32 calcBufferSize(FxU32 xres, FxU32 yres, FxBool tiled);
  static FxU32 calcBufferSizeInTiles(FxU32 xres, FxU32 yres);
  static FxU32 calcBufferHeightInTiles(FxU32 yres);

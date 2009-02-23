@@ -1,9 +1,10 @@
 Status: wont-apply
 
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/cvg/glide/src/makefile.linux build-tree/glide2x/cvg/glide/src/makefile.linux
---- build-tree.orig/glide2x/cvg/glide/src/makefile.linux	2000-01-28 11:25:44.000000000 -0800
-+++ build-tree/glide2x/cvg/glide/src/makefile.linux	2003-03-15 02:51:56.000000000 -0800
-@@ -257,7 +257,8 @@
+Index: b/glide2x/cvg/glide/src/makefile.linux
+===================================================================
+--- a/glide2x/cvg/glide/src/makefile.linux
++++ b/glide2x/cvg/glide/src/makefile.linux
+@@ -259,7 +259,8 @@ gdraw.o: fxinline.h
  endif
  
  xdraw2.o : xdraw2.S xdraw2.inc.S fxgasm.h fxinline.h
@@ -13,9 +14,10 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/cvg/glide/src/make
  
  cpudtect.o :
  	gasp cpudtect.S $(LAOPTS) | as -V -Qy -o cpudtect.o
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/cvg/glide/src/xdraw2.gasp build-tree/glide2x/cvg/glide/src/xdraw2.gasp
---- build-tree.orig/glide2x/cvg/glide/src/xdraw2.gasp	1969-12-31 16:00:00.000000000 -0800
-+++ build-tree/glide2x/cvg/glide/src/xdraw2.gasp	2003-03-15 02:51:28.000000000 -0800
+Index: b/glide2x/cvg/glide/src/xdraw2.gasp
+===================================================================
+--- /dev/null
++++ b/glide2x/cvg/glide/src/xdraw2.gasp
 @@ -0,0 +1,559 @@
 +	## THIS SOFTWARE IS SUBJECT TO COPYRIGHT PROTECTION AND IS OFFERED ONLY
 +	## PURSUANT TO THE 3DFX GLIDE GENERAL PUBLIC LICENSE. THERE IS NO RIGHT

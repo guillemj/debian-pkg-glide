@@ -1,9 +1,10 @@
 Status: not-applied
 
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/makefile.autoconf.am build-tree/glide3x/h3/glide3/src/makefile.autoconf.am
---- build-tree.orig/glide3x/h3/glide3/src/makefile.autoconf.am	2003-08-24 07:16:56.000000000 +0200
-+++ build-tree/glide3x/h3/glide3/src/makefile.autoconf.am	2003-08-24 07:14:48.000000000 +0200
-@@ -101,7 +101,7 @@
+Index: b/glide3x/h3/glide3/src/makefile.autoconf.am
+===================================================================
+--- a/glide3x/h3/glide3/src/makefile.autoconf.am
++++ b/glide3x/h3/glide3/src/makefile.autoconf.am
+@@ -101,7 +101,7 @@ endif
  endif
  
  if GL_AMD3D
@@ -12,7 +13,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/make
  endif
  
  if HAL_CSIM
-@@ -159,6 +159,15 @@
+@@ -159,6 +159,15 @@ xtexdl_3dnow.lo: xtexdl.S fxgasm.h 
  
  endif
  
@@ -28,7 +29,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/make
  if DRI_BUILD
  gglide.c: $(top_srcdir)/h3/glide3/src/gglide.c.dri
  	rm -f gglide.c
-@@ -213,7 +222,7 @@
+@@ -213,7 +222,7 @@ libglide3_la_SOURCES   = fxinline.h fxga
                           gbanner.c gerror.c gaa.c gdraw.c \
                           gglide.c distate.c gstrip.c distrip.c \
                           diget.c glfb.c gsst.c gtex.c gtexdl.c \
@@ -37,10 +38,11 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h3/glide3/src/make
                           $(VGLIDE_SRC) $(ASMTRISETUP) $(GL_AMD3D_SRC)
  
  libglide3_la_LDFLAGS    = -version-info 13:0:10
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/makefile.autoconf.am build-tree/glide3x/h5/glide3/src/makefile.autoconf.am
---- build-tree.orig/glide3x/h5/glide3/src/makefile.autoconf.am	2003-08-24 07:16:56.000000000 +0200
-+++ build-tree/glide3x/h5/glide3/src/makefile.autoconf.am	2003-08-24 07:15:51.000000000 +0200
-@@ -178,10 +178,16 @@
+Index: b/glide3x/h5/glide3/src/makefile.autoconf.am
+===================================================================
+--- a/glide3x/h5/glide3/src/makefile.autoconf.am
++++ b/glide3x/h5/glide3/src/makefile.autoconf.am
+@@ -178,10 +178,16 @@ xtexdl_3dnow.o xtexdl_3dnow.lo: xtexdl.s
  	libtool --mode=compile $(CC) $(AFLAGS) -c -o $*.o $*.tmp.s
  	$(RM) -f $*.tmp.s
  
@@ -57,7 +59,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/make
  
  #
  # Library definitions.
-@@ -190,7 +196,7 @@
+@@ -190,7 +196,7 @@ if FX_GLIDE_CTRISETUP
  FX_GLIDE_CTRISETUP_SRC = gxdraw.c
  else
  if GL_AMD3D
@@ -66,7 +68,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/make
  else
  FX_GLIDE_CTRISETUP_SRC = xdraw2_def.s xdraw3_def.s
  endif
-@@ -226,7 +232,7 @@
+@@ -226,7 +232,7 @@ libglide3_la_SOURCES   = fxinline.h fxga
                           gbanner.c gerror.c gaa.c gdraw.c \
                           gglide.c distate.c gstrip.c distrip.c \
                           diget.c glfb.c gsst.c gtex.c gtexdl.c \
@@ -75,10 +77,11 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/make
  libglide3_la_LDFLAGS   = -version-info 13:0:10
  libglide3_la_LIBADD    = $(WHOLE_LIBS) $(LINK_LIBS)
  
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/makefile.linux build-tree/glide3x/h5/glide3/src/makefile.linux
---- build-tree.orig/glide3x/h5/glide3/src/makefile.linux	2000-11-17 22:31:06.000000000 +0100
-+++ build-tree/glide3x/h5/glide3/src/makefile.linux	2003-08-24 07:14:48.000000000 +0200
-@@ -45,6 +45,13 @@
+Index: b/glide3x/h5/glide3/src/makefile.linux
+===================================================================
+--- a/glide3x/h5/glide3/src/makefile.linux
++++ b/glide3x/h5/glide3/src/makefile.linux
+@@ -45,6 +45,13 @@ endif
  FX_GLIDE_REAL_HW=       1
  FX_GLIDE_NO_FIFO=       1
  
@@ -92,7 +95,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/make
  HWSPEC          =       fifo.c
  LCDEFS          +=      -DH3 $(CMDXPORTDEFS)
  INITLIB         =       $(BUILD_ROOT)/$(FX_GLIDE_HW)/lib$(FX_GLIDE_HW)init.a
-@@ -202,8 +209,6 @@
+@@ -202,8 +209,6 @@ LADEFS          +=      $(ASM_REGMAP_DEF
  LAINCS          =       -I$(BUILD_ROOT)/$(FX_GLIDE_HW)/include
  LAOPTS          =       $(DBGOPTS) $(DSPOPTS) $(OPTOPTS)
  
@@ -101,7 +104,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/make
  # sources
  HEADERS         =       glide.h glidesys.h glideutl.h g3ext.h
  PRIVATE_HEADERS =       fxglide.h gsstdef.h fxinline.h fxcmd.h fxsplash.h
-@@ -213,7 +218,7 @@
+@@ -213,7 +218,7 @@ INSTALL_DESTINATION =   $(BUILD_ROOT)/$(
  CFILES          +=      gsplash.c g3df.c  gu.c gthread.c \
                          gpci.c diglide.c disst.c ditex.c \
                          gbanner.c gerror.c gaa.c gdraw.c gglide.c $(GLIDE3FILES) \
@@ -110,7 +113,7 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide3x/h5/glide3/src/make
  
  OFILES          =       $(CFILES:.c=.o)
  
-@@ -273,46 +278,30 @@
+@@ -273,46 +278,30 @@ endif
  
  PREPROCESSOR=cpp
  %.o: %.s

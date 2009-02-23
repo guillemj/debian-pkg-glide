@@ -1,9 +1,10 @@
 Status: applied
 
-diff -urN tmp/h3/glide3/src/gaa.c glide3x/h3/glide3/src/gaa.c
---- tmp/h3/glide3/src/gaa.c	2004-12-22 08:35:39.401766000 +0100
-+++ build-tree/glide3x/h3/glide3/src/gaa.c	2004-12-22 08:36:20.783475256 +0100
-@@ -616,7 +616,7 @@
+Index: b/glide3x/h3/glide3/src/gaa.c
+===================================================================
+--- a/glide3x/h3/glide3/src/gaa.c
++++ b/glide3x/h3/glide3/src/gaa.c
+@@ -616,7 +616,7 @@ _grAADrawPoints(FxI32 mode, FxI32 count,
        e = pointers;
        if (mode)
          e = *(float **)e;
@@ -12,7 +13,7 @@ diff -urN tmp/h3/glide3/src/gaa.c glide3x/h3/glide3/src/gaa.c
        
        ptX = FARRAY(e, gc->state.vData.vertexInfo.offset);
        ptY = FARRAY(e, gc->state.vData.vertexInfo.offset+4);
-@@ -717,7 +717,7 @@
+@@ -717,7 +717,7 @@ _grAADrawPoints(FxI32 mode, FxI32 count,
        if (mode)
          e = *(float **)e;
        oow = 1.0f / FARRAY(e, gc->state.vData.wInfo.offset);        
@@ -21,7 +22,7 @@ diff -urN tmp/h3/glide3/src/gaa.c glide3x/h3/glide3/src/gaa.c
        
        ptX = FARRAY(e, gc->state.vData.vertexInfo.offset)
          *oow*gc->state.Viewport.hwidth+gc->state.Viewport.ox;
-@@ -842,9 +842,9 @@
+@@ -842,9 +842,9 @@ _grAADrawLineStrip(FxI32 mode, FxI32 lty
          v1 = *(float **)v1;
          v2 = *(float **)v2;
        }
@@ -33,7 +34,7 @@ diff -urN tmp/h3/glide3/src/gaa.c glide3x/h3/glide3/src/gaa.c
        
        /* draw from low Y to high Y */
        if (FARRAY(v2, gc->state.vData.vertexInfo.offset+4) < FARRAY(v1, gc->state.vData.vertexInfo.offset+4)) {
-@@ -1023,9 +1023,9 @@
+@@ -1023,9 +1023,9 @@ _grAADrawLineStrip(FxI32 mode, FxI32 lty
            v1 = *(float **)v1;
            v2 = *(float **)v2;
          }
@@ -45,7 +46,7 @@ diff -urN tmp/h3/glide3/src/gaa.c glide3x/h3/glide3/src/gaa.c
          owa = oowa = 1.0f / FARRAY(v1, gc->state.vData.wInfo.offset);
          owb = oowb = 1.0f / FARRAY(v2, gc->state.vData.wInfo.offset);
        }
-@@ -1037,7 +1037,7 @@
+@@ -1037,7 +1037,7 @@ _grAADrawLineStrip(FxI32 mode, FxI32 lty
            v1 = *(float **)v1;
            v2 = *(float **)v2;
          }
@@ -54,7 +55,7 @@ diff -urN tmp/h3/glide3/src/gaa.c glide3x/h3/glide3/src/gaa.c
          owb = oowb = 1.0f / FARRAY(v2, gc->state.vData.wInfo.offset);
        }
        
-@@ -1373,7 +1373,7 @@
+@@ -1373,7 +1373,7 @@ _grAADrawTriangles(FxI32 mode, FxI32 tty
        b = *(float **)b;
        c = *(float **)c;
      }
@@ -63,7 +64,7 @@ diff -urN tmp/h3/glide3/src/gaa.c glide3x/h3/glide3/src/gaa.c
  
      /* move culling test to here */
      {
-@@ -1549,7 +1549,7 @@
+@@ -1549,7 +1549,7 @@ _grAAVpDrawTriangles(FxI32 mode, FxI32 t
        b = *(float **)b;
        c = *(float **)c;
      }
@@ -72,7 +73,7 @@ diff -urN tmp/h3/glide3/src/gaa.c glide3x/h3/glide3/src/gaa.c
      oowa = 1.0f / FARRAY(a, gc->state.vData.wInfo.offset);        
      oowb = 1.0f / FARRAY(b, gc->state.vData.wInfo.offset);        
      oowc = 1.0f / FARRAY(c, gc->state.vData.wInfo.offset);        
-@@ -1716,7 +1716,7 @@
+@@ -1716,7 +1716,7 @@ _grAADrawVertexList(FxU32 type, FxI32 mo
    if (type == kSetupFan) {
      v[0] = (mode == 0) ? pointers : *(float **)pointers;
      while (sCount--) {
@@ -81,7 +82,7 @@ diff -urN tmp/h3/glide3/src/gaa.c glide3x/h3/glide3/src/gaa.c
        if (mode) {
          v[1] = *(float **)pointers;
          v[2] = *((float **)pointers+1);
-@@ -1758,7 +1758,7 @@
+@@ -1758,7 +1758,7 @@ _grAADrawVertexList(FxU32 type, FxI32 mo
          _grAADrawTriangles(1, type, 3, v);
        else
          _grAAVpDrawTriangles(1, type, 3, v);    
@@ -90,10 +91,11 @@ diff -urN tmp/h3/glide3/src/gaa.c glide3x/h3/glide3/src/gaa.c
        flip = ~flip;
      }
      flip = ~flip;
-diff -urN tmp/glide3x/h3/glide3/src/gdraw.c build-tree/glide3x/h3/glide3/src/gdraw.c
---- tmp/glide3x/h3/glide3/src/gdraw.c	2004-12-22 08:37:34.381286000 +0100
-+++ build-tree/glide3x/h3/glide3/src/gdraw.c	2004-12-22 13:47:39.613861416 +0100
-@@ -402,7 +402,7 @@
+Index: b/glide3x/h3/glide3/src/gdraw.c
+===================================================================
+--- a/glide3x/h3/glide3/src/gdraw.c
++++ b/glide3x/h3/glide3/src/gdraw.c
+@@ -402,7 +402,7 @@ _grDrawPoints(FxI32 mode, FxI32 count, v
          vPtr = pointers;
          if (mode) vPtr = *(float **)vPtr;
          
@@ -102,7 +104,7 @@ diff -urN tmp/glide3x/h3/glide3/src/gdraw.c build-tree/glide3x/h3/glide3/src/gdr
          
          GDBG_INFO_MORE(gc->myLevel, "(%f %f)\n",  
                         FARRAY(vPtr,gc->state.vData.vertexInfo.offset), 
-@@ -491,7 +491,7 @@
+@@ -491,7 +491,7 @@ _grDrawPoints(FxI32 mode, FxI32 count, v
          if (mode)
            vPtr = *(float **)vPtr;
          oow = 1.0f / FARRAY(vPtr, gc->state.vData.wInfo.offset);        
@@ -111,7 +113,7 @@ diff -urN tmp/glide3x/h3/glide3/src/gdraw.c build-tree/glide3x/h3/glide3/src/gdr
          
          {
            FxU32 x, y;
-@@ -616,9 +616,9 @@
+@@ -616,9 +616,9 @@ _grDrawLineStrip(FxI32 mode, FxI32 ltype
            a = *(float **)a;
            b = *(float **)b;
          }
@@ -123,7 +125,7 @@ diff -urN tmp/glide3x/h3/glide3/src/gdraw.c build-tree/glide3x/h3/glide3/src/gdr
          
          /*
          ** compute absolute deltas and draw from low Y to high Y
-@@ -778,10 +778,10 @@
+@@ -778,10 +778,10 @@ _grDrawLineStrip(FxI32 mode, FxI32 ltype
              a = *(float **)a;
              b = *(float **)b;
            }
@@ -136,7 +138,7 @@ diff -urN tmp/glide3x/h3/glide3/src/gdraw.c build-tree/glide3x/h3/glide3/src/gdr
          }
          else {
            owa = oowa = oowb;
-@@ -791,7 +791,7 @@
+@@ -791,7 +791,7 @@ _grDrawLineStrip(FxI32 mode, FxI32 ltype
              a = *(float **)a;
              b = *(float **)b;
            }
@@ -145,7 +147,7 @@ diff -urN tmp/glide3x/h3/glide3/src/gdraw.c build-tree/glide3x/h3/glide3/src/gdr
            owb = oowb = 1.0f / FARRAY(b, gc->state.vData.wInfo.offset);
          }
          fay = tmp1 = FARRAY(a, gc->state.vData.vertexInfo.offset+4)
-@@ -944,7 +944,7 @@
+@@ -944,7 +944,7 @@ _grDrawTriangles_Default(FxI32 mode, FxI
          vPtr = pointers;
          if (mode)
            vPtr = *(float **)vPtr;
@@ -154,7 +156,7 @@ diff -urN tmp/glide3x/h3/glide3/src/gdraw.c build-tree/glide3x/h3/glide3/src/gdr
          
          i = gc->tsuDataList[dataElem];
          
-@@ -984,7 +984,7 @@
+@@ -984,7 +984,7 @@ _grDrawTriangles_Default(FxI32 mode, FxI
                   *oow*gc->state.Viewport.hwidth + gc->state.Viewport.ox);
          TRI_SETF(FARRAY(vPtr, 4)
                   *oow*gc->state.Viewport.hheight + gc->state.Viewport.oy);
@@ -163,10 +165,11 @@ diff -urN tmp/glide3x/h3/glide3/src/gdraw.c build-tree/glide3x/h3/glide3/src/gdr
          
          TRI_VP_SETFS(vPtr,oow);
        }
-diff -urN tmp/glide3x/h3/glide3/src/gstrip.c build-tree/glide3x/h3/glide3/src/gstrip.c
---- tmp/glide3x/h3/glide3/src/gstrip.c	2004-12-22 08:37:34.385286000 +0100
-+++ build-tree/glide3x/h3/glide3/src/gstrip.c	2004-12-22 14:19:46.151983104 +0100
-@@ -190,7 +190,7 @@
+Index: b/glide3x/h3/glide3/src/gstrip.c
+===================================================================
+--- a/glide3x/h3/glide3/src/gstrip.c
++++ b/glide3x/h3/glide3/src/gstrip.c
+@@ -190,7 +190,7 @@ _grDrawVertexList(FxU32 pktype, FxU32 ty
          vPtr = pointers;
          if (mode)
            vPtr = *(float **)vPtr;
@@ -175,7 +178,7 @@ diff -urN tmp/glide3x/h3/glide3/src/gstrip.c build-tree/glide3x/h3/glide3/src/gs
          
          TRI_SETF(FARRAY(vPtr, 0));
          dataElem = 0;
-@@ -230,7 +230,7 @@
+@@ -230,7 +230,7 @@ _grDrawVertexList(FxU32 pktype, FxU32 ty
                   *oow*gc->state.Viewport.hwidth + gc->state.Viewport.ox);
          TRI_SETF(FARRAY(vPtr, 4)
                   *oow*gc->state.Viewport.hheight + gc->state.Viewport.oy);
@@ -184,10 +187,11 @@ diff -urN tmp/glide3x/h3/glide3/src/gstrip.c build-tree/glide3x/h3/glide3/src/gs
  
          TRI_VP_SETFS(vPtr, oow);
        }
-diff -urN tmp/glide3x/h3/glide3/src/distrip.c build-tree/glide3x/h3/glide3/src/distrip.c
---- tmp/glide3x/h3/glide3/src/distrip.c	2004-12-22 14:21:00.772639000 +0100
-+++ build-tree/glide3x/h3/glide3/src/distrip.c	2004-12-22 14:26:15.773751592 +0100
-@@ -450,7 +450,7 @@
+Index: b/glide3x/h3/glide3/src/distrip.c
+===================================================================
+--- a/glide3x/h3/glide3/src/distrip.c
++++ b/glide3x/h3/glide3/src/distrip.c
+@@ -450,7 +450,7 @@ GR_DIENTRY(grDrawVertexArray, void , (Fx
      else {
        while ((int)Count >= 3) {
          grDrawTriangle(*(float **)pointers, *((float **)pointers+1), *((float **)pointers+2));
@@ -196,10 +200,11 @@ diff -urN tmp/glide3x/h3/glide3/src/distrip.c build-tree/glide3x/h3/glide3/src/d
          Count -= 3;
        }
      }
-diff -urN tmp/glide3x/h5/glide3/src/gaa.c build-tree/glide3x/h5/glide3/src/gaa.c
---- tmp/glide3x/h5/glide3/src/gaa.c	2004-12-22 14:27:15.453678000 +0100
-+++ build-tree/glide3x/h5/glide3/src/gaa.c	2004-12-22 14:37:32.272908088 +0100
-@@ -628,7 +628,7 @@
+Index: b/glide3x/h5/glide3/src/gaa.c
+===================================================================
+--- a/glide3x/h5/glide3/src/gaa.c
++++ b/glide3x/h5/glide3/src/gaa.c
+@@ -628,7 +628,7 @@ _grAADrawPoints(FxI32 mode, FxI32 count,
        e = pointers;
        if (mode)
          e = *(float **)e;
@@ -208,7 +213,7 @@ diff -urN tmp/glide3x/h5/glide3/src/gaa.c build-tree/glide3x/h5/glide3/src/gaa.c
        
        ptX = FARRAY(e, gc->state.vData.vertexInfo.offset);
        ptY = FARRAY(e, gc->state.vData.vertexInfo.offset+4);
-@@ -729,7 +729,7 @@
+@@ -729,7 +729,7 @@ _grAADrawPoints(FxI32 mode, FxI32 count,
        if (mode)
          e = *(float **)e;
        oow = 1.0f / FARRAY(e, gc->state.vData.wInfo.offset);        
@@ -217,7 +222,7 @@ diff -urN tmp/glide3x/h5/glide3/src/gaa.c build-tree/glide3x/h5/glide3/src/gaa.c
        
        ptX = FARRAY(e, gc->state.vData.vertexInfo.offset)
          *oow*gc->state.Viewport.hwidth+gc->state.Viewport.ox;
-@@ -856,9 +856,9 @@
+@@ -856,9 +856,9 @@ _grAADrawLineStrip(FxI32 mode, FxI32 lty
          v1 = *(float **)v1;
          v2 = *(float **)v2;
        }
@@ -229,7 +234,7 @@ diff -urN tmp/glide3x/h5/glide3/src/gaa.c build-tree/glide3x/h5/glide3/src/gaa.c
        
        /* draw from low Y to high Y */
        if (FARRAY(v2, gc->state.vData.vertexInfo.offset+4) < FARRAY(v1, gc->state.vData.vertexInfo.offset+4)) {
-@@ -1037,9 +1037,9 @@
+@@ -1037,9 +1037,9 @@ _grAADrawLineStrip(FxI32 mode, FxI32 lty
            v1 = *(float **)v1;
            v2 = *(float **)v2;
          }
@@ -241,7 +246,7 @@ diff -urN tmp/glide3x/h5/glide3/src/gaa.c build-tree/glide3x/h5/glide3/src/gaa.c
          owa = oowa = 1.0f / FARRAY(v1, gc->state.vData.wInfo.offset);
          owb = oowb = 1.0f / FARRAY(v2, gc->state.vData.wInfo.offset);
        }
-@@ -1051,7 +1051,7 @@
+@@ -1051,7 +1051,7 @@ _grAADrawLineStrip(FxI32 mode, FxI32 lty
            v1 = *(float **)v1;
            v2 = *(float **)v2;
          }
@@ -250,7 +255,7 @@ diff -urN tmp/glide3x/h5/glide3/src/gaa.c build-tree/glide3x/h5/glide3/src/gaa.c
          owb = oowb = 1.0f / FARRAY(v2, gc->state.vData.wInfo.offset);
        }
        
-@@ -1391,7 +1391,7 @@
+@@ -1391,7 +1391,7 @@ _grAADrawTriangles(FxI32 mode, FxI32 tty
        b = *(float **)b;
        c = *(float **)c;
      }
@@ -259,7 +264,7 @@ diff -urN tmp/glide3x/h5/glide3/src/gaa.c build-tree/glide3x/h5/glide3/src/gaa.c
  
      /* move culling test to here */
      {
-@@ -1567,7 +1567,7 @@
+@@ -1567,7 +1567,7 @@ _grAAVpDrawTriangles(FxI32 mode, FxI32 t
        b = *(float **)b;
        c = *(float **)c;
      }
@@ -268,7 +273,7 @@ diff -urN tmp/glide3x/h5/glide3/src/gaa.c build-tree/glide3x/h5/glide3/src/gaa.c
      oowa = 1.0f / FARRAY(a, gc->state.vData.wInfo.offset);        
      oowb = 1.0f / FARRAY(b, gc->state.vData.wInfo.offset);        
      oowc = 1.0f / FARRAY(c, gc->state.vData.wInfo.offset);        
-@@ -1734,7 +1734,7 @@
+@@ -1734,7 +1734,7 @@ _grAADrawVertexList(FxU32 type, FxI32 mo
    if (type == kSetupFan) {
      v[0] = (mode == 0) ? pointers : *(float **)pointers;
      while (sCount--) {
@@ -277,7 +282,7 @@ diff -urN tmp/glide3x/h5/glide3/src/gaa.c build-tree/glide3x/h5/glide3/src/gaa.c
        if (mode) {
          v[1] = *(float **)pointers;
          v[2] = *((float **)pointers+1);
-@@ -1776,7 +1776,7 @@
+@@ -1776,7 +1776,7 @@ _grAADrawVertexList(FxU32 type, FxI32 mo
          _grAADrawTriangles(1, type, 3, v);
        else
          _grAAVpDrawTriangles(1, type, 3, v);    
@@ -286,10 +291,11 @@ diff -urN tmp/glide3x/h5/glide3/src/gaa.c build-tree/glide3x/h5/glide3/src/gaa.c
        flip = ~flip;
      }
      flip = ~flip;
-diff -urN tmp/glide3x/h5/glide3/src/gdraw.c build-tree/glide3x/h5/glide3/src/gdraw.c
---- tmp/glide3x/h5/glide3/src/gdraw.c	2004-12-22 15:35:28.326467000 +0100
-+++ build-tree/glide3x/h5/glide3/src/gdraw.c	2004-12-22 15:43:54.196563680 +0100
-@@ -472,7 +472,7 @@
+Index: b/glide3x/h5/glide3/src/gdraw.c
+===================================================================
+--- a/glide3x/h5/glide3/src/gdraw.c
++++ b/glide3x/h5/glide3/src/gdraw.c
+@@ -472,7 +472,7 @@ _grDrawPoints(FxI32 mode, FxI32 count, v
          vPtr = pointers;
          if (mode) vPtr = *(float **)vPtr;
          
@@ -298,7 +304,7 @@ diff -urN tmp/glide3x/h5/glide3/src/gdraw.c build-tree/glide3x/h5/glide3/src/gdr
          
          GDBG_INFO_MORE(gc->myLevel, "(%f %f)\n",  
                         FARRAY(vPtr,gc->state.vData.vertexInfo.offset), 
-@@ -554,7 +554,7 @@
+@@ -554,7 +554,7 @@ _grDrawPoints(FxI32 mode, FxI32 count, v
          vPtr = pointers;
          if (mode) vPtr = *(float **)vPtr;
          
@@ -307,7 +313,7 @@ diff -urN tmp/glide3x/h5/glide3/src/gdraw.c build-tree/glide3x/h5/glide3/src/gdr
          
          GDBG_INFO_MORE(gc->myLevel, "(%f %f)\n",  
                         FARRAY(vPtr,gc->state.vData.vertexInfo.offset), 
-@@ -665,7 +665,7 @@
+@@ -665,7 +665,7 @@ _grDrawPoints(FxI32 mode, FxI32 count, v
          if (mode)
            vPtr = *(float **)vPtr;
          oow = 1.0f / FARRAY(vPtr, gc->state.vData.wInfo.offset);        
@@ -316,7 +322,7 @@ diff -urN tmp/glide3x/h5/glide3/src/gdraw.c build-tree/glide3x/h5/glide3/src/gdr
          
          {        
            float fx, fy;
-@@ -802,9 +802,9 @@
+@@ -802,9 +802,9 @@ _grDrawLineStrip(FxI32 mode, FxI32 ltype
            a = *(float **)a;
            b = *(float **)b;
          }
@@ -328,7 +334,7 @@ diff -urN tmp/glide3x/h5/glide3/src/gdraw.c build-tree/glide3x/h5/glide3/src/gdr
          
          /*
          ** compute absolute deltas and draw from low Y to high Y
-@@ -964,10 +964,10 @@
+@@ -964,10 +964,10 @@ _grDrawLineStrip(FxI32 mode, FxI32 ltype
              a = *(float **)a;
              b = *(float **)b;
            }
@@ -341,7 +347,7 @@ diff -urN tmp/glide3x/h5/glide3/src/gdraw.c build-tree/glide3x/h5/glide3/src/gdr
          }
          else {
            owa = oowa = oowb;
-@@ -977,7 +977,7 @@
+@@ -977,7 +977,7 @@ _grDrawLineStrip(FxI32 mode, FxI32 ltype
              a = *(float **)a;
              b = *(float **)b;
            }
@@ -350,7 +356,7 @@ diff -urN tmp/glide3x/h5/glide3/src/gdraw.c build-tree/glide3x/h5/glide3/src/gdr
            owb = oowb = 1.0f / FARRAY(b, gc->state.vData.wInfo.offset);
          }
          fay = tmp1 = FARRAY(a, gc->state.vData.vertexInfo.offset+4)
-@@ -1125,7 +1125,7 @@
+@@ -1125,7 +1125,7 @@ _grDrawTriangles_Default(FxI32 mode, FxI
          vPtr = pointers;
          if (mode)
            vPtr = *(float **)vPtr;
@@ -359,7 +365,7 @@ diff -urN tmp/glide3x/h5/glide3/src/gdraw.c build-tree/glide3x/h5/glide3/src/gdr
          
          i = gc->tsuDataList[dataElem];
          
-@@ -1165,7 +1165,7 @@
+@@ -1165,7 +1165,7 @@ _grDrawTriangles_Default(FxI32 mode, FxI
                   *oow*gc->state.Viewport.hwidth + gc->state.Viewport.ox);
          TRI_SETF(FARRAY(vPtr, 4)
                   *oow*gc->state.Viewport.hheight + gc->state.Viewport.oy);
@@ -368,10 +374,11 @@ diff -urN tmp/glide3x/h5/glide3/src/gdraw.c build-tree/glide3x/h5/glide3/src/gdr
          
          TRI_VP_SETFS(vPtr,oow);
        }
-diff -urN tmp/glide3x/h5/glide3/src/gstrip.c build-tree/glide3x/h5/glide3/src/gstrip.c
---- tmp/glide3x/h5/glide3/src/gstrip.c	2004-12-22 15:44:13.520625000 +0100
-+++ build-tree/glide3x/h5/glide3/src/gstrip.c	2004-12-22 15:47:32.305406096 +0100
-@@ -214,7 +214,7 @@
+Index: b/glide3x/h5/glide3/src/gstrip.c
+===================================================================
+--- a/glide3x/h5/glide3/src/gstrip.c
++++ b/glide3x/h5/glide3/src/gstrip.c
+@@ -214,7 +214,7 @@ _grDrawVertexList(FxU32 pktype, FxU32 ty
          vPtr = pointers;
          if (mode)
            vPtr = *(float **)vPtr;
@@ -380,7 +387,7 @@ diff -urN tmp/glide3x/h5/glide3/src/gstrip.c build-tree/glide3x/h5/glide3/src/gs
          
          TRI_SETF(FARRAY(vPtr, 0));
          dataElem = 0;
-@@ -254,7 +254,7 @@
+@@ -254,7 +254,7 @@ _grDrawVertexList(FxU32 pktype, FxU32 ty
                   *oow*gc->state.Viewport.hwidth + gc->state.Viewport.ox);
          TRI_SETF(FARRAY(vPtr, 4)
                   *oow*gc->state.Viewport.hheight + gc->state.Viewport.oy);
@@ -389,10 +396,11 @@ diff -urN tmp/glide3x/h5/glide3/src/gstrip.c build-tree/glide3x/h5/glide3/src/gs
  
          TRI_VP_SETFS(vPtr, oow);
        }
-diff -urN tmp/glide3x/h5/glide3/src/distrip.c build-tree/glide3x/h5/glide3/src/distrip.c
---- tmp/glide3x/h5/glide3/src/distrip.c	2004-12-22 15:52:37.342033000 +0100
-+++ build-tree/glide3x/h5/glide3/src/distrip.c	2004-12-22 15:56:03.639671472 +0100
-@@ -458,7 +458,7 @@
+Index: b/glide3x/h5/glide3/src/distrip.c
+===================================================================
+--- a/glide3x/h5/glide3/src/distrip.c
++++ b/glide3x/h5/glide3/src/distrip.c
+@@ -458,7 +458,7 @@ GR_DIENTRY(grDrawVertexArray, void , (Fx
      else {
        while ((int)Count >= 3) {
          grDrawTriangle(*(float **)pointers, *((float **)pointers+1), *((float **)pointers+2));
@@ -401,10 +409,11 @@ diff -urN tmp/glide3x/h5/glide3/src/distrip.c build-tree/glide3x/h5/glide3/src/d
          Count -= 3;
        }
      }
-diff -urN tmp/glide3x/h5/glide3/src/glfb.c build-tree/glide3x/h5/glide3/src/glfb.c
---- tmp/glide3x/h5/glide3/src/glfb.c	2004-12-22 16:06:23.017511000 +0100
-+++ build-tree/glide3x/h5/glide3/src/glfb.c	2004-12-22 16:18:44.005864376 +0100
-@@ -1333,8 +1333,10 @@
+Index: b/glide3x/h5/glide3/src/glfb.c
+===================================================================
+--- a/glide3x/h5/glide3/src/glfb.c
++++ b/glide3x/h5/glide3/src/glfb.c
+@@ -1333,8 +1333,10 @@ GR_ENTRY(grLfbReadRegion, FxBool, (GrBuf
        while(src_height--)
        {
           /* adjust starting alignment */
@@ -417,7 +426,7 @@ diff -urN tmp/glide3x/h5/glide3/src/glfb.c build-tree/glide3x/h5/glide3/src/glfb
  
           /* read in dwords of pixels */
           if(length)
-@@ -1353,8 +1355,8 @@
+@@ -1353,8 +1355,8 @@ GR_ENTRY(grLfbReadRegion, FxBool, (GrBuf
                 *((FxU16 *)(((AnyPtr)dst) + byte_index))=*((FxU16 *)(((AnyPtr)src) + byte_index));
           }
           /* adjust for next line */

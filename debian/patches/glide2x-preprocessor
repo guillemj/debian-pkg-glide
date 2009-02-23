@@ -1,9 +1,10 @@
 Status: applied
 
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/h3/glide/src/fxglide.h build-tree/glide2x/h3/glide/src/fxglide.h
---- build-tree.orig/glide2x/h3/glide/src/fxglide.h	2003-05-27 21:53:14.000000000 +0200
-+++ build-tree/glide2x/h3/glide/src/fxglide.h	2003-05-27 21:30:11.000000000 +0200
-@@ -3356,16 +3356,16 @@
+Index: b/glide2x/h3/glide/src/fxglide.h
+===================================================================
+--- a/glide2x/h3/glide/src/fxglide.h
++++ b/glide2x/h3/glide/src/fxglide.h
+@@ -3356,16 +3356,16 @@ double_precision_asm(void);
  //#define GLIDE3_DEBUG 1
  #endif
  #ifdef GLIDE3_DEBUG
@@ -23,10 +24,11 @@ diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/h3/glide/src/fxgli
  #define G3_LOD_TRANSLATE(lod)                       (lod)
  #define G3_ASPECT_TRANSLATE(aspect)                 (aspect)
  #endif
-diff -ruN -x Makefile.in -x configure build-tree.orig/glide2x/h3/glide/src/gsplash.c build-tree/glide2x/h3/glide/src/gsplash.c
---- build-tree.orig/glide2x/h3/glide/src/gsplash.c	1999-12-07 22:49:28.000000000 +0100
-+++ build-tree/glide2x/h3/glide/src/gsplash.c	2003-05-27 21:30:38.000000000 +0200
-@@ -242,9 +242,9 @@
+Index: b/glide2x/h3/glide/src/gsplash.c
+===================================================================
+--- a/glide2x/h3/glide/src/gsplash.c
++++ b/glide2x/h3/glide/src/gsplash.c
+@@ -242,9 +242,9 @@ static void 
  downloadTexture(Texture *texture, Gu3dfInfo *info) 
  {
    texture->info.data        = info->data;

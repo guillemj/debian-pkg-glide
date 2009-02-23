@@ -1,7 +1,8 @@
-diff -ruN -x Makefile.in -x configure glide2x-old/cvg/glide/src/makefile.linux glide2x/cvg/glide/src/makefile.linux
---- build-tree/glide2x-old/cvg/glide/src/makefile.linux	2000-01-28 21:25:44.000000000 +0200
-+++ build-tree/glide2x/cvg/glide/src/makefile.linux	2007-02-22 03:00:17.000000000 +0200
-@@ -23,7 +23,7 @@
+Index: b/glide2x/cvg/glide/src/makefile.linux
+===================================================================
+--- a/glide2x/cvg/glide/src/makefile.linux
++++ b/glide2x/cvg/glide/src/makefile.linux
+@@ -23,7 +23,7 @@ TAG_REGEXP 	= $(BUILD_ROOT)/$(FX_GLIDE_H
  # Compile for specific hardware
  ifeq ($(FX_GLIDE_HW),cvg)
  FX_GLIDE_REAL_HW=       1
@@ -10,9 +11,10 @@ diff -ruN -x Makefile.in -x configure glide2x-old/cvg/glide/src/makefile.linux g
  
  HWSPEC          =       fifo.c
  LCDEFS          +=      -DCVG \
-diff -Naur build-tree.orig/glide2x/h3/glide/src/makefile.linux build-tree/glide2x/h3/glide/src/makefile.linux
---- build-tree.orig/glide2x/h3/glide/src/makefile.linux	2000-01-28 21:25:44.000000000 +0200
-+++ build-tree/glide2x/h3/glide/src/makefile.linux	2007-03-08 04:15:18.000000000 +0200
+Index: b/glide2x/h3/glide/src/makefile.linux
+===================================================================
+--- a/glide2x/h3/glide/src/makefile.linux
++++ b/glide2x/h3/glide/src/makefile.linux
 @@ -17,6 +17,8 @@
  # 
  # COPYRIGHT 3DFX INTERACTIVE, INC. 1999, ALL RIGHTS RESERVED
@@ -22,7 +24,7 @@ diff -Naur build-tree.orig/glide2x/h3/glide/src/makefile.linux build-tree/glide2
  ifeq ($(FX_CHRIS_DENIS_ANTHONY_HACK),1)
  LCDEFS          +=       -DCHRIS_DENIS_ANTHONY_HACK=1
  endif
-@@ -90,9 +90,10 @@
+@@ -88,9 +90,10 @@ GL_AMD3D        =       1
  ifneq ($(GL_AMD3D),)
  LCDEFS          +=      -DGL_AMD3D
  LIBOBJS         +=      xtexdl_3dnow.o
@@ -34,7 +36,7 @@ diff -Naur build-tree.orig/glide2x/h3/glide/src/makefile.linux build-tree/glide2
  # Do culling test in sw for independent triangles
  CULL_MODE       =
  ifneq ($(FX_GLIDE_HW_CULL),1)
-@@ -132,7 +132,7 @@
+@@ -129,7 +132,7 @@ endif
  ifeq ($(FX_GLIDE_CTRISETUP),1)
  ASMTRISETUP     =
  ATSOPTS         =       -DGLIDE_USE_C_TRISETUP 

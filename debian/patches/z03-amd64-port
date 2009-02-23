@@ -1,9 +1,10 @@
 Status: not-applied
 
-diff -Naur build-tree.orig/glide3x/configure.in build-tree/glide3x/configure.in
---- build-tree.orig/glide3x/configure.in	2004-06-16 08:22:22.000000000 +0200
-+++ build-tree/glide3x/configure.in	2004-06-16 08:25:26.000000000 +0200
-@@ -146,7 +146,7 @@
+Index: b/glide3x/configure.in
+===================================================================
+--- a/glide3x/configure.in
++++ b/glide3x/configure.in
+@@ -146,7 +146,7 @@ AC_ARG_ENABLE([build-architecture],
                [dnl
    --enable-build-architecture Enable AMD 3DNow instructions [default=current]],
                [case ${enableval} in
@@ -12,7 +13,7 @@ diff -Naur build-tree.orig/glide3x/configure.in build-tree/glide3x/configure.in
                     FX_GLIDE_BUILD_ARCHITECTURE=${enableval}
                     ;;
                 *)
-@@ -185,6 +185,10 @@
+@@ -185,6 +185,10 @@ fi
  if test "$FX_GLIDE_BUILD_ARCHITECTURE" = "ia64"; then
  FX_GLIDE_CTRISETUP=true
  fi
@@ -23,10 +24,11 @@ diff -Naur build-tree.orig/glide3x/configure.in build-tree/glide3x/configure.in
  # Next, we read some configuration options
  # statically.  This is to avoid creating a bunch of
  # not-terribly-useful --enable options.
-diff -Naur build-tree.orig/glide3x/cvg/init/sst1init.h build-tree/glide3x/cvg/init/sst1init.h
---- build-tree.orig/glide3x/cvg/init/sst1init.h	2000-11-16 20:26:02.000000000 +0100
-+++ build-tree/glide3x/cvg/init/sst1init.h	2004-06-16 08:35:54.000000000 +0200
-@@ -146,7 +146,7 @@
+Index: b/glide3x/cvg/init/sst1init.h
+===================================================================
+--- a/glide3x/cvg/init/sst1init.h
++++ b/glide3x/cvg/init/sst1init.h
+@@ -146,7 +146,7 @@ p6Fence(void);
  #  define P6FENCE {_asm xchg eax, p6FenceVar}
  #elif defined(macintosh) && __POWERPC__ && defined(__MWERKS__)
  #  define P6FENCE __eieio()
@@ -35,10 +37,11 @@ diff -Naur build-tree.orig/glide3x/cvg/init/sst1init.h build-tree/glide3x/cvg/in
  #  define P6FENCE asm("xchg %%eax,%0" : /*outputs*/ : "m" (p6FenceVar) : \
  					"eax");
  #else
-diff -Naur build-tree.orig/glide3x/h3/glide3/src/fxglide.h build-tree/glide3x/h3/glide3/src/fxglide.h
---- build-tree.orig/glide3x/h3/glide3/src/fxglide.h	2004-06-16 08:22:23.000000000 +0200
-+++ build-tree/glide3x/h3/glide3/src/fxglide.h	2004-06-16 08:33:51.000000000 +0200
-@@ -1488,7 +1488,7 @@
+Index: b/glide3x/h3/glide3/src/fxglide.h
+===================================================================
+--- a/glide3x/h3/glide3/src/fxglide.h
++++ b/glide3x/h3/glide3/src/fxglide.h
+@@ -1488,7 +1488,7 @@ extern GrGCFuncs _curGCFuncs;
  #  pragma warning(default : 4035)
  #elif defined(macintosh) && defined(__POWERPC__) && defined(__MWERKS__)
  #  define P6FENCE __eieio()
@@ -47,10 +50,11 @@ diff -Naur build-tree.orig/glide3x/h3/glide3/src/fxglide.h build-tree/glide3x/h3
  #define P6FENCE asm("xchg %%eax, %0" : : "m" (_GlideRoot.p6Fencer) : "eax");
  #elif defined(__GNUC__) && defined(__ia64__)
  #define P6FENCE asm volatile("mf.a" ::: "memory")
-diff -Naur build-tree.orig/glide3x/h3/minihwc/linhwc.c.dri build-tree/glide3x/h3/minihwc/linhwc.c.dri
---- build-tree.orig/glide3x/h3/minihwc/linhwc.c.dri	2004-06-16 08:22:24.000000000 +0200
-+++ build-tree/glide3x/h3/minihwc/linhwc.c.dri	2004-06-16 08:33:04.000000000 +0200
-@@ -67,11 +67,11 @@
+Index: b/glide3x/h3/minihwc/linhwc.c.dri
+===================================================================
+--- a/glide3x/h3/minihwc/linhwc.c.dri
++++ b/glide3x/h3/minihwc/linhwc.c.dri
+@@ -67,11 +67,11 @@ hwcCheckMemSize(hwcBoardInfo *bInfo, FxU
  #include "lindri.h"
  
  static FxU32 fenceVar;
@@ -65,10 +69,11 @@ diff -Naur build-tree.orig/glide3x/h3/minihwc/linhwc.c.dri build-tree/glide3x/h3
  #define P6FENCE asm("xchg %%eax, %0" : : "m" (fenceVar) : "eax");
  #elif
  Error Need to Define P6FENCE for this architecture
-diff -Naur build-tree.orig/glide3x/h5/glide3/src/fxglide.h build-tree/glide3x/h5/glide3/src/fxglide.h
---- build-tree.orig/glide3x/h5/glide3/src/fxglide.h	2004-06-16 08:22:24.000000000 +0200
-+++ build-tree/glide3x/h5/glide3/src/fxglide.h	2004-06-16 08:30:46.000000000 +0200
-@@ -2093,7 +2093,7 @@
+Index: b/glide3x/h5/glide3/src/fxglide.h
+===================================================================
+--- a/glide3x/h5/glide3/src/fxglide.h
++++ b/glide3x/h5/glide3/src/fxglide.h
+@@ -2093,7 +2093,7 @@ extern GrGCFuncs _curGCFuncs;
  #  pragma warning(default : 4035)
  #elif defined(macintosh) && defined(__POWERPC__) && defined(__MWERKS__)
  #  define P6FENCE __sync()
@@ -77,10 +82,11 @@ diff -Naur build-tree.orig/glide3x/h5/glide3/src/fxglide.h build-tree/glide3x/h5
  /*
   * This is the __linux__ code.
   */
-diff -Naur build-tree.orig/glide3x/h5/minihwc/linhwc.c build-tree/glide3x/h5/minihwc/linhwc.c
---- build-tree.orig/glide3x/h5/minihwc/linhwc.c	2004-06-16 08:22:24.000000000 +0200
-+++ build-tree/glide3x/h5/minihwc/linhwc.c	2004-06-16 08:28:20.000000000 +0200
-@@ -67,7 +67,7 @@
+Index: b/glide3x/h5/minihwc/linhwc.c
+===================================================================
+--- a/glide3x/h5/minihwc/linhwc.c
++++ b/glide3x/h5/minihwc/linhwc.c
+@@ -67,7 +67,7 @@ hwcCheckMemSize(hwcBoardInfo *bInfo, FxU
  #include "lindri.h"
  
  static FxU32 fenceVar;
