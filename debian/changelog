@@ -35,6 +35,7 @@ glide (2002.04.10.1-1) UNRELEASED; urgency=low
   * Move dh_strip after dh_link.
   * Install textures for test programs in glide2-bin.
   * Install additional test programs in glide2-bin.
+  * Remove obsolete Conflicts, Provides and Replaces from binary packages.
 
  -- Guillem Jover <guillem@debian.org>  Mon, 09 Feb 2009 21:57:55 +0200
 
