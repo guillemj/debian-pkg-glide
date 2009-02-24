@@ -89,6 +89,7 @@ endif
 binary: binary-indep binary-arch
 
 binary-indep:
+	# Nothing to do.
 
 binary-arch: build
 	dh_testdir
