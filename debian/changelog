@@ -37,6 +37,7 @@ glide (2002.04.10.1-1) UNRELEASED; urgency=low
   * Install additional test programs in glide2-bin.
   * Remove obsolete Conflicts, Provides and Replaces from binary packages.
   * Add missing ${misc:Depends} substvar to Depends fields.
+  * Add a debian/README.source file.
 
  -- Guillem Jover <guillem@debian.org>  Mon, 09 Feb 2009 21:57:55 +0200
 
