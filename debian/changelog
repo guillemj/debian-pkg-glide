@@ -1,8 +1,8 @@
-glide (2002.04.10ds1-2) UNRELEASED; urgency=low
+glide (2002.04.10ds1-2) unstable; urgency=low
 
   * Do not try to install glide2 libraries on non-i386.
 
- -- Guillem Jover <guillem@debian.org>  Tue, 24 Feb 2009 13:41:06 +0200
+ -- Guillem Jover <guillem@debian.org>  Tue, 24 Feb 2009 13:45:16 +0200
 
 glide (2002.04.10ds1-1) unstable; urgency=low
 
