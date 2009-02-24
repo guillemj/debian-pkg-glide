@@ -99,12 +99,14 @@ binary-arch: build
 	dh_installdirs -s
 	
 	# libglide2
+ifeq ($(DEB_HOST_ARCH),i386)
 	$(INSTALL_LIB) $(CURDIR)/glide2x/cvg/lib/libglide.so.2.53 \
 		       $(libglide2_dir)/usr/lib/glide2/libglide_cvg.so.2.53
 	$(INSTALL_LIB) $(CURDIR)/glide2x/h3/lib/libglide.so.2.60 \
 		       $(libglide2_dir)/usr/lib/glide2/libglide_h3.so.2.60
 	$(INSTALL_LIB) $(CURDIR)/glide2x/swlibs/lib/libtexus.so.1.1 \
 		       $(libglide2_dir)/usr/lib/
+endif
 	
 	# libglide3
 	$(INSTALL_LIB) $(CURDIR)/debian/tmp.h3/usr/lib/libglide3.so.3.10.0 \
