@@ -36,6 +36,7 @@ glide (2002.04.10.1-1) UNRELEASED; urgency=low
   * Install textures for test programs in glide2-bin.
   * Install additional test programs in glide2-bin.
   * Remove obsolete Conflicts, Provides and Replaces from binary packages.
+  * Add missing ${misc:Depends} substvar to Depends fields.
 
  -- Guillem Jover <guillem@debian.org>  Mon, 09 Feb 2009 21:57:55 +0200
 

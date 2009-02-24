@@ -13,7 +13,7 @@ Standards-Version: 3.7.3
 Package: glide2-bin
 Section: graphics
 Architecture: i386
-Depends: ${shlibs:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Suggests: device3dfx-module, device3dfx-source
 Description: graphics library for 3Dfx Voodoo based cards - support programs
  This is a support package which should be installed if you have a
@@ -40,7 +40,7 @@ Description: graphics library for 3Dfx Voodoo based cards - shared libraries
 Package: libglide2-dev
 Section: libdevel
 Architecture: i386
-Depends: libglide2
+Depends: libglide2, ${misc:Depends}
 Description: graphics library for 3Dfx Voodoo based cards - development files
  This package contains the necessary header files, example programs,
  and documentation necessary to develop software for cards based on
@@ -61,7 +61,7 @@ Description: graphics library for 3Dfx Voodoo based cards - shared libraries
 Package: libglide3-dev
 Section: libdevel
 Architecture: i386 alpha ia64 amd64
-Depends: libglide3
+Depends: libglide3, ${misc:Depends}
 Description: graphics library for 3Dfx Voodoo based cards - development files
  This package contains the necessary header files, example programs,
  and documentation necessary to develop software for cards based on
