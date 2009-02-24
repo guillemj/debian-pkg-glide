@@ -75,11 +75,12 @@ endif
 clean:
 	$(this) patch
 	
+ifeq ($(DEB_HOST_ARCH),i386)
 	ln -fs ../swlibs glide2x/
 	$(glide2_build) FX_GLIDE_HW=cvg clobber
 	$(glide2_build) FX_GLIDE_HW=h3 clobber
 	rm -f glide2x/swlibs
-	
+endif
 	ln -fs ../swlibs glide3x/
 	cd $(CURDIR)/glide3x; ./chores.3dfx --clean
 	rm -f glide3x/swlibs
