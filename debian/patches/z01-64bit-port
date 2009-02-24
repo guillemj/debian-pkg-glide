@@ -1733,14 +1733,14 @@ Index: b/glide3x/h3/minihwc/linhwc.c.dri
  #include "lindri.h"
  
  static FxU32 fenceVar;
-+#ifdef __ia64__
++#if defined(__ia64__)
 +#define P6FENCE asm volatile("mf.a" ::: "memory");
-+#elif __alpha__
++#elif defined(__alpha__)
 +#define P6FENCE asm volatile("mb" ::: "memory");
-+#elif __i386__
++#elif defined(__i386__)
  #define P6FENCE asm("xchg %%eax, %0" : : "m" (fenceVar) : "eax");
-+#elif
-+Error Need to Define P6FENCE for this architecture
++#else
++#error Need to Define P6FENCE for this architecture
 +#endif
  
  #define MAXFIFOSIZE     0x40000
@@ -3882,8 +3882,8 @@ Index: b/glide3x/h5/minihwc/linhwc.c
 +#define P6FENCE asm volatile("mb" ::: "memory")
 +#elif defined(__ia64__)
 +#define P6FENCE asm volatile("mf.a" ::: "memory")
-+#elif
-+Error - need to define P6FENCE
++#else
++#error - need to define P6FENCE
 +#endif
  
  #define MAXFIFOSIZE     0x40000

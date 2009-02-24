@@ -54,21 +54,15 @@ Index: b/glide3x/h3/minihwc/linhwc.c.dri
 ===================================================================
 --- a/glide3x/h3/minihwc/linhwc.c.dri
 +++ b/glide3x/h3/minihwc/linhwc.c.dri
-@@ -67,11 +67,11 @@ hwcCheckMemSize(hwcBoardInfo *bInfo, FxU
- #include "lindri.h"
- 
- static FxU32 fenceVar;
--#ifdef __ia64__
-+#if defined(__ia64__)
+@@ -71,7 +71,7 @@ static FxU32 fenceVar;
  #define P6FENCE asm volatile("mf.a" ::: "memory");
--#elif __alpha__
-+#elif defined(__alpha__)
+ #elif defined(__alpha__)
  #define P6FENCE asm volatile("mb" ::: "memory");
--#elif __i386__
+-#elif defined(__i386__)
 +#elif defined(__i386__) || defined(__x86_64__)
  #define P6FENCE asm("xchg %%eax, %0" : : "m" (fenceVar) : "eax");
- #elif
- Error Need to Define P6FENCE for this architecture
+ #else
+ #error Need to Define P6FENCE for this architecture
 Index: b/glide3x/h5/glide3/src/fxglide.h
 ===================================================================
 --- a/glide3x/h5/glide3/src/fxglide.h
