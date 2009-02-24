@@ -111,14 +111,13 @@ binary-arch: build
 	$(INSTALL_LIB) $(CURDIR)/debian/tmp.h5/usr/lib/libglide3.so.3.10.0 \
 		       $(libglide3_dir)/usr/lib/glide3/libglide3_h5.so.3.10.0
 	
-	dh_strip -s
-	
 	dh_install -s
 	dh_installdocs -s
 	dh_installchangelogs -s
 	dh_installdebconf -s
-	dh_link -s
 	
+	dh_link -s
+	dh_strip -s
 	dh_compress -s
 	dh_fixperms -s
 	dh_makeshlibs -s
