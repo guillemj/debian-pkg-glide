@@ -20,18 +20,11 @@ endef
 
 pkg_dir := $(CURDIR)/debian
 
-glide2_bin_dir := $(pkg_dir)/glide2-bin
-glide3_bin_dir := $(pkg_dir)/glide3-bin
 libglide2_dir := $(pkg_dir)/libglide2
 libglide3_dir := $(pkg_dir)/libglide3
-libglide2_dev_dir := $(pkg_dir)/libglide2-dev
-libglide3_dev_dir := $(pkg_dir)/libglide3-dev
 
 INSTALL=install
-INSTALL_PROGRAM=$(INSTALL) -m 755
-INSTALL_SCRIPT=$(INSTALL) -m 755
 INSTALL_LIB=$(INSTALL) -m 644
-INSTALL_DATA=$(INSTALL) -m 644
 
 DEB_HOST_ARCH := $(shell dpkg-architecture -qDEB_HOST_ARCH)
 
@@ -112,46 +105,15 @@ binary-arch: build
 	$(INSTALL_LIB) $(CURDIR)/glide2x/swlibs/lib/libtexus.so.1.1 \
 		       $(libglide2_dir)/usr/lib/
 	
-	# libglide2-dev
-	$(INSTALL_DATA) $(CURDIR)/glide2x/h3/include/glide.h \
-			$(libglide2_dev_dir)/usr/include/glide/
-	$(INSTALL_DATA) $(CURDIR)/glide2x/h3/include/glidesys.h \
-			$(libglide2_dev_dir)/usr/include/glide/
-	$(INSTALL_DATA) $(CURDIR)/glide2x/h3/include/glideutl.h \
-			$(libglide2_dev_dir)/usr/include/glide/
-	$(INSTALL_DATA) $(CURDIR)/glide2x/h3/include/sst1vid.h \
-			$(libglide2_dev_dir)/usr/include/glide/
-	$(INSTALL_DATA) $(CURDIR)/glide2x/h3/include/gump.h \
-			$(libglide2_dev_dir)/usr/include/glide/
-	
-	$(INSTALL_DATA) $(CURDIR)/glide2x/swlibs/include/3dfx.h \
-			$(libglide2_dev_dir)/usr/include/glide/
-	$(INSTALL_DATA) $(CURDIR)/glide2x/swlibs/include/linutil.h \
-			$(libglide2_dev_dir)/usr/include/glide/
-	$(INSTALL_DATA) $(CURDIR)/glide2x/swlibs/include/texus.h \
-			$(libglide2_dev_dir)/usr/include/glide/
-	
-	# glide2-bin
-	$(INSTALL_PROGRAM) $(CURDIR)/glide2x/h3/glide/tests/test[0-9][0-9] \
-			   $(glide2_bin_dir)/usr/lib/glide2/bin/
-	$(INSTALL_PROGRAM) $(CURDIR)/glide2x/cvg/bin/pass \
-			   $(glide2_bin_dir)/usr/lib/glide2/bin/
-	
 	# libglide3
 	$(INSTALL_LIB) $(CURDIR)/debian/tmp.h3/usr/lib/libglide3.so.3.10.0 \
 		       $(libglide3_dir)/usr/lib/glide3/libglide3_h3.so.3.10.0
 	$(INSTALL_LIB) $(CURDIR)/debian/tmp.h5/usr/lib/libglide3.so.3.10.0 \
 		       $(libglide3_dir)/usr/lib/glide3/libglide3_h5.so.3.10.0
 	
-	# libglide3-dev
-	$(INSTALL_DATA) $(CURDIR)/debian/tmp.h5/usr/include/glide3/* \
-			$(libglide3_dev_dir)/usr/include/glide3/
-	
-	# glide3-bin
-	#$(INSTALL_PROGRAM) $(CURDIR)/glide3x/h3/glide/tests/test[0-9][0-9] \
-	#		   $(glide3_bin_dir)/usr/lib/glide3/bin/
 	dh_strip -s
 	
+	dh_install -s
 	dh_installdocs -s
 	dh_installchangelogs -s
 	dh_installdebconf -s

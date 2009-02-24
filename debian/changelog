@@ -30,6 +30,8 @@ glide (2002.04.10.1-1) UNRELEASED; urgency=low
     Based on a patch by Martin Michlmayr <tbm@cyrius.com>.
   * Merge build.glide2 and build.glide3 into the build target.
   * Only clean glide2x directory on the same architectures where it's built.
+  * Move file installation for glide2-bin, glide3-bin, libglide2-dev and
+    libglide3-dev from debian/rules to .install files.
 
  -- Guillem Jover <guillem@debian.org>  Mon, 09 Feb 2009 21:57:55 +0200
 

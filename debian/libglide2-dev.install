@@ -1,0 +1,9 @@
+glide2x/h3/include/glide.h	usr/include/glide/
+glide2x/h3/include/glidesys.h	usr/include/glide/
+glide2x/h3/include/glideutl.h	usr/include/glide/
+glide2x/h3/include/gump.h	usr/include/glide/
+glide2x/h3/include/sst1vid.h	usr/include/glide/
+
+swlibs/include/3dfx.h		usr/include/glide/
+swlibs/include/linutil.h	usr/include/glide/
+swlibs/include/texus.h		usr/include/glide/

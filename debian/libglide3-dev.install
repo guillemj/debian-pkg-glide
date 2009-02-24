@@ -1,0 +1,9 @@
+glide3x/h5/glide3/src/g3ext.h    usr/include/glide3/
+glide3x/h5/glide3/src/glide.h    usr/include/glide3/
+glide3x/h5/glide3/src/glidesys.h usr/include/glide3/
+glide3x/h5/glide3/src/glideutl.h usr/include/glide3/
+glide3x/h5/incsrc/sst1vid.h      usr/include/glide3/
+
+swlibs/fxmisc/3dfx.h             usr/include/glide3/
+swlibs/fxmisc/linutil.h          usr/include/glide3/
+swlibs/texus2/lib/texus.h        usr/include/glide3/
