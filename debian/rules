@@ -59,24 +59,17 @@ include /usr/share/quilt/quilt.make
 debian/po/templates.pot: debian/libglide2.templates debian/libglide3.templates
 	@debconf-updatepo
 
+build: build.stamp
+build.stamp: patch debian/po/templates.pot
 ifeq ($(DEB_HOST_ARCH),i386)
-BUILD_GLIDE2 := build.glide2
-endif
-
-build: patch $(BUILD_GLIDE2) build.glide3 debian/po/templates.pot
-
-build.glide2: build.glide2.stamp
-build.glide2.stamp:
 	ln -fs ../swlibs glide2x/
 	$(glide2_build) FX_GLIDE_HW=cvg CNODEBUG="$(CFLAGS)"
 	$(glide2_build) FX_GLIDE_HW=h3 CNODEBUG="$(CFLAGS)"
-	touch $@
-
-build.glide3: build.glide3.stamp
-build.glide3.stamp:
+endif
 	ln -fs ../swlibs glide3x/
 	$(call glide3_build,h3)
 	$(call glide3_build,h5)
+	
 	touch $@
 
 clean:
@@ -181,5 +174,4 @@ binary-arch: build
 	dh_builddeb -s
 
 .PHONY: build clean binary binary-arch binary-indep
-.PHONY: build.glide2 build.glide3
 

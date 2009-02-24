@@ -28,6 +28,7 @@ glide (2002.04.10.1-1) UNRELEASED; urgency=low
     - Add “-Nglide2-bin -Nglide3-bin” to the general dh_shlibdeps call.
   * Use “#else” instead of “#elif”, fix a FTBFS with gcc-4.4. (Closes: #504838)
     Based on a patch by Martin Michlmayr <tbm@cyrius.com>.
+  * Merge build.glide2 and build.glide3 into the build target.
 
  -- Guillem Jover <guillem@debian.org>  Mon, 09 Feb 2009 21:57:55 +0200
 
