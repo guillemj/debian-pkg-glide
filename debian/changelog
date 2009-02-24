@@ -1,4 +1,4 @@
-glide (2002.04.10.1-1) UNRELEASED; urgency=low
+glide (2002.04.10ds1-1) unstable; urgency=low
 
   * Repackage upstream tarball to stop using tar-in-tar.
   * Demote glide2-bin from Recommends to Suggests in libglide2.
@@ -40,7 +40,7 @@ glide (2002.04.10.1-1) UNRELEASED; urgency=low
   * Add a debian/README.source file.
   * Now using Standards-Version 3.8.0.
 
- -- Guillem Jover <guillem@debian.org>  Mon, 09 Feb 2009 21:57:55 +0200
+ -- Guillem Jover <guillem@debian.org>  Tue, 24 Feb 2009 06:48:12 +0200
 
 glide (2002.04.10-18) unstable; urgency=low
 
