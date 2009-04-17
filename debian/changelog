@@ -1,3 +1,10 @@
+glide (2002.04.10ds1-3) UNRELEASED; urgency=low
+
+  * Use $(filter ...) instead of $(findstring ...) to extract space separated
+    options from DEB_BUILD_OPTIONS in debian/rules.
+
+ -- Guillem Jover <guillem@debian.org>  Sat, 18 Apr 2009 01:28:13 +0200
+
 glide (2002.04.10ds1-2) unstable; urgency=low
 
   * Do not try to install glide2 libraries on non-i386.
