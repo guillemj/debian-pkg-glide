@@ -16,7 +16,7 @@ Architecture: i386
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Suggests: device3dfx-module, device3dfx-source
 Description: graphics library for 3Dfx Voodoo based cards - support programs
- This is a support package which should be installed if you have a
+ This is a support package which should be installed if you use a
  card based on 3dfx Interactive, Inc's Voodoo chipsets.
 
 Package: libglide2
@@ -27,24 +27,21 @@ Suggests: glide2-bin, device3dfx-module, device3dfx-source
 Description: graphics library for 3Dfx Voodoo based cards - shared libraries
  This package allows you to use the 3D functions of cards based on
  3dfx Interactive, Inc's Voodoo 2 chipsets. You should install it if
- you have such a card.
+ you use such a card.
  .
- Note, this is NOT the package you want for Voodoo Banshee, Voodoo 3,
- Voodoo 4, or Voodoo 5.
- .
- Also note that for the moment the original Voodoo Graphics chipset
+ This package is not useful with Voodoo Banshee, Voodoo 3,
+ Voodoo 4, or Voodoo 5 cards, and the original Voodoo Graphics chipset
  is no longer supported.
  .
- NOTE: You'll need the /dev/3dfx kernel driver to use this library.
+ You'll need the 3dfx kernel driver to use this library.
 
 Package: libglide2-dev
 Section: libdevel
 Architecture: i386
 Depends: libglide2, ${misc:Depends}
 Description: graphics library for 3Dfx Voodoo based cards - development files
- This package contains the necessary header files, example programs,
- and documentation necessary to develop software for cards based on
- 3dfx Interactive, Inc's Voodoo chipsets.
+ This package contains the header files, example programs, and
+ documentation necessary to develop software using libglide2.
 
 Package: libglide3
 Section: libs
@@ -53,17 +50,15 @@ Depends: ${shlibs:Depends}, ${misc:Depends}, pciutils
 Description: graphics library for 3Dfx Voodoo based cards - shared libraries
  This package allows you to use the 3D functions of cards based on
  3dfx Interactive, Inc's Voodoo Banshee, Voodoo 3, Voodoo 4, and
- Voodoo 5, chipsets.
- You should install it if you have such a card.
+ Voodoo 5 chipsets.
+ You should install it if you use such a card.
  .
- NB: This package does NOT need device3dfx, as it is using DRI instead.
+ This package does not need the 3dfx kernel driver, as it uses DRI instead.
 
 Package: libglide3-dev
 Section: libdevel
 Architecture: i386 alpha ia64 amd64
 Depends: libglide3, ${misc:Depends}
 Description: graphics library for 3Dfx Voodoo based cards - development files
- This package contains the necessary header files, example programs,
- and documentation necessary to develop software for cards based on
- 3dfx Interactive, Inc's Voodoo chipsets.
-
+ This package contains the header files, example programs, and
+ documentation necessary to develop software using libglide3.

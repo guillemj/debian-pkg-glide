@@ -2,6 +2,11 @@ glide (2002.04.10ds1-3) UNRELEASED; urgency=low
 
   * Use $(filter ...) instead of $(findstring ...) to extract space separated
     options from DEB_BUILD_OPTIONS in debian/rules.
+  * Debconf templates and package descriptions reviewed by the
+    debian-l10n-english team as part of the Smith review project.
+    Thanks to Christian Perrier <bubulle@debian.org> for the coordination.
+    (Closes: #524384)
+  * Debconf template translations:
 
  -- Guillem Jover <guillem@debian.org>  Sat, 18 Apr 2009 01:28:13 +0200
 
