@@ -7,6 +7,8 @@ glide (2002.04.10ds1-3) UNRELEASED; urgency=low
     Thanks to Christian Perrier <bubulle@debian.org> for the coordination.
     (Closes: #524384)
   * Debconf template translations:
+    - Update Czech. (Closes: #527376)
+      Thanks to Michal Šimůnek <michal.simunek@gmail.com>.
 
  -- Guillem Jover <guillem@debian.org>  Sat, 18 Apr 2009 01:28:13 +0200
 
