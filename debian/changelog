@@ -21,6 +21,8 @@ glide (2002.04.10ds1-3) UNRELEASED; urgency=low
       Thanks to Hideki Yamane <henrich@debian.or.jp>.
     - Update Portuguese. (Closes: #527324)
       Thanks to Américo Monteiro <a_monteiro@netcabo.pt>.
+    - Update Russian. (Closes: #526755)
+      Thanks to Sergey Alyoshin <alyoshin.s@gmail.com>.
 
  -- Guillem Jover <guillem@debian.org>  Sat, 18 Apr 2009 01:28:13 +0200
 
