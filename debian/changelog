@@ -19,6 +19,8 @@ glide (2002.04.10ds1-3) UNRELEASED; urgency=low
       Thanks to Luca Monducci <luca.mo@tiscali.it>.
     - Update Japanese. (Closes: #525098)
       Thanks to Hideki Yamane <henrich@debian.or.jp>.
+    - Update Portuguese. (Closes: #527324)
+      Thanks to Américo Monteiro <a_monteiro@netcabo.pt>.
 
  -- Guillem Jover <guillem@debian.org>  Sat, 18 Apr 2009 01:28:13 +0200
 
