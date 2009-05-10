@@ -11,6 +11,8 @@ glide (2002.04.10ds1-3) UNRELEASED; urgency=low
       Thanks to Michal Šimůnek <michal.simunek@gmail.com>.
     - Update French. (Closes: #527212)
       Thanks to Steve Petruzzello <dlist@bluewin.ch>.
+    - Update Galician. (Closes: #527325)
+      Thanks to Marce Villarino <mvillarino@gmail.com>.
 
  -- Guillem Jover <guillem@debian.org>  Sat, 18 Apr 2009 01:28:13 +0200
 
