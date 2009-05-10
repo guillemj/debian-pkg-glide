@@ -1,4 +1,4 @@
-glide (2002.04.10ds1-3) UNRELEASED; urgency=low
+glide (2002.04.10ds1-3) unstable; urgency=low
 
   * Use $(filter ...) instead of $(findstring ...) to extract space separated
     options from DEB_BUILD_OPTIONS in debian/rules.
@@ -25,7 +25,7 @@ glide (2002.04.10ds1-3) UNRELEASED; urgency=low
       Thanks to Sergey Alyoshin <alyoshin.s@gmail.com>.
   * Update debconf .po files from the .pot file.
 
- -- Guillem Jover <guillem@debian.org>  Sat, 18 Apr 2009 01:28:13 +0200
+ -- Guillem Jover <guillem@debian.org>  Sun, 10 May 2009 06:45:41 +0200
 
 glide (2002.04.10ds1-2) unstable; urgency=low
 
