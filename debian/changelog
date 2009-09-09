@@ -3,6 +3,8 @@ glide (2002.04.10ds1-4) UNRELEASED; urgency=low
   * Debconf template translations:
     - Update Basque. (Closes: #530596)
       Thanks to Piarres Beobide <pi+debian@beobide.net>.
+    - Update Spanish. (Closes: #532290)
+      Thanks to Francisco Javier Cuadrado <fcocuadrado@gmail.com>.
 
  -- Guillem Jover <guillem@debian.org>  Thu, 10 Sep 2009 14:07:46 +0200
 
