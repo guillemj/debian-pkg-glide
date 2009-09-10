@@ -1,4 +1,4 @@
-glide (2002.04.10ds1-4) UNRELEASED; urgency=low
+glide (2002.04.10ds1-4) unstable; urgency=low
 
   * Debconf template translations:
     - Update Basque. (Closes: #530596)
@@ -12,7 +12,7 @@ glide (2002.04.10ds1-4) UNRELEASED; urgency=low
   * Unify debconf template translation headers.
   * Now using Standards-Version 3.8.3 (no changes needed).
 
- -- Guillem Jover <guillem@debian.org>  Thu, 10 Sep 2009 14:07:46 +0200
+ -- Guillem Jover <guillem@debian.org>  Thu, 10 Sep 2009 15:09:49 +0200
 
 glide (2002.04.10ds1-3) unstable; urgency=low
 
