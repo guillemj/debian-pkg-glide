@@ -10,6 +10,7 @@ glide (2002.04.10ds1-4) UNRELEASED; urgency=low
     - Update Finnish. (Closes: #533223)
       Thanks to Esko Arajärvi <edu@iki.fi>.
   * Unify debconf template translation headers.
+  * Now using Standards-Version 3.8.3 (no changes needed).
 
  -- Guillem Jover <guillem@debian.org>  Thu, 10 Sep 2009 14:07:46 +0200
 
