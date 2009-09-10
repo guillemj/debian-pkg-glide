@@ -2,6 +2,7 @@
 # This file is distributed under the same license as the glide package.
 #
 # Copyright © 2008, 2009  Piarres Beobide <pi@beobide.net>
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: glide-eu\n"

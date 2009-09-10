@@ -1,6 +1,8 @@
-# translation of glide_2002.04.10-19_de.po to German
+# German po-debconf translation of glide
+# This file is distributed under the same license as the glide package.
 #
-# Erik Schanze <eriks@debian.org>, 2004-2009.
+# Copyright © 2004, 2006, 2009  Erik Schanze <eriks@debian.org>
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: glide_2002.04.10-19_de\n"

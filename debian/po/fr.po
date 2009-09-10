@@ -1,10 +1,9 @@
-# Translation of glide debconf templates to French
-# Copyright (C) 2005-2009 Debian French l10n team <debian-l10n-french@lists.debian.org>
+# French po-debconf translation of glide
 # This file is distributed under the same license as the glide package.
 #
-# Translators:
-# Christian Perrier <bubulle@debian.org>, 2005.
-# Steve Petruzzello <dlist@bluewin.ch>, 2009.
+# Copyright © 2003  Christian Perrier <bubulle@debian.org>
+# Copyrigth © 2009  Steve Petruzzello <dlist@bluewin.ch>
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: glide 2002.04.10-2\n"

@@ -2,6 +2,7 @@
 # This file is distributed under the same license as the glide package.
 #
 # Copyright © 2008, 2009  Esko Arajärvi <edu@iki.fi>
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: glide\n"

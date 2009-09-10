@@ -1,6 +1,7 @@
-# translation of da.po to Danish
-# translation of glide to Danish
-# Claus Hindsgaul <claus_h@image.dk>, 2004, 2005.
+# Danish po-debconf translation of glide
+# This file is distributed under the same license as the glide package.
+#
+# Copyright © 2004, 2005  Claus Hindsgaul <claus_h@image.dk>
 #
 msgid ""
 msgstr ""

@@ -1,9 +1,9 @@
-# Translation of ru.po to Russian
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Russian po-debconf translation of glide
+# This file is distributed under the same license as the glide package.
 #
-# Yuri Kozlov <kozlov.y@gmail.com>, 2008.
-# Sergey Alyoshin <alyoshin.s@gmail.com>, 2009.
+# Copyright © 2008  Yuri Kozlov <kozlov.y@gmail.com>
+# Copyright © 2009  Sergey Alyoshin <alyoshin.s@gmail.com>
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: glide_2002.04.10-19_ru\n"

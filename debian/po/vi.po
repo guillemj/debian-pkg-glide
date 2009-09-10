@@ -1,6 +1,7 @@
-# Vietnamese Translation for glide.
-# Copyright © 2005 Free Software Foundation, Inc.
-# Clytie Siddall <clytie@riverland.net.au>, 2005.
+# Vietnamese po-debconf translation of glide
+# This file is distributed under the same license as the glide package.
+#
+# Copyright © 2005  Clytie Siddall <clytie@riverland.net.au>
 #
 msgid ""
 msgstr ""

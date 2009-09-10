@@ -1,8 +1,9 @@
-# translation of glide debconf to Portuguese
+# Portuguese po-debconf translation of glide
 # This file is distributed under the same license as the glide package.
 #
-# André Costa <skit@argon.ath.cx>, 2006.
-# Américo Monteiro <a_monteiro@netcabo.pt>, 2009.
+# Copyright © 2006  André Costa <skit@argon.ath.cx>
+# Copyright © 2009  Américo Monteiro <a_monteiro@netcabo.pt>
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: glide 2002.04.10-19\n"

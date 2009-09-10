@@ -1,21 +1,8 @@
-# translation of glide 2002.04.10-13_templates.po to Dutch
+# Dutch po-debconf translation of glide
 # This file is distributed under the same license as the glide package.
 #
-#    Translators, if you are not familiar with the PO format, gettext
-#    documentation is worth reading, especially sections dedicated to
-#    this format, e.g. by running:
-#         info -n '(gettext)PO Files'
-#         info -n '(gettext)Header Entry'
-#
-#    Some information specific to po-debconf are available at
-#            /usr/share/doc/po-debconf/README-trans
-#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
-#
-#    Developers do not need to manually edit POT or PO files.
-#
-# Luk Claes <luk.claes(AT)ugent(DOT)be>, 2004
-# Kurt De Bree <kdebree(AT)telenet(DOT)be>, 2006
-# This is an unofficial translation
+# Copyright © 2004  Luk Claes <luk.claes@ugent.be>
+# Copyright © 2006  Kurt De Bree <kdebree@telenet.be>
 #
 msgid ""
 msgstr ""
@@ -23,8 +10,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: glide@packages.debian.org\n"
 "POT-Creation-Date: 2009-04-21 07:55+0200\n"
 "PO-Revision-Date: 2006-09-18 19:17+0100\n"
-"Last-Translator: Kurt De Bree <kdebree(AT)telenet(DOT)be>\n"
-"Language-Team: Debian l10n Dutch <debian-l10n-dutch@lists.debian.org>\n"
+"Last-Translator: Kurt De Bree <kdebree@telenet.be>\n"
+"Language-Team: Dutch <debian-l10n-dutch@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"

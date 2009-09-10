@@ -1,26 +1,8 @@
 # Spanish po-debconf translation of glide
 # This file is distributed under the same license as the glide package.
 #
-# Copyright © 2005  Guillem Jover <guillem@debian.org>
+# Copyright © 2003-2005  Guillem Jover <guillem@debian.org>
 # Copyright © 2009  Francisco Javier Cuadrado <fcocuadrado@gmail.com>
-#
-# Traductores, si no conocen el formato PO, merece la pena leer la
-# documentación de gettext, especialmente las secciones dedicadas a este
-# formato, por ejemplo ejecutando:
-#       info -n '(gettext)PO Files'
-#       info -n '(gettext)Header Entry'
-#
-# Equipo de traducción al español, por favor lean antes de traducir
-# los siguientes documentos:
-#
-#   - El proyecto de traducción de Debian al español
-#     http://www.debian.org/intl/spanish/
-#     especialmente las notas y normas de traducción en
-#     http://www.debian.org/intl/spanish/notas
-#
-#   - La guía de traducción de po's de debconf:
-#     /usr/share/doc/po-debconf/README-trans
-#     o http://www.debian.org/intl/l10n/po-debconf/README-trans
 #
 msgid ""
 msgstr ""
