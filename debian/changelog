@@ -1,3 +1,11 @@
+glide (2002.04.10ds1-5) UNRELEASED; urgency=low
+
+  * Debconf template translations:
+    - Update Vietnamese. (Closes: #548039)
+      Thanks to Clytie Siddall <clytie@riverland.net.au>.
+
+ -- Guillem Jover <guillem@debian.org>  Thu, 24 Sep 2009 20:22:31 +0200
+
 glide (2002.04.10ds1-4) unstable; urgency=low
 
   * Debconf template translations:
