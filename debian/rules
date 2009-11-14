@@ -4,7 +4,6 @@
 
 export FX_GLIDE_PIC = 1
 
-this = $(MAKE) -f debian/rules
 glide2_build := $(MAKE) -C $(CURDIR)/glide2x -f makefile.linux
 define glide3_build
 ( \
@@ -47,13 +46,11 @@ endif
 endif
 endif
 
-include /usr/share/quilt/quilt.make
-
 debian/po/templates.pot: debian/libglide2.templates debian/libglide3.templates
 	@debconf-updatepo
 
 build: build.stamp
-build.stamp: patch debian/po/templates.pot
+build.stamp: debian/po/templates.pot
 ifeq ($(DEB_HOST_ARCH),i386)
 	ln -fs ../swlibs glide2x/
 	$(glide2_build) FX_GLIDE_HW=cvg CNODEBUG="$(CFLAGS)"
@@ -66,8 +63,6 @@ endif
 	touch $@
 
 clean:
-	$(this) patch
-	
 ifeq ($(DEB_HOST_ARCH),i386)
 	ln -fs ../swlibs glide2x/
 	$(glide2_build) FX_GLIDE_HW=cvg clobber
@@ -77,8 +72,6 @@ endif
 	ln -fs ../swlibs glide3x/
 	cd $(CURDIR)/glide3x; ./chores.3dfx --clean
 	rm -f glide3x/swlibs
-	
-	$(this) unpatch
 	
 	rm -rf $(CURDIR)/glide3x/build.h3 $(CURDIR)/debian/tmp.h3
 	rm -rf $(CURDIR)/glide3x/build.h5 $(CURDIR)/debian/tmp.h5
