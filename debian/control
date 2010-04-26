@@ -20,7 +20,6 @@ Description: graphics library for 3Dfx Voodoo based cards - support programs
  card based on 3dfx Interactive, Inc's Voodoo chipsets.
 
 Package: libglide2
-Section: libs
 Architecture: i386
 Depends: ${shlibs:Depends}, ${misc:Depends}, pciutils
 Suggests: glide2-bin, device3dfx-module, device3dfx-source
@@ -44,7 +43,6 @@ Description: graphics library for 3Dfx Voodoo based cards - development files
  documentation necessary to develop software using libglide2.
 
 Package: libglide3
-Section: libs
 Architecture: i386 alpha ia64 amd64
 Depends: ${shlibs:Depends}, ${misc:Depends}, pciutils
 Description: graphics library for 3Dfx Voodoo based cards - shared libraries
