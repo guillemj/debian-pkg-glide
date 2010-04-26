@@ -129,6 +129,7 @@ endif
 	#dh_shlibdeps -pglide3-bin -Llibglide3 -l$(libglide3_dir)/usr/lib/
 	
 	dh_gencontrol -s
+	dh_md5sums -s
 	dh_builddeb -s
 
 .PHONY: build clean binary binary-arch binary-indep
