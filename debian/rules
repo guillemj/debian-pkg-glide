@@ -112,6 +112,7 @@ endif
 	dh_installchangelogs -s
 	dh_installdebconf -s
 	
+	dh_lintian -s
 	dh_link -s
 	dh_strip -s
 	dh_compress -s

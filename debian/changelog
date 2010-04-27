@@ -15,6 +15,8 @@ glide (2002.04.10ds1-5) UNRELEASED; urgency=low
   * Switch libglide2-dev and libglide3-dev dependencies on libglide2 and
     libglide3 (respectively) to be strictly versioned. This was not done
     as historically the -dev packages were arch:all.
+  * Add lintian overrides for “useless ldconfig calls”, as the symlink under
+    /usr/lib to the actual backend only gets created at install time.
 
  -- Guillem Jover <guillem@debian.org>  Thu, 24 Sep 2009 20:22:31 +0200
 
