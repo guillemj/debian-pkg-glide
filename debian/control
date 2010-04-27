@@ -37,7 +37,7 @@ Description: graphics library for 3Dfx Voodoo based cards - shared libraries
 Package: libglide2-dev
 Section: libdevel
 Architecture: i386
-Depends: libglide2, ${misc:Depends}
+Depends: libglide2 (= ${binary:Version}), ${misc:Depends}
 Description: graphics library for 3Dfx Voodoo based cards - development files
  This package contains the header files, example programs, and
  documentation necessary to develop software using libglide2.
@@ -56,7 +56,7 @@ Description: graphics library for 3Dfx Voodoo based cards - shared libraries
 Package: libglide3-dev
 Section: libdevel
 Architecture: i386 alpha ia64 amd64
-Depends: libglide3, ${misc:Depends}
+Depends: libglide3 (= ${binary:Version}), ${misc:Depends}
 Description: graphics library for 3Dfx Voodoo based cards - development files
  This package contains the header files, example programs, and
  documentation necessary to develop software using libglide3.
