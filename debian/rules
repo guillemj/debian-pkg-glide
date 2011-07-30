@@ -49,8 +49,10 @@ endif
 debian/po/templates.pot: debian/libglide2.templates debian/libglide3.templates
 	@debconf-updatepo
 
-build: build.stamp
-build.stamp: debian/po/templates.pot
+build-indep:
+
+build-arch: build-arch.stamp
+build-arch.stamp: debian/po/templates.pot
 ifeq ($(DEB_HOST_ARCH),i386)
 	ln -fs ../swlibs glide2x/
 	$(glide2_build) FX_GLIDE_HW=cvg CNODEBUG="$(CFLAGS)"
@@ -61,6 +63,8 @@ endif
 	$(call glide3_build,h5)
 	
 	touch $@
+
+build: build-indep build-arch
 
 clean:
 ifeq ($(DEB_HOST_ARCH),i386)
@@ -84,7 +88,7 @@ binary: binary-indep binary-arch
 binary-indep:
 	# Nothing to do.
 
-binary-arch: build
+binary-arch: build-arch
 	dh_testdir
 	dh_testroot
 	dh_prep -s
@@ -133,5 +137,5 @@ endif
 	dh_md5sums -s
 	dh_builddeb -s
 
-.PHONY: build clean binary binary-arch binary-indep
+.PHONY: build-indep build-arch build clean binary binary-arch binary-indep
 

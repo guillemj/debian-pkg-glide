@@ -1,3 +1,9 @@
+glide (2002.04.10ds1-6) UNRELEASED; urgency=low
+
+  * Add build-indep and build-arch targets (rename build to build-arch).
+
+ -- Guillem Jover <guillem@debian.org>  Sat, 30 Jul 2011 15:03:28 +0200
+
 glide (2002.04.10ds1-5) unstable; urgency=low
 
   * Debconf template translations:
