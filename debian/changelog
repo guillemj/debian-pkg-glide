@@ -3,6 +3,7 @@ glide (2002.04.10ds1-6) UNRELEASED; urgency=low
   * Add build-indep and build-arch targets (rename build to build-arch).
   * Update debconf template translations:
     - Danish. Thanks to Joe Dalton <joedalton2@yahoo.dk>. (Closes: #590001)
+    - Dutch. Thanks to Jeroen Schot <schot@A-Eskwadraat.nl>. (Closes: #629391)
 
  -- Guillem Jover <guillem@debian.org>  Sat, 30 Jul 2011 15:03:28 +0200
 
