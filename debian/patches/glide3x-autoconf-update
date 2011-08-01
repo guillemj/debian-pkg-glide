@@ -127,7 +127,7 @@ Index: b/glide3x/h3/glide3/src/makefile.autoconf.am
 -endif
  
 -VINCLUDES = $(HAL_CSIM_INCLUDES)
-+CPPASFLAGS = -$$ -I.
++CPPASFLAGS = -fdollars-in-identifiers -x assembler-with-cpp -I.
  
 -#
 -# Nothing for CPPFLAGS or OPTS here.

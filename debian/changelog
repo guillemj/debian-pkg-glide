@@ -1,3 +1,11 @@
+glide (2002.04.10ds1-7) UNRELEASED; urgency=low
+
+  * Use “-fdollars-in-identifiers -x assembler-with-cpp” instead of “-$” to
+    preprocess assembler code through gcc, the later just stopped working
+    recently.
+
+ -- Guillem Jover <guillem@debian.org>  Mon, 01 Aug 2011 05:09:26 +0200
+
 glide (2002.04.10ds1-6) unstable; urgency=low
 
   * Add build-indep and build-arch targets (rename build to build-arch).
