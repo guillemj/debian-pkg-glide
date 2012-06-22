@@ -1,0 +1,230 @@
+---
+ glide2x/cvg/glide/src/cpudtect.S   |    3 +++
+ glide2x/cvg/glide/src/xdraw2.S     |    4 ++++
+ glide2x/cvg/glide/src/xdraw2.gasp  |    4 ++++
+ glide2x/cvg/glide/src/xdraw2.inc.S |    4 ++++
+ glide2x/h3/glide/src/cpudtect.S    |    2 ++
+ glide2x/h3/glide/src/xdraw2.S      |    2 ++
+ glide2x/h3/glide/src/xdraw2.inc.S  |    3 +++
+ glide2x/h3/glide/src/xtexdl.S      |    2 ++
+ glide3x/h3/glide3/src/cpudtect.S   |    3 +++
+ glide3x/h3/glide3/src/xdraw2.S     |    2 ++
+ glide3x/h3/glide3/src/xdraw2.inc.S |    3 +++
+ glide3x/h3/glide3/src/xdraw3.S     |    2 ++
+ glide3x/h3/glide3/src/xtexdl.S     |    2 ++
+ glide3x/h5/glide3/src/cpudtect.s   |    2 ++
+ glide3x/h5/glide3/src/xdraw2.inc.s |    3 +++
+ glide3x/h5/glide3/src/xdraw2.s     |    2 ++
+ glide3x/h5/glide3/src/xdraw3.s     |    2 ++
+ glide3x/h5/glide3/src/xtexdl.s     |    2 ++
+ 18 files changed, 47 insertions(+)
+
+--- a/glide3x/h3/glide3/src/cpudtect.S
++++ b/glide3x/h3/glide3/src/cpudtect.S
+@@ -48,6 +48,9 @@
+ /*  2     3/04/97 9:10p Dow */
+ /*  Neutered mutiplatform multiheaded monster. */
+ 
++.section .note.GNU-stack, "", @progbits
++.previous
++
+ #ifdef __ia64__
+ 
+ 	.align 32
+--- a/glide3x/h3/glide3/src/xdraw2.inc.S
++++ b/glide3x/h3/glide3/src/xdraw2.inc.S
+@@ -58,6 +58,9 @@
+ 
+ .file "xdraw2.inc.S"
+ 
++.section .note.GNU-stack, "", @progbits
++.previous
++
+ 
+ #ifndef XDRAW2_FIFO_MACROS
+ #define XDRAW2_FIFO_MACROS
+--- a/glide3x/h3/glide3/src/xdraw2.S
++++ b/glide3x/h3/glide3/src/xdraw2.S
+@@ -96,6 +96,8 @@
+ /*  Definitions of cvg regs and glide root structures. */
+ #include "fxgasm.h"
+ 
++.section .note.GNU-stack, "", @progbits
++.previous
+ 
+ .data
+ 	.type	One,@object
+--- a/glide3x/h3/glide3/src/xdraw3.S
++++ b/glide3x/h3/glide3/src/xdraw3.S
+@@ -20,6 +20,8 @@
+ 
+ .file "xdraw3.asm"
+ 
++.section .note.GNU-stack, "", @progbits
++.previous
+ 
+ #ifdef GL_AMD3D
+ 
+--- a/glide3x/h3/glide3/src/xtexdl.S
++++ b/glide3x/h3/glide3/src/xtexdl.S
+@@ -67,6 +67,8 @@
+ 
+ .file "xtexdl.asm"
+ 
++.section .note.GNU-stack, "", @progbits
++.previous
+ 
+ #ifdef USE_PACKET_FIFO
+ #endif
+--- a/glide3x/h5/glide3/src/cpudtect.s
++++ b/glide3x/h5/glide3/src/cpudtect.s
+@@ -57,6 +57,8 @@
+ /*   */
+ /*  2     3/04/97 9:10p Dow */
+ 
++.section .note.GNU-stack, "", @progbits
++.previous
+ 
+ #ifdef __ia64__
+ 
+--- a/glide3x/h5/glide3/src/xdraw2.inc.s
++++ b/glide3x/h5/glide3/src/xdraw2.inc.s
+@@ -72,6 +72,9 @@
+ /*  1     7/07/97 8:37a Jdt */
+ /*  B4 Chip field fix. */
+ 
++.section .note.GNU-stack, "", @progbits
++.previous
++
+ #ifdef GL_AMD3D
+ 
+ /* --------------------------------------------------------------------------- */
+--- a/glide3x/h5/glide3/src/xdraw2.s
++++ b/glide3x/h5/glide3/src/xdraw2.s
+@@ -122,6 +122,8 @@
+ /*  Definitions of cvg regs and glide root structures. */
+ #include "fxgasm.h"
+ 
++.section .note.GNU-stack, "", @progbits
++.previous
+ 
+ #ifdef HAL_CSIM
+ #endif
+--- a/glide3x/h5/glide3/src/xdraw3.s
++++ b/glide3x/h5/glide3/src/xdraw3.s
+@@ -20,6 +20,8 @@
+ 
+ .file "xdraw3.asm"
+ 
++.section .note.GNU-stack, "", @progbits
++.previous
+ 
+ #ifdef GL_AMD3D
+ 
+--- a/glide3x/h5/glide3/src/xtexdl.s
++++ b/glide3x/h5/glide3/src/xtexdl.s
+@@ -82,6 +82,8 @@
+ 
+ .file "xtexdl.asm"
+ 
++.section .note.GNU-stack, "", @progbits
++.previous
+ 
+ #ifdef USE_PACKET_FIFO
+ #endif
+--- a/glide2x/cvg/glide/src/cpudtect.S
++++ b/glide2x/cvg/glide/src/cpudtect.S
+@@ -33,6 +33,9 @@
+ 
+ .file  "cpudtect.s"
+ 
++.section .note.GNU-stack, "", @progbits
++.previous
++
+ # 586P
+ # model FLAT,C
+ 
+--- a/glide2x/cvg/glide/src/xdraw2.gasp
++++ b/glide2x/cvg/glide/src/xdraw2.gasp
+@@ -58,6 +58,10 @@
+ 	##
+ 
+ 	.file   "xdraw2.s"
++
++.section .note.GNU-stack, "", @progbits
++.previous
++
+ 	#OPTION OLDSTRUCTS       
+ 	# 586P
+ 
+--- a/glide2x/cvg/glide/src/xdraw2.inc.S
++++ b/glide2x/cvg/glide/src/xdraw2.inc.S
+@@ -41,6 +41,10 @@
+ ##
+ 
+ .file "xdraw2.inc.s"
++
++.section .note.GNU-stack, "", @progbits
++.previous
++
+ #.586P
+         
+ #EXTRN   _GlideRoot:DWORD
+--- a/glide2x/cvg/glide/src/xdraw2.S
++++ b/glide2x/cvg/glide/src/xdraw2.S
+@@ -58,6 +58,10 @@
+ ##
+ 
+ .file   "xdraw2.s"
++
++.section .note.GNU-stack, "", @progbits
++.previous
++
+ #OPTION OLDSTRUCTS       
+ # 586P
+ 
+--- a/glide2x/h3/glide/src/cpudtect.S
++++ b/glide2x/h3/glide/src/cpudtect.S
+@@ -50,6 +50,8 @@
+ 
+ .file "cpudtect.asm"
+ 
++.section .note.GNU-stack, "", @progbits
++.previous
+ 
+ /*       Data for data segment goes here */
+ /* _DATA   SEGMENT DWORD USE32 PUBLIC 'DATA'  */
+--- a/glide2x/h3/glide/src/xdraw2.inc.S
++++ b/glide2x/h3/glide/src/xdraw2.inc.S
+@@ -41,6 +41,9 @@
+ 
+ .file "xdraw2.inc"
+ 
++.section .note.GNU-stack, "", @progbits
++.previous
++
+ #ifndef GR_FIFO_WRITE_MACRO
+ #define GR_FIFO_WRITE_MACRO
+ .MACRO	GR_FIFO_WRITE __addr __offset __data
+--- a/glide2x/h3/glide/src/xdraw2.S
++++ b/glide2x/h3/glide/src/xdraw2.S
+@@ -66,6 +66,8 @@
+ .file "xdraw2.asm"
+ 	
+ 
++.section .note.GNU-stack, "", @progbits
++.previous
+ 
+ .data
+ 	.type	One,@object
+--- a/glide2x/h3/glide/src/xtexdl.S
++++ b/glide2x/h3/glide/src/xtexdl.S
+@@ -61,6 +61,8 @@
+ 
+ .file "xtexdl.asm"
+ 
++.section .note.GNU-stack, "", @progbits
++.previous
+ 
+ #ifdef USE_PACKET_FIFO
+ #endif
