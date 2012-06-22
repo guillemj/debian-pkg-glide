@@ -30,3 +30,4 @@ z05-gcc4-fix
 z06-gcc401-fix
 z07-cpudetect-no-ia32
 z08-non-exec-stack
+z09-typos

@@ -1,0 +1,39 @@
+---
+ glide2x/cvg/init/video.c         |    2 +-
+ glide2x/sst1/init/initvg/video.c |    2 +-
+ glide3x/cvg/init/video.c         |    2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+--- a/glide2x/cvg/init/video.c
++++ b/glide2x/cvg/init/video.c
+@@ -472,7 +472,7 @@ FX_EXPORT FxBool FX_CSTYLE sst1InitVideo
+             ISET(sst->fbiInit1, IGET(sst->fbiInit1) | SST_VIDEO_FILTER_EN);
+             if(GETENV(("SSTV2_VIDEO_FILTER_THRESHOLD"))) {
+                 SSCANF(GETENV(("SSTV2_VIDEO_FILTER_THRESHOLD")), "%ld", &n);
+-                INIT_PRINTF(("sst1InitVideo(): Setting Video Filtering Treshold to 0x%x...\n", n));
++                INIT_PRINTF(("sst1InitVideo(): Setting Video Filtering Threshold to 0x%x...\n", n));
+ 
+                 ISET(sst->videoFilterRgbThreshold, n);
+             } else
+--- a/glide2x/sst1/init/initvg/video.c
++++ b/glide2x/sst1/init/initvg/video.c
+@@ -582,7 +582,7 @@ FX_EXPORT FxBool FX_CSTYLE sst1InitVideo
+             ISET(sst->fbiInit1, IGET(sst->fbiInit1) | SST_VIDEO_FILTER_EN);
+             if(GETENV(("SST_VIDEO_FILTER_THRESHOLD"))) {
+                 SSCANF(GETENV(("SST_VIDEO_FILTER_THRESHOLD")), "%i", &n);
+-                INIT_PRINTF(("sst1InitVideo(): Setting Video Filtering Treshold to 0x%x...\n", n));
++                INIT_PRINTF(("sst1InitVideo(): Setting Video Filtering Threshold to 0x%x...\n", n));
+ 
+                 ISET(sst->videoFilterRgbThreshold, n);
+             } else
+--- a/glide3x/cvg/init/video.c
++++ b/glide3x/cvg/init/video.c
+@@ -470,7 +470,7 @@ FX_EXPORT FxBool FX_CSTYLE sst1InitVideo
+             ISET(sst->fbiInit1, IGET(sst->fbiInit1) | SST_VIDEO_FILTER_EN);
+             if(GETENV(("SSTV2_VIDEO_FILTER_THRESHOLD"))) {
+                 SSCANF(GETENV(("SSTV2_VIDEO_FILTER_THRESHOLD")), "%i", &n);
+-                INIT_PRINTF(("sst1InitVideo(): Setting Video Filtering Treshold to 0x%x...\n", n));
++                INIT_PRINTF(("sst1InitVideo(): Setting Video Filtering Threshold to 0x%x...\n", n));
+ 
+                 ISET(sst->videoFilterRgbThreshold, n);
+             } else
