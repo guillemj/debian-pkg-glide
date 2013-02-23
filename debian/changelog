@@ -4,6 +4,7 @@ glide (2002.04.10ds1-8) UNRELEASED; urgency=low
   * Fix typos in source code spotted by lintian.
   * Do not include headers inside fxTime() function. Fixes build failure
     with gcc-4.8. (Closes: #701287)
+  * Now using Standards-Version 3.9.4 (no changes needed).
 
  -- Guillem Jover <guillem@debian.org>  Fri, 22 Jun 2012 06:57:54 +0200
 
