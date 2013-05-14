@@ -4,6 +4,9 @@ set -e
 . /usr/share/debconf/confmodule
 
 if [ "$1" = "configure" ] ; then
+  # Remove old typoed question, was really libglide3 (not libglide2).
+  db_unregister libglide3/error
+
   db_get 'libglide2/driver'
   target='/usr/lib/libglide.so.2'
   if [ "$RET" = "sst1" ]; then
@@ -20,8 +23,7 @@ if [ "$1" = "configure" ] ; then
     if [ -L $target ] ; then {
       rm $target;
     } else {
-      db_subst libglide2/error e1 "ERROR!"
-      db_subst libglide2/error e2 "ERROR: $target exists but is not a symlink!"
+      db_subst libglide2/target_not_symlink target "$target"
       db_go
       exit 1;
     } fi

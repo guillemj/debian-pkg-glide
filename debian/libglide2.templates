@@ -43,7 +43,6 @@ _Description: Card to use for 3D acceleration:
  .
  Please select the card you would like to use for 3D acceleration.
 
-Template: libglide2/error
-Type: note
-Description: ${e1}
- ${e2}
+Template: libglide2/target_not_symlink
+Type: error
+_Description: ${target} exists but is not a symlink!

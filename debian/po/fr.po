@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glide 2002.04.10-2\n"
 "Report-Msgid-Bugs-To: glide@packages.debian.org\n"
-"POT-Creation-Date: 2009-04-21 07:55+0200\n"
+"POT-Creation-Date: 2013-02-24 01:47+0100\n"
 "PO-Revision-Date: 2009-04-21 21:44+0200\n"
 "Last-Translator: Steve Petruzzello <dlist@bluewin.ch>\n"
 "Language-Team: French <debian-l10n-french@lists.debian.org>\n"
@@ -108,6 +108,12 @@ msgstr ""
 msgid "Please select the card you would like to use for 3D acceleration."
 msgstr ""
 "Veuillez choisir la carte que vous souhaitez utiliser pour l'accélération 3D."
+
+#. Type: error
+#. Description
+#: ../libglide2.templates:5001 ../libglide3.templates:5001
+msgid "${target} exists but is not a symlink!"
+msgstr ""
 
 #. Type: boolean
 #. Description
