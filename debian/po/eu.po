@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: glide-eu\n"
+"Project-Id-Version: glide 2002.04.10-2\n"
 "Report-Msgid-Bugs-To: glide@packages.debian.org\n"
 "POT-Creation-Date: 2013-02-24 01:47+0100\n"
 "PO-Revision-Date: 2009-09-10 14:23+0200\n"
