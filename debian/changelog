@@ -1,4 +1,4 @@
-glide (2002.04.10ds1-8) UNRELEASED; urgency=low
+glide (2002.04.10ds1-8) unstable; urgency=low
 
   * Mark stack on assembler files as not executable.
   * Fix typos in source code spotted by lintian.
@@ -8,7 +8,7 @@ glide (2002.04.10ds1-8) UNRELEASED; urgency=low
   * Use correct package name in debconf db_subst call in libglide2 postinst.
   * Use translatable Descriptions in debconf templates.
 
- -- Guillem Jover <guillem@debian.org>  Fri, 22 Jun 2012 06:57:54 +0200
+ -- Guillem Jover <guillem@debian.org>  Tue, 14 May 2013 08:00:34 +0200
 
 glide (2002.04.10ds1-7) unstable; urgency=low
 
