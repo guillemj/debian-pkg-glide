@@ -32,8 +32,8 @@ msgid ""
 "Voodoo 3."
 msgstr ""
 "Intet 3Dfx-kort som er understøttet af glide2 blev fundet. Denne pakke "
-"understøtter kort baseret på de følgende 3Dfx-chipsæt: Voodoo 2, "
-"Voodoo Banshee og Voodoo 3."
+"understøtter kort baseret på de følgende 3Dfx-chipsæt: Voodoo 2, Voodoo "
+"Banshee og Voodoo 3."
 
 #. Type: boolean
 #. Description
@@ -43,8 +43,8 @@ msgid ""
 "and you are not compiling programs against glide, this package will not be "
 "useful."
 msgstr ""
-"Hvis grafikkortet i denne computer ikke bruger en af disse chipsæt, "
-"og du ikke kompilerer programmer mod glide, skal du ikke have denne pakke "
+"Hvis grafikkortet i denne computer ikke bruger en af disse chipsæt, og du "
+"ikke kompilerer programmer mod glide, skal du ikke have denne pakke "
 "installeret."
 
 #. Type: boolean
@@ -56,8 +56,7 @@ msgid ""
 "command."
 msgstr ""
 "Hvis grafikkortet er baseret på et af disse chipsæt, bedes du rapportere en "
-"fejl i denne pakke. Medtag uddata fra kommandoen »lspci -vm« i "
-"rapporten."
+"fejl i denne pakke. Medtag uddata fra kommandoen »lspci -vm« i rapporten."
 
 #. Type: boolean
 #. Description
@@ -99,8 +98,8 @@ msgid ""
 "Multiple 3Dfx-based cards were detected based on one of the following 3Dfx "
 "chipsets: Voodoo 2, Voodoo Banshee, and Voodoo 3."
 msgstr ""
-"Flere 3Dfx-baserede kort blev registreret baseret på en af de følgende "
-"3Dfx-chipsæt: Voodoo 2, Voodoo Banshee og Voodoo 3."
+"Flere 3Dfx-baserede kort blev registreret baseret på en af de følgende 3Dfx-"
+"chipsæt: Voodoo 2, Voodoo Banshee og Voodoo 3."
 
 #. Type: select
 #. Description
@@ -145,6 +144,5 @@ msgid ""
 "Multiple 3Dfx-based cards were detected based on one of the following 3Dfx "
 "chipsets: Voodoo 2, Voodoo Banshee, Voodoo 3, Voodoo 4, and Voodoo 5."
 msgstr ""
-"Der er fundet mere end et videokort baseret på et af de følgende 3Dfx-chipsæt: "
-"Voodoo 2, Voodoo Banshee, Voodoo 3, Voodoo 4 og Voodoo 5."
-
+"Der er fundet mere end et videokort baseret på et af de følgende 3Dfx-"
+"chipsæt: Voodoo 2, Voodoo Banshee, Voodoo 3, Voodoo 4 og Voodoo 5."
