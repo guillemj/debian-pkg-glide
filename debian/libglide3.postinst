@@ -5,7 +5,7 @@ set -e
 
 if [ "$1" = "configure" ] ; then
   # Remove old question
-  db_unregister libglide3/error
+  db_unregister libglide3/error || true
 
   db_get 'libglide3/driver'
   target='/usr/lib/libglide3.so.3'

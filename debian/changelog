@@ -1,6 +1,8 @@
 glide (2002.04.10ds1-9) UNRELEASED; urgency=low
 
   * Remove package creation and maintainers history from debian/copyright.
+  * Ignore error from db_unregister in case the template does not exist.
+    (Closes: #708341)
 
  -- Guillem Jover <guillem@debian.org>  Wed, 15 May 2013 21:20:44 +0200
 
