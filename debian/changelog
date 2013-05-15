@@ -1,3 +1,9 @@
+glide (2002.04.10ds1-9) UNRELEASED; urgency=low
+
+  * Remove package creation and maintainers history from debian/copyright.
+
+ -- Guillem Jover <guillem@debian.org>  Wed, 15 May 2013 21:20:44 +0200
+
 glide (2002.04.10ds1-8) unstable; urgency=low
 
   * Mark stack on assembler files as not executable.
