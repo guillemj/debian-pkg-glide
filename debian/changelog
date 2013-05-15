@@ -4,6 +4,9 @@ glide (2002.04.10ds1-9) UNRELEASED; urgency=low
   * Ignore error from db_unregister in case the template does not exist.
     (Closes: #708341)
   * Remove useless debian/BUGS file, these are tracked in the BTS.
+  * Debconf template translations:
+    - Update Russian. (Closes: #708440)
+      Thanks to Sergey Alyoshin <alyoshin.s@gmail.com>.
 
  -- Guillem Jover <guillem@debian.org>  Wed, 15 May 2013 21:20:44 +0200
 
