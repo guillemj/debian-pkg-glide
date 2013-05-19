@@ -5,6 +5,7 @@ glide (2002.04.10ds1-9) UNRELEASED; urgency=low
     (Closes: #708341)
   * Remove useless debian/BUGS file, these are tracked in the BTS.
   * Debconf template translations:
+    - Update Galician (Jorge Barreiro). (Closes: #708875)
     - Update Portuguese (Américo Monteiro). (Closes: #708736)
     - Update Russian. (Closes: #708440)
       Thanks to Sergey Alyoshin <alyoshin.s@gmail.com>.
