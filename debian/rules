@@ -2,26 +2,6 @@
 
 #export DH_VERBOSE = 1
 
-export FX_GLIDE_PIC = 1
-
-glide2_build := $(MAKE) -C $(CURDIR)/glide2x -f makefile.linux
-define glide3_build
-( \
-  cd $(CURDIR)/glide3x; \
-  mkdir $(CURDIR)/debian/tmp.$(1); \
-  ./chores.3dfx --generate "--configure=--enable-fx-glide-hw=$(1) \
-    --prefix=/usr" --build-dir=build.$(1); \
-  cd build.$(1); \
-  ./build.3dfx --no-x DESTDIR="$(CURDIR)/debian/tmp.$(1)/" \
-    CFLAGS="$(CFLAGS)" install; \
-)
-endef
-
-pkg_dir := $(CURDIR)/debian
-
-libglide2_dir := $(pkg_dir)/libglide2
-libglide3_dir := $(pkg_dir)/libglide3
-
 INSTALL=install
 INSTALL_LIB=$(INSTALL) -m 644
 
@@ -45,6 +25,25 @@ else
 endif
 endif
 endif
+
+export FX_GLIDE_PIC = 1
+
+glide2_build := $(MAKE) -C $(CURDIR)/glide2x -f makefile.linux
+define glide3_build
+( \
+  cd $(CURDIR)/glide3x; \
+  mkdir $(CURDIR)/debian/tmp.$(1); \
+  ./chores.3dfx --generate "--configure=--enable-fx-glide-hw=$(1) \
+    --prefix=/usr" --build-dir=build.$(1); \
+  cd build.$(1); \
+  ./build.3dfx --no-x DESTDIR="$(CURDIR)/debian/tmp.$(1)/" \
+    CFLAGS="$(CFLAGS)" install; \
+)
+endef
+
+pkg_dir := $(CURDIR)/debian
+libglide2_dir := $(pkg_dir)/libglide2
+libglide3_dir := $(pkg_dir)/libglide3
 
 debian/po/templates.pot: debian/libglide2.templates debian/libglide3.templates
 	@debconf-updatepo
