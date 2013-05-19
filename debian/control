@@ -1,7 +1,7 @@
 Source: glide
 Section: libs
 Priority: optional
-Build-Depends: debhelper (>= 7), autoconf, automake,
+Build-Depends: debhelper (>= 9), autoconf, automake,
  libtool (>= 1.5), libx11-dev, libxext-dev, libxxf86dga-dev, libxxf86vm-dev
 Build-Conflicts: automake1.4
 Maintainer: Guillem Jover <guillem@debian.org>
