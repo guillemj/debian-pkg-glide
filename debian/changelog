@@ -5,6 +5,7 @@ glide (2002.04.10ds1-9) UNRELEASED; urgency=low
     (Closes: #708341)
   * Remove useless debian/BUGS file, these are tracked in the BTS.
   * Pass CPPFLAGS, CFLAGS and LDFLAGS to upstream build system.
+  * Fix format string errors.
   * Debconf template translations:
     - Update Danish (Joe Dalton). (Closes: #708896)
     - Update Galician (Jorge Barreiro). (Closes: #708875)

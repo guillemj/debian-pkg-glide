@@ -32,3 +32,4 @@ z07-cpudetect-no-ia32
 z08-non-exec-stack
 z09-typos
 z10-ftbfs-gcc-4.8
+z11-format-string

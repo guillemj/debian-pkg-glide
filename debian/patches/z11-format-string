@@ -1,0 +1,63 @@
+---
+ glide2x/cvg/glide/tests/tlib.c |    2 +-
+ glide2x/h3/glide/tests/tlib.c  |    2 +-
+ swlibs/fxmisc/fximg.c          |    2 +-
+ swlibs/newpci/pcilib/fxlinux.c |    2 +-
+ swlibs/texus2/lib/eigen.c      |    2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
+
+--- a/swlibs/fxmisc/fximg.c
++++ b/swlibs/fxmisc/fximg.c
+@@ -1949,7 +1949,7 @@ FxBool imgReadFile(const char *filename,
+ 	    char buf[1024], *p;
+ 	    strcpy(buf,prefix);			// copy and replace semicolon
+ 	    if ((p = strchr(buf,';')) != NULL) *p = '\0';
+-	    fprintf(stderr,buf);
++	    fprintf(stderr, "%s", buf);
+ 	    fprintf(stderr,"/");
+ 	}
+ 	fprintf (stderr,"%s (%ldx%ld) ...", filename, info->any.width,info->any.height);
+--- a/swlibs/newpci/pcilib/fxlinux.c
++++ b/swlibs/newpci/pcilib/fxlinux.c
+@@ -174,7 +174,7 @@ pciIdentifyLinux(void)
+ static FxBool 
+ pciOutputStringLinux(const char *msg) 
+ {
+-  printf(msg);
++  printf("%s", msg);
+   return FXTRUE;
+ }
+ 
+--- a/glide2x/cvg/glide/tests/tlib.c
++++ b/glide2x/cvg/glide/tests/tlib.c
+@@ -1360,7 +1360,7 @@ char tlGetCH( void ) {
+ 
+ FxBool
+ tlErrorMessage( char *err) {
+-  return !!fprintf(stderr, err);
++  return !!fprintf(stderr, "%s", err);
+ } /* tlErrorMessage */
+ 
+ #else
+--- a/glide2x/h3/glide/tests/tlib.c
++++ b/glide2x/h3/glide/tests/tlib.c
+@@ -1360,7 +1360,7 @@ char tlGetCH( void ) {
+ 
+ FxBool
+ tlErrorMessage( char *err) {
+-  return !!fprintf(stderr, err);
++  return !!fprintf(stderr, "%s", err);
+ } /* tlErrorMessage */
+ 
+ #else
+--- a/swlibs/texus2/lib/eigen.c
++++ b/swlibs/texus2/lib/eigen.c
+@@ -409,7 +409,7 @@ printStatistics(
+     int i;
+ 
+     if (title) {
+-        fprintf(stdout, title);
++        fprintf(stdout, "%s", title);
+     }
+ 
+     if (input) {
