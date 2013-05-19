@@ -7,20 +7,20 @@ INSTALL_LIB=$(INSTALL) -m 644
 
 DEB_HOST_ARCH := $(shell dpkg-architecture -qDEB_HOST_ARCH)
 
-CFLAGS = -g -Wall
+CPPFLAGS = $(shell dpkg-buildflags --get CPPFLAGS)
+CFLAGS = $(shell dpkg-buildflags --get CFLAGS) -Wall
+LDFLAGS = $(shell dpkg-buildflags --get LDFLAGS)
 
-ifneq (,$(filter noopt,$(DEB_BUILD_OPTIONS)))
-  CFLAGS += -O0
-else
+ifeq (,$(filter noopt,$(DEB_BUILD_OPTIONS)))
 ifeq ($(DEB_HOST_ARCH),alpha)
-  CFLAGS += -O2 -mcpu=ev5 -fomit-frame-pointer \
+  CFLAGS += -mcpu=ev5 -fomit-frame-pointer \
 	    -fexpensive-optimizations -mieee -DBIG_OPT
 else
 ifeq ($(DEB_HOST_ARCH),i386)
   CFLAGS += -O3 -march=i486 -fomit-frame-pointer -funroll-loops \
 	    -fexpensive-optimizations -ffast-math -DBIG_OPT
 else
-  CFLAGS += -O2 -fomit-frame-pointer -fexpensive-optimizations -ffast-math \
+  CFLAGS += -fomit-frame-pointer -fexpensive-optimizations -ffast-math \
 	    -DBIG_OPT
 endif
 endif
