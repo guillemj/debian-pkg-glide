@@ -1,17 +1,17 @@
 # Danish po-debconf translation of glide
 # This file is distributed under the same license as the glide package.
 #
-# Copyright © 2004, 2005  Claus Hindsgaul <claus_h@image.dk>
-# Copyright © 2010  Joe Hansen <joedalton2@yahoo.dk>
+# Copyright © 2004, 2005 Claus Hindsgaul <claus_h@image.dk>
+# Copyright © 2010, 2013 Joe Hansen <joedalton2@yahoo.dk>
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: glide 2002.04.10-2\n"
+"Project-Id-Version: glide 2002.04.10ds1-9\n"
 "Report-Msgid-Bugs-To: glide@packages.debian.org\n"
 "POT-Creation-Date: 2013-02-24 01:47+0100\n"
-"PO-Revision-Date: 2011-07-30 15:07+0200\n"
+"PO-Revision-Date: 2013-05-19 15:07+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
-"Language-Team: Danish <debian-l10n-danish@lists.debian.org> \n"
+"Language-Team: Danish <debian-l10n-danish@lists.debian.org>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -111,7 +111,7 @@ msgstr "Vælg det kort, du ønsker at bruge til 3D-acceleration."
 #. Description
 #: ../libglide2.templates:5001 ../libglide3.templates:5001
 msgid "${target} exists but is not a symlink!"
-msgstr ""
+msgstr "${target} findes men er ikke en symbolsk henvisning!"
 
 #. Type: boolean
 #. Description
