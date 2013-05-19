@@ -28,7 +28,8 @@ endif
 
 export FX_GLIDE_PIC = 1
 
-glide2_build := $(MAKE) -C $(CURDIR)/glide2x -f makefile.linux
+glide2_build := $(MAKE) -C $(CURDIR)/glide2x -f makefile.linux \
+  VCDEFS="$(CPPFLAGS)" CNODEBUG="$(CFLAGS)" LNODEBUG="$(LDFLAGS)"
 define glide3_build
 ( \
   cd $(CURDIR)/glide3x; \
@@ -37,7 +38,7 @@ define glide3_build
     --prefix=/usr" --build-dir=build.$(1); \
   cd build.$(1); \
   ./build.3dfx --no-x DESTDIR="$(CURDIR)/debian/tmp.$(1)/" \
-    CFLAGS="$(CFLAGS)" install; \
+    CPPFLAGS="$(CPPFLAGS)" CFLAGS="$(CFLAGS)" LDFLAGS="$(LDFLAGS)" install; \
 )
 endef
 
@@ -54,8 +55,8 @@ build-arch: build-arch.stamp
 build-arch.stamp: debian/po/templates.pot
 ifeq ($(DEB_HOST_ARCH),i386)
 	ln -fs ../swlibs glide2x/
-	$(glide2_build) FX_GLIDE_HW=cvg CNODEBUG="$(CFLAGS)"
-	$(glide2_build) FX_GLIDE_HW=h3 CNODEBUG="$(CFLAGS)"
+	$(glide2_build) FX_GLIDE_HW=cvg
+	$(glide2_build) FX_GLIDE_HW=h3
 endif
 	ln -fs ../swlibs glide3x/
 	$(call glide3_build,h3)
