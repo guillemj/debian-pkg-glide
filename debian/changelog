@@ -1,4 +1,4 @@
-glide (2002.04.10ds1-9) UNRELEASED; urgency=low
+glide (2002.04.10ds1-9) unstable; urgency=low
 
   * Remove package creation and maintainers history from debian/copyright.
   * Ignore error from db_unregister in case the template does not exist.
@@ -12,10 +12,9 @@ glide (2002.04.10ds1-9) UNRELEASED; urgency=low
     - Update Danish (Joe Dalton). (Closes: #708896)
     - Update Galician (Jorge Barreiro). (Closes: #708875)
     - Update Portuguese (Américo Monteiro). (Closes: #708736)
-    - Update Russian. (Closes: #708440)
-      Thanks to Sergey Alyoshin <alyoshin.s@gmail.com>.
+    - Update Russian (Sergey Alyoshin). (Closes: #708440)
 
- -- Guillem Jover <guillem@debian.org>  Wed, 15 May 2013 21:20:44 +0200
+ -- Guillem Jover <guillem@debian.org>  Sun, 19 May 2013 16:50:38 +0200
 
 glide (2002.04.10ds1-8) unstable; urgency=low
 
