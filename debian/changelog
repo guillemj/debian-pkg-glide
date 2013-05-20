@@ -1,3 +1,7 @@
+glide (2002.04.10ds1-10) UNRELEASED; urgency=low
+
+ -- Guillem Jover <guillem@debian.org>  Mon, 20 May 2013 17:43:54 +0200
+
 glide (2002.04.10ds1-9) unstable; urgency=low
 
   * Remove package creation and maintainers history from debian/copyright.
