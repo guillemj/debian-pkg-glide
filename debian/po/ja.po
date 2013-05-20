@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: glide 2002.04.10-19\n"
+"Project-Id-Version: glide 2002.04.10ds1-10\n"
 "Report-Msgid-Bugs-To: glide@packages.debian.org\n"
 "POT-Creation-Date: 2013-02-24 01:47+0100\n"
-"PO-Revision-Date: 2009-04-21 17:48+0900\n"
+"PO-Revision-Date: 2013-02-24 09:47+0900\n"
 "Last-Translator: Hideki Yamane (Debian-JP) <henrich@debian.or.jp>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
 "Language: ja\n"
@@ -109,7 +109,7 @@ msgstr "3D アクセラレーションを使いたいカードを選択してく
 #. Description
 #: ../libglide2.templates:5001 ../libglide3.templates:5001
 msgid "${target} exists but is not a symlink!"
-msgstr ""
+msgstr "${target} が存在しますがシンボリックリンクではありません!"
 
 #. Type: boolean
 #. Description
