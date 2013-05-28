@@ -2,6 +2,7 @@ glide (2002.04.10ds1-10) UNRELEASED; urgency=low
 
   * Debconf template translations:
     - Add Slovak (Ivan Masár). (Closes: #709110)
+    - Update French (Steve Petruzzello). (Closes: #709308)
     - Update Japanese (victory). (Closes: #709072)
 
  -- Guillem Jover <guillem@debian.org>  Mon, 20 May 2013 17:43:54 +0200
