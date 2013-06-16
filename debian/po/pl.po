@@ -1,0 +1,149 @@
+# Translation of glide debconf templates to Polish.
+# Copyright (C) 2013
+# This file is distributed under the same license as the glide package.
+#
+# Michał Kułach <michal.kulach@gmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: glide 2002.04.10ds1-10\n"
+"Report-Msgid-Bugs-To: glide@packages.debian.org\n"
+"POT-Creation-Date: 2013-02-24 01:47+0100\n"
+"PO-Revision-Date: 2013-05-17 17:24+0200\n"
+"Last-Translator: Michał Kułach <michal.kulach@gmail.com>\n"
+"Language-Team: Polish <debian-l10n-polish@lists.debian.org>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 1.4\n"
+
+#. Type: boolean
+#. Description
+#: ../libglide2.templates:2001 ../libglide3.templates:2001
+msgid "Manually select driver for 3Dfx card?"
+msgstr "Wybrać ręcznie sterownik do karty 3Dfx?"
+
+#. Type: boolean
+#. Description
+#: ../libglide2.templates:2001
+msgid ""
+"No 3Dfx card that is supported by glide2 was found. This package supports "
+"cards based on the following 3Dfx chipsets: Voodoo 2, Voodoo Banshee, and "
+"Voodoo 3."
+msgstr ""
+"Nie znaleziono karty 3Dfx, którą obsługiwałby glide2. Obsługiwane są karty "
+"korzystające z układów 3Dfx o nazwie Voodoo 2, Voodoo Banshee lub Voodoo 3."
+
+#. Type: boolean
+#. Description
+#: ../libglide2.templates:2001 ../libglide3.templates:2001
+msgid ""
+"If the graphics card in this computer does not use one of these chipsets, "
+"and you are not compiling programs against glide, this package will not be "
+"useful."
+msgstr ""
+"Jeśli używana karta graficzna nie należy do wymienionych i nie korzysta się z "
+"kompilowania programów w odniesieniu do glide, to ten pakiet będzie "
+"bezużyteczny."
+
+#. Type: boolean
+#. Description
+#: ../libglide2.templates:2001 ../libglide3.templates:2001
+msgid ""
+"If the graphics card is based on one of these chipsets, you should file a "
+"bug report against this package, including the output from the \"lspci -vm\" "
+"command."
+msgstr ""
+"Jeśli karta graficzna korzysta z któregoś z obsługiwanych układów należy "
+"zgłosić błąd w tym pakiecie, dołączając do niego wynik polecenia \"lspci "
+"-vm\"."
+
+#. Type: boolean
+#. Description
+#: ../libglide2.templates:2001 ../libglide3.templates:2001
+msgid ""
+"Please choose whether you want to manually select the driver to use for now."
+msgstr "Proszę zdecydować czy skorzystać z opcji ręcznego wyboru sterownika."
+
+#. Type: select
+#. Description
+#: ../libglide2.templates:3001 ../libglide3.templates:3001
+msgid "Driver for 3D acceleration:"
+msgstr "Sterownik do przyspieszenia 3D:"
+
+#. Type: select
+#. Description
+#: ../libglide2.templates:3001
+msgid ""
+"Please select the driver you would like to use for 3D acceleration:\n"
+" * cvg: Voodoo 2;\n"
+" * h3 : Voodoo Banshee and Voodoo 3."
+msgstr ""
+"Proszę wybrać sterownik, który będzie użyty do przyspieszenia 3D:\n"
+" * cvg: Voodoo 2,\n"
+" * h3 : Voodoo Banshee i Voodoo 3."
+
+#. Type: select
+#. Description
+#: ../libglide2.templates:4001 ../libglide3.templates:4001
+msgid "Card to use for 3D acceleration:"
+msgstr "Karta do przyspieszenia 3D:"
+
+#. Type: select
+#. Description
+#: ../libglide2.templates:4001
+msgid ""
+"Multiple 3Dfx-based cards were detected based on one of the following 3Dfx "
+"chipsets: Voodoo 2, Voodoo Banshee, and Voodoo 3."
+msgstr ""
+"Wykryto wiele kart 3Df korzystających z jednego z układów 3Dfx o nazwie "
+"Voodoo 2, Voodoo Banshee lub Voodoo 3."
+
+#. Type: select
+#. Description
+#: ../libglide2.templates:4001 ../libglide3.templates:4001
+msgid "Please select the card you would like to use for 3D acceleration."
+msgstr "Proszę wybrać kartę, która będzie używana do przyspieszenia 3D."
+
+#. Type: error
+#. Description
+#: ../libglide2.templates:5001 ../libglide3.templates:5001
+msgid "${target} exists but is not a symlink!"
+msgstr "${target} istnieje lecz nie jest dowiązaniem symbolicznym!"
+
+#. Type: boolean
+#. Description
+#: ../libglide3.templates:2001
+msgid ""
+"No 3Dfx card that is supported by glide3 was found. This package supports "
+"cards based on the following 3Dfx chipsets: Voodoo Banshee, Voodoo 3, Voodoo "
+"4, and Voodoo 5."
+msgstr ""
+"Nie znaleziono karty 3Dfx, którą obsługiwałby glide3. Obsługiwane są karty "
+"korzystające z układów 3Dfx o nazwie Voodoo Banshee, Voodoo 3, Voodoo 4 lub "
+"Voodoo 5."
+
+#. Type: select
+#. Description
+#: ../libglide3.templates:3001
+msgid ""
+"Please select the driver you would like to use for 3D acceleration:\n"
+" * h3: Voodoo Banshee and Voodoo 3;\n"
+" * h5: Voodoo 4 and Voodoo 5."
+msgstr ""
+"Proszę wybrać sterownik, który będzie użyty do przyspieszenia 3D:\n"
+" * h3 : Voodoo Banshee i Voodoo 5,\n"
+" * h5 : Voodoo 4 i Voodoo 5."
+
+#. Type: select
+#. Description
+#: ../libglide3.templates:4001
+msgid ""
+"Multiple 3Dfx-based cards were detected based on one of the following 3Dfx "
+"chipsets: Voodoo 2, Voodoo Banshee, Voodoo 3, Voodoo 4, and Voodoo 5."
+msgstr ""
+"Wykryto wiele kart 3Df korzystających z jednego z układów 3Dfx o nazwie "
+"Voodoo 2, Voodoo Banshee, Voodoo 3, Voodoo 4 lub Voodoo 5."
+
