@@ -2,14 +2,15 @@
 # This file is distributed under the same license as the glide package.
 #
 # Copyright © 2004, 2006, 2009  Erik Schanze <eriks@debian.org>
+# 2013 Helge Kreutzmann <debian@helgefjell.de>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: glide 2002.04.10-19\n"
 "Report-Msgid-Bugs-To: glide@packages.debian.org\n"
 "POT-Creation-Date: 2013-02-24 01:47+0100\n"
-"PO-Revision-Date: 2009-05-07 22:34+0200\n"
-"Last-Translator: Erik Schanze <eriks@debian.org>\n"
+"PO-Revision-Date: 2013-07-22 19:34+0200\n"
+"Last-Translator: Helge Kreutzmann <debian@helgefjell.de>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -43,7 +44,7 @@ msgid ""
 "and you are not compiling programs against glide, this package will not be "
 "useful."
 msgstr ""
-"Wenn die Grafikkarte in diesem Rechner keinen dieser Chipsätze verwendet und "
+"Falls die Grafikkarte in diesem Rechner keinen dieser Chipsätze verwendet und "
 "Sie auch keine Programme mit Glide-Unterstützung kompilieren wollen, sollten "
 "Sie dieses Paket nicht installieren."
 
@@ -55,16 +56,16 @@ msgid ""
 "bug report against this package, including the output from the \"lspci -vm\" "
 "command."
 msgstr ""
-"Wenn Ihre Karte mit einem der genannten Chipsätze ausgestattet ist, sollten "
+"Falls Ihre Karte mit einem der genannten Chipsätze ausgestattet ist, sollten "
 "Sie einen Fehlerbericht für dieses Paket schreiben und die Ausgabe des "
-"Kommandos: 'lspci -vm' beifügen."
+"Befehls: »lspci -vm« beifügen."
 
 #. Type: boolean
 #. Description
 #: ../libglide2.templates:2001 ../libglide3.templates:2001
 msgid ""
 "Please choose whether you want to manually select the driver to use for now."
-msgstr "Stimmen Sie zu, wenn Sie den Treiber selbst auswählen wollen."
+msgstr "Bitte entscheiden Sie, ob Sie den Treiber selbst auswählen wollen."
 
 #. Type: select
 #. Description
@@ -97,7 +98,7 @@ msgid ""
 "Multiple 3Dfx-based cards were detected based on one of the following 3Dfx "
 "chipsets: Voodoo 2, Voodoo Banshee, and Voodoo 3."
 msgstr ""
-"Es wurden mehrere 3Dfx-Karten erkannt, die einen der folgenden 3Dfx-"
+"Es wurden mehrere 3Dfx-basierte Karten erkannt, die einen der folgenden 3Dfx-"
 "Chipsätze verwenden: Voodoo 2, Voodoo Banshee und Voodoo 3."
 
 #. Type: select
@@ -110,7 +111,7 @@ msgstr "Bitte die Karte für die 3D-Beschleunigung auswählen."
 #. Description
 #: ../libglide2.templates:5001 ../libglide3.templates:5001
 msgid "${target} exists but is not a symlink!"
-msgstr ""
+msgstr "${target} existiert, ist aber kein symbolischer Link!"
 
 #. Type: boolean
 #. Description
