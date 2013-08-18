@@ -1,14 +1,13 @@
 # Italian po-debconf translation of glide
 # This file is distributed under the same license as the glide package.
-#
-# Copyright © 2008, 2009  Luca Monducci <luca.mo@tiscali.it>
+# Luca Monducci <luca.mo@tiscali.it>, 2008-2013
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: glide 2002.04.10-2\n"
+"Project-Id-Version: glide 2002.04.10ds1-8\n"
 "Report-Msgid-Bugs-To: glide@packages.debian.org\n"
 "POT-Creation-Date: 2013-02-24 01:47+0100\n"
-"PO-Revision-Date: 2009-04-26 16:02+0200\n"
+"PO-Revision-Date: 2013-08-18 10:35+0200\n"
 "Last-Translator: Luca Monducci <luca.mo@tiscali.it>\n"
 "Language-Team: Italian <debian-l10n-italian@lists.debian.org>\n"
 "Language: it\n"
@@ -20,7 +19,7 @@ msgstr ""
 #. Description
 #: ../libglide2.templates:2001 ../libglide3.templates:2001
 msgid "Manually select driver for 3Dfx card?"
-msgstr "Selezionare manualmente un driver per la scheda 3Dfx?"
+msgstr "Selezionare manualmente il driver per la scheda 3Dfx?"
 
 #. Type: boolean
 #. Description
@@ -31,7 +30,7 @@ msgid ""
 "Voodoo 3."
 msgstr ""
 "Non sono state rilevate schede 3Dfx supportate da glide2. Questo pacchetto "
-"supporta le schede basate sui seguenti chipset 3Dfx: Voodoo 2, Voodoo "
+"supporta le schede 3Dfx basate sui seguenti chipset: Voodoo 2, Voodoo "
 "Banshee e Voodoo 3."
 
 #. Type: boolean
@@ -42,7 +41,7 @@ msgid ""
 "and you are not compiling programs against glide, this package will not be "
 "useful."
 msgstr ""
-"Se la scheda grafica in questo computer non utilizza uno di questi chipset e "
+"Se la scheda grafica in questo computer non utilizza uno di quei chipset e "
 "non si compilano programmi con glide, questo pacchetto sarà del tutto "
 "inutile."
 
@@ -54,7 +53,7 @@ msgid ""
 "bug report against this package, including the output from the \"lspci -vm\" "
 "command."
 msgstr ""
-"Se la scheda grafica è basata su uno di questi chipset, segnalare un bug per "
+"Se la scheda grafica è basata su uno di quei chipset, segnalare un bug per "
 "questo pacchetto inserendo nella segnalazione l'output del comando \"lspci -"
 "vm\"."
 
@@ -63,7 +62,7 @@ msgstr ""
 #: ../libglide2.templates:2001 ../libglide3.templates:2001
 msgid ""
 "Please choose whether you want to manually select the driver to use for now."
-msgstr "Scegliere il driver che si desidera selezionandolo manualmente adesso."
+msgstr "Scegliere il driver da usare selezionandolo manualmente."
 
 #. Type: select
 #. Description
@@ -79,7 +78,7 @@ msgid ""
 " * cvg: Voodoo 2;\n"
 " * h3 : Voodoo Banshee and Voodoo 3."
 msgstr ""
-"Scegliere il driver che si vuole usare per l'accelerazione 3D:\n"
+"Scegliere il driver da usare per l'accelerazione 3D:\n"
 " * cvg - Voodoo 2;\n"
 " * h3  - Voodoo Banshee e Voodoo 3."
 
@@ -96,20 +95,20 @@ msgid ""
 "Multiple 3Dfx-based cards were detected based on one of the following 3Dfx "
 "chipsets: Voodoo 2, Voodoo Banshee, and Voodoo 3."
 msgstr ""
-"Sono state rilevate più schede basate su uno dei seguenti chipset 3Dfx: "
+"Sono state rilevate più schede 3Dfx basate su uno dei seguenti chipset: "
 "Voodoo 2, Voodoo Banshee e Voodoo 3."
 
 #. Type: select
 #. Description
 #: ../libglide2.templates:4001 ../libglide3.templates:4001
 msgid "Please select the card you would like to use for 3D acceleration."
-msgstr "Scegliere la scheda che si vuole usare per l'accelerazione 3D."
+msgstr "Scegliere la scheda da usare per l'accelerazione 3D."
 
 #. Type: error
 #. Description
 #: ../libglide2.templates:5001 ../libglide3.templates:5001
 msgid "${target} exists but is not a symlink!"
-msgstr ""
+msgstr "${target} esiste ma non è un link simbolico!"
 
 #. Type: boolean
 #. Description
@@ -120,7 +119,7 @@ msgid ""
 "4, and Voodoo 5."
 msgstr ""
 "Non sono state rilevate schede 3Dfx supportate da glide3. Questo pacchetto "
-"supporta le schede basate sui seguenti chipset 3Dfx: Voodoo Banshee, Voodoo "
+"supporta le schede 3Dfx basate sui seguenti chipset: Voodoo Banshee, Voodoo "
 "3, Voodoo 4 e Voodoo 5."
 
 #. Type: select
@@ -131,7 +130,7 @@ msgid ""
 " * h3: Voodoo Banshee and Voodoo 3;\n"
 " * h5: Voodoo 4 and Voodoo 5."
 msgstr ""
-"Scegliere il driver che si vuole usare per l'accelerazione 3D:\n"
+"Scegliere il driver da usare per l'accelerazione 3D:\n"
 " * h3 - Voodoo Banshee e Voodoo 3;\n"
 " * h5 - Voodoo 4 e Voodoo 5."
 
@@ -142,5 +141,5 @@ msgid ""
 "Multiple 3Dfx-based cards were detected based on one of the following 3Dfx "
 "chipsets: Voodoo 2, Voodoo Banshee, Voodoo 3, Voodoo 4, and Voodoo 5."
 msgstr ""
-"Sono state rilevate più schede basate su uno dei seguenti chipset 3Dfx: "
+"Sono state rilevate più schede 3Dfx basate su uno dei seguenti chipset: "
 "Voodoo 2, Voodoo Banshee, Voodoo 3, Voodoo 4 e Voodoo 5."
