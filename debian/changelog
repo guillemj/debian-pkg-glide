@@ -8,6 +8,7 @@ glide (2002.04.10ds1-10) UNRELEASED; urgency=low
     - Update Japanese (victory). (Closes: #709072)
     - Update Polish (Michał Kułach). (Closes: #712489)
     - Update Swedish (Martin Bagge). (Closes: #712653)
+  * Now using Standards-Version 3.9.5 (no changes needed).
 
  -- Guillem Jover <guillem@debian.org>  Mon, 20 May 2013 17:43:54 +0200
 
