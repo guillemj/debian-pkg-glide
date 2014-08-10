@@ -1,4 +1,4 @@
-glide (2002.04.10ds1-10) UNRELEASED; urgency=low
+glide (2002.04.10ds1-10) unstable; urgency=low
 
   * Debconf template translations:
     - Add Slovak (Ivan Masár). (Closes: #709110)
@@ -10,7 +10,7 @@ glide (2002.04.10ds1-10) UNRELEASED; urgency=low
     - Update Swedish (Martin Bagge). (Closes: #712653)
   * Now using Standards-Version 3.9.5 (no changes needed).
 
- -- Guillem Jover <guillem@debian.org>  Mon, 20 May 2013 17:43:54 +0200
+ -- Guillem Jover <guillem@debian.org>  Sun, 10 Aug 2014 01:59:52 +0200
 
 glide (2002.04.10ds1-9) unstable; urgency=low
 
