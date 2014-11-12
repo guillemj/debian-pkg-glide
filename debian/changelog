@@ -1,4 +1,4 @@
-glide (2002.04.10ds1-11) UNRELEASED; urgency=low
+glide (2002.04.10ds1-11) unstable; urgency=low
 
   * Debconf template translations:
     - Update Dutch (Frans Spiesschaert). (Closes: #764097)
@@ -6,7 +6,7 @@ glide (2002.04.10ds1-11) UNRELEASED; urgency=low
     was moved from the libtool package to libtool-bin. (Closes: #769263)
   * Now using Standards-Version 3.9.6 (no changes needed).
 
- -- Guillem Jover <guillem@debian.org>  Wed, 12 Nov 2014 19:36:49 +0100
+ -- Guillem Jover <guillem@debian.org>  Wed, 12 Nov 2014 20:56:09 +0100
 
 glide (2002.04.10ds1-10) unstable; urgency=low
 
