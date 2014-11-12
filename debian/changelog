@@ -2,6 +2,8 @@ glide (2002.04.10ds1-11) UNRELEASED; urgency=low
 
   * Debconf template translations:
     - Update Dutch (Frans Spiesschaert). (Closes: #764097)
+  * Use the build tree libtool instead of the system one, as the libtool binary
+    was moved from the libtool package to libtool-bin. (Closes: #769263)
 
  -- Guillem Jover <guillem@debian.org>  Wed, 12 Nov 2014 19:36:49 +0100
 

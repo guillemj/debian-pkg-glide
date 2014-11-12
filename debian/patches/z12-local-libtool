@@ -1,0 +1,106 @@
+---
+ glide3x/h3/glide3/src/makefile.autoconf.am |   18 ++++++++++--------
+ glide3x/h5/glide3/src/makefile.autoconf.am |   13 +++++++------
+ 2 files changed, 17 insertions(+), 14 deletions(-)
+
+--- a/glide3x/h3/glide3/src/makefile.autoconf.am
++++ b/glide3x/h3/glide3/src/makefile.autoconf.am
+@@ -130,32 +130,34 @@ LDEFS = -DGLIDE_INIT_HWC \
+ # Special rules for assembly files.
+ #
+ 
++LIBTOOL = @LIBTOOL@
++
+ CPPASFLAGS = -fdollars-in-identifiers -x assembler-with-cpp -I.
+ 
+ xdraw2.lo : xdraw2.S xdraw2.inc.S fxgasm.h
+-	libtool --mode=compile $(CCAS) $(CCASFLAGS) $(CPPASFLAGS) -c -o $@ $<
++	$(LIBTOOL) --mode=compile $(CCAS) $(CCASFLAGS) $(CPPASFLAGS) -c -o $@ $<
+ 
+ xdraw3.lo : xdraw3.S fxgasm.h
+-	libtool --mode=compile $(CCAS) $(CCASFLAGS) $(CPPASFLAGS) -c -o $@ $<
++	$(LIBTOOL) --mode=compile $(CCAS) $(CCASFLAGS) $(CPPASFLAGS) -c -o $@ $<
+ 
+ # 3DNow!(tm) dependencies
+ # XXX_def.obj targets are the default targets
+ 
+ if GL_AMD3D
+ xdraw2_def.lo: xdraw2.S xdraw2.inc.S fxgasm.h
+-	libtool --mode=compile $(CCAS) $(CCASFLAGS) $(CPPASFLAGS) -c -o $@ $<
++	$(LIBTOOL) --mode=compile $(CCAS) $(CCASFLAGS) $(CPPASFLAGS) -c -o $@ $<
+ 
+ xdraw2_3dnow.lo: xdraw2.S xdraw2.inc.S fxgasm.h
+-	libtool --mode=compile $(CCAS) $(CCASFLAGS) $(CPPASFLAGS) -DGL_AMD3D -DUSE_PACKET_FIFO=1 -c -o $@ $<
++	$(LIBTOOL) --mode=compile $(CCAS) $(CCASFLAGS) $(CPPASFLAGS) -DGL_AMD3D -DUSE_PACKET_FIFO=1 -c -o $@ $<
+ 
+ xdraw3_def.lo: xdraw3.S fxgasm.h
+-	libtool --mode=compile $(CCAS) $(CCASFLAGS) $(CPPASFLAGS) -c -o $@ $<
++	$(LIBTOOL) --mode=compile $(CCAS) $(CCASFLAGS) $(CPPASFLAGS) -c -o $@ $<
+ 
+ xdraw3_3dnow.lo: xdraw3.S fxgasm.h
+-	libtool --mode=compile $(CCAS) $(CCASFLAGS) $(CPPASFLAGS) -DGL_AMD3D -DUSE_PACKET_FIFO=1 -c -o $@ $<
++	$(LIBTOOL) --mode=compile $(CCAS) $(CCASFLAGS) $(CPPASFLAGS) -DGL_AMD3D -DUSE_PACKET_FIFO=1 -c -o $@ $<
+ 
+ xtexdl_3dnow.lo: xtexdl.S fxgasm.h 
+-	libtool --mode=compile $(CCAS) $(CCASFLAGS) $(CPPASFLAGS) -DGL_AMD3D -DUSE_PACKET_FIFO=1 -c -o $@ $<
++	$(LIBTOOL) --mode=compile $(CCAS) $(CCASFLAGS) $(CPPASFLAGS) -DGL_AMD3D -DUSE_PACKET_FIFO=1 -c -o $@ $<
+ 
+ endif
+ 
+@@ -165,7 +167,7 @@ cpudtect.o cpudtect.lo: cpu_alpha.c
+ else
+ CPUSOURCES = cpudtect.S
+ cpudtect.o cpudtect.lo: cpudtect.S
+-	libtool --mode=compile $(CCAS) $(CCASFLAGS) $(CPPASFLAGS) -DUSE_PACKET_FIFO=1 -c -o $@ $<
++	$(LIBTOOL) --mode=compile $(CCAS) $(CCASFLAGS) $(CPPASFLAGS) -DUSE_PACKET_FIFO=1 -c -o $@ $<
+ endif
+ 
+ if DRI_BUILD
+--- a/glide3x/h5/glide3/src/makefile.autoconf.am
++++ b/glide3x/h5/glide3/src/makefile.autoconf.am
+@@ -152,30 +152,31 @@ LDEFS = -DGLIDE_LIB -DGLIDE3 -DGLIDE3_AL
+ #
+ # Special rules for assembly files.
+ #
++LIBTOOL = @LIBTOOL@
+ PREPROCESSOR=$(CPP) -x assembler-with-cpp  -I.
+ xdraw2_def.o xdraw2_def.lo: xdraw2.s xdraw2.inc.s fxgasm.h
+ 	$(PREPROCESSOR) $< > $*.tmp.s
+-	libtool --mode=compile $(CC) $(AFLAGS) -c -o $*.o $*.tmp.s
++	$(LIBTOOL) --mode=compile $(CC) $(AFLAGS) -c -o $*.o $*.tmp.s
+ 	$(RM) -f $*.tmp.s
+ 
+ xdraw2_3dnow.o xdraw2_3dnow.lo: xdraw2.s xdraw2.inc.s fxgasm.h
+ 	$(PREPROCESSOR) -DGL_AMD3D -DUSE_PACKET_FIFO=1 $< > $*.tmp.s
+-	libtool --mode=compile $(CC) $(AFLAGS) -c -o $*.o $*.tmp.s
++	$(LIBTOOL) --mode=compile $(CC) $(AFLAGS) -c -o $*.o $*.tmp.s
+ 	$(RM) -f $*.tmp.s
+ 
+ xdraw3_def.o xdraw3_def.lo: xdraw3.s fxgasm.h
+ 	$(PREPROCESSOR) $< > $*.tmp.s
+-	libtool --mode=compile $(CC) $(AFLAGS) -c -o $*.o $*.tmp.s
++	$(LIBTOOL) --mode=compile $(CC) $(AFLAGS) -c -o $*.o $*.tmp.s
+ 	$(RM) -f $*.tmp.s
+ 
+ xdraw3_3dnow.o xdraw3_3dnow.lo: xdraw3.s fxgasm.h
+ 	$(PREPROCESSOR) -DGL_AMD3D -DUSE_PACKET_FIFO=1 $< > $*.tmp.s
+-	libtool --mode=compile $(CC) $(AFLAGS) -c -o $*.o $*.tmp.s
++	$(LIBTOOL) --mode=compile $(CC) $(AFLAGS) -c -o $*.o $*.tmp.s
+ 	$(RM) -f $*.tmp.s
+ 
+ xtexdl_3dnow.o xtexdl_3dnow.lo: xtexdl.s fxgasm.h 
+ 	$(PREPROCESSOR) -DGL_AMD3D -DUSE_PACKET_FIFO=1 $< > $*.tmp.s
+-	libtool --mode=compile $(CC) $(AFLAGS) -c -o $*.o $*.tmp.s
++	$(LIBTOOL) --mode=compile $(CC) $(AFLAGS) -c -o $*.o $*.tmp.s
+ 	$(RM) -f $*.tmp.s
+ 
+ if FX_GLIDE_C_CPU_DETECT
+@@ -185,7 +186,7 @@ else
+ CPUSOURCES = cpudtect.s
+ cpudtect.o cpudtect.lo: cpudtect.s
+ 	$(PREPROCESSOR) -DUSE_PACKET_FIFO=1 $< > $*.tmp.s
+-	libtool --mode=compile $(CC) $(AFLAGS) -c -o $*.o $*.tmp.s
++	$(LIBTOOL) --mode=compile $(CC) $(AFLAGS) -c -o $*.o $*.tmp.s
+ 	$(RM) -f $*.tmp.s
+ endif
+ 
