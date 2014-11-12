@@ -4,15 +4,16 @@
 # Copyright © 2004  Luk Claes <luk.claes@ugent.be>
 # Copyright © 2006  Kurt De Bree <kdebree@telenet.be>
 # Copyright © 2011  Jeroen Schot <schot@a-eskwadraat.nl>
+# Frans Spiesschaert <Frans.Spiesschaert@yucom.be>, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: glide 2002.04.10ds1\n"
 "Report-Msgid-Bugs-To: glide@packages.debian.org\n"
 "POT-Creation-Date: 2013-02-24 01:47+0100\n"
-"PO-Revision-Date: 2011-07-30 15:11+0200\n"
-"Last-Translator: Jeroen Schot <schot@a-eskwadraat.nl>\n"
-"Language-Team: Debian l10n Dutch <debian-l10n-dutch@lists.debian.org>\n"
+"PO-Revision-Date: 2014-09-25 20:25+0200\n"
+"Last-Translator: Frans Spiesschaert <Frans.Spiesschaert@yucom.be>\n"
+"Language-Team: Debian Dutch l10n Team <debian-l10n-dutch@lists.debian.org>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -99,8 +100,7 @@ msgid ""
 "chipsets: Voodoo 2, Voodoo Banshee, and Voodoo 3."
 msgstr ""
 "Er zijn meerdere videokaarten gedetecteerd die zijn gebaseerd op een de "
-"volgende 3Dfx-chipsets: Voodoo 2, Voodoo Banshee, Voodoo 3, Voodoo 4 en "
-"Voodoo 5."
+"volgende 3Dfx-chipsets: Voodoo 2, Voodoo Banshee en Voodoo 3."
 
 #. Type: select
 #. Description
@@ -112,7 +112,7 @@ msgstr "Selecteer de kaart die u wilt gebruiken voor 3D-versnelling."
 #. Description
 #: ../libglide2.templates:5001 ../libglide3.templates:5001
 msgid "${target} exists but is not a symlink!"
-msgstr ""
+msgstr "${target} bestaat, maar is geen symbolische koppeling!"
 
 #. Type: boolean
 #. Description

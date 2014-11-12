@@ -1,6 +1,7 @@
 glide (2002.04.10ds1-11) UNRELEASED; urgency=low
 
-  * 
+  * Debconf template translations:
+    - Update Dutch (Frans Spiesschaert). (Closes: #764097)
 
  -- Guillem Jover <guillem@debian.org>  Wed, 12 Nov 2014 19:36:49 +0100
 
