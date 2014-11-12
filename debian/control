@@ -8,7 +8,7 @@ Maintainer: Guillem Jover <guillem@debian.org>
 Homepage: http://glide.sf.net/
 Vcs-Browser: http://git.hadrons.org/?p=debian/pkgs/glide.git
 Vcs-Git: git://git.hadrons.org/git/debian/pkgs/glide.git
-Standards-Version: 3.9.5
+Standards-Version: 3.9.6
 
 Package: glide2-bin
 Section: graphics
