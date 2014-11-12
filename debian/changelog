@@ -1,3 +1,9 @@
+glide (2002.04.10ds1-11) UNRELEASED; urgency=low
+
+  * 
+
+ -- Guillem Jover <guillem@debian.org>  Wed, 12 Nov 2014 19:36:49 +0100
+
 glide (2002.04.10ds1-10) unstable; urgency=low
 
   * Debconf template translations:
