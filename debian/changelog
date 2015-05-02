@@ -1,3 +1,9 @@
+glide (2002.04.10ds1-12) UNRELEASED; urgency=low
+
+  * Switch debian/copyright to machine-readable format 1.0.
+
+ -- Guillem Jover <guillem@debian.org>  Sat, 02 May 2015 06:15:26 +0200
+
 glide (2002.04.10ds1-11) unstable; urgency=low
 
   * Debconf template translations:
