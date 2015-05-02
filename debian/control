@@ -6,7 +6,7 @@ Build-Depends: debhelper (>= 9), autoconf, automake,
 Build-Conflicts: automake1.4
 Maintainer: Guillem Jover <guillem@debian.org>
 Homepage: http://glide.sf.net/
-Vcs-Browser: http://git.hadrons.org/?p=debian/pkgs/glide.git
+Vcs-Browser: http://git.hadrons.org/cgit/debian/pkgs/glide.git
 Vcs-Git: git://git.hadrons.org/git/debian/pkgs/glide.git
 Standards-Version: 3.9.6
 
