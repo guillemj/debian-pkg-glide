@@ -128,9 +128,8 @@ endif
 	# XXX: We use $(CURDIR) instead of $(libglide2_dir) because we do not
 	# ship in the .deb the symlink to the hardware specific library.
 	# XXX: dh_shlibdeps forces the -l argument to be an absolute path
-	# breaking the build, so pass LD_LIBRARY_PATH directly.
-	LD_LIBRARY_PATH=$(LD_LIBRARY_PATH):$(CURDIR)/glide2x/h3/lib \
-	  dh_shlibdeps -pglide2-bin -Llibglide2
+	# breaking the build, so pass -l directly to dpkg-shlibdeps.
+	dh_shlibdeps -pglide2-bin -Llibglide2 -- -l$(CURDIR)/glide2x/h3/lib
 	#dh_shlibdeps -pglide3-bin -Llibglide3 -l$(libglide3_dir)/usr/lib/
 	
 	dh_gencontrol -s
