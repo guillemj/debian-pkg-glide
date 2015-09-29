@@ -11,4 +11,3 @@ TODO
  - Remove redundant files, such as the dri repeated versions.
  - Remove not used old files. [done upstream on glide3]
  - Do not depend on user variables.
-
