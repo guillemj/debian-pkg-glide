@@ -3,19 +3,43 @@
 #
 # Copyright © 2003-2005  Guillem Jover <guillem@debian.org>
 # Copyright © 2009  Francisco Javier Cuadrado <fcocuadrado@gmail.com>
+# Copyright © 2014  Javier Fernández-Sanguino <jfs@debian.org>
+#
+#  Traductores, si no conoce el formato PO, merece la pena leer la
+#  documentación de gettext, especialmente las secciones dedicadas a este
+#  formato, por ejemplo ejecutando:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'
+#
+# Equipo de traducción al español, por favor lean antes de traducir
+# los siguientes documentos:
+#
+# - El proyecto de traducción de Debian al español
+#   http://www.debian.org/intl/spanish/
+#   especialmente las notas y normas de traducción en
+#   http://www.debian.org/intl/spanish/notas
+#
+# - La guía de traducción de po's de debconf:
+#   /usr/share/doc/po-debconf/README-trans
+#   o http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+# Si tiene dudas o consultas sobre esta traducción consulte con el último
+# traductor (campo Last-Translator) y ponga en copia a la lista de
+# traducción de Debian al español (<debian-l10n-spanish@lists.debian.org>)
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: glide 2002.04.10ds1-3\n"
 "Report-Msgid-Bugs-To: glide@packages.debian.org\n"
 "POT-Creation-Date: 2013-02-24 01:47+0100\n"
-"PO-Revision-Date: 2009-09-10 14:21+0200\n"
-"Last-Translator: Francisco Javier Cuadrado <fcocuadrado@gmail.com>\n"
+"PO-Revision-Date: 2015-09-29 17:24+0200\n"
+"Last-Translator: Javier Fernández-Sanguino Peña <jfs@debian.org>\n"
 "Language-Team: Spanish <debian-l10n-spanish@debian.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-POFile-SpellExtra: Dfx glide vm Banshee lspci Voodoo cvg target\n"
 
 #. Type: boolean
 #. Description
@@ -112,7 +136,7 @@ msgstr "Seleccione la tarjeta que querría utilizar para la aceleración 3D."
 #. Description
 #: ../libglide2.templates:5001 ../libglide3.templates:5001
 msgid "${target} exists but is not a symlink!"
-msgstr ""
+msgstr "¡${target} existe pero no es un enlace simbólico!"
 
 #. Type: boolean
 #. Description
@@ -166,10 +190,10 @@ msgstr ""
 #~ "se seleccionará un valor predeterminado correcto para compilar)."
 
 #~ msgid "Please select a driver."
-#~ msgstr "Por favor, seleccione un dispositivo."
+#~ msgstr "Seleccione un controlador."
 
 #~ msgid "Please select the driver you would like to use."
-#~ msgstr "Por favor seleccione el dispositivo que desea usar."
+#~ msgstr "Seleccione el controlador que desea usar."
 
 #~ msgid ""
 #~ " cvg  - Voodoo 2.\n"
@@ -179,7 +203,7 @@ msgstr ""
 #~ " h3   - Voodoo Banshee y Voodoo 3."
 
 #~ msgid "Please select a card."
-#~ msgstr "Por favor, seleccione una tarjeta."
+#~ msgstr "Seleccione una tarjeta."
 
 #~ msgid ""
 #~ "We have detected more then one video card based on the following 3Dfx "
