@@ -9,6 +9,7 @@ glide (2002.04.10ds1-12) UNRELEASED; urgency=low
   * Distinguish glide2 and glide3 package short descriptions.
   * Use https for hadrons.org URLs.
   * Now using Standards-Version 3.9.8 (no changes needed).
+  * Set -march=i686 to match the ISA bump in the i386 architecture.
 
  -- Guillem Jover <guillem@debian.org>  Sat, 02 May 2015 06:15:26 +0200
 
