@@ -7,6 +7,7 @@ glide (2002.04.10ds1-12) UNRELEASED; urgency=low
     - Update Brazilian Portuguese (Adriano Rafael Gomes). (Closes: #799415)
     - Update Spanish (Javier Fernández-Sanguino Peña). (Closes: #773564)
   * Distinguish glide2 and glide3 package short descriptions.
+  * Use https for hadrons.org URLs.
 
  -- Guillem Jover <guillem@debian.org>  Sat, 02 May 2015 06:15:26 +0200
 
