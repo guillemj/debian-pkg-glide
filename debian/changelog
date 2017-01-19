@@ -1,4 +1,4 @@
-glide (2002.04.10ds1-12) UNRELEASED; urgency=low
+glide (2002.04.10ds1-12) unstable; urgency=low
 
   * Switch debian/copyright to machine-readable format 1.0.
   * Switch Vcs-Browser to a cgit URL.
@@ -13,7 +13,7 @@ glide (2002.04.10ds1-12) UNRELEASED; urgency=low
   * Remove obsolete Build-Conflicts on automake1.4.
   * Wrap fields in debian/control.
 
- -- Guillem Jover <guillem@debian.org>  Sat, 02 May 2015 06:15:26 +0200
+ -- Guillem Jover <guillem@debian.org>  Thu, 19 Jan 2017 02:38:02 +0100
 
 glide (2002.04.10ds1-11) unstable; urgency=low
 
