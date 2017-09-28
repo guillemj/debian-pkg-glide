@@ -22,7 +22,9 @@ Architecture: i386
 Depends:
  ${shlibs:Depends},
  ${misc:Depends},
-Suggests: device3dfx-module, device3dfx-source
+Suggests:
+ device3dfx-module,
+ device3dfx-source,
 Description: graphics library for 3Dfx Voodoo 2 based cards - support programs
  This is a support package which should be installed if you use a
  card based on 3dfx Interactive, Inc's Voodoo chipsets.
@@ -33,7 +35,10 @@ Depends:
  ${shlibs:Depends},
  ${misc:Depends},
  pciutils,
-Suggests: glide2-bin, device3dfx-module, device3dfx-source
+Suggests:
+ device3dfx-module,
+ device3dfx-source,
+ glide2-bin,
 Description: graphics library for 3Dfx Voodoo 2 based cards - shared libraries
  This package allows you to use the 3D functions of cards based on
  3dfx Interactive, Inc's Voodoo 2 chipsets. You should install it if
