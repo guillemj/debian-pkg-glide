@@ -2,6 +2,7 @@ glide (2002.04.10ds1-13) UNRELEASED; urgency=medium
 
   * Do not pass inexistent packages via -N to debhelper. (Closes: #876705)
   * Use -a instead of -s for debhelper commands.
+  * Use debhelper compatibility level 10.
 
  -- Guillem Jover <guillem@debian.org>  Fri, 29 Sep 2017 09:00:20 +0200
 
