@@ -124,7 +124,7 @@ endif
 	dh_makeshlibs -s
 	dh_installdeb -s
 	
-	dh_shlibdeps -s -Nglide2-bin -Nglide3-bin
+	dh_shlibdeps -s -Nglide2-bin
 	# XXX: We use $(CURDIR) instead of $(libglide2_dir) because we do not
 	# ship in the .deb the symlink to the hardware specific library.
 	# XXX: dh_shlibdeps forces the -l argument to be an absolute path

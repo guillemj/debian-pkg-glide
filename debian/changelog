@@ -1,3 +1,9 @@
+glide (2002.04.10ds1-13) UNRELEASED; urgency=medium
+
+  * Do not pass inexistent packages via -N to debhelper. (Closes: #876705)
+
+ -- Guillem Jover <guillem@debian.org>  Fri, 29 Sep 2017 09:00:20 +0200
+
 glide (2002.04.10ds1-12) unstable; urgency=low
 
   * Switch debian/copyright to machine-readable format 1.0.
