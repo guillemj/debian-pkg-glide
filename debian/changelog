@@ -1,4 +1,4 @@
-glide (2002.04.10ds1-13) UNRELEASED; urgency=medium
+glide (2002.04.10ds1-13) unstable; urgency=medium
 
   * Do not pass inexistent packages via -N to debhelper. (Closes: #876705)
   * Use -a instead of -s for debhelper commands.
@@ -11,7 +11,7 @@ glide (2002.04.10ds1-13) UNRELEASED; urgency=medium
     semicolons, nor curly braces.
   * Update copyright years.
 
- -- Guillem Jover <guillem@debian.org>  Fri, 29 Sep 2017 09:00:20 +0200
+ -- Guillem Jover <guillem@debian.org>  Fri, 29 Sep 2017 09:05:32 +0200
 
 glide (2002.04.10ds1-12) unstable; urgency=low
 
