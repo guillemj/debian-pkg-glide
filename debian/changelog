@@ -7,6 +7,8 @@ glide (2002.04.10ds1-13) UNRELEASED; urgency=medium
   * Now using Standards-Version 4.1.1 (no changes needed).
   * Switch to use dpkg Makefile fragments.
   * Enable bindnow hardening build flags.
+  * Remove redundant syntax from postinst scripts. We do not need trailing
+    semicolons, nor curly braces.
 
  -- Guillem Jover <guillem@debian.org>  Fri, 29 Sep 2017 09:00:20 +0200
 

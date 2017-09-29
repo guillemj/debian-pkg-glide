@@ -3,29 +3,29 @@ set -e
 
 . /usr/share/debconf/confmodule
 
-if [ "$1" = "configure" ] ; then
+if [ "$1" = "configure" ]; then
   # Remove old question
   db_unregister libglide3/error || true
 
   db_get 'libglide3/driver'
   target='/usr/lib/libglide3.so.3'
   if [ "$RET" = "h3" ]; then
-    drv_lib='/usr/lib/glide3/libglide3_h3.so.3.10.0';
+    drv_lib='/usr/lib/glide3/libglide3_h3.so.3.10.0'
   elif [ "$RET" = "h5" ]; then
-    drv_lib='/usr/lib/glide3/libglide3_h5.so.3.10.0';
+    drv_lib='/usr/lib/glide3/libglide3_h5.so.3.10.0'
   else
-    exit 1;
+    exit 1
   fi
 
-  if [ -e $target ] ; then {
-    if [ -L $target ] ; then {
-      rm $target;
-    } else {
+  if [ -e $target ]; then
+    if [ -L $target ]; then
+      rm $target
+    else
       db_subst libglide3/target_not_symlink target "$target"
       db_go
-      exit 1;
-    } fi
-  } fi
+      exit 1
+    fi
+  fi
 
   ln -s $drv_lib $target
 fi
