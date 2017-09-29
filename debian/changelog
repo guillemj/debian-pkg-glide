@@ -9,6 +9,7 @@ glide (2002.04.10ds1-13) UNRELEASED; urgency=medium
   * Enable bindnow hardening build flags.
   * Remove redundant syntax from postinst scripts. We do not need trailing
     semicolons, nor curly braces.
+  * Update copyright years.
 
  -- Guillem Jover <guillem@debian.org>  Fri, 29 Sep 2017 09:00:20 +0200
 
