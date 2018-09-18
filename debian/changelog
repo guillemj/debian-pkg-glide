@@ -9,6 +9,7 @@ glide (2002.04.10ds1-14) UNRELEASED; urgency=medium
   * Fix installation permissions to always set write rights for the owner, so
     that we can build without root, as fakeroot was shadowing these issues.
     - debian/patches/z13-install-perms: New patch.
+  * Set R³ to no.
 
  -- Guillem Jover <guillem@debian.org>  Tue, 18 Sep 2018 04:11:44 +0200
 
