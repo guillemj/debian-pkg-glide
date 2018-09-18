@@ -1,0 +1,69 @@
+---
+ swlibs/include/make/3dfx.linux.mak |    8 ++++----
+ swlibs/include/make/3dfx.mak       |    8 ++++----
+ 2 files changed, 8 insertions(+), 8 deletions(-)
+
+--- a/swlibs/include/make/3dfx.linux.mak
++++ b/swlibs/include/make/3dfx.linux.mak
+@@ -162,7 +162,7 @@ $(THISDIR)incs: $(HEADERS)
+ ifdef HEADERS
+ ifdef INSTALL_DESTINATION
+ 	$(INSTALL) -d $(INSTALL_DESTINATION)/include
+-	$(INSTALL) -m 444 $(HEADERS) $(INSTALL_DESTINATION)/include
++	$(INSTALL) -m 644 $(HEADERS) $(INSTALL_DESTINATION)/include
+ else
+ 	@echo INSTALL_DESTINATION not defined, not installing HEADERS
+ endif
+@@ -193,9 +193,9 @@ endif
+ $(THISDIR)libs: $(LIBRARIES) $(SHARED_LIBRARY)
+ ifdef INSTALL_DESTINATION
+ 	$(INSTALL) -d $(INSTALL_DESTINATION)/lib
+-	$(INSTALL) -m 444 $(LIBRARIES) $(INSTALL_DESTINATION)/lib
++	$(INSTALL) -m 644 $(LIBRARIES) $(INSTALL_DESTINATION)/lib
+ ifneq "$(SHARED_LIBRARY)" ""
+-	$(INSTALL) -m 444 $(SHARED_LIBRARY) $(INSTALL_DESTINATION)/lib
++	$(INSTALL) -m 644 $(SHARED_LIBRARY) $(INSTALL_DESTINATION)/lib
+ 	# Create proper symlinks for the shared library so that the binaries
+ 	# can link against it.
+ 	rm -f $(INSTALL_DESTINATION)/lib/$(SONAME)
+@@ -232,7 +232,7 @@ ifneq ($(strip $(INSTALL_TARGETS)),)
+ ifdef INSTALL_DESTINATION
+ 	echo installing $(INSTALL_TARGETS)
+ 	$(INSTALL) -d $(INSTALL_DESTINATION)/bin
+-	$(INSTALL) -m 555 $(INSTALL_TARGETS) $(INSTALL_DESTINATION)/bin
++	$(INSTALL) -m 755 $(INSTALL_TARGETS) $(INSTALL_DESTINATION)/bin
+ else
+ 	@echo INSTALL_DESTINATION not defined, not installing PROGRAMS
+ endif
+--- a/swlibs/include/make/3dfx.mak
++++ b/swlibs/include/make/3dfx.mak
+@@ -231,7 +231,7 @@ $(THISDIR)incs: $(HEADERS)
+ ifdef HEADERS
+ ifdef INSTALL_DESTINATION
+ 	$(INSTALL) -d $(INSTALL_DESTINATION)/include
+-	$(INSTALL) -m 444 $(HEADERS) $(INSTALL_DESTINATION)/include
++	$(INSTALL) -m 644 $(HEADERS) $(INSTALL_DESTINATION)/include
+ else
+ 	@echo INSTALL_DESTINATION not defined, not installing HEADERS
+ endif
+@@ -270,9 +270,9 @@ endif
+ $(THISDIR)libs: $(LIBRARIES) $(SHARED_LIBRARY)
+ ifdef INSTALL_DESTINATION
+ 	$(INSTALL) -d $(INSTALL_DESTINATION)/lib
+-	$(INSTALL) -m 444 $(LIBRARIES) $(INSTALL_DESTINATION)/lib
++	$(INSTALL) -m 644 $(LIBRARIES) $(INSTALL_DESTINATION)/lib
+ ifneq "$(SHARED_LIBRARY)" ""
+-	$(INSTALL) -m 444 $(SHARED_LIBRARY) $(INSTALL_DESTINATION)/lib
++	$(INSTALL) -m 644 $(SHARED_LIBRARY) $(INSTALL_DESTINATION)/lib
+ 	ln -sf $(INSTALL_DESTINATION)/lib/$(SHARED_LIBRARY) $(INSTALL_DESTINATION)/lib/$(SONAME)
+ 	ln -sf $(INSTALL_DESTINATION)/lib/$(SHARED_LIBRARY) $(INSTALL_DESTINATION)/lib/$(BASENAME)
+ endif
+@@ -309,7 +309,7 @@ ifneq ($(strip $(INSTALL_TARGETS)),)
+ ifdef INSTALL_DESTINATION
+ 	echo installing $(INSTALL_TARGETS)
+ 	$(INSTALL) -d $(INSTALL_DESTINATION)/bin
+-	$(INSTALL) -m 555 $(INSTALL_TARGETS) $(INSTALL_DESTINATION)/bin
++	$(INSTALL) -m 755 $(INSTALL_TARGETS) $(INSTALL_DESTINATION)/bin
+ else
+ 	@echo INSTALL_DESTINATION not defined, not installing PROGRAMS
+ endif

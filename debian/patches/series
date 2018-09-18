@@ -34,3 +34,4 @@ z09-typos
 z10-ftbfs-gcc-4.8
 z11-format-string
 z12-local-libtool
+z13-install-perms
