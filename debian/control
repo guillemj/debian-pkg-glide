@@ -1,6 +1,11 @@
 Source: glide
 Section: libs
 Priority: optional
+Maintainer: Guillem Jover <guillem@debian.org>
+Homepage: http://glide.sf.net/
+Vcs-Browser: https://git.hadrons.org/cgit/debian/pkgs/glide.git
+Vcs-Git: https://git.hadrons.org/git/debian/pkgs/glide.git
+Standards-Version: 4.1.1
 Build-Depends:
  debhelper (>= 10),
  autoconf,
@@ -10,18 +15,13 @@ Build-Depends:
  libxext-dev,
  libxxf86dga-dev,
  libxxf86vm-dev,
-Maintainer: Guillem Jover <guillem@debian.org>
-Homepage: http://glide.sf.net/
-Vcs-Browser: https://git.hadrons.org/cgit/debian/pkgs/glide.git
-Vcs-Git: https://git.hadrons.org/git/debian/pkgs/glide.git
-Standards-Version: 4.1.1
 
 Package: glide2-bin
 Section: graphics
 Architecture: i386
 Depends:
- ${shlibs:Depends},
  ${misc:Depends},
+ ${shlibs:Depends},
 Suggests:
  device3dfx-module,
  device3dfx-source,
@@ -32,8 +32,8 @@ Description: graphics library for 3Dfx Voodoo 2 based cards - support programs
 Package: libglide2
 Architecture: i386
 Depends:
- ${shlibs:Depends},
  ${misc:Depends},
+ ${shlibs:Depends},
  pciutils,
 Suggests:
  device3dfx-module,
@@ -54,8 +54,8 @@ Package: libglide2-dev
 Section: libdevel
 Architecture: i386
 Depends:
- libglide2 (= ${binary:Version}),
  ${misc:Depends},
+ libglide2 (= ${binary:Version}),
 Description: graphics library for 3Dfx Voodoo 2 based cards - development files
  This package contains the header files, example programs, and
  documentation necessary to develop software using libglide2.
@@ -63,8 +63,8 @@ Description: graphics library for 3Dfx Voodoo 2 based cards - development files
 Package: libglide3
 Architecture: i386 alpha ia64 amd64
 Depends:
- ${shlibs:Depends},
  ${misc:Depends},
+ ${shlibs:Depends},
  pciutils,
 Description: graphics library for 3Dfx Voodoo 3+ based cards - shared libraries
  This package allows you to use the 3D functions of cards based on
@@ -78,8 +78,8 @@ Package: libglide3-dev
 Section: libdevel
 Architecture: i386 alpha ia64 amd64
 Depends:
- libglide3 (= ${binary:Version}),
  ${misc:Depends},
+ libglide3 (= ${binary:Version}),
 Description: graphics library for 3Dfx Voodoo 3+ based cards - development files
  This package contains the header files, example programs, and
  documentation necessary to develop software using libglide3.

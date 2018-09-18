@@ -1,3 +1,9 @@
+glide (2002.04.10ds1-14) UNRELEASED; urgency=medium
+
+  * Sort fields in debian/control and debian/copyright.
+
+ -- Guillem Jover <guillem@debian.org>  Tue, 18 Sep 2018 04:11:44 +0200
+
 glide (2002.04.10ds1-13) unstable; urgency=medium
 
   * Do not pass inexistent packages via -N to debhelper. (Closes: #876705)

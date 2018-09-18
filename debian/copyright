@@ -1,7 +1,7 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Source: https://sourceforge.net/p/glide/code/ branch glide-devel-branch
 Upstream-Name: glide
 Upstream-Contact: Guillem Jover <guillem@hadrons.org>
-Source: https://sourceforge.net/p/glide/code/ branch glide-devel-branch
 
 Files: *
 Copyright:
