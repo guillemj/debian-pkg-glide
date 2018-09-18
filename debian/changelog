@@ -12,6 +12,7 @@ glide (2002.04.10ds1-14) UNRELEASED; urgency=medium
   * Set R³ to no.
   * Bump Standards-Version to 4.2.1 (no changes needed).
   * Bump debhelper compatibility level to 11.
+  * Update copyright years.
 
  -- Guillem Jover <guillem@debian.org>  Tue, 18 Sep 2018 04:11:44 +0200
 
