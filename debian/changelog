@@ -1,6 +1,11 @@
 glide (2002.04.10ds1-14) UNRELEASED; urgency=medium
 
   * Sort fields in debian/control and debian/copyright.
+  * Do not consider dollar signs as part of the symbol names in assembler
+    code, thus getting rid of non-existing unresolvable inserted symbols.
+    (Closes: #908955)
+    - debian/patches/glide3x-link-unresolved: Update patch.
+    - debian/patches/z12-local-libtool: Likewise.
 
  -- Guillem Jover <guillem@debian.org>  Tue, 18 Sep 2018 04:11:44 +0200
 
@@ -290,7 +295,7 @@ glide (2002.04.10-14) unstable; urgency=high
     - debian/patches/glide2x-link-libm: New file.
     - debian/patches/glide3x-link-libm: Likewise.
   * Do not consider dollar signs as part of the symbol names in assembler
-    code, thus getting rid of non-existing unresolvable insterted symbols.
+    code, thus getting rid of non-existing unresolvable inserted symbols.
     (Closes: #329920, #326099)
     - debian/patches/glide3x-link-unresolved: New file.
   * Enable C based cpu detection code on !i386 instead of only on alpha.

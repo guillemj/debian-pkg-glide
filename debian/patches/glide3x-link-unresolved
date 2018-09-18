@@ -1,5 +1,8 @@
-Index: b/glide3x/h5/glide3/src/makefile.autoconf.am
-===================================================================
+---
+ glide3x/h3/glide3/src/makefile.autoconf.am |    2 +-
+ glide3x/h5/glide3/src/makefile.autoconf.am |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
 --- a/glide3x/h5/glide3/src/makefile.autoconf.am
 +++ b/glide3x/h5/glide3/src/makefile.autoconf.am
 @@ -152,7 +152,7 @@ LDEFS = -DGLIDE_LIB -DGLIDE3 -DGLIDE3_AL
@@ -11,3 +14,14 @@ Index: b/glide3x/h5/glide3/src/makefile.autoconf.am
  xdraw2_def.o xdraw2_def.lo: xdraw2.s xdraw2.inc.s fxgasm.h
  	$(PREPROCESSOR) $< > $*.tmp.s
  	libtool --mode=compile $(CC) $(AFLAGS) -c -o $*.o $*.tmp.s
+--- a/glide3x/h3/glide3/src/makefile.autoconf.am
++++ b/glide3x/h3/glide3/src/makefile.autoconf.am
+@@ -130,7 +130,7 @@ LDEFS = -DGLIDE_INIT_HWC \
+ # Special rules for assembly files.
+ #
+ 
+-CPPASFLAGS = -fdollars-in-identifiers -x assembler-with-cpp -I.
++CPPASFLAGS = -x assembler-with-cpp -I.
+ 
+ xdraw2.lo : xdraw2.S xdraw2.inc.S fxgasm.h
+ 	libtool --mode=compile $(CCAS) $(CCASFLAGS) $(CPPASFLAGS) -c -o $@ $<

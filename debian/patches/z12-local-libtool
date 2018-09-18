@@ -11,7 +11,7 @@
  
 +LIBTOOL = @LIBTOOL@
 +
- CPPASFLAGS = -fdollars-in-identifiers -x assembler-with-cpp -I.
+ CPPASFLAGS = -x assembler-with-cpp -I.
  
  xdraw2.lo : xdraw2.S xdraw2.inc.S fxgasm.h
 -	libtool --mode=compile $(CCAS) $(CCASFLAGS) $(CPPASFLAGS) -c -o $@ $<
