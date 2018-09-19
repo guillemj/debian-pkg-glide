@@ -1,4 +1,4 @@
-glide (2002.04.10ds1-14) UNRELEASED; urgency=medium
+glide (2002.04.10ds1-14) unstable; urgency=medium
 
   * Sort fields in debian/control and debian/copyright.
   * Do not consider dollar signs as part of the symbol names in assembler
@@ -17,7 +17,7 @@ glide (2002.04.10ds1-14) UNRELEASED; urgency=medium
     was repackaged.
   * Fix building twice in a row by removing autoconf cruft via debian/clean.
 
- -- Guillem Jover <guillem@debian.org>  Tue, 18 Sep 2018 04:11:44 +0200
+ -- Guillem Jover <guillem@debian.org>  Wed, 19 Sep 2018 09:34:51 +0200
 
 glide (2002.04.10ds1-13) unstable; urgency=medium
 
