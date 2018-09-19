@@ -13,6 +13,8 @@ glide (2002.04.10ds1-14) UNRELEASED; urgency=medium
   * Bump Standards-Version to 4.2.1 (no changes needed).
   * Bump debhelper compatibility level to 11.
   * Update copyright years.
+  * Add Comment field in debian/copyright describing why the source tarball
+    was repackaged.
 
  -- Guillem Jover <guillem@debian.org>  Tue, 18 Sep 2018 04:11:44 +0200
 

@@ -2,6 +2,8 @@ Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: https://sourceforge.net/p/glide/code/ branch glide-devel-branch
 Upstream-Name: glide
 Upstream-Contact: Guillem Jover <guillem@hadrons.org>
+Comment: The upstream source tarball was constructed by merging the three
+ split upstream tarballs into one.
 
 Files: *
 Copyright:
