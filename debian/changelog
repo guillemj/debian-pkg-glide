@@ -15,6 +15,7 @@ glide (2002.04.10ds1-14) UNRELEASED; urgency=medium
   * Update copyright years.
   * Add Comment field in debian/copyright describing why the source tarball
     was repackaged.
+  * Fix building twice in a row by removing autoconf cruft via debian/clean.
 
  -- Guillem Jover <guillem@debian.org>  Tue, 18 Sep 2018 04:11:44 +0200
 

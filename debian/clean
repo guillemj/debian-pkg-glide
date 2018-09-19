@@ -1,0 +1,17 @@
+glide3x/compile
+glide3x/config.guess
+glide3x/config.sub
+glide3x/depcomp
+glide3x/install-sh
+glide3x/ltmain.sh
+glide3x/missing
+glide3x/mkinstalldirs
+swlibs/fxmisc/makefile.autoconf.in
+swlibs/makefile.autoconf.in
+swlibs/newpci/makefile.autoconf.in
+swlibs/newpci/pcilib/makefile.autoconf.in
+swlibs/texus/lib/makefile.autoconf.in
+swlibs/texus/makefile.autoconf.in
+swlibs/texus2/cmd/makefile.autoconf.in
+swlibs/texus2/lib/makefile.autoconf.in
+swlibs/texus2/makefile.autoconf.in
