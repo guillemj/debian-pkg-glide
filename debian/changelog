@@ -2,6 +2,7 @@ glide (2002.04.10ds1-15) UNRELEASED; urgency=medium
 
   * Remove glide2x packages. These either support cards supported already
     by glide3x, or cards so old that they need an actual 2D video card.
+  * Add spaces around make variable assignments in debian/rules.
 
  -- Guillem Jover <guillem@debian.org>  Thu, 14 Feb 2019 03:15:10 +0100
 
