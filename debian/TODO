@@ -4,7 +4,7 @@ TODO
  - Exterminate all warnings.
  - Create an automake file for glide3 tests.
  - Build a package for glide3 tests.
- - Convert glide2 and swlibs old build system to auto*.
+ - Convert swlibs old build system to auto*.
  - Clean build environment.
  - Rename .s file to .S as they need to be preprocessed.
    And change the build rules to use libtool only. [done upstream]

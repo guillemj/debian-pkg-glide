@@ -27,8 +27,6 @@ endif
 
 export FX_GLIDE_PIC = 1
 
-glide2_build := $(MAKE) -C $(CURDIR)/glide2x -f makefile.linux \
-  VCDEFS="$(CPPFLAGS)" CNODEBUG="$(CFLAGS)" LNODEBUG="$(LDFLAGS)"
 define glide3_build
 ( \
   cd $(CURDIR)/glide3x; \
@@ -42,21 +40,15 @@ define glide3_build
 endef
 
 pkg_dir := $(CURDIR)/debian
-libglide2_dir := $(pkg_dir)/libglide2
 libglide3_dir := $(pkg_dir)/libglide3
 
-debian/po/templates.pot: debian/libglide2.templates debian/libglide3.templates
+debian/po/templates.pot: debian/libglide3.templates
 	@debconf-updatepo
 
 build-indep:
 
 build-arch: build-arch.stamp
 build-arch.stamp: debian/po/templates.pot
-ifeq ($(DEB_HOST_ARCH),i386)
-	ln -fs ../swlibs glide2x/
-	$(glide2_build) FX_GLIDE_HW=cvg
-	$(glide2_build) FX_GLIDE_HW=h3
-endif
 	ln -fs ../swlibs glide3x/
 	$(call glide3_build,h3)
 	$(call glide3_build,h5)
@@ -66,12 +58,6 @@ endif
 build: build-indep build-arch
 
 clean:
-ifeq ($(DEB_HOST_ARCH),i386)
-	ln -fs ../swlibs glide2x/
-	$(glide2_build) FX_GLIDE_HW=cvg clobber
-	$(glide2_build) FX_GLIDE_HW=h3 clobber
-	rm -f glide2x/swlibs
-endif
 	ln -fs ../swlibs glide3x/
 	cd $(CURDIR)/glide3x; ./chores.3dfx --clean
 	rm -f glide3x/swlibs
@@ -94,16 +80,6 @@ binary-arch: build-arch
 	
 	dh_installdirs -a
 	
-	# libglide2
-ifeq ($(DEB_HOST_ARCH),i386)
-	$(INSTALL_LIB) $(CURDIR)/glide2x/cvg/lib/libglide.so.2.53 \
-		       $(libglide2_dir)/usr/lib/glide2/libglide_cvg.so.2.53
-	$(INSTALL_LIB) $(CURDIR)/glide2x/h3/lib/libglide.so.2.60 \
-		       $(libglide2_dir)/usr/lib/glide2/libglide_h3.so.2.60
-	$(INSTALL_LIB) $(CURDIR)/glide2x/swlibs/lib/libtexus.so.1.1 \
-		       $(libglide2_dir)/usr/lib/
-endif
-	
 	# libglide3
 	$(INSTALL_LIB) $(CURDIR)/debian/tmp.h3/usr/lib/libglide3.so.3.10.0 \
 		       $(libglide3_dir)/usr/lib/glide3/libglide3_h3.so.3.10.0
@@ -123,13 +99,13 @@ endif
 	dh_makeshlibs -a
 	dh_installdeb -a
 	
-	dh_shlibdeps -a -Nglide2-bin
-	# XXX: We use $(CURDIR) instead of $(libglide2_dir) because we do not
+	dh_shlibdeps -a
+	#dh_shlibdeps -a -Nglide3-bin
+	# XXX: We use $(CURDIR) instead of $(libglide3_dir) because we do not
 	# ship in the .deb the symlink to the hardware specific library.
 	# XXX: dh_shlibdeps forces the -l argument to be an absolute path
 	# breaking the build, so pass -l directly to dpkg-shlibdeps.
-	dh_shlibdeps -pglide2-bin -Llibglide2 -- -l$(CURDIR)/glide2x/h3/lib
-	#dh_shlibdeps -pglide3-bin -Llibglide3 -l$(libglide3_dir)/usr/lib/
+	#dh_shlibdeps -pglide3-bin -Llibglide3 -l$(CURDIR)/glide3/h5/lib
 	
 	dh_gencontrol -a
 	dh_md5sums -a

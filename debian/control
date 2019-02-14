@@ -17,50 +17,6 @@ Build-Depends:
  libxxf86dga-dev,
  libxxf86vm-dev,
 
-Package: glide2-bin
-Section: graphics
-Architecture: i386
-Depends:
- ${misc:Depends},
- ${shlibs:Depends},
-Suggests:
- device3dfx-module,
- device3dfx-source,
-Description: graphics library for 3Dfx Voodoo 2 based cards - support programs
- This is a support package which should be installed if you use a
- card based on 3dfx Interactive, Inc's Voodoo chipsets.
-
-Package: libglide2
-Architecture: i386
-Depends:
- ${misc:Depends},
- ${shlibs:Depends},
- pciutils,
-Suggests:
- device3dfx-module,
- device3dfx-source,
- glide2-bin,
-Description: graphics library for 3Dfx Voodoo 2 based cards - shared libraries
- This package allows you to use the 3D functions of cards based on
- 3dfx Interactive, Inc's Voodoo 2 chipsets. You should install it if
- you use such a card.
- .
- This package is not useful with Voodoo Banshee, Voodoo 3,
- Voodoo 4, or Voodoo 5 cards, and the original Voodoo Graphics chipset
- is no longer supported.
- .
- You'll need the 3dfx kernel driver to use this library.
-
-Package: libglide2-dev
-Section: libdevel
-Architecture: i386
-Depends:
- ${misc:Depends},
- libglide2 (= ${binary:Version}),
-Description: graphics library for 3Dfx Voodoo 2 based cards - development files
- This package contains the header files, example programs, and
- documentation necessary to develop software using libglide2.
-
 Package: libglide3
 Architecture: i386 alpha ia64 amd64
 Depends:
