@@ -1,4 +1,4 @@
-glide (2002.04.10ds1-15) UNRELEASED; urgency=medium
+glide (2002.04.10ds1-15) unstable; urgency=medium
 
   * Remove glide2x packages. These either support cards supported already
     by glide3x, or cards so old that they need an actual 2D video card.
@@ -6,7 +6,7 @@ glide (2002.04.10ds1-15) UNRELEASED; urgency=medium
   * Bump Standards-Version to 4.3.0 (no changes needed).
   * Wrap multi-line field values to the next lines in debian/copyright.
 
- -- Guillem Jover <guillem@debian.org>  Thu, 14 Feb 2019 03:15:10 +0100
+ -- Guillem Jover <guillem@debian.org>  Tue, 26 Feb 2019 04:13:53 +0100
 
 glide (2002.04.10ds1-14) unstable; urgency=medium
 
