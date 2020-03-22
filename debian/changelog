@@ -1,4 +1,4 @@
-glide (2002.04.10ds1-16) UNRELEASED; urgency=medium
+glide (2002.04.10ds1-16) unstable; urgency=medium
 
   * Bump debhelper compatibility level to 12.
   * Switch from debian/compat to debhelper-compat Build-Depends.
@@ -9,7 +9,7 @@ glide (2002.04.10ds1-16) UNRELEASED; urgency=medium
   * Update lintian-overrides for renamed tags.
   * Update debconf POT and po files, after removal of libglide2 packages.
 
- -- Guillem Jover <guillem@debian.org>  Sun, 22 Mar 2020 03:46:05 +0100
+ -- Guillem Jover <guillem@debian.org>  Sun, 22 Mar 2020 04:17:20 +0100
 
 glide (2002.04.10ds1-15) unstable; urgency=medium
 
