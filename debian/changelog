@@ -4,6 +4,7 @@ glide (2002.04.10ds1-16) UNRELEASED; urgency=medium
   * Switch from debian/compat to debhelper-compat Build-Depends.
   * Update copyright years.
   * Remove no longer needed debhelper .dirs fragment files.
+  * Bump Standards-Version to 4.5.0 (no changes needed).
 
  -- Guillem Jover <guillem@debian.org>  Sun, 22 Mar 2020 03:46:05 +0100
 
