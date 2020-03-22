@@ -1,3 +1,2 @@
 # There are several backends, one of which gets symlinked at install time.
-libglide3: postrm-has-useless-call-to-ldconfig
-libglide3: postinst-has-useless-call-to-ldconfig
+libglide3: package-has-unnecessary-activation-of-ldconfig-trigger
