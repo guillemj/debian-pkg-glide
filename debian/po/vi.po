@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glide 2002.04.10-19\n"
 "Report-Msgid-Bugs-To: glide@packages.debian.org\n"
-"POT-Creation-Date: 2013-02-24 01:47+0100\n"
+"POT-Creation-Date: 2020-03-22 04:14+0100\n"
 "PO-Revision-Date: 2009-09-24 20:21+0200\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
@@ -22,99 +22,9 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../libglide2.templates:2001 ../libglide3.templates:2001
+#: ../libglide3.templates:2001
 msgid "Manually select driver for 3Dfx card?"
 msgstr "Chọn bằng tay trình điều khiển cho bo mạch 3Dfx ?"
-
-#. Type: boolean
-#. Description
-#: ../libglide2.templates:2001
-msgid ""
-"No 3Dfx card that is supported by glide2 was found. This package supports "
-"cards based on the following 3Dfx chipsets: Voodoo 2, Voodoo Banshee, and "
-"Voodoo 3."
-msgstr ""
-"Không tìm thấy bo mạch 3Dfx (hiệu ứng ba chiều) nào được glide2. Gói này hỗ "
-"trợ các bo mạch dựa vào những bộ phiến tinh thể theo đây: Voodoo 2, Voodoo "
-"Banshee và Voodoo 3."
-
-#. Type: boolean
-#. Description
-#: ../libglide2.templates:2001 ../libglide3.templates:2001
-msgid ""
-"If the graphics card in this computer does not use one of these chipsets, "
-"and you are not compiling programs against glide, this package will not be "
-"useful."
-msgstr ""
-"Nếu bo mạch đồ họa trong máy tính này không sử dụng một của những bộ phiến "
-"tinh thể này, và bạn không biên dịch chương trình đối với glide, thì gói này "
-"không có ích."
-
-#. Type: boolean
-#. Description
-#: ../libglide2.templates:2001 ../libglide3.templates:2001
-msgid ""
-"If the graphics card is based on one of these chipsets, you should file a "
-"bug report against this package, including the output from the \"lspci -vm\" "
-"command."
-msgstr ""
-"Nếu bo mạch đồ họa có phải dựa vào một của những bộ phiến tinh thể này, thì "
-"bạn nên gửi một báo cáo lỗi về gói này, bao gồm kết xuất của câu lệnh « "
-"lspci -vm »."
-
-#. Type: boolean
-#. Description
-#: ../libglide2.templates:2001 ../libglide3.templates:2001
-msgid ""
-"Please choose whether you want to manually select the driver to use for now."
-msgstr ""
-"Hãy chọn nếu bạn muốn tự chọn trình điều khiển để sử dụng kể từ bây giờ."
-
-#. Type: select
-#. Description
-#: ../libglide2.templates:3001 ../libglide3.templates:3001
-msgid "Driver for 3D acceleration:"
-msgstr "Trình điều khiển để tăng tốc 3D:"
-
-#. Type: select
-#. Description
-#: ../libglide2.templates:3001
-msgid ""
-"Please select the driver you would like to use for 3D acceleration:\n"
-" * cvg: Voodoo 2;\n"
-" * h3 : Voodoo Banshee and Voodoo 3."
-msgstr ""
-"Hãy chọn trình điều khiển bạn muốn sử dụng để tăng tốc ba chiều :\n"
-" • cvg\tVoodoo 2\n"
-" • h3\t\tVoodoo Banshee và Voodoo 3"
-
-#. Type: select
-#. Description
-#: ../libglide2.templates:4001 ../libglide3.templates:4001
-msgid "Card to use for 3D acceleration:"
-msgstr "Bo mạch cần dùng để tăng tốc 3D:"
-
-#. Type: select
-#. Description
-#: ../libglide2.templates:4001
-msgid ""
-"Multiple 3Dfx-based cards were detected based on one of the following 3Dfx "
-"chipsets: Voodoo 2, Voodoo Banshee, and Voodoo 3."
-msgstr ""
-"Phát hiện được nhiều bo mạch kiểu 3Dfx dựa vào một của những bộ phiến tinh "
-"thể 3Dfx theo đây: Voodoo 2, Voodoo Banshee và Voodoo 3."
-
-#. Type: select
-#. Description
-#: ../libglide2.templates:4001 ../libglide3.templates:4001
-msgid "Please select the card you would like to use for 3D acceleration."
-msgstr "Hãy chọn bo mạch bạn muốn sử dụng để tăng tốc ba chiều."
-
-#. Type: error
-#. Description
-#: ../libglide2.templates:5001 ../libglide3.templates:5001
-msgid "${target} exists but is not a symlink!"
-msgstr ""
 
 #. Type: boolean
 #. Description
@@ -127,6 +37,44 @@ msgstr ""
 "Không tìm thấy bo mạch 3Dfx nào được glide3 hỗ trợ. Gói này hỗ trợ các bo "
 "mạch dựa vào những bộ phiến tinh thể 3Dfx theo đây: Voodoo Banshee, Voodoo "
 "3, Voodoo 4 và Voodoo 5."
+
+#. Type: boolean
+#. Description
+#: ../libglide3.templates:2001
+msgid ""
+"If the graphics card in this computer does not use one of these chipsets, "
+"and you are not compiling programs against glide, this package will not be "
+"useful."
+msgstr ""
+"Nếu bo mạch đồ họa trong máy tính này không sử dụng một của những bộ phiến "
+"tinh thể này, và bạn không biên dịch chương trình đối với glide, thì gói này "
+"không có ích."
+
+#. Type: boolean
+#. Description
+#: ../libglide3.templates:2001
+msgid ""
+"If the graphics card is based on one of these chipsets, you should file a "
+"bug report against this package, including the output from the \"lspci -vm\" "
+"command."
+msgstr ""
+"Nếu bo mạch đồ họa có phải dựa vào một của những bộ phiến tinh thể này, thì "
+"bạn nên gửi một báo cáo lỗi về gói này, bao gồm kết xuất của câu lệnh « "
+"lspci -vm »."
+
+#. Type: boolean
+#. Description
+#: ../libglide3.templates:2001
+msgid ""
+"Please choose whether you want to manually select the driver to use for now."
+msgstr ""
+"Hãy chọn nếu bạn muốn tự chọn trình điều khiển để sử dụng kể từ bây giờ."
+
+#. Type: select
+#. Description
+#: ../libglide3.templates:3001
+msgid "Driver for 3D acceleration:"
+msgstr "Trình điều khiển để tăng tốc 3D:"
 
 #. Type: select
 #. Description
@@ -143,9 +91,52 @@ msgstr ""
 #. Type: select
 #. Description
 #: ../libglide3.templates:4001
+msgid "Card to use for 3D acceleration:"
+msgstr "Bo mạch cần dùng để tăng tốc 3D:"
+
+#. Type: select
+#. Description
+#: ../libglide3.templates:4001
 msgid ""
 "Multiple 3Dfx-based cards were detected based on one of the following 3Dfx "
 "chipsets: Voodoo 2, Voodoo Banshee, Voodoo 3, Voodoo 4, and Voodoo 5."
 msgstr ""
 "Phát hiện được nhiều bo mạch kiểu 3Dfx dựa vào một của những bộ phiến tinh "
 "thể 3Dfx theo đây: Voodoo 2, Voodoo Banshee, Voodoo 3, Voodoo 4 và Voodoo 5."
+
+#. Type: select
+#. Description
+#: ../libglide3.templates:4001
+msgid "Please select the card you would like to use for 3D acceleration."
+msgstr "Hãy chọn bo mạch bạn muốn sử dụng để tăng tốc ba chiều."
+
+#. Type: error
+#. Description
+#: ../libglide3.templates:5001
+msgid "${target} exists but is not a symlink!"
+msgstr ""
+
+#~ msgid ""
+#~ "No 3Dfx card that is supported by glide2 was found. This package supports "
+#~ "cards based on the following 3Dfx chipsets: Voodoo 2, Voodoo Banshee, and "
+#~ "Voodoo 3."
+#~ msgstr ""
+#~ "Không tìm thấy bo mạch 3Dfx (hiệu ứng ba chiều) nào được glide2. Gói này "
+#~ "hỗ trợ các bo mạch dựa vào những bộ phiến tinh thể theo đây: Voodoo 2, "
+#~ "Voodoo Banshee và Voodoo 3."
+
+#~ msgid ""
+#~ "Please select the driver you would like to use for 3D acceleration:\n"
+#~ " * cvg: Voodoo 2;\n"
+#~ " * h3 : Voodoo Banshee and Voodoo 3."
+#~ msgstr ""
+#~ "Hãy chọn trình điều khiển bạn muốn sử dụng để tăng tốc ba chiều :\n"
+#~ " • cvg\tVoodoo 2\n"
+#~ " • h3\t\tVoodoo Banshee và Voodoo 3"
+
+#~ msgid ""
+#~ "Multiple 3Dfx-based cards were detected based on one of the following "
+#~ "3Dfx chipsets: Voodoo 2, Voodoo Banshee, and Voodoo 3."
+#~ msgstr ""
+#~ "Phát hiện được nhiều bo mạch kiểu 3Dfx dựa vào một của những bộ phiến "
+#~ "tinh thể 3Dfx theo đây: Voodoo 2, Voodoo Banshee và Voodoo 3."

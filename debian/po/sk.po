@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glide 2002.04.10ds1-10\n"
 "Report-Msgid-Bugs-To: glide@packages.debian.org\n"
-"POT-Creation-Date: 2013-02-24 01:47+0100\n"
+"POT-Creation-Date: 2020-03-22 04:14+0100\n"
 "PO-Revision-Date: 2013-05-20 23:47+0200\n"
 "Last-Translator: Ivan Masár <helix84@centrum.sk>\n"
 "Language-Team: Slovak <debian-l10n-slovak@lists.debian.org>\n"
@@ -16,99 +16,9 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../libglide2.templates:2001 ../libglide3.templates:2001
+#: ../libglide3.templates:2001
 msgid "Manually select driver for 3Dfx card?"
 msgstr "Vybrať ovládač karty 3Dfx manuálne?"
-
-#. Type: boolean
-#. Description
-#: ../libglide2.templates:2001
-msgid ""
-"No 3Dfx card that is supported by glide2 was found. This package supports "
-"cards based on the following 3Dfx chipsets: Voodoo 2, Voodoo Banshee, and "
-"Voodoo 3."
-msgstr ""
-"Nebola nájdená žiadne karta 3Dfx, ktorú podporuje glide2. Tento balík "
-"podporuje karty založené na nasledujúcich chipsetoch 3Dfx: Voodoo 2, Voodoo "
-"Banshee a Voodoo 3."
-
-#. Type: boolean
-#. Description
-#: ../libglide2.templates:2001 ../libglide3.templates:2001
-msgid ""
-"If the graphics card in this computer does not use one of these chipsets, "
-"and you are not compiling programs against glide, this package will not be "
-"useful."
-msgstr ""
-"Ak grafická karta v tomto počítači nepoužíva jeden z týchto čipsetov a "
-"nepotrebujete kompilovať programy proti voči glide, tento balík pre vás "
-"nebude užitočný."
-
-#. Type: boolean
-#. Description
-#: ../libglide2.templates:2001 ../libglide3.templates:2001
-msgid ""
-"If the graphics card is based on one of these chipsets, you should file a "
-"bug report against this package, including the output from the \"lspci -vm\" "
-"command."
-msgstr ""
-"Ak je vaša grafická karta založená na jednom z týchto čipsetov, mali by ste "
-"podať hlásenie o chybe voči tomuto balíku, vrátane výstupu príkazu „lspci - "
-"vm“."
-
-#. Type: boolean
-#. Description
-#: ../libglide2.templates:2001 ../libglide3.templates:2001
-msgid ""
-"Please choose whether you want to manually select the driver to use for now."
-msgstr ""
-"Prosím, zvoľte, či chcete teraz manuálne vybrať ovládač, ktorý sa má použiť."
-
-#. Type: select
-#. Description
-#: ../libglide2.templates:3001 ../libglide3.templates:3001
-msgid "Driver for 3D acceleration:"
-msgstr "Ovládač na 3D akceleráciu:"
-
-#. Type: select
-#. Description
-#: ../libglide2.templates:3001
-msgid ""
-"Please select the driver you would like to use for 3D acceleration:\n"
-" * cvg: Voodoo 2;\n"
-" * h3 : Voodoo Banshee and Voodoo 3."
-msgstr ""
-"Prosím, vyberte ovládač, ktorý by ste chceli použiť na 3D akceleráciu:\n"
-" * cvg: Voodoo 2;\n"
-" * h3: Voodoo Banshee a Voodoo 3."
-
-#. Type: select
-#. Description
-#: ../libglide2.templates:4001 ../libglide3.templates:4001
-msgid "Card to use for 3D acceleration:"
-msgstr "Karta na 3D akceleráciu:"
-
-#. Type: select
-#. Description
-#: ../libglide2.templates:4001
-msgid ""
-"Multiple 3Dfx-based cards were detected based on one of the following 3Dfx "
-"chipsets: Voodoo 2, Voodoo Banshee, and Voodoo 3."
-msgstr ""
-"Boli zistené viaceré karty 3Dfx založené na jednom z týchto čipsetov 3Dfx: "
-"Voodoo 2, Voodoo Banshee a Voodoo 3."
-
-#. Type: select
-#. Description
-#: ../libglide2.templates:4001 ../libglide3.templates:4001
-msgid "Please select the card you would like to use for 3D acceleration."
-msgstr "Prosím, vyberte kartu, ktorú chcete použiť na 3D akceleráciu."
-
-#. Type: error
-#. Description
-#: ../libglide2.templates:5001 ../libglide3.templates:5001
-msgid "${target} exists but is not a symlink!"
-msgstr "${target} existuje, ale nie je symbolický odkaz!"
 
 #. Type: boolean
 #. Description
@@ -121,6 +31,44 @@ msgstr ""
 "Nebola nájdená žiadne karta 3Dfx, ktorú podporuje glide3. Tento balík "
 "podporuje karty založené na nasledujúcich chipsetoch 3Dfx: Voodoo 3, Voodoo "
 "4 a Voodoo 5."
+
+#. Type: boolean
+#. Description
+#: ../libglide3.templates:2001
+msgid ""
+"If the graphics card in this computer does not use one of these chipsets, "
+"and you are not compiling programs against glide, this package will not be "
+"useful."
+msgstr ""
+"Ak grafická karta v tomto počítači nepoužíva jeden z týchto čipsetov a "
+"nepotrebujete kompilovať programy proti voči glide, tento balík pre vás "
+"nebude užitočný."
+
+#. Type: boolean
+#. Description
+#: ../libglide3.templates:2001
+msgid ""
+"If the graphics card is based on one of these chipsets, you should file a "
+"bug report against this package, including the output from the \"lspci -vm\" "
+"command."
+msgstr ""
+"Ak je vaša grafická karta založená na jednom z týchto čipsetov, mali by ste "
+"podať hlásenie o chybe voči tomuto balíku, vrátane výstupu príkazu „lspci - "
+"vm“."
+
+#. Type: boolean
+#. Description
+#: ../libglide3.templates:2001
+msgid ""
+"Please choose whether you want to manually select the driver to use for now."
+msgstr ""
+"Prosím, zvoľte, či chcete teraz manuálne vybrať ovládač, ktorý sa má použiť."
+
+#. Type: select
+#. Description
+#: ../libglide3.templates:3001
+msgid "Driver for 3D acceleration:"
+msgstr "Ovládač na 3D akceleráciu:"
 
 #. Type: select
 #. Description
@@ -137,9 +85,52 @@ msgstr ""
 #. Type: select
 #. Description
 #: ../libglide3.templates:4001
+msgid "Card to use for 3D acceleration:"
+msgstr "Karta na 3D akceleráciu:"
+
+#. Type: select
+#. Description
+#: ../libglide3.templates:4001
 msgid ""
 "Multiple 3Dfx-based cards were detected based on one of the following 3Dfx "
 "chipsets: Voodoo 2, Voodoo Banshee, Voodoo 3, Voodoo 4, and Voodoo 5."
 msgstr ""
 "Boli zistené viaceré karty 3Dfx založené na jednom z týchto čipsetov 3Dfx: "
 "Voodoo 2, Voodoo Banshee a Voodoo 3, Voodoo 4 a Voodoo 5."
+
+#. Type: select
+#. Description
+#: ../libglide3.templates:4001
+msgid "Please select the card you would like to use for 3D acceleration."
+msgstr "Prosím, vyberte kartu, ktorú chcete použiť na 3D akceleráciu."
+
+#. Type: error
+#. Description
+#: ../libglide3.templates:5001
+msgid "${target} exists but is not a symlink!"
+msgstr "${target} existuje, ale nie je symbolický odkaz!"
+
+#~ msgid ""
+#~ "No 3Dfx card that is supported by glide2 was found. This package supports "
+#~ "cards based on the following 3Dfx chipsets: Voodoo 2, Voodoo Banshee, and "
+#~ "Voodoo 3."
+#~ msgstr ""
+#~ "Nebola nájdená žiadne karta 3Dfx, ktorú podporuje glide2. Tento balík "
+#~ "podporuje karty založené na nasledujúcich chipsetoch 3Dfx: Voodoo 2, "
+#~ "Voodoo Banshee a Voodoo 3."
+
+#~ msgid ""
+#~ "Please select the driver you would like to use for 3D acceleration:\n"
+#~ " * cvg: Voodoo 2;\n"
+#~ " * h3 : Voodoo Banshee and Voodoo 3."
+#~ msgstr ""
+#~ "Prosím, vyberte ovládač, ktorý by ste chceli použiť na 3D akceleráciu:\n"
+#~ " * cvg: Voodoo 2;\n"
+#~ " * h3: Voodoo Banshee a Voodoo 3."
+
+#~ msgid ""
+#~ "Multiple 3Dfx-based cards were detected based on one of the following "
+#~ "3Dfx chipsets: Voodoo 2, Voodoo Banshee, and Voodoo 3."
+#~ msgstr ""
+#~ "Boli zistené viaceré karty 3Dfx založené na jednom z týchto čipsetov "
+#~ "3Dfx: Voodoo 2, Voodoo Banshee a Voodoo 3."

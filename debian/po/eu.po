@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glide 2002.04.10-2\n"
 "Report-Msgid-Bugs-To: glide@packages.debian.org\n"
-"POT-Creation-Date: 2013-02-24 01:47+0100\n"
+"POT-Creation-Date: 2020-03-22 04:14+0100\n"
 "PO-Revision-Date: 2009-09-10 14:23+0200\n"
 "Last-Translator: Piarres Beobide <pi@beobide.net>\n"
 "Language-Team: Euskara <debian-l10n-basque@lists.debian.org>\n"
@@ -20,99 +20,9 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../libglide2.templates:2001 ../libglide3.templates:2001
+#: ../libglide3.templates:2001
 msgid "Manually select driver for 3Dfx card?"
 msgstr "Eskuz hautatu 3Dfx txartelaren kontrolatzaileak?"
-
-#. Type: boolean
-#. Description
-#: ../libglide2.templates:2001
-msgid ""
-"No 3Dfx card that is supported by glide2 was found. This package supports "
-"cards based on the following 3Dfx chipsets: Voodoo 2, Voodoo Banshee, and "
-"Voodoo 3."
-msgstr ""
-"Ez da aurkitu glide2-k onartzen duen 3Dfx txartelarik. Pakete hau hurrengo "
-"3Dfx txip-jokoetan oinarritutako txartelentzat da: Voodoo 2, Voodoo Banshee, "
-"eta Voodoo 3."
-
-#. Type: boolean
-#. Description
-#: ../libglide2.templates:2001 ../libglide3.templates:2001
-msgid ""
-"If the graphics card in this computer does not use one of these chipsets, "
-"and you are not compiling programs against glide, this package will not be "
-"useful."
-msgstr ""
-"Ez baduzu zerrendatutako txip-jokoetan oinarritutako txartelik eta ez baduzu "
-"softwarea glide bidez konpilatzen ez zenuke pakete hau instalaturik eduki "
-"beharko."
-
-#. Type: boolean
-#. Description
-#: ../libglide2.templates:2001 ../libglide3.templates:2001
-msgid ""
-"If the graphics card is based on one of these chipsets, you should file a "
-"bug report against this package, including the output from the \"lspci -vm\" "
-"command."
-msgstr ""
-"Zerrendatutako txip-jokoetan oinarritutako txartel bat baduzu mesedez bidali "
-"programa-errore bat txostenean \"lspci -vm\" komandoaren erantzuna erantsiaz."
-
-#. Type: boolean
-#. Description
-#: ../libglide2.templates:2001 ../libglide3.templates:2001
-msgid ""
-"Please choose whether you want to manually select the driver to use for now."
-msgstr ""
-"Aukeratu oraingoz erabili behar den kontrolatzailea eskuz hautatu nahi duzun "
-"ala ez."
-
-#. Type: select
-#. Description
-#: ../libglide2.templates:3001 ../libglide3.templates:3001
-msgid "Driver for 3D acceleration:"
-msgstr "3D azelerazio kontrolatzaileak:"
-
-#. Type: select
-#. Description
-#: ../libglide2.templates:3001
-msgid ""
-"Please select the driver you would like to use for 3D acceleration:\n"
-" * cvg: Voodoo 2;\n"
-" * h3 : Voodoo Banshee and Voodoo 3."
-msgstr ""
-"Mesedez hautatu 3D azeleraziorako erabiliko den kontrolatzailea:\n"
-" * cvg: Voodoo 2;\n"
-" * h3 : Voodoo Banshee eta Voodoo 3."
-
-#. Type: select
-#. Description
-#: ../libglide2.templates:4001 ../libglide3.templates:4001
-msgid "Card to use for 3D acceleration:"
-msgstr "3D azelerazioa erabiltzeko txartela:"
-
-#. Type: select
-#. Description
-#: ../libglide2.templates:4001
-msgid ""
-"Multiple 3Dfx-based cards were detected based on one of the following 3Dfx "
-"chipsets: Voodoo 2, Voodoo Banshee, and Voodoo 3."
-msgstr ""
-"Hurrengo 3Dfx txip-jokoetako bat duten txartel bat baino gehiago topatu da: "
-"Voodoo 2, Voodoo Banshee, eta Voodoo 3."
-
-#. Type: select
-#. Description
-#: ../libglide2.templates:4001 ../libglide3.templates:4001
-msgid "Please select the card you would like to use for 3D acceleration."
-msgstr "Mesedez hautatu zein txarteletan erabili nahi duzun 3D azelerazioa."
-
-#. Type: error
-#. Description
-#: ../libglide2.templates:5001 ../libglide3.templates:5001
-msgid "${target} exists but is not a symlink!"
-msgstr ""
 
 #. Type: boolean
 #. Description
@@ -125,6 +35,44 @@ msgstr ""
 "Ez da aurkitu glide3-k onartzen duen 3Dfx txartelarik. Pakete hau hurrengo "
 "3Dfx txip-jokoetan oinarritutako txartelentzat da: Voodoo Banshee, Voodoo 3, "
 "Voodoo 4, eta Voodoo 5."
+
+#. Type: boolean
+#. Description
+#: ../libglide3.templates:2001
+msgid ""
+"If the graphics card in this computer does not use one of these chipsets, "
+"and you are not compiling programs against glide, this package will not be "
+"useful."
+msgstr ""
+"Ez baduzu zerrendatutako txip-jokoetan oinarritutako txartelik eta ez baduzu "
+"softwarea glide bidez konpilatzen ez zenuke pakete hau instalaturik eduki "
+"beharko."
+
+#. Type: boolean
+#. Description
+#: ../libglide3.templates:2001
+msgid ""
+"If the graphics card is based on one of these chipsets, you should file a "
+"bug report against this package, including the output from the \"lspci -vm\" "
+"command."
+msgstr ""
+"Zerrendatutako txip-jokoetan oinarritutako txartel bat baduzu mesedez bidali "
+"programa-errore bat txostenean \"lspci -vm\" komandoaren erantzuna erantsiaz."
+
+#. Type: boolean
+#. Description
+#: ../libglide3.templates:2001
+msgid ""
+"Please choose whether you want to manually select the driver to use for now."
+msgstr ""
+"Aukeratu oraingoz erabili behar den kontrolatzailea eskuz hautatu nahi duzun "
+"ala ez."
+
+#. Type: select
+#. Description
+#: ../libglide3.templates:3001
+msgid "Driver for 3D acceleration:"
+msgstr "3D azelerazio kontrolatzaileak:"
 
 #. Type: select
 #. Description
@@ -141,12 +89,55 @@ msgstr ""
 #. Type: select
 #. Description
 #: ../libglide3.templates:4001
+msgid "Card to use for 3D acceleration:"
+msgstr "3D azelerazioa erabiltzeko txartela:"
+
+#. Type: select
+#. Description
+#: ../libglide3.templates:4001
 msgid ""
 "Multiple 3Dfx-based cards were detected based on one of the following 3Dfx "
 "chipsets: Voodoo 2, Voodoo Banshee, Voodoo 3, Voodoo 4, and Voodoo 5."
 msgstr ""
 "Hurrengo 3Dfx txip-jokoetan oinarritutako txartel bat baino gehiago aurkitu "
 "da: Voodoo 2, Voodoo Banshee, Voodoo 3, Voodoo 4, eta Voodoo 5."
+
+#. Type: select
+#. Description
+#: ../libglide3.templates:4001
+msgid "Please select the card you would like to use for 3D acceleration."
+msgstr "Mesedez hautatu zein txarteletan erabili nahi duzun 3D azelerazioa."
+
+#. Type: error
+#. Description
+#: ../libglide3.templates:5001
+msgid "${target} exists but is not a symlink!"
+msgstr ""
+
+#~ msgid ""
+#~ "No 3Dfx card that is supported by glide2 was found. This package supports "
+#~ "cards based on the following 3Dfx chipsets: Voodoo 2, Voodoo Banshee, and "
+#~ "Voodoo 3."
+#~ msgstr ""
+#~ "Ez da aurkitu glide2-k onartzen duen 3Dfx txartelarik. Pakete hau "
+#~ "hurrengo 3Dfx txip-jokoetan oinarritutako txartelentzat da: Voodoo 2, "
+#~ "Voodoo Banshee, eta Voodoo 3."
+
+#~ msgid ""
+#~ "Please select the driver you would like to use for 3D acceleration:\n"
+#~ " * cvg: Voodoo 2;\n"
+#~ " * h3 : Voodoo Banshee and Voodoo 3."
+#~ msgstr ""
+#~ "Mesedez hautatu 3D azeleraziorako erabiliko den kontrolatzailea:\n"
+#~ " * cvg: Voodoo 2;\n"
+#~ " * h3 : Voodoo Banshee eta Voodoo 3."
+
+#~ msgid ""
+#~ "Multiple 3Dfx-based cards were detected based on one of the following "
+#~ "3Dfx chipsets: Voodoo 2, Voodoo Banshee, and Voodoo 3."
+#~ msgstr ""
+#~ "Hurrengo 3Dfx txip-jokoetako bat duten txartel bat baino gehiago topatu "
+#~ "da: Voodoo 2, Voodoo Banshee, eta Voodoo 3."
 
 #~ msgid "No 3Dfx card supported by glide2 found! Manually select driver?"
 #~ msgstr ""

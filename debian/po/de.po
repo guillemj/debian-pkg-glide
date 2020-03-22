@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: glide 2002.04.10-19\n"
 "Report-Msgid-Bugs-To: glide@packages.debian.org\n"
-"POT-Creation-Date: 2013-02-24 01:47+0100\n"
+"POT-Creation-Date: 2020-03-22 04:14+0100\n"
 "PO-Revision-Date: 2013-07-22 19:34+0200\n"
 "Last-Translator: Helge Kreutzmann <debian@helgefjell.de>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
@@ -20,98 +20,9 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../libglide2.templates:2001 ../libglide3.templates:2001
+#: ../libglide3.templates:2001
 msgid "Manually select driver for 3Dfx card?"
 msgstr "Treiber für 3Dfx-Karte selbst auswählen?"
-
-#. Type: boolean
-#. Description
-#: ../libglide2.templates:2001
-msgid ""
-"No 3Dfx card that is supported by glide2 was found. This package supports "
-"cards based on the following 3Dfx chipsets: Voodoo 2, Voodoo Banshee, and "
-"Voodoo 3."
-msgstr ""
-"Es wurde keine von Glide2 unterstützte 3Dfx-Karte gefunden. Dieses Paket "
-"unterstützt Karten mit folgenden 3Dfx-Chipsätzen: Voodoo 2, Voodoo Banshee "
-"und Voodoo 3."
-
-#. Type: boolean
-#. Description
-#: ../libglide2.templates:2001 ../libglide3.templates:2001
-msgid ""
-"If the graphics card in this computer does not use one of these chipsets, "
-"and you are not compiling programs against glide, this package will not be "
-"useful."
-msgstr ""
-"Falls die Grafikkarte in diesem Rechner keinen dieser Chipsätze verwendet und "
-"Sie auch keine Programme mit Glide-Unterstützung kompilieren wollen, sollten "
-"Sie dieses Paket nicht installieren."
-
-#. Type: boolean
-#. Description
-#: ../libglide2.templates:2001 ../libglide3.templates:2001
-msgid ""
-"If the graphics card is based on one of these chipsets, you should file a "
-"bug report against this package, including the output from the \"lspci -vm\" "
-"command."
-msgstr ""
-"Falls Ihre Karte mit einem der genannten Chipsätze ausgestattet ist, sollten "
-"Sie einen Fehlerbericht für dieses Paket schreiben und die Ausgabe des "
-"Befehls: »lspci -vm« beifügen."
-
-#. Type: boolean
-#. Description
-#: ../libglide2.templates:2001 ../libglide3.templates:2001
-msgid ""
-"Please choose whether you want to manually select the driver to use for now."
-msgstr "Bitte entscheiden Sie, ob Sie den Treiber selbst auswählen wollen."
-
-#. Type: select
-#. Description
-#: ../libglide2.templates:3001 ../libglide3.templates:3001
-msgid "Driver for 3D acceleration:"
-msgstr "Treiber für 3D-Beschleunigung:"
-
-#. Type: select
-#. Description
-#: ../libglide2.templates:3001
-msgid ""
-"Please select the driver you would like to use for 3D acceleration:\n"
-" * cvg: Voodoo 2;\n"
-" * h3 : Voodoo Banshee and Voodoo 3."
-msgstr ""
-"Bitte den Treiber für die 3D-Beschleunigung auswählen:\n"
-" * cvg: Voodoo 2;\n"
-" * h3 : Voodoo Banshee und Voodoo 3."
-
-#. Type: select
-#. Description
-#: ../libglide2.templates:4001 ../libglide3.templates:4001
-msgid "Card to use for 3D acceleration:"
-msgstr "Karte für die 3D-Beschleunigung:"
-
-#. Type: select
-#. Description
-#: ../libglide2.templates:4001
-msgid ""
-"Multiple 3Dfx-based cards were detected based on one of the following 3Dfx "
-"chipsets: Voodoo 2, Voodoo Banshee, and Voodoo 3."
-msgstr ""
-"Es wurden mehrere 3Dfx-basierte Karten erkannt, die einen der folgenden 3Dfx-"
-"Chipsätze verwenden: Voodoo 2, Voodoo Banshee und Voodoo 3."
-
-#. Type: select
-#. Description
-#: ../libglide2.templates:4001 ../libglide3.templates:4001
-msgid "Please select the card you would like to use for 3D acceleration."
-msgstr "Bitte die Karte für die 3D-Beschleunigung auswählen."
-
-#. Type: error
-#. Description
-#: ../libglide2.templates:5001 ../libglide3.templates:5001
-msgid "${target} exists but is not a symlink!"
-msgstr "${target} existiert, ist aber kein symbolischer Link!"
 
 #. Type: boolean
 #. Description
@@ -124,6 +35,43 @@ msgstr ""
 "Es wurde keine von Glide3 unterstützte 3Dfx-Karte gefunden. Dieses Paket "
 "unterstützt Karten mit folgenden 3Dfx-Chipsätzen: Voodoo Banshee, Voodoo 3, "
 "Voodoo 4 und Voodoo 5."
+
+#. Type: boolean
+#. Description
+#: ../libglide3.templates:2001
+msgid ""
+"If the graphics card in this computer does not use one of these chipsets, "
+"and you are not compiling programs against glide, this package will not be "
+"useful."
+msgstr ""
+"Falls die Grafikkarte in diesem Rechner keinen dieser Chipsätze verwendet "
+"und Sie auch keine Programme mit Glide-Unterstützung kompilieren wollen, "
+"sollten Sie dieses Paket nicht installieren."
+
+#. Type: boolean
+#. Description
+#: ../libglide3.templates:2001
+msgid ""
+"If the graphics card is based on one of these chipsets, you should file a "
+"bug report against this package, including the output from the \"lspci -vm\" "
+"command."
+msgstr ""
+"Falls Ihre Karte mit einem der genannten Chipsätze ausgestattet ist, sollten "
+"Sie einen Fehlerbericht für dieses Paket schreiben und die Ausgabe des "
+"Befehls: »lspci -vm« beifügen."
+
+#. Type: boolean
+#. Description
+#: ../libglide3.templates:2001
+msgid ""
+"Please choose whether you want to manually select the driver to use for now."
+msgstr "Bitte entscheiden Sie, ob Sie den Treiber selbst auswählen wollen."
+
+#. Type: select
+#. Description
+#: ../libglide3.templates:3001
+msgid "Driver for 3D acceleration:"
+msgstr "Treiber für 3D-Beschleunigung:"
 
 #. Type: select
 #. Description
@@ -140,6 +88,12 @@ msgstr ""
 #. Type: select
 #. Description
 #: ../libglide3.templates:4001
+msgid "Card to use for 3D acceleration:"
+msgstr "Karte für die 3D-Beschleunigung:"
+
+#. Type: select
+#. Description
+#: ../libglide3.templates:4001
 msgid ""
 "Multiple 3Dfx-based cards were detected based on one of the following 3Dfx "
 "chipsets: Voodoo 2, Voodoo Banshee, Voodoo 3, Voodoo 4, and Voodoo 5."
@@ -147,3 +101,40 @@ msgstr ""
 "Es wurden mehrere 3Dfx-Karten erkannt, die einen der folgenden 3Dfx-"
 "Chipsätze verwenden: Voodoo 2, Voodoo Banshee, Voodoo 3, Voodoo 4 und Voodoo "
 "5."
+
+#. Type: select
+#. Description
+#: ../libglide3.templates:4001
+msgid "Please select the card you would like to use for 3D acceleration."
+msgstr "Bitte die Karte für die 3D-Beschleunigung auswählen."
+
+#. Type: error
+#. Description
+#: ../libglide3.templates:5001
+msgid "${target} exists but is not a symlink!"
+msgstr "${target} existiert, ist aber kein symbolischer Link!"
+
+#~ msgid ""
+#~ "No 3Dfx card that is supported by glide2 was found. This package supports "
+#~ "cards based on the following 3Dfx chipsets: Voodoo 2, Voodoo Banshee, and "
+#~ "Voodoo 3."
+#~ msgstr ""
+#~ "Es wurde keine von Glide2 unterstützte 3Dfx-Karte gefunden. Dieses Paket "
+#~ "unterstützt Karten mit folgenden 3Dfx-Chipsätzen: Voodoo 2, Voodoo "
+#~ "Banshee und Voodoo 3."
+
+#~ msgid ""
+#~ "Please select the driver you would like to use for 3D acceleration:\n"
+#~ " * cvg: Voodoo 2;\n"
+#~ " * h3 : Voodoo Banshee and Voodoo 3."
+#~ msgstr ""
+#~ "Bitte den Treiber für die 3D-Beschleunigung auswählen:\n"
+#~ " * cvg: Voodoo 2;\n"
+#~ " * h3 : Voodoo Banshee und Voodoo 3."
+
+#~ msgid ""
+#~ "Multiple 3Dfx-based cards were detected based on one of the following "
+#~ "3Dfx chipsets: Voodoo 2, Voodoo Banshee, and Voodoo 3."
+#~ msgstr ""
+#~ "Es wurden mehrere 3Dfx-basierte Karten erkannt, die einen der folgenden "
+#~ "3Dfx-Chipsätze verwenden: Voodoo 2, Voodoo Banshee und Voodoo 3."
