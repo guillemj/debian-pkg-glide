@@ -5,6 +5,7 @@ glide (2002.04.10ds1-16) UNRELEASED; urgency=medium
   * Update copyright years.
   * Remove no longer needed debhelper .dirs fragment files.
   * Bump Standards-Version to 4.5.0 (no changes needed).
+  * Reformat license in debian/copyright to remove TABs and reduce spaces.
 
  -- Guillem Jover <guillem@debian.org>  Sun, 22 Mar 2020 03:46:05 +0100
 
