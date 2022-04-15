@@ -1,0 +1,82 @@
+Author: Guillem Jover <guillem@debian.org>
+Description: Remove unused X11 includes and library linking
+ These are not used anymore, but were left around, which end up pulling in
+ shared libraries at build time and run-time, when they are not necessary.
+
+---
+ glide3x/h3/glide3/src/makefile.autoconf.am |    2 +-
+ glide3x/h3/glide3/src/makefile.linux       |    2 +-
+ glide3x/h3/minihwc/linhwc.c.dri            |    3 ---
+ glide3x/h5/glide3/src/makefile.autoconf.am |    2 +-
+ glide3x/h5/glide3/src/makefile.linux       |    2 +-
+ glide3x/h5/minihwc/linhwc.c                |    3 ---
+ 6 files changed, 4 insertions(+), 10 deletions(-)
+
+--- a/glide3x/h3/minihwc/linhwc.c.dri
++++ b/glide3x/h3/minihwc/linhwc.c.dri
+@@ -61,9 +61,6 @@ hwcCheckMemSize(hwcBoardInfo *bInfo, FxU
+ #include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
+-#include <X11/Xlib.h>
+-#include <X11/extensions/xf86dga.h>
+-#include <X11/extensions/xf86vmode.h>
+ #include "lindri.h"
+ 
+ static FxU32 fenceVar;
+--- a/glide3x/h5/minihwc/linhwc.c
++++ b/glide3x/h5/minihwc/linhwc.c
+@@ -61,9 +61,6 @@ hwcCheckMemSize(hwcBoardInfo *bInfo, FxU
+ #include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
+-#include <X11/Xlib.h>
+-#include <X11/extensions/xf86dga.h>
+-#include <X11/extensions/xf86vmode.h>
+ #include "lindri.h"
+ 
+ static FxU32 fenceVar;
+--- a/glide3x/h3/glide3/src/makefile.autoconf.am
++++ b/glide3x/h3/glide3/src/makefile.autoconf.am
+@@ -204,7 +204,7 @@ VGLIDE_SRC=$(FX_GLIDE_CTRISETUP_SRC)
+ WHOLE_LIBS = $(top_builddir)/swlibs/fxmisc/libfxmisc.la \
+              $(top_builddir)/swlibs/newpci/pcilib/libfxpci.la \
+              $(top_builddir)/@FX_GLIDE_HW@/minihwc/libminihwc.la
+-LINK_LIBS  = -L/usr/X11R6/lib -lX11 -lXext -lXxf86dga -lXxf86vm -lm
++LINK_LIBS  = -lm
+ 
+ CLEANFILES = fxinline.h fxgasm.h
+ 
+--- a/glide3x/h3/glide3/src/makefile.linux
++++ b/glide3x/h3/glide3/src/makefile.linux
+@@ -204,7 +204,7 @@ SHARED_LIBRARY  =	libglide3.so.3.10
+ SUBLIBRARIES    =       $(BUILD_ROOT_SWLIBS)/lib/libfxmisc.a \
+ 			$(BUILD_ROOT_SWLIBS)/lib/libfxpci.a \
+ 			$(BUILD_ROOT)/$(FX_GLIDE_HW)/lib/libminihwc.a
+-LINKLIBRARIES   =       -L/usr/X11R6/lib -lX11 -lXext -lXxf86dga -lXxf86vm -lm
++LINKLIBRARIES   =       -lm
+ 
+ # Make a static link library for things like the diags.
+ ifeq ($(FX_DLL_BUILD),1)
+--- a/glide3x/h5/glide3/src/makefile.autoconf.am
++++ b/glide3x/h5/glide3/src/makefile.autoconf.am
+@@ -209,7 +209,7 @@ WHOLE_LIBS = $(top_builddir)/swlibs/fxmi
+              $(top_builddir)/swlibs/newpci/pcilib/libfxpci.la \
+ 			 $(top_builddir)/swlibs/$(TEXTURE_UTILITIES_DIR)/lib/libtexus.la \
+              $(top_builddir)/@FX_GLIDE_HW@/minihwc/libminihwc.la
+-LINK_LIBS  = -L/usr/X11R6/lib -lX11 -lXext -lXxf86dga -lXxf86vm -lm
++LINK_LIBS  = -lm
+ 
+ CLEANFILES = fxinline.h fxgasm.h
+ 
+--- a/glide3x/h5/glide3/src/makefile.linux
++++ b/glide3x/h5/glide3/src/makefile.linux
+@@ -232,7 +232,7 @@ SHARED_LIBRARY  =	libglide3.so.3.1
+ SUBLIBRARIES    =       $(BUILD_ROOT_SWLIBS)/lib/libfxmisc.a \
+ 			$(BUILD_ROOT_SWLIBS)/lib/libfxpci.a \
+ 			$(BUILD_ROOT)/$(FX_GLIDE_HW)/lib/libminihwc.a
+-LINKLIBRARIES   =       -L/usr/X11R6/lib -lX11 -lXext -lXxf86dga -lXxf86vm
++LINKLIBRARIES   =
+ 
+ # Make a static link library for things like the diags.
+ ifeq ($(FX_DLL_BUILD),1)

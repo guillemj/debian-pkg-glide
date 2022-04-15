@@ -12,10 +12,6 @@ Build-Depends:
  autoconf,
  automake,
  libtool (>= 1.5),
- libx11-dev,
- libxext-dev,
- libxxf86dga-dev,
- libxxf86vm-dev,
 
 Package: libglide3
 Architecture: i386 alpha ia64 amd64

@@ -2,6 +2,7 @@ glide (2002.04.10ds1-17) UNRELEASED; urgency=medium
 
   * Switch debhelper compatibility level to 13.
   * Switch to Standards-Version 4.6.1 (no changes needed).
+  * Remove unused X11 includes, shared library linking and build dependencies.
 
  -- Guillem Jover <guillem@debian.org>  Wed, 09 Sep 2020 03:47:34 +0200
 
