@@ -98,15 +98,7 @@ binary-arch: build-arch
 	dh_fixperms -a
 	dh_makeshlibs -a
 	dh_installdeb -a
-	
 	dh_shlibdeps -a
-	#dh_shlibdeps -a -Nglide3-bin
-	# XXX: We use $(CURDIR) instead of $(libglide3_dir) because we do not
-	# ship in the .deb the symlink to the hardware specific library.
-	# XXX: dh_shlibdeps forces the -l argument to be an absolute path
-	# breaking the build, so pass -l directly to dpkg-shlibdeps.
-	#dh_shlibdeps -pglide3-bin -Llibglide3 -l$(CURDIR)/glide3/h5/lib
-	
 	dh_gencontrol -a
 	dh_md5sums -a
 	dh_builddeb -a
