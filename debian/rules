@@ -42,65 +42,28 @@ endef
 pkg_dir := $(CURDIR)/debian
 libglide3_dir := $(pkg_dir)/libglide3
 
+%:
+	dh $@
+
 debian/po/templates.pot: debian/libglide3.templates
 	@debconf-updatepo
 
-build-indep:
-
-build-arch: build-arch.stamp
-build-arch.stamp: debian/po/templates.pot
+override_dh_auto_build-arch: debian/po/templates.pot
 	ln -fs ../swlibs glide3x/
 	$(call glide3_build,h3)
 	$(call glide3_build,h5)
-	
-	touch $@
 
-build: build-indep build-arch
-
-clean:
+execute_before_dh_auto_clean:
 	ln -fs ../swlibs glide3x/
 	cd $(CURDIR)/glide3x; ./chores.3dfx --clean
 	rm -f glide3x/swlibs
 	
 	rm -rf $(CURDIR)/glide3x/build.h3 $(CURDIR)/debian/tmp.h3
 	rm -rf $(CURDIR)/glide3x/build.h5 $(CURDIR)/debian/tmp.h5
-	rm -f *.stamp
-	
-	dh_clean
 
-binary: binary-indep binary-arch
-
-binary-indep:
-	# Nothing to do.
-
-binary-arch: build-arch
-	dh_testdir
-	dh_testroot
-	dh_prep -a
-	
-	dh_installdirs -a
-	
+execute_before_dh_auto_install:
 	# libglide3
 	$(INSTALL_LIB) $(CURDIR)/debian/tmp.h3/usr/lib/libglide3.so.3.10.0 \
 		       $(libglide3_dir)/usr/lib/glide3/libglide3_h3.so.3.10.0
 	$(INSTALL_LIB) $(CURDIR)/debian/tmp.h5/usr/lib/libglide3.so.3.10.0 \
 		       $(libglide3_dir)/usr/lib/glide3/libglide3_h5.so.3.10.0
-	
-	dh_install -a
-	dh_installdocs -a
-	dh_installchangelogs -a
-	dh_installdebconf -a
-	
-	dh_lintian -a
-	dh_link -a
-	dh_strip -a
-	dh_compress -a
-	dh_fixperms -a
-	dh_makeshlibs -a
-	dh_installdeb -a
-	dh_shlibdeps -a
-	dh_gencontrol -a
-	dh_md5sums -a
-	dh_builddeb -a
-
-.PHONY: build-indep build-arch build clean binary binary-arch binary-indep
