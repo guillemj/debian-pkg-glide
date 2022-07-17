@@ -1,4 +1,4 @@
-glide (2002.04.10ds1-17) UNRELEASED; urgency=medium
+glide (2002.04.10ds1-17) unstable; urgency=medium
 
   * Switch debhelper compatibility level to 13.
   * Switch to Standards-Version 4.6.1 (no changes needed).
@@ -9,7 +9,7 @@ glide (2002.04.10ds1-17) UNRELEASED; urgency=medium
   * Update and add lintian overrides for bogus tags.
   * Add an upstream metadata file.
 
- -- Guillem Jover <guillem@debian.org>  Wed, 09 Sep 2020 03:47:34 +0200
+ -- Guillem Jover <guillem@debian.org>  Sun, 17 Jul 2022 19:09:14 +0200
 
 glide (2002.04.10ds1-16) unstable; urgency=medium
 
