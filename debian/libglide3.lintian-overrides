@@ -1,2 +1,4 @@
 # There are several backends, one of which gets symlinked at install time.
 libglide3: package-has-unnecessary-activation-of-ldconfig-trigger
+# Yes.
+libglide3: exit-in-shared-library [usr/lib/glide3/libglide3_*.so.*]
