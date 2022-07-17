@@ -5,6 +5,7 @@ glide (2002.04.10ds1-17) UNRELEASED; urgency=medium
   * Remove unused X11 includes, shared library linking and build dependencies.
   * Remove obsolete commented out code in debian/rules (from glide2 origins).
   * Switch to dh sequencer.
+  * Update copyright years.
 
  -- Guillem Jover <guillem@debian.org>  Wed, 09 Sep 2020 03:47:34 +0200
 
