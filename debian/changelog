@@ -7,6 +7,7 @@ glide (2002.04.10ds1-17) UNRELEASED; urgency=medium
   * Switch to dh sequencer.
   * Update copyright years.
   * Update and add lintian overrides for bogus tags.
+  * Add an upstream metadata file.
 
  -- Guillem Jover <guillem@debian.org>  Wed, 09 Sep 2020 03:47:34 +0200
 
