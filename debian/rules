@@ -67,3 +67,6 @@ execute_before_dh_auto_install:
 		       $(libglide3_dir)/usr/lib/glide3/libglide3_h3.so.3.10.0
 	$(INSTALL_LIB) $(CURDIR)/debian/tmp.h5/usr/lib/libglide3.so.3.10.0 \
 		       $(libglide3_dir)/usr/lib/glide3/libglide3_h5.so.3.10.0
+
+override_dh_installchangelogs:
+	dh_installchangelogs --no-trim
