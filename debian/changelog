@@ -1,3 +1,9 @@
+glide (2002.04.10ds1-18) UNRELEASED; urgency=medium
+
+  * Export DEB_BUILD_MAINT_OPTIONS and DEB_CFLAGS_MAINT_APPEND.
+
+ -- Guillem Jover <guillem@debian.org>  Thu, 12 Jan 2023 23:24:00 +0100
+
 glide (2002.04.10ds1-17) unstable; urgency=medium
 
   * Switch debhelper compatibility level to 13.

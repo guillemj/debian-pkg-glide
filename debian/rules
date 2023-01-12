@@ -5,8 +5,8 @@
 INSTALL = install
 INSTALL_LIB = $(INSTALL) -m 644
 
-DEB_BUILD_MAINT_OPTIONS = hardening=+bindnow
-DEB_CFLAGS_MAINT_APPEND = -Wall
+export DEB_BUILD_MAINT_OPTIONS = hardening=+bindnow
+export DEB_CFLAGS_MAINT_APPEND = -Wall
 
 include /usr/share/dpkg/default.mk
 
