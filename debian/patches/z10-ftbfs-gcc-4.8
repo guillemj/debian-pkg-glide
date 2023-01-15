@@ -1,3 +1,9 @@
+Author: Guillem Jover <guillem@hadrons.org>
+Description: Do not include headers inside fxTime() function
+ Fixes build failure with gcc-4.8
+Bug-Debian: #701287
+Origin: vendor
+
 ---
  swlibs/fxmisc/fxos.c |   14 +++++++++-----
  1 file changed, 9 insertions(+), 5 deletions(-)

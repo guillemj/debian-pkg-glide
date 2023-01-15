@@ -1,3 +1,10 @@
+Author: Guillem Jover <guillem@hadrons.org>
+Description: Use the build tree libtool instead of the system one
+ The libtool binary was moved from the libtool package to libtool-bin.
+Bug-Debian: #769263
+Origin: vendor
+Forwarded: not-needed
+
 ---
  glide3x/h3/glide3/src/makefile.autoconf.am |   18 ++++++++++--------
  glide3x/h5/glide3/src/makefile.autoconf.am |   13 +++++++------

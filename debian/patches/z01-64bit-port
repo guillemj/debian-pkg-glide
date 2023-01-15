@@ -1,5 +1,8 @@
 Status: not-applied
+Origin: vendor
+Forwarded: no
 
+---
 Index: b/glide3x/configure.in
 ===================================================================
 --- a/glide3x/configure.in

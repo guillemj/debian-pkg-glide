@@ -1,3 +1,10 @@
+Author: Guillem Jover <guillem@hadrons.org>
+Description: Disable assembler optimized triangle setup functions for glide2
+ They are not PIC ready.
+Bug-Debian: #376812
+Origin: vendor
+
+---
 Index: b/glide2x/cvg/glide/src/makefile.linux
 ===================================================================
 --- a/glide2x/cvg/glide/src/makefile.linux

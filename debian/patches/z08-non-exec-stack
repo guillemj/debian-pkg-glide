@@ -1,3 +1,7 @@
+Author: Guillem Jover <guillem@hadrons.org>
+Description: Mark stack on assembler files as not executable
+Origin: vendor
+
 ---
  glide2x/cvg/glide/src/cpudtect.S   |    3 +++
  glide2x/cvg/glide/src/xdraw2.S     |    4 ++++

@@ -1,3 +1,7 @@
+Author: Guillem Jover <guillem@hadrons.org>
+Description: Fix typos in source code spotted by lintian
+Origin: vendor
+
 ---
  glide2x/cvg/init/video.c         |    2 +-
  glide2x/sst1/init/initvg/video.c |    2 +-

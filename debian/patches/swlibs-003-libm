@@ -1,5 +1,9 @@
 Status: applied
+Origin: vendor
+Applied-Upstream: 2002.04.10+
+Forwarded: not-needed
 
+---
 Index: b/swlibs/texus2/lib/makefile.autoconf.am
 ===================================================================
 --- a/swlibs/texus2/lib/makefile.autoconf.am

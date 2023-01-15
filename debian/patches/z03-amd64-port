@@ -1,5 +1,11 @@
+Author: Guillem Jover <guillem@hadrons.org>
+Description: Add amd64 support
+ Enabled ia64 and amd64 architectures.
 Status: not-applied
+Origin: vendor
+Forwarded: no
 
+---
 Index: b/glide3x/configure.in
 ===================================================================
 --- a/glide3x/configure.in

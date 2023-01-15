@@ -1,5 +1,9 @@
 Status: applied
+Origin: vendor
+Applied-Upstream: 2002.04.10+
+Forwarded: not-needed
 
+---
 Index: b/glide2x/h3/glide/src/fxglide.h
 ===================================================================
 --- a/glide2x/h3/glide/src/fxglide.h

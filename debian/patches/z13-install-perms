@@ -1,3 +1,9 @@
+Author: Guillem Jover <guillem@hadrons.org>
+Description: Fix installation permissions to always set write rights for the owner
+ This will make it possible to build without root, as fakeroot was
+ shadowing these issues.
+Origin: vendor
+
 ---
  swlibs/include/make/3dfx.linux.mak |    8 ++++----
  swlibs/include/make/3dfx.mak       |    8 ++++----

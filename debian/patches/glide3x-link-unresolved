@@ -1,3 +1,7 @@
+Origin: vendor
+Applied-Upstream: 2002.04.10+
+Forwarded: not-needed
+
 ---
  glide3x/h3/glide3/src/makefile.autoconf.am |    2 +-
  glide3x/h5/glide3/src/makefile.autoconf.am |    2 +-

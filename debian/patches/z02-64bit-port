@@ -1,5 +1,10 @@
+Author: Guillem Jover <guillem@hadrons.org> ??
+Description: FIx build system for 64-bit ports
 Status: not-applied
+Origin: vendor
+Forwarded: no
 
+---
 Index: b/glide3x/h3/glide3/src/makefile.autoconf.am
 ===================================================================
 --- a/glide3x/h3/glide3/src/makefile.autoconf.am

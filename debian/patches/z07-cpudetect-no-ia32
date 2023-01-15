@@ -1,3 +1,10 @@
+Author: Guillem Jover <guillem@hadrons.org>
+Description: Enable C based cpu detection code on !i386 instead of only on alpha
+ This fixes a missing unresolved symbol on amd64 and probably ia64.
+Bug-Debian: #307058
+Origin: vendor
+
+---
 Index: b/glide3x/h3/glide3/src/cpu_alpha.c
 ===================================================================
 --- a/glide3x/h3/glide3/src/cpu_alpha.c

@@ -1,5 +1,9 @@
 Status: not-needed
+Origin: vendor
+Applied-Upstream: 2002.04.10+
+Forwarded: not-needed
 
+---
 Index: b/glide2x/cvg/glide/src/makefile.linux
 ===================================================================
 --- a/glide2x/cvg/glide/src/makefile.linux
