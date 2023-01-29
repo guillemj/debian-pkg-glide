@@ -5,6 +5,7 @@ glide (2002.04.10ds1-18) UNRELEASED; urgency=medium
   * Do not trim debian/changelog.
   * Update debian/patches metadata.
   * Switch to Standards-Version 4.6.2 (no changes needed).
+  * Update copyright years.
 
  -- Guillem Jover <guillem@debian.org>  Thu, 12 Jan 2023 23:24:00 +0100
 
