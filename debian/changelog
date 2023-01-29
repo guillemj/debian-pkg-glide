@@ -1,4 +1,4 @@
-glide (2002.04.10ds1-18) UNRELEASED; urgency=medium
+glide (2002.04.10ds1-18) unstable; urgency=medium
 
   * Export DEB_BUILD_MAINT_OPTIONS and DEB_CFLAGS_MAINT_APPEND.
   * Switch from hardening=+bindnow to hardening=+all.
@@ -8,7 +8,7 @@ glide (2002.04.10ds1-18) UNRELEASED; urgency=medium
   * Update copyright years.
   * Update lintian overrides.
 
- -- Guillem Jover <guillem@debian.org>  Thu, 12 Jan 2023 23:24:00 +0100
+ -- Guillem Jover <guillem@debian.org>  Sun, 29 Jan 2023 20:05:53 +0100
 
 glide (2002.04.10ds1-17) unstable; urgency=medium
 
