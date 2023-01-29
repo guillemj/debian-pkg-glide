@@ -1,8 +1,6 @@
 # Bogus tag, binary files or similar.
 source: very-long-line-length-in-source-file * > * [*/*.3df:*]
-source: very-long-line-length-in-source-file * > * [*/*.ppm:*]
 source: very-long-line-length-in-source-file * > * [*/*.txs:*]
 source: very-long-line-length-in-source-file * > * [*/src/banner.inc:*]
 source: very-long-line-length-in-source-file * > * [*/tests/test04a:*]
 source: very-long-line-length-in-source-file * > * [*/tests/tldata.inc:*]
-source: very-long-line-length-in-source-file * > * [swlibs/texus2/texus.doc:*]
