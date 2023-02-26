@@ -22,6 +22,7 @@ if [ "$1" = "configure" ]; then
       rm $target
     else
       db_subst libglide3/target_not_symlink target "$target"
+      db_input high libglide3/target_not_symlink || true
       db_go
       exit 1
     fi

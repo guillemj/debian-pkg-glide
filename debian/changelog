@@ -2,6 +2,7 @@ glide (2002.04.10ds1-19) UNRELEASED; urgency=medium
 
   * Enable LFS build options. This should ABI safe as the shared library
     does not expose any problematic type.
+  * Actually show the debconf error when the target is not a symlink.
 
  -- Guillem Jover <guillem@debian.org>  Sat, 25 Feb 2023 17:23:08 +0100
 

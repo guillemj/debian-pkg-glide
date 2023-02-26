@@ -1,4 +1,6 @@
 # There are several backends, one of which gets symlinked at install time.
 libglide3: package-has-unnecessary-activation-of-ldconfig-trigger
+# We are exiting non-zero and showing an error message:
+libglide3: postinst-uses-db-input [postinst:*]
 # Yes.
 libglide3: exit-in-shared-library [usr/lib/glide3/libglide3_*.so.*]
