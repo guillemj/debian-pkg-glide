@@ -1,10 +1,10 @@
-glide (2002.04.10ds1-20) UNRELEASED; urgency=medium
+glide (2002.04.10ds1-20) unstable; urgency=medium
 
   * Use autoconf $host_cpu instead of «uname -m» to decide how to optimize
     and what to compile into the resulting objects, which was making the
     build unreproducible on i386 when built on an amd64 build system.
 
- -- Guillem Jover <guillem@debian.org>  Sat, 04 Mar 2023 13:22:25 +0100
+ -- Guillem Jover <guillem@debian.org>  Sat, 04 Mar 2023 13:24:56 +0100
 
 glide (2002.04.10ds1-19) unstable; urgency=medium
 
