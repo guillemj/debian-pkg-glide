@@ -36,3 +36,4 @@ z11-format-string
 z12-local-libtool
 z13-install-perms
 no-x11.patch
+no-uname.patch
