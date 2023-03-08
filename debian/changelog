@@ -8,7 +8,7 @@ glide (2002.04.10ds1-20) unstable; urgency=medium
 
 glide (2002.04.10ds1-19) unstable; urgency=medium
 
-  * Enable LFS build options. This should ABI safe as the shared library
+  * Enable LFS build options. This should be ABI safe as the shared library
     does not expose any problematic type.
   * Actually show the debconf error when the target is not a symlink.
 
