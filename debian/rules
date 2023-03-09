@@ -10,6 +10,12 @@ export DEB_CFLAGS_MAINT_APPEND = -Wall
 
 include /usr/share/dpkg/default.mk
 
+ifeq ($(DEB_BUILD_GNU_TYPE), $(DEB_HOST_GNU_TYPE))
+  confflags += --build=$(DEB_HOST_GNU_TYPE)
+else
+  confflags += --build=$(DEB_BUILD_GNU_TYPE) --host=$(DEB_HOST_GNU_TYPE)
+endif
+
 ifeq (,$(filter noopt,$(DEB_BUILD_OPTIONS)))
 ifeq ($(DEB_HOST_ARCH),alpha)
   CFLAGS += -mcpu=ev5 -fomit-frame-pointer \
@@ -32,6 +38,7 @@ define glide3_build
   cd $(CURDIR)/glide3x; \
   mkdir $(CURDIR)/debian/tmp.$(1); \
   ./chores.3dfx --generate "--configure=--enable-fx-glide-hw=$(1) \
+    $(confflags) \
     --prefix=/usr" --build-dir=build.$(1); \
   cd build.$(1); \
   ./build.3dfx --no-x DESTDIR="$(CURDIR)/debian/tmp.$(1)/" \

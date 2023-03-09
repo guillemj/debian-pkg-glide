@@ -1,3 +1,9 @@
+glide (2002.04.10ds1-21) UNRELEASED; urgency=medium
+
+  * Pass --build and --host to configure via chores.3dfx.
+
+ -- Guillem Jover <guillem@debian.org>  Fri, 10 Mar 2023 02:37:34 +0100
+
 glide (2002.04.10ds1-20) unstable; urgency=medium
 
   * Use autoconf $host_cpu instead of «uname -m» to decide how to optimize
