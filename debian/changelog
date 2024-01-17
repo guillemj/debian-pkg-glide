@@ -7,6 +7,7 @@ glide (2002.04.10ds1-22) UNRELEASED; urgency=medium
     - Use warnings instead of passing -w to perl in the shebang.
     - Use qx() instead of backticks.
     - Remove unused variables.
+    - Reduce variables scope.
 
  -- Guillem Jover <guillem@debian.org>  Wed, 17 Jan 2024 03:00:58 +0100
 
