@@ -17,9 +17,9 @@ if [ "$1" = "configure" ]; then
     exit 1
   fi
 
-  if [ -e $target ]; then
-    if [ -L $target ]; then
-      rm $target
+  if [ -e "$DPKG_ROOT$target" ]; then
+    if [ -L "$DPKG_ROOT$target" ]; then
+      rm "$DPKG_ROOT$target"
     else
       db_subst libglide3/target_not_symlink target "$target"
       db_input high libglide3/target_not_symlink || true
@@ -28,7 +28,7 @@ if [ "$1" = "configure" ]; then
     fi
   fi
 
-  ln -s $drv_lib $target
+  ln -s $drv_lib "$DPKG_ROOT$target"
 fi
 
 #DEBHELPER#
