@@ -1,3 +1,10 @@
+glide (2002.04.10ds1-22) UNRELEASED; urgency=medium
+
+  * Switch from future=+lfs to abi=+lfs build flags feature, and Build-Depends
+    on dpkg-dev >= 1.22.0.
+
+ -- Guillem Jover <guillem@debian.org>  Wed, 17 Jan 2024 03:00:58 +0100
+
 glide (2002.04.10ds1-21) unstable; urgency=medium
 
   * Pass --build and --host to configure via chores.3dfx.
