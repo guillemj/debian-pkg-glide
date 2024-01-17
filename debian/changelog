@@ -5,6 +5,7 @@ glide (2002.04.10ds1-22) UNRELEASED; urgency=medium
   * Take DPKG_ROOT into account in maintainer scripts.
   * Improve debconf config maintainer script:
     - Use warnings instead of passing -w to perl in the shebang.
+    - Use qx() instead of backticks.
 
  -- Guillem Jover <guillem@debian.org>  Wed, 17 Jan 2024 03:00:58 +0100
 
