@@ -1,0 +1,41 @@
+---
+ glide3x/h3/minihwc/linhwc.c.dri                             |    1 
+ glide3x/h5/glide3/src/glide.h                               |    5 
+ glide3x/h5/minihwc/linhwc.c                                 |    1 
+ tmp/werror/glide-2002.04.10ds1/glide3x/h5/glide3/src/gsst.c | 3949 ------------
+ 4 files changed, 7 insertions(+), 3949 deletions(-)
+
+--- a/glide3x/h5/minihwc/linhwc.c
++++ b/glide3x/h5/minihwc/linhwc.c
+@@ -61,6 +61,7 @@ hwcCheckMemSize(hwcBoardInfo *bInfo, FxU
+ #include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
++#include "fxcmd.h"
+ #include "lindri.h"
+ 
+ static FxU32 fenceVar;
+--- a/glide3x/h3/minihwc/linhwc.c.dri
++++ b/glide3x/h3/minihwc/linhwc.c.dri
+@@ -61,6 +61,7 @@ hwcCheckMemSize(hwcBoardInfo *bInfo, FxU
+ #include <stdlib.h>
+ #include <string.h>
+ #include <math.h>
++#include "fxcmd.h"
+ #include "lindri.h"
+ 
+ static FxU32 fenceVar;
+--- a/glide3x/h5/glide3/src/glide.h
++++ b/glide3x/h5/glide3/src/glide.h
+@@ -593,6 +593,11 @@ grBufferSwap( FxU32 swap_interval );
+ FX_ENTRY void FX_CALL
+ grRenderBuffer( GrBuffer_t buffer );
+ 
++#ifdef __linux__
++FX_ENTRY void FX_CALL
++grDRIBufferSwap( FxU32 swapInterval );
++#endif
++
+ /*
+ ** error management
+ */
