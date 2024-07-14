@@ -1,0 +1,68 @@
+Author: Guillem Jover <guillem@hadrons.org>
+Description: Fix FTBFS with gcc-14 new default -Wincompatible-pointer-types
+Bug-Debian: #1075011
+Origin: vendor
+Forwarded: no
+
+---
+ glide3x/h5/glide3/src/fifo.c  |    2 +-
+ glide3x/h5/glide3/src/fxcmd.h |    2 +-
+ glide3x/h5/glide3/src/glfb.c  |    7 ++++---
+ glide3x/h5/minihwc/linhwc.c   |    2 +-
+ 4 files changed, 7 insertions(+), 6 deletions(-)
+
+--- a/glide3x/h5/glide3/src/fxcmd.h
++++ b/glide3x/h5/glide3/src/fxcmd.h
+@@ -190,7 +190,7 @@ _grGet32(volatile FxU32* const sstAddr);
+ 
+ #ifdef __linux__
+ void _grImportFifo(AnyPtr fifoPtr, AnyPtr fifoRead);
+-void _grExportFifo(FxU32 *fifoPtr, FxU32 *fifoRead);
++void _grExportFifo(volatile FxU32 *fifoPtr, volatile FxU32 *fifoRead);
+ void _grInvalidateAll(void);
+ #endif
+ 
+--- a/glide3x/h5/minihwc/linhwc.c
++++ b/glide3x/h5/minihwc/linhwc.c
+@@ -991,6 +991,6 @@ void grDRIInvalidateAll() {
+ 
+ void grDRIResetSAREA()
+ {
+-  _grExportFifo(driInfo.fifoPtr, driInfo.fifoRead);
++  _grExportFifo((volatile FxU32 *)driInfo.fifoPtr, (volatile FxU32 *)driInfo.fifoRead);
+ }
+ 
+--- a/glide3x/h5/glide3/src/glfb.c
++++ b/glide3x/h5/glide3/src/glfb.c
+@@ -1335,7 +1335,8 @@ GR_ENTRY(grLfbReadRegion, FxBool, (GrBuf
+          /* adjust starting alignment */
+          if (((AnyPtr)src)&3) {
+             *((FxU16 *)dst)=*((FxU16 *)src);
+-            dst = ((FxU16 *)dst)+1; src = ((FxU16 *)src);
++            dst = (FxU32 *)(((FxU16 *)dst) + 1);
++            src = (FxU32 *)((FxU16 *)src);
+          }
+ 
+          /* read in dwords of pixels */
+@@ -1355,8 +1356,8 @@ GR_ENTRY(grLfbReadRegion, FxBool, (GrBuf
+                *((FxU16 *)(((AnyPtr)dst) + byte_index))=*((FxU16 *)(((AnyPtr)src) + byte_index));
+          }
+          /* adjust for next line */
+-         src=((FxU8 *)src)+src_adjust;
+-         dst=((FxU8 *)dst)+dst_adjust;
++         src = (FxU32 *)(((FxU8 *)src) + src_adjust);
++         dst = (FxU32 *)(((FxU8 *)dst) + dst_adjust);
+       }
+       rv=FXTRUE;
+       /* unlock buffer */
+--- a/glide3x/h5/glide3/src/fifo.c
++++ b/glide3x/h5/glide3/src/fifo.c
+@@ -1422,7 +1422,7 @@ _grImportFifo(AnyPtr fifoPtr, AnyPtr fif
+ }
+ 
+ void
+-_grExportFifo(FxU32 *fifoPtr, FxU32 *fifoRead) {
++_grExportFifo(volatile FxU32 *fifoPtr, volatile FxU32 *fifoRead) {
+   struct cmdTransportInfo* gcFifo;
+   GR_DCL_GC;
+   gcFifo=&gc->cmdTransportInfo;

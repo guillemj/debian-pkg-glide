@@ -38,3 +38,4 @@ z13-install-perms
 no-x11.patch
 no-uname.patch
 fix-implicit-func.patch
+incompat-ptr-type.patch
