@@ -1,9 +1,9 @@
-glide (2002.04.10ds1-23) UNRELEASED; urgency=medium
+glide (2002.04.10ds1-23) unstable; urgency=medium
 
   * Fix FTBFS with gcc-14 new default -Wincompatible-pointer-types.
     Closes: #1075011
 
- -- Guillem Jover <guillem@debian.org>  Sun, 14 Jul 2024 13:45:44 +0200
+ -- Guillem Jover <guillem@debian.org>  Sun, 14 Jul 2024 13:46:19 +0200
 
 glide (2002.04.10ds1-22) unstable; urgency=medium
 
