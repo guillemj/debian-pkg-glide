@@ -1,6 +1,13 @@
+glide (2002.04.10ds1-24) UNRELEASED; urgency=medium
+
+  * Fix FTBFS with gcc-14 new default -Werror=incompatible-pointer-types,
+    on i386.
+
+ -- Guillem Jover <guillem@debian.org>  Sun, 15 Sep 2024 21:41:00 +0200
+
 glide (2002.04.10ds1-23) unstable; urgency=medium
 
-  * Fix FTBFS with gcc-14 new default -Wincompatible-pointer-types.
+  * Fix FTBFS with gcc-14 new default -Werror=incompatible-pointer-types.
     Closes: #1075011
 
  -- Guillem Jover <guillem@debian.org>  Sun, 14 Jul 2024 13:46:19 +0200

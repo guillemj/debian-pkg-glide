@@ -66,3 +66,94 @@ Forwarded: no
    struct cmdTransportInfo* gcFifo;
    GR_DCL_GC;
    gcFifo=&gc->cmdTransportInfo;
+--- a/glide3x/h5/glide3/src/fxglide.h
++++ b/glide3x/h5/glide3/src/fxglide.h
+@@ -1275,6 +1275,11 @@ typedef struct {
+ */
+ #define GR_MEMTYPE      GR_GET_RESERVED_1
+ 
++#if !defined(__linux__) || defined(GLIDE_USE_C_TRISETUP)
++#define TRISETUPARGS const void *a, const void *b, const void *c
++#else
++#define TRISETUPARGS const void *g, const void *a, const void *b, const void *c
++#endif
+ 
+ /* gpci.c 
+  *
+@@ -1282,11 +1287,7 @@ typedef struct {
+  * the _archXXXX proc list that is selected at grGlideInit time.
+  */
+ 
+-#if !defined(__linux__) || defined(GLIDE_USE_C_TRISETUP)
+-typedef FxI32 (FX_CALL* GrTriSetupProc)(const void *a, const void *b, const void *c);
+-#else   /* defined(__linux__) */
+-typedef FxI32 (FX_CALL* GrTriSetupProc)(const void *g, const void *a, const void *b, const void *c);
+-#endif  /* defined(__linux__) */
++typedef FxI32 (FX_CALL* GrTriSetupProc)(TRISETUPARGS);
+ 
+ typedef void  (FX_CALL* GrVertexListProc)(FxU32 pkType, FxU32 type, FxI32 mode, FxI32 count, void* ptrs);
+ typedef void  (FX_CALL* GrDrawTrianglesProc)(FxI32 mode, FxI32 count, void* vPtrs);
+@@ -1304,19 +1305,19 @@ typedef GrTriSetupProcVector GrTriSetupP
+  *     gc is nabbed from tls and passed in edx. Screw w/ this at your
+  *     own peril. You have been warned.
+  */
+-extern FxI32 FX_CALL _trisetup_Default_win_cull_invalid(const void*, const void*, const void*);
+-extern FxI32 FX_CALL _trisetup_Default_win_cull_valid(const void*, const void*, const void*);
+-extern FxI32 FX_CALL _trisetup_Default_win_nocull_invalid(const void*, const void*, const void*);
+-extern FxI32 FX_CALL _trisetup_Default_win_nocull_valid(const void*, const void*, const void*);
++extern FxI32 FX_CALL _trisetup_Default_win_cull_invalid(TRISETUPARGS);
++extern FxI32 FX_CALL _trisetup_Default_win_cull_valid(TRISETUPARGS);
++extern FxI32 FX_CALL _trisetup_Default_win_nocull_invalid(TRISETUPARGS);
++extern FxI32 FX_CALL _trisetup_Default_win_nocull_valid(TRISETUPARGS);
+ 
+ /* Only one specialziation exists so far */
+-extern FxI32 FX_CALL _vptrisetup_cull(const void*, const void*, const void*);
++extern FxI32 FX_CALL _vptrisetup_cull(TRISETUPARGS);
+ 
+ /* Routine to call into the architecture specialized version of 
+  * _grDrawTriangles if there is no specialized version of the
+  * grDrawTriangle routine for clip coordinates.
+  */
+-extern FxI32 FX_CALL _trisetup_clip_coor_thunk(const void*, const void*, const void*);
++extern FxI32 FX_CALL _trisetup_clip_coor_thunk(TRISETUPARGS);
+ 
+ extern void FX_CALL _grDrawTriangles_Default(FxI32, FxI32, void*);
+ 
+@@ -1324,15 +1325,15 @@ void FX_CSTYLE _drawvertexlist(FxU32 pkt
+ void FX_CSTYLE _vpdrawvertexlist(FxU32 pktype, FxU32 type, FxI32 mode, FxI32 count, void *pointers);
+ 
+ #if GL_AMD3D
+-extern FxI32 FX_CALL _trisetup_3DNow_win_cull_invalid(const void*, const void*, const void*);
+-extern FxI32 FX_CALL _trisetup_3DNow_win_cull_valid(const void*, const void*, const void*);
+-extern FxI32 FX_CALL _trisetup_3DNow_win_nocull_invalid(const void*, const void*, const void*);
+-extern FxI32 FX_CALL _trisetup_3DNow_win_nocull_valid(const void*, const void*, const void*);
+-
+-extern FxI32 FX_CALL _trisetup_3DNow_clip_cull_invalid(const void*, const void*, const void*);
+-extern FxI32 FX_CALL _trisetup_3DNow_clip_cull_valid(const void*, const void*, const void*);
+-extern FxI32 FX_CALL _trisetup_3DNow_clip_nocull_invalid(const void*, const void*, const void*);
+-extern FxI32 FX_CALL _trisetup_3DNow_clip_nocull_valid(const void*, const void*, const void*);
++extern FxI32 FX_CALL _trisetup_3DNow_win_cull_invalid(TRISETUPARGS);
++extern FxI32 FX_CALL _trisetup_3DNow_win_cull_valid(TRISETUPARGS);
++extern FxI32 FX_CALL _trisetup_3DNow_win_nocull_invalid(TRISETUPARGS);
++extern FxI32 FX_CALL _trisetup_3DNow_win_nocull_valid(TRISETUPARGS);
++
++extern FxI32 FX_CALL _trisetup_3DNow_clip_cull_invalid(TRISETUPARGS);
++extern FxI32 FX_CALL _trisetup_3DNow_clip_cull_valid(TRISETUPARGS);
++extern FxI32 FX_CALL _trisetup_3DNow_clip_nocull_invalid(TRISETUPARGS);
++extern FxI32 FX_CALL _trisetup_3DNow_clip_nocull_valid(TRISETUPARGS);
+ 
+ extern void FX_CALL _grDrawTriangles_3DNow(FxI32, FxI32, void*);
+ void FX_CSTYLE _grDrawVertexList_3DNow_Window(FxU32 pktype, FxU32 type, FxI32 mode, FxI32 count, void *pointers);
+@@ -1756,11 +1757,7 @@ typedef struct GrGC_s
+                                    occur every 64K writes. */
+ 
+   } cmdTransportInfo;
+-#if !defined(__linux__) || defined(GLIDE_USE_C_TRISETUP)
+-  FxI32 (FX_CALL *triSetupProc)(const void *a, const void *b, const void *c);
+-#else	/* defined(__linux__) */
+-  FxI32 (FX_CALL *triSetupProc)(const void *g, const void *a, const void *b, const void *c);
+-#endif	/* defined(__linux__) */
++  FxI32 (FX_CALL *triSetupProc)(TRISETUPARGS);
+   
+   SstIORegs
+     *ioRegs;                    /* I/O remap regs */
