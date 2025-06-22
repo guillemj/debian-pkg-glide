@@ -1,3 +1,9 @@
+glide (2002.04.10ds1-25) UNRELEASED; urgency=medium
+
+  * Use URL instead of FSF postal address for LGPL in debian/copyright.
+
+ -- Guillem Jover <guillem@debian.org>  Mon, 23 Jun 2025 01:35:36 +0200
+
 glide (2002.04.10ds1-24) unstable; urgency=medium
 
   * Fix FTBFS with gcc-14 new default -Werror=incompatible-pointer-types,
