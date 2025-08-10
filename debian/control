@@ -1,6 +1,5 @@
 Source: glide
 Section: libs
-Priority: optional
 Maintainer: Guillem Jover <guillem@debian.org>
 Homepage: http://glide.sf.net/
 Vcs-Browser: https://git.hadrons.org/cgit/debian/pkgs/glide.git
