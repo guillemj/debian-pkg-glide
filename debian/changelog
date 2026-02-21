@@ -7,6 +7,7 @@ glide (2002.04.10ds1-25) UNRELEASED; urgency=medium
   * Add a debian/watch to mark upstream currently untrackable.
   * Update and fix patch metadata.
   * Switch to Standards-Version 4.7.3 (no changes needed).
+  * Update copyright years.
 
  -- Guillem Jover <guillem@debian.org>  Mon, 23 Jun 2025 01:35:36 +0200
 
