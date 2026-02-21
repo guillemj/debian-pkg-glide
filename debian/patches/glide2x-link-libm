@@ -1,3 +1,4 @@
+Description: Link against libm
 Status: not-needed
 Origin: vendor
 Applied-Upstream: 2002.04.10+

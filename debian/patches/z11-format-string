@@ -1,6 +1,7 @@
 Author: Guillem Jover <guillem@hadrons.org>
 Description: Fix format string errors
 Origin: vendor
+Forwarded: no
 
 ---
  glide2x/cvg/glide/tests/tlib.c |    2 +-

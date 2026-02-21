@@ -1,6 +1,6 @@
 Author: Guillem Jover <guillem@hadrons.org>
 Description: Fix FTBFS with gcc-14 new default -Wincompatible-pointer-types
-Bug-Debian: #1075011
+Bug-Debian: https://bugs.debian.org/1075011
 Origin: vendor
 Forwarded: no
 
