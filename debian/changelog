@@ -4,6 +4,7 @@ glide (2002.04.10ds1-25) UNRELEASED; urgency=medium
   * Remove «Rules-Requires-Root: no», which is the current default.
   * Remove «Priority: optional», which is the current default.
   * Remove versioned Build-Depends on dpkg-dev, satisfied since Debian trixie.
+  * Add a debian/watch to mark upstream currently untrackable.
 
  -- Guillem Jover <guillem@debian.org>  Mon, 23 Jun 2025 01:35:36 +0200
 
