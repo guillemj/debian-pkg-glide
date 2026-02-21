@@ -1,4 +1,4 @@
-glide (2002.04.10ds1-25) UNRELEASED; urgency=medium
+glide (2002.04.10ds1-25) unstable; urgency=medium
 
   * Use URL instead of FSF postal address for LGPL in debian/copyright.
   * Remove «Rules-Requires-Root: no», which is the current default.
@@ -10,7 +10,7 @@ glide (2002.04.10ds1-25) UNRELEASED; urgency=medium
   * Update copyright years.
   * Remove lintian overrides that no longer get emitted.
 
- -- Guillem Jover <guillem@debian.org>  Mon, 23 Jun 2025 01:35:36 +0200
+ -- Guillem Jover <guillem@debian.org>  Sat, 21 Feb 2026 03:25:11 +0100
 
 glide (2002.04.10ds1-24) unstable; urgency=medium
 
