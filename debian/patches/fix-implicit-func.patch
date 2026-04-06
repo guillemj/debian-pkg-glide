@@ -1,5 +1,7 @@
+Author: Guillem Jover <guillem@hadrons.org>
 Description: Fix implicit function declarations
  Add required headers or declare the functions.
+Origin: vendor
 Forwarded: no
 
 ---
