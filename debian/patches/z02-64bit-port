@@ -1,5 +1,5 @@
 Author: Guillem Jover <guillem@hadrons.org> ??
-Description: FIx build system for 64-bit ports
+Description: Fix build system for 64-bit ports
 Status: not-applied
 Origin: vendor
 Forwarded: no

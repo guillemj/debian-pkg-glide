@@ -1,3 +1,9 @@
+glide (2002.04.10ds1-26) UNRELEASED; urgency=medium
+
+  * Fix typo in patch metadata.
+
+ -- Guillem Jover <guillem@debian.org>  Mon, 06 Apr 2026 02:15:16 +0200
+
 glide (2002.04.10ds1-25) unstable; urgency=medium
 
   * Use URL instead of FSF postal address for LGPL in debian/copyright.
