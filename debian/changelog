@@ -2,6 +2,8 @@ glide (2002.04.10ds1-26) UNRELEASED; urgency=medium
 
   * Fix typo in patch metadata.
   * Update patch metadata.
+  * Remove build dependency on debhelper (>= 13.10) implied by
+    debhelper-compat (= 13) since Debian bookworm.
 
  -- Guillem Jover <guillem@debian.org>  Mon, 06 Apr 2026 02:15:16 +0200
 
