@@ -8,6 +8,7 @@ glide (2002.04.10ds1-26) UNRELEASED; urgency=medium
     by debhelper-compat (>= 10) since Debian stretch.
   * Switch to Standards-Version 4.7.4 (no changes needed).
   * Refactor common synopsis into a source stanza Description field.
+  * Remove lintian overrides that no longer get emitted.
 
  -- Guillem Jover <guillem@debian.org>  Mon, 06 Apr 2026 02:15:16 +0200
 
