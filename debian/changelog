@@ -7,6 +7,7 @@ glide (2002.04.10ds1-26) UNRELEASED; urgency=medium
   * Remove build dependencies on automake, autoconf and libtool implied
     by debhelper-compat (>= 10) since Debian stretch.
   * Switch to Standards-Version 4.7.4 (no changes needed).
+  * Refactor common synopsis into a source stanza Description field.
 
  -- Guillem Jover <guillem@debian.org>  Mon, 06 Apr 2026 02:15:16 +0200
 

@@ -7,6 +7,7 @@ Vcs-Git: https://git.hadrons.org/git/debian/pkgs/glide.git
 Standards-Version: 4.7.4
 Build-Depends:
  debhelper-compat (= 13),
+Description: graphics library for 3Dfx Voodoo 3+ based cards
 
 Package: libglide3
 Architecture: i386 alpha ia64 amd64
@@ -14,7 +15,7 @@ Depends:
  ${misc:Depends},
  ${shlibs:Depends},
  pciutils,
-Description: graphics library for 3Dfx Voodoo 3+ based cards - shared libraries
+Description: ${source:Synopsis} - shared libraries
  This package allows you to use the 3D functions of cards based on
  3dfx Interactive, Inc's Voodoo Banshee, Voodoo 3, Voodoo 4, and
  Voodoo 5 chipsets.
@@ -28,6 +29,6 @@ Architecture: i386 alpha ia64 amd64
 Depends:
  ${misc:Depends},
  libglide3 (= ${binary:Version}),
-Description: graphics library for 3Dfx Voodoo 3+ based cards - development files
+Description: ${source:Synopsis} - development files
  This package contains the header files, example programs, and
  documentation necessary to develop software using libglide3.
